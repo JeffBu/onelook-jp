@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PDFEventsController;
+use App\Http\Controllers\VideoRecordingEvents;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard_temp');
-    })->name('dashboard');
+    Route::get('/', [MainController::class, 'index'])->name('dashboard');
+    Route::get('video-creation', [MainController::class, 'video_creation'])->name('video-creation');
+});
+
+Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
+Route::post('save-url-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-url-to-database');
+Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
+
+Route::get('test-frontend', function() {
+    return view('welcome');
 });
