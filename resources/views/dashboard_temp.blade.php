@@ -24,7 +24,7 @@
     <header class="flex shadow bg-sky-700 justify-between items-center py-5 px-5 h-14 tracking-widest fixed w-full z-50"
     id="header_frame">
 
-        <div class="justify-center items-center w-32">
+        <div class="items-center w-32">
             <div class="font-semibold text-theme-white text-xl">OneLook</div>
         </div>
         
@@ -37,9 +37,9 @@
             <a href="#faq" id="faq-tab">FAQ</a>
         </div>
 
-        <div class="justify-center items-center w-32">
+        <div class="px-14 items-center w-32">
             <div class="flex items-center gap-3 cursor-pointer text-theme-white hover:text-theme-yellow" id="user">
-                <p class="font-semibold flex items-center justify-center gap-3">zombakel <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <p class="font-semibold flex items-center gap-3">user <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
                 </svg></p>
             </div>
