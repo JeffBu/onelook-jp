@@ -27,10 +27,10 @@
         <div class="justify-center items-center w-32">
             <div class="font-semibold text-theme-white text-xl">OneLook</div>
         </div>
-        
+
         <div class="flex justify-center items-center gap-7 py-6 font-semibold text-xl text-theme-white">
-            <a href="#home" id="home-tab">Home</a>
-            <a href="#video-maker" id="video-maker-tab">Video Maker</a>
+            <a href="{{route('dashboard')}}" id="home-tab">Home</a>
+            <a href="{{route('video-creation')}}" id="video-maker-tab">Video Maker</a>
             <a href="#post-list" id="post-list-tab">Post List</a>
             <a href="#member" id="member-tab">Member</a>
             <a href="#info" id="info-tab">Information</a>
@@ -39,9 +39,10 @@
 
         <div class="justify-center items-center w-32">
             <div class="flex items-center gap-3 cursor-pointer text-theme-white hover:text-theme-yellow" id="user">
-                <p class="font-semibold flex items-center justify-center gap-3">zombakel <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <a href=""
+                class="font-semibold flex items-center justify-center gap-3">{{$user->name}}<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
-                </svg></p>
+                </svg></a>
             </div>
             <!--<div class="hidden items-center border border-cyan-700 bg-theme-white justify-center mt-1 w-28 cursor-pointer absolute"
             id="logout">
@@ -75,37 +76,6 @@
                     <p>If you have any questions that cannot be answered by, please contact us from here.</p>
                 </div>
             </div>
-
-            <div>
-                <div class="mt-96"></div>
-                <h2 class="text-2xl font-bold text-cyan-700 scroll-mt-24" id="video-maker">Video Maker</h2>
-                <p class="py-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas?</p>
-            </div>
-
-            <div>
-                <div class="mt-96"></div>
-                <h2 class="text-2xl font-bold text-cyan-700 scroll-mt-24" id="post-list">Post List</h2>
-                <p class="py-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas?</p>
-            </div>
-
-            <div>
-                <div class="mt-96"></div>
-                <h2 class="text-2xl font-bold text-cyan-700 scroll-mt-24" id="member">Member</h2>
-                <p class="py-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas?</p>
-            </div>
-
-            <div>
-                <div class="mt-96"></div>
-                <h2 class="text-2xl font-bold text-cyan-700 scroll-mt-24" id="info">Info</h2>
-                <p class="py-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas?</p>
-            </div>
-
-            <div>
-                <div class="mt-96"></div>
-                <h2 class="text-2xl font-bold text-cyan-700 scroll-mt-24" id="faq">FAQ</h2>
-                <p class="py-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt iste voluptatum, ex sapiente consectetur non modi nihil expedita harum enim. Eum molestiae harum, vero mollitia reprehenderit commodi voluptatum incidunt voluptas?</p>
-            </div>
-
             <div>
                 <div class="mt-96"></div>
             </div>
@@ -232,7 +202,7 @@
     <script>
         $(document).ready(function(){
             $('#home-tab').addClass('active');
-            
+
             jQuery('#home-tab').on('click', function() {
                 $('#home-tab').addClass('active');
                 $('#video-maker-tab').removeClass('active');
@@ -291,7 +261,7 @@
         jQuery('#user').on('click', function() {
             $('#logout').toggle();
         });
-        
+
     </script>
 
     <!--scripts ends here-->
