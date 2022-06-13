@@ -51,11 +51,22 @@
     <!--content-->
     <div class="flex justify-center items-start text-lg pt-5 w-full">
         <div class="flex-1 justify-center items-center px-8 pt-20 mt-3" data-name="pdf-canvas">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="prev">Previous</button>
-            <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="next">Next</button>
-            <canvas id="pdf-canvas" style="width: 100%; height: auto; margin:0 auto;"></canvas>
+            <div class="flex justify-center items-center gap-8 pb-8">
+                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg> Previous</button>
+
+                <div class="text-lg text-cyan-800 font-semibold">
+                    Page: <span id="page-num" class="px-2"></span> / <span id="page-count" class="px-2"></span>
+                </div>
+
+                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">Next <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg></button>
             </div>
+
+            <canvas id="pdf-canvas" style="width: 100%; height: auto; margin:0 auto;"></canvas>
+        </div>
         <div class="flex flex-col justify-center items-center gap-8 w-80 pt-14 px-2 ml-2 text-left" data-name="toolbox">
             <div class="mb-3 xl:w-96">
                 <div>
