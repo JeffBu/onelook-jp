@@ -34,5 +34,5 @@ Route::post('save-url-to-database', [VideoRecordingEvents::class, 'save_to_datab
 Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
 
 Route::get('test-frontend', function() {
-    return view('toolbar_temp');
+    return view('post_list');
 });
