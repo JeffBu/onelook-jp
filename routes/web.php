@@ -27,6 +27,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('dashboard');
     Route::get('video-creation', [MainController::class, 'video_creation'])->name('video-creation');
+    Route::get('post-list', [MainController::class, 'post_list'])->name('post-list');
+    Route::get('membership-info', [MainController::class, 'membership_info'])->name('membership-info');
+    Route::get('change-membership-plan', [MainController::class, 'change_membership_plan'])->name('change-membership-plan');
 });
 
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
@@ -34,5 +37,5 @@ Route::post('save-url-to-database', [VideoRecordingEvents::class, 'save_to_datab
 Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
 
 Route::get('test-frontend', function() {
-    return view('post_list');
+    return view('subscription_2');
 });

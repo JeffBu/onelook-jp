@@ -30,4 +30,34 @@ class MainController extends Controller
 
         return view('video_creation', $data);
     }
+
+    public function post_list()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('post_list', $data);
+    }
+
+    public function membership_info()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('membership_info', $data);
+    }
+
+    public function change_membership_plan()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('subscription', $data);
+    }
 }

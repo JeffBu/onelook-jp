@@ -21,59 +21,43 @@
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
 
     <!--header-->
-    <header class="flex shadow bg-sky-700 justify-between items-center py-5 px-5 h-14 tracking-widest fixed w-full z-50"
-    id="header_frame">
+    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
+    id="header-frame">
 
         <div class="items-center w-32">
-            <div class="font-semibold text-theme-white text-xl">OneLook</div>
+            <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
         </div>
 
-        <div class="flex justify-center items-center gap-7 py-6 font-semibold text-xl text-theme-white">
-            <a href="{{route('dashboard')}}" id="home-tab">Home</a>
-            <a href="{{route('video-creation')}}" id="video-maker-tab">Video Maker</a>
-            <a href="#post-list" id="post-list-tab">Post List</a>
-            <a href="#member" id="member-tab">Member</a>
-            <a href="#info" id="info-tab">Information</a>
-            <a href="#faq" id="faq-tab">FAQ</a>
+        <div class="flex justify-center items-start gap-7 py-6 font-small text-sm font-bold text-theme-white w-full">
+            <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
+            <a href="{{route('video-creation')}}" id="video-maker-tab">ムービー作成</a>
+            <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
+            <a href="{{route('membership-info')}}" id="membership-info-tab">会員情報</a>
+            <a href="#" id="faq-tab">FAQ</a>
         </div>
 
-        <div class="px-14 items-center w-32">
-            <div class="flex items-center gap-3 cursor-pointer text-theme-white hover:text-theme-yellow" id="user">
-                <a href=""
-                class="font-semibold flex items-center justify-center gap-3">{{$user->name}}<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
-                </svg></a>
-            </div>
-            <!--<div class="hidden items-center border border-cyan-700 bg-theme-white justify-center mt-1 w-28 cursor-pointer absolute"
-            id="logout">
-                <a href="#" class="py-2 flex justify-center gap-2 text-cyan-600 font-semibold hover:text-theme-yellow">Log Out <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>-->
-        </div>
     </header>
     <!--header ends here-->
 
     <!--content-->
     <div class="flex justify-center items-start text-lg pt-4 w-full">
-        <!--<div class="flex flex-col justify-center items-center gap-8 w-64 pt-14 px-2 text-left"></div>-->
+        <div class="flex flex-col justify-center items-center gap-8 w-64 pt-14 px-2 text-left"></div>
 
         <div class="flex-1 justify-center items-center px-8 pt-20 mt-3">
             <div class="scroll-mt-24" id="home">
                 <div class="flex items-center text-left gap-10 px-10 w-full border border-cyan-800 h-28 rounded-md">
                     <img src="{{asset('media/3.png')}}" alt="" class="h-14">
-                    <p>You can easily create an explanatory video of the target file.</p>
+                    <p>簡単に対象ファイルの説明動画を作成することができます。</p>
                 </div>
                 <div class="flex items-center text-left gap-10 px-10 mt-8 border border-cyan-800 h-28 rounded-md">
                     <img src="{{asset('media/4.png')}}" alt="" class="h-12">
-                    <p>This is a list of videos created in the past. From here you can copy the invitation link or send a viewing invitation email directly.</p>
+                    <p>過去に作成した動画の一覧です。ここから招待リンクをコピーしたり、閲覧招待メールを直接送ったりすることができます。</p>
                 </div>
                 <div class="flex items-center text-left gap-10 px-10 mt-8 w-full border border-cyan-800 h-28 rounded-md">
                     <div>
                         <img src="{{asset('media/5.png')}}" alt="" class="h-14">
                     </div>
-                    <p>If you have any questions that cannot be answered by, please contact us from here.</p>
+                    <p>FAQで対応できないご質問はこちらからお問い合わせください。</p>
                 </div>
             </div>
             <div>
@@ -81,7 +65,7 @@
             </div>
         </div>
 
-        <div class="flex flex-col justify-center items-center gap-8 w-80 pt-14 px-2 text-left">
+        <div class="flex flex-col justify-center items-center gap-8 w-64 pt-14 px-2 text-left">
             <div class="w-full">
                 <div class="font-bold text-cyan-600 text-center text-xl pb-2">News</div>
                 <div class="border border-cyan-800 rounded-md px-2 py-2">
@@ -202,64 +186,6 @@
     <script>
         $(document).ready(function(){
             $('#home-tab').addClass('active');
-
-            jQuery('#home-tab').on('click', function() {
-                $('#home-tab').addClass('active');
-                $('#video-maker-tab').removeClass('active');
-                $('#post-list-tab').removeClass('active');
-                $('#member-tab').removeClass('active');
-                $('#info-tab').removeClass('active');
-                $('#faq-tab').removeClass('active');
-            });
-
-            jQuery('#video-maker-tab').on('click', function() {
-                $('#home-tab').removeClass('active');
-                $('#video-maker-tab').addClass('active');
-                $('#post-list-tab').removeClass('active');
-                $('#member-tab').removeClass('active');
-                $('#info-tab').removeClass('active');
-                $('#faq-tab').removeClass('active');
-            });
-
-            jQuery('#post-list-tab').on('click', function() {
-                $('#home-tab').removeClass('active');
-                $('#video-maker-tab').removeClass('active');
-                $('#post-list-tab').addClass('active');
-                $('#member-tab').removeClass('active');
-                $('#info-tab').removeClass('active');
-                $('#faq-tab').removeClass('active');
-            });
-
-            jQuery('#member-tab').on('click', function() {
-                $('#home-tab').removeClass('active');
-                $('#video-maker-tab').removeClass('active');
-                $('#post-list-tab').removeClass('active');
-                $('#member-tab').addClass('active');
-                $('#info-tab').removeClass('active');
-                $('#faq-tab').removeClass('active');
-            });
-
-            jQuery('#info-tab').on('click', function() {
-                $('#home-tab').removeClass('active');
-                $('#video-maker-tab').removeClass('active');
-                $('#post-list-tab').removeClass('active');
-                $('#member-tab').removeClass('active');
-                $('#info-tab').addClass('active');
-                $('#faq-tab').removeClass('active');
-            });
-
-            jQuery('#faq-tab').on('click', function() {
-                $('#home-tab').removeClass('active');
-                $('#video-maker-tab').removeClass('active');
-                $('#post-list-tab').removeClass('active');
-                $('#member-tab').removeClass('active');
-                $('#info-tab').removeClass('active');
-                $('#faq-tab').addClass('active');
-            });
-        });
-
-        jQuery('#user').on('click', function() {
-            $('#logout').toggle();
         });
 
     </script>
