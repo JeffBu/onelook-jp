@@ -46,72 +46,71 @@
             <thead>
                 <tr>
                     <th colspan="2" class="px-1 py-1 border-x border-y border-cyan-600">
-                        <div class="flex-col text-left px-4">
-                            <h1 class="">OneLook</h1>
+                        <div class="flex-col text-center text-xl">
+                            <h1>OneLook</h1>
                             <h2>請求書　兼　領収書</h2>
                         </div>
                     </th>
-                    <th rowspan="4" class="px-1 py-1 border-x border-y border-cyan-600">領収日</th>
+                    <th rowspan="4" class="px-1 py-1 border-x border-y border-cyan-600 w-2/5">
+                        <div class="font-medium">
+                            <p>株式会社モアジョブ<br></p>
+                            <p>〒530-0044　<br></p>
+                            <p>大阪府大阪市北区東天満2－6－7<br></p>
+                            <p>南森町東一号館8階<br></p>
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">宛先</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">購入日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">〒530-0044</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.10.2</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">大阪府大阪市北区東天満2－6－7<br>南森町東一号館9階</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">市川欽一税理士事務所</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">市川　欽一　様</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">製品</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">種別</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">金額（税込）</td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">有料サービス（2014/01/28-2014/02/27)</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">ダウンロード会員</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">\800</td>
                 </tr>
 
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">合計</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">\800</td>
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <div class="flex justify-center items-center w-screen">
-        <div class="justify-end items-center w-1/2">
-            <div class="float-right w-1/5 mb-4">
-                <button class="container px-4 py-2 mt-4 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
-            </div>
-        </div>
     </div>
 
     <div class="pt-40"></div>

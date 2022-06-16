@@ -114,7 +114,7 @@
 
     <div class="flex justify-center items-center w-screen">
         <div class="justify-end items-center w-1/2">
-            <div class="float-right w-1/5 mb-4">
+            <div class="float-right w-1/5 mr-3 mb-4">
                 <button class="container px-4 py-2 mt-4 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
             </div>
         </div>
