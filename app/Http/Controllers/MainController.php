@@ -60,4 +60,54 @@ class MainController extends Controller
 
         return view('subscription', $data);
     }
+
+    public function update_cancel_plan()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('subscription_2', $data);
+    }
+
+    public function edit_member_info()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('edit_member_info', $data);
+    }
+
+    public function edit_personal_info()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('edit_personal_info', $data);
+    }
+
+    public function payment_history()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('payment_history', $data);
+    }
+
+    public function payment_history_2()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('payment_history_2', $data);
+    }
 }

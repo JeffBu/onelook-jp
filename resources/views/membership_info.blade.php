@@ -62,7 +62,9 @@
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">会社名等（任意）</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">市川欽一税理士事務所</td>
-                    <td rowspan="8" class="items-center px-1 py-1 border-x border-y border-cyan-600">変更2</td>
+                    <td rowspan="8" class="px-1 py-1 border-x border-y border-cyan-600">
+                        <a href="{{route('edit-member-info')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">変更</a>
+                    </td>
                 </tr>
 
                 <tr>
@@ -110,7 +112,9 @@
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">ログインID</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">dad123</td>
-                    <td rowspan="2" class="items-center px-1 py-1 border-x border-y border-cyan-600">変更3</td>
+                    <td rowspan="2" class="items-center px-1 py-1 border-x border-y border-cyan-600">
+                        <a href="{{route('edit-personal-info')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">変更</a>
+                    </td>
                 </tr>
 
                 <tr>
@@ -120,7 +124,12 @@
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">支払履歴</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">支払履歴はこちら　4</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">
+                        <div class="flex justify-center items-center gap-3">
+                        <span>支払履歴は</span>
+                        <a href="{{route('payment-history')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">こちら</a>
+                        </div>
+                    </td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                 </tr>
 

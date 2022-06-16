@@ -115,7 +115,7 @@
                 <tr>
                     <td colspan="4" class="border-x border-y border-theme-white">
                         <div class="container mt-8 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md cursor-pointer">
-                            <a href="#">プラン変更</a>
+                            <a href="{{route('update-cancel-plan')}}">プラン変更</a>
                         </div>
                     </td>
                 </tr>

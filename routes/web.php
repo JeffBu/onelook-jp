@@ -30,6 +30,11 @@ Route::middleware([
     Route::get('post-list', [MainController::class, 'post_list'])->name('post-list');
     Route::get('membership-info', [MainController::class, 'membership_info'])->name('membership-info');
     Route::get('change-membership-plan', [MainController::class, 'change_membership_plan'])->name('change-membership-plan');
+    Route::get('update-cancel-plan', [MainController::class, 'update_cancel_plan'])->name('update-cancel-plan');
+    Route::get('edit-member-info', [MainController::class, 'edit_member_info'])->name('edit-member-info');
+    Route::get('edit-personal-info', [MainController::class, 'edit_personal_info'])->name('edit-personal-info');
+    Route::get('payment-history', [MainController::class, 'payment_history'])->name('payment-history');
+    Route::get('payment-history-2', [MainController::class, 'payment_history_2'])->name('payment-history-2');
 });
 
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
@@ -37,5 +42,5 @@ Route::post('save-url-to-database', [VideoRecordingEvents::class, 'save_to_datab
 Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
 
 Route::get('test-frontend', function() {
-    return view('subscription_2');
+    return view('edit_personal_info');
 });
