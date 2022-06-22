@@ -110,4 +110,24 @@ class MainController extends Controller
 
         return view('payment_history_2', $data);
     }
+
+    public function admin_home()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('admin_home', $data);
+    }
+
+    public function admin_member_list()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('admin_member_list', $data);
+    }
 }

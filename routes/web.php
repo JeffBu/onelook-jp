@@ -35,6 +35,9 @@ Route::middleware([
     Route::get('edit-personal-info', [MainController::class, 'edit_personal_info'])->name('edit-personal-info');
     Route::get('payment-history', [MainController::class, 'payment_history'])->name('payment-history');
     Route::get('payment-history-2', [MainController::class, 'payment_history_2'])->name('payment-history-2');
+
+    Route::get('admin-home', [MainController::class, 'admin_home'])->name('admin-home');
+    Route::get('admin-member-list', [MainController::class, 'admin_member_list'])->name('admin-member-list');
 });
 
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
