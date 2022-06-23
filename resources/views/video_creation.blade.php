@@ -61,14 +61,14 @@
                 <canvas id="pdf-canvas"> </canvas>
             </div>
         </div>
+        <input type="hidden" id="file_url" name="file_url" class="form-control" placeholder="動画のURLを表示"
+                    readonly>
+
         {{-- <div class="flex flex-col justify-center items-center gap-8 w-80 pt-14 px-2 ml-2 text-left" data-name="toolbox">
             <div class="mb-3 xl:w-96">
                 </div>
-                <div class="mt-3">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block" id="preview" data-bs-toggle="modal" data-bs-target="#previewModal">Preview</button>
-                </div>
-                <input type="hidden" id="file_url" name="file_url" class="form-control" placeholder="動画のURLを表示"
-                    readonly>
+
+
             </div>
         </div> --}}
     </div>
@@ -78,8 +78,6 @@
     id="nav-toolbar">
 
         <div class="items-center w-32"></div>
-
-        <button id="preview" hidden></button>
 
         <div class="flex justify-center items-center py-6 font-medium text-lg text-theme-white divide-x divide-x-theme-orange w-full">
             <div class="flex px-8 justify-center items-center gap-3">
@@ -166,7 +164,7 @@
             </div>
 
             <div class="flex px-8 justify-center items-center gap-3">
-                <button data-tooltip-target="preview-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button id="preview" data-tooltip-target="preview-toolbar" data-modal-toggle="previewModal" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg></button>
@@ -216,16 +214,19 @@
     <!--toolbar ends here-->
 
     <!-- Video Playback Modal -->
-    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="previewModal" tabindex="-1" aria-labelledby="exampleModalLgLabel" aria-modal="true" role="dialog">
+    <div class="hidden fixed top-0 justify-center items-center w-screen h-screen outline-none overflow-x-hidden overflow-y-auto z-50" id="previewModal">
+        <div class="w-3/5 h-3/4">
         <div class="modal-dialog modal-lg relative w-auto pointer-events-none">
           <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
             <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
               <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLgLabel">
-                Preview
+                プレビュー
               </h5>
               <button type="button"
                 class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+                data-modal-toggle="previewModal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg></button>
             </div>
             <div class="modal-body relative p-4">
                 <video width="100%" height="400" id="video" controls>
@@ -234,7 +235,8 @@
             </div>
           </div>
         </div>
-      </div>
+        </div>
+    </div>
       <!-- End Video Playback Modal -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -285,6 +287,7 @@
         let recordedBlobs;
         var isRecording = false;
         const stopButton = document.querySelector('button#stop');
+        const preview = document.querySelector('button#preview');
         const recordedVideo = document.querySelector('video#video');
         const downloadButton = document.querySelector('button#download');
         const pause_play = document.querySelector('button#pause');
@@ -496,7 +499,11 @@
                         setTimeout(function() {
                             $("#overlay").fadeOut(300);
                         }, 3000);
-                        $("#file_url").val(response.data);
+                        var base_url = "<?php echo env('APP_URL'); ?>"
+                        var link = base_url+response.data
+                        $("#file_url").val(link);
+                        console.log(link);
+
                     })
                     .catch((error) => {
                         console.log(error.response.data);
@@ -550,7 +557,9 @@
             });
             var video = document.getElementById("video");
             video.src = window.URL.createObjectURL(blob);
+            const modal = document.querySelector('#previewModal')
 
+            console.log(video.src)
         });
 
         pause_play.addEventListener('click', function() {
