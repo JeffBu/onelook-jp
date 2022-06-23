@@ -12,9 +12,7 @@
         .active {
             background-color: #65a30d;
             border-radius: 6px;
-            --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
         }
 
         .nav-bg {
@@ -50,11 +48,11 @@
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg> ホーム</a>
 
-                <a href="#" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white gap-3 w-full" id="member-list"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <a href="{{route('admin-member-list')}}" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white gap-3 w-full" id="member-list"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg> 会員一覧</a>
 
-                <a href="#" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white hover:bg-slate-500 hover:bg-opacity-20 rounded-md gap-3 w-full" id="video-list"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <a href="{{route('admin-post-list')}}" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white hover:bg-slate-500 hover:bg-opacity-20 rounded-md gap-3 w-full" id="video-list"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                 </svg> 動画リスト</a>
 
@@ -70,10 +68,62 @@
                 <h1 class="text-lg font-semibold text-theme-white">管理画面</h1>
             </div>
 
+
+
             <div class="flex flex-col justify-center items-center mt-8 w-3/4">
-                <div class="text-left w-full">
-                    <h1 class="text-xl font-semibold text-lime-600">会員一覧</h1>
+                <div class="flex justify-between items-center text-left w-full">
+                    <div>
+                        <h1 class="text-xl font-semibold text-lime-600">会員詳細</h1>
+                    </div>
+                    <div>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">強制退会</button>
+                    </div>
+
                 </div>
+
+                <table class="text-center mt-6 border border-lime-600 w-full">
+                    <tbody>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700">事業者名</th>
+                            <td class="px-4 py-1 border border-lime-700">市川欽一税理士事務所</td>
+                        </tr>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700">代表者</th>
+                            <td class="px-4 py-1 border border-lime-700">市川欽一</td>
+                        </tr>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700">住所</th>
+                            <td class="px-4 py-1 border border-lime-700">〒550-0044</td>
+                        </tr>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700"></th>
+                            <td class="px-4 py-1 border border-lime-700">大阪府大阪市北区東天満２－６－７南森町東一号館9F</td>
+                        </tr>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700">電話番号</th>
+                            <td class="px-4 py-1 border border-lime-700">06-6356-3366</td>
+                        </tr>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700">メールアドレス</th>
+                            <td class="px-4 py-1 border border-lime-700">ichikawa@feel-free.biz</td>
+                        </tr>
+                        <tr>
+                            <th class="px-4 py-1 border border-lime-700">閲覧期限の通知</th>
+                            <td class="px-4 py-1 border border-lime-700">
+                                <div class="flex justify-center items-center gap-8">
+                                    <div class="flex justify-center items-center gap-3">
+                                        <input type="radio" name="view-select" id="cb1" checked>
+                                        <label for="cb1">あり</label>
+                                    </div>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <input type="radio" name="view-select" id="cb2">
+                                        <label for="cb2">なし</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <table class="text-center mt-6 border border-lime-600 w-full">
                     <thead>
@@ -104,9 +154,7 @@
 
                     <tbody>
                         <tr>
-                            <td class="px-4 py-1 border border-lime-700">
-                                <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">市川欽一税理士事務所</a>
-                            </td>
+                            <td class="px-4 py-1 border border-lime-700">>市川欽一税理士事務所</td>
                             <td class="px-4 py-1 border border-lime-700">2021/1/1</td>
                             <td class="px-4 py-1 border border-lime-700">パーソナル</td>
                             <td class="px-4 py-1 border border-lime-700">30</td>
@@ -114,30 +162,24 @@
                             <td class="px-4 py-1 border border-lime-700"></td>
                             <td class="px-4 py-1 border border-lime-700"></td>
                         </tr>
-                        <tr>
-                            <td class="px-4 py-1 border border-lime-700">
-                                <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">フィールフリーコンサルティング</a>
-                            </td>
-                            <td class="px-4 py-1 border border-lime-700">2020/10/30</td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-1 border border-lime-700">
-                                <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">ライフシェルパ</a>
-                            </td>
-                            <td class="px-4 py-1 border border-lime-700">2020/9/30</td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                        </tr>
                     </tbody>
                 </table>
+
+                <div class="flex justify-between items-center pt-6 pb-3 w-full sticky top-0">
+                    <h1 class="text-xl font-semibold text-lime-600">対象顧客への連絡</h1>
+                </div>
+
+                <div class="justify-center items-center w-full sticky top-0">
+                    <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus-outline-0 focus-border-0" placeholder="コメント欄" id="comment">
+                </div>
+
+                <div class="flex justify-between pt-3 text-left w-full">
+                    <div></div>
+                    <div>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">登録</button>
+                    </div>
+
+                </div>
             </div>
 
         </div>

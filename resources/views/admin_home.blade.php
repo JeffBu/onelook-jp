@@ -12,9 +12,7 @@
         .active {
             background-color: #65a30d;
             border-radius: 6px;
-            --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
         }
 
         .nav-bg {
@@ -54,7 +52,7 @@
                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg> 会員一覧</a>
 
-                <a href="#" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white hover:bg-slate-500 hover:bg-opacity-20 rounded-md gap-3 w-full" id="video-list"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <a href="{{route('admin-post-list')}}" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white hover:bg-slate-500 hover:bg-opacity-20 rounded-md gap-3 w-full" id="video-list"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                 </svg> 動画リスト</a>
 
