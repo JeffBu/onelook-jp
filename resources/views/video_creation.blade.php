@@ -448,28 +448,30 @@
         }
 
         completion.addEventListener('click', () => {
-            // var vid_url = $('#file_url').val();
-            // var video_title = $("#video_title").val();
-            // if (vid_url != '') {
-            //     var url = "{{ route('save-url-to-database') }}"
-            //     axios.post(url, {
-            //         video_url: vid_url,
-            //         client: client_id,
-            //         name: video_title
-            //     }).then(function(response) {
-            //         Swal.fire({
-            //             icon: 'success',
-            //             title: "録画保存に完了しました",
-            //             showConfirmButton: false,
-            //             timer: 1000
-            //         }).then((result) => {
-            //             var target = response.data
-            //             window.location = target;
-            //         })
-            //     }).catch(function(error) {
-            //         console.log(error)
-            //     })
-            // }
+            const blob = new Blob(recordedBlobs, {
+                type: 'video/mp4'
+            });
+            const blobUrl = window.URL.createObjectURL(blob);
+            fetch(blobUrl).then(response => response.blob())
+            .then(blobs => {
+                const name = $("#video_title").val();
+                var form = $('form')[0]; // You need to use standard javascript object here
+                const fd = new FormData(form);
+                fd.append("file", blobs); // where `.ext` matches file `MIME` type
+                fd.append('fileName', name);
+                var url = "{{ route('save-video-to-database') }}"
+                return axios.post(url, fd, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            })
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            });
         })
 
         stopButton.addEventListener('click', () => {

@@ -44,7 +44,7 @@ Route::middleware([
 });
 
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
-Route::post('save-url-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-url-to-database');
+Route::post('save-video-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-video-to-database');
 Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
 
 Route::get('test-frontend', function() {

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use App\Models\VideoRecord;
 
 class VideoRecordingEvents extends Controller
 {
@@ -13,6 +16,31 @@ class VideoRecordingEvents extends Controller
     public function save_to_database(Request $request)
     {
 
+        $date_now = Carbon::now()->format('Y年m月d日H:i');
+        $key = Str::random(16);
+        if ($request->fileName) {
+            $title = "{$date_now}_{$request->fileName}.mp4";
+        } else {
+            $title = $date_now . '.mp4';
+        }
+        $file = $request->file;
+        $video = file_get_contents($file->getRealPath());
+        $size = $file->getSize();
+        $user_id = Auth::user()->id;
+        $is_invalid = 0;
+
+        DB::transaction(function () use($key, $title, $video, $size, $user_id, $is_invalid){
+            VideoRecord::create([
+                'key' => $key,
+                'title' => $title,
+                'video' => $video,
+                'size' => $size,
+                'user_id' => $user_id,
+                'is_invalid' => $is_invalid
+            ]);
+        });
+
+        return 'Success';
     }
 
     public function save_video(Request $request)
