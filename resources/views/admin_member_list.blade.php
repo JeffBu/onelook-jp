@@ -105,7 +105,7 @@
                     <tbody>
                         <tr>
                             <td class="px-4 py-1 border border-lime-700">
-                                <a href="{{route('admin-member-list')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">市川欽一税理士事務所</a>
+                                <a href="{{route('admin-member-info')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">市川欽一税理士事務所</a>
                             </td>
                             <td class="px-4 py-1 border border-lime-700">2021/1/1</td>
                             <td class="px-4 py-1 border border-lime-700">パーソナル</td>

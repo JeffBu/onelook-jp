@@ -38,6 +38,7 @@ Route::middleware([
 
     Route::get('admin-home', [MainController::class, 'admin_home'])->name('admin-home');
     Route::get('admin-member-list', [MainController::class, 'admin_member_list'])->name('admin-member-list');
+    Route::get('admin-member-info', [MainController::class, 'admin_member_info'])->name('admin-member-info');
 });
 
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');

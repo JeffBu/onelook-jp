@@ -32,7 +32,7 @@
 
 <body class="justify-center shadow-sm items-center bg-theme-white text-theme-black font-['Calibri']">
 
-    <!--content
+    <!--content-->
     <div class="flex justify-center items-center w-full">
         <nav class="flex-1 px-2 justify-left items-center text-center w-64 nav-bg shadow-md divide-y divide-theme-white h-screen fixed left-0 top-0">
             <div class="flex justify-left px-4 py-6 items-center text-xl font-semibold text-theme-white gap-3">
@@ -142,7 +142,7 @@
 
         </div>
 
-    </div>-->
+    </div>
 
     <div class="pt-20"></div>
 

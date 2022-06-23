@@ -130,4 +130,14 @@ class MainController extends Controller
 
         return view('admin_member_list', $data);
     }
+
+    public function admin_member_info()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('admin_member_info', $data);
+    }
 }
