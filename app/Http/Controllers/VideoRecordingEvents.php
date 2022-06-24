@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\VideoRecord;
+use Illuminate\Support\Facades\Validator;
 
 class VideoRecordingEvents extends Controller
 {
@@ -59,5 +60,37 @@ class VideoRecordingEvents extends Controller
         Storage::disk('local')->put($path, $videoFile);
         $url = Storage::disk('local')->url($path);
         return response()->json($url);
+    }
+
+    public function access_video_record(Request $request)
+    {
+        $record = VideoRecord::where('key', $request->video_key)->first();
+        $data = array(
+            'record' => $record,
+        );
+        return view('access-video-record-validation', $data);
+    }
+
+    public function watch_video(Request $request)
+    {
+        $key = $request->key;
+        $access_code = $request->access_code;
+
+        $validator = Validator::make($request->all(), [
+            'access_code' => 'required|max:8',
+        ]);
+
+        $record = VideoRecord::where('key', $key)->first();
+        if($record->access->access_code == $access_code)
+        {
+            $data = array(
+                'record' => $record,
+            );
+            return view('viewer_temp', $data);
+        }
+        else {
+            $validator->getMessageBag()->add('access_code', '無効なアクセスコード');
+            return redirect()->route('access-video-record', ['video_key' => $key])->withErrors($validator)->withInput();
+        }
     }
 }

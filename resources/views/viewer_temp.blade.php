@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Viewing</title>
+    <title>{{env('APP_NAME')}}</title>
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
         <div class="justify-center items-center">
             <div class="font-semibold text-theme-white text-xl">OneLook</div>
         </div>
-        
+
     </header>
     <!--header ends here-->
 
@@ -30,15 +30,15 @@
         <div class="flex flex-col justify-center items-center gap-8 w-64 pt-12 px-2 text-left"></div>
 
         <div class="flex-1 justify-center text-center items-center text-lg pt-12">
-            <div class="text-center text-4xl font-bold text-cyan-600 pb-4">Notification of Mr. Yamada</div>
+            <div class="text-center text-4xl font-bold text-cyan-600 pb-4">{{$record->title}}</div>
 
             <div>
                 <img src="{{asset('media/video-playback.png')}}" alt="" class="rounded-lg border border-cyan-800 mb-1">
             </div>
 
             <div class="flex justify-between text-cyan-700 text-base px-1">
-                <div>Contributed By: user1234</div>
-                <div>Posted: 04/01/2021 | 10:00am ~ Until: 04/04/2021 | 10:00am</div>
+                <div>投稿者 : {{$record->uploader->name}}</div>
+                <div>投稿日: {{$record->created_at->format('Y年m月d日H:i')}}~ 閲覧期限: {{$record->created_at->modify('+7 days')->format('Y年m月d日H:i')}}</div>
             </div>
 
             <div class="h-32"></div>
@@ -85,7 +85,7 @@
                 jQuery('#header-frame').css('opacity', '1');
             }
         });
-        
+
         $(document).scroll(function() {})
       </script>
 

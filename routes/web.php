@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PDFEventsController;
 use App\Http\Controllers\VideoRecordingEvents;
+use App\Http\Controllers\VideoAccessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,10 @@ Route::middleware([
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
 Route::post('save-video-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-video-to-database');
 Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
+Route::post('save-access-code', [VideoAccessController::class, 'save_access_code'])->name('save-access-code');
+Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_record'])->name('access-video-record');
+Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
 Route::get('test-frontend', function() {
-    return view('edit_personal_info');
+    return view('access-video-record-validation');
 });

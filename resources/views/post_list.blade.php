@@ -37,6 +37,15 @@
             <a href="#" id="faq-tab">FAQ</a>
         </div>
 
+        <!-- logout -->
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+        </form>
+        <!-- /logout -->
     </header>
     <!--header ends here-->
 
@@ -55,7 +64,64 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse($video_records as $record)
                 <tr>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">1</td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                        <div class="flex-1 justify-center items-center">
+                            <img src="{{asset('media/video-playback.png')}}" alt="thumbnail" class="h-32 w-48 object-cover">
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >編集</button>
+                        </div>
+                    </td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                        <div class="flex-1 justify-center items-center gap-3">
+                            <p>
+                                @if($record->access)
+                                    {{$record->access->access_code}}
+                                @else
+                                    なし
+                                @endif
+                            </p>
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="changeAccessCode('{{$record->key}}')">編集</button>
+                        </div>
+                    </td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                        {{date_format($record->created_at, 'Y年 m月 d日 H:i')}}
+                        {{-- 2021年 4月1日 10:00 --}}
+                    </td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                        {{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}
+                    </td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                        @if($record->views)
+                            {{$record->views->count()}}
+                        @else
+                            0
+                        @endif
+                    </td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                        <div class="flex-1 justify-center items-center">
+                            <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
+                            <div class="flex justify-center items-center px-3 py-3 gap-3">
+                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')">リンクコピー</button>
+                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
+                            </div>
+                            <div class="flex justify-center items-center px-3 gap-3">
+                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">招待メール</button>
+                                <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md">削除</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                @empty
+                    <tr>
+                        <td class="px-3 py-3 border-x border-y border-cyan-600 text-cyan-400" colspan="7">
+                            表示するレコードがありません
+                        </td>
+                    </tr>
+                @endforelse
+
+                {{-- <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">1</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
@@ -182,7 +248,7 @@
                             </div>
                         </div>
                     </td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
     </div>
@@ -236,13 +302,13 @@
 
         $(document).scroll(function() {})
 
-        function copyLink(){
+        function copyLink(key, code, name){
             Swal.fire({
             title: '下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です',
             html:
-                '（ユーザー名）さんが、あなたを動画閲覧に招待しています。<br /><br />' +
-                '動画名： ' + 'https://onelook.jp/access-record-verification?access_id=4openRe7Az <br />' +
-                'パスコード: ' + '837881',
+                name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
+                '動画名： ' + 'https://onelook.jp/access-video-record?video_key='+key+' <br />' +
+                'パスコード: ' + code,
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:
@@ -250,6 +316,51 @@
             cancelButtonText:
                 'キャンセル',
             })
+        }
+
+        function changeAccessCode(key)
+        {
+            var html = '<div class="md:flex md:items-center mb-6 gap-1">'
+                html += '<div class="md:w-2/3">'
+                html += '<input class="text-center bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="codeField" type="text">'
+                html += '</div>'
+                html += '<div class="md:w-1/3">'
+                html += '<button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="generateCode(8)">ランダム化</button>'
+                html += '</div>'
+                html += '</div>'
+            Swal.fire({
+                title: 'アクセスコードを生成する',
+                html: html,
+                showCancelButton: true,
+                confirmButtonText: '確認',
+                cancelButtonText: 'キャンセル',
+                showLoaderOnConfirm: true,
+                preConfirm: function() {
+                    var access_code = $('#codeField').val()
+                    var url = "{{route('save-access-code')}}"
+                    return axios.post(url, {
+                        code : access_code,
+                        key : key
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    window.location.reload()
+                }
+            })
+        }
+
+        function generateCode(length){
+            var result           = ''
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+            var charactersLength = characters.length
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() *
+            charactersLength))
+            }
+
+            $('#codeField').val(result)
         }
     </script>
     <!--script ends here-->

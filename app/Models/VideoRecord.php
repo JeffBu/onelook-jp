@@ -22,4 +22,19 @@ class VideoRecord extends Model
     protected $dates = [
         'deleted_at',
     ];
+
+    public function views()
+    {
+        return $this->hasMany(VideoView::class);
+    }
+
+    public function uploader()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function access()
+    {
+        return $this->hasOne(VideoAccess::class, 'video_record_key', 'key');
+    }
 }
