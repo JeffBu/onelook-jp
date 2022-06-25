@@ -19,7 +19,7 @@ use App\Http\Controllers\VideoAccessController;
 
 Route::get('/', function () {
     return view('landing_temp');
-});
+})->name('landing');
 
 Route::middleware([
     'auth:sanctum',
