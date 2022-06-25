@@ -52,5 +52,5 @@ Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_re
 Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
 Route::get('test-frontend', function() {
-    return view('access-video-record-validation');
+    echo 'HELLO';
 });

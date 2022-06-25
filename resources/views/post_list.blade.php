@@ -103,7 +103,7 @@
                         <div class="flex-1 justify-center items-center">
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
                             <div class="flex justify-center items-center px-3 py-3 gap-3">
-                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')">リンクコピー</button>
+                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')" @endif>リンクコピー</button>
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
                             </div>
                             <div class="flex justify-center items-center px-3 gap-3">
