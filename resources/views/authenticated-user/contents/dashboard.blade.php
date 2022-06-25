@@ -1,44 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneLook</title>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
-
-    <style>
-        .active {
-            text-decoration: underline;
-            text-decoration-color: #ff9011;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
-        }
-
-    </style>
-</head>
-
-<body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
-
-    <!--header-->
-    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
-    id="header-frame">
-
-        <div class="items-center w-32">
-            <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-        <div class="flex justify-center items-start gap-7 py-6 font-small text-sm font-bold text-theme-white w-full">
-            <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
-            <a href="{{route('video-creation')}}" id="video-maker-tab">ムービー作成</a>
-            <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
-            <a href="{{route('membership-info')}}" id="membership-info-tab">会員情報</a>
-            <a href="#" id="faq-tab">FAQ</a>
-        </div>
-
-    </header>
-    <!--header ends here-->
-
+@extends('authenticated-user.components.layout')
+@section('css')
+@endsection
+@section('head')
+    @include('authenticated-user.components.head')
+@endsection
+@section('content')
     <!--content-->
     <div class="flex justify-center items-start text-lg pt-4 w-full">
         <div class="flex flex-col justify-center items-center gap-8 w-64 pt-14 px-2 text-left"></div>
@@ -146,38 +112,11 @@
 
     <div class="h-32"></div>
     <!--content ends here-->
-
-    <!--footer-->
-    <!--footer ends here
-    <footer class="flex shadow bg-cyan-700 text-theme-white justify-center items-start py-5 px-5 text-base gap-32 tracking-widest w-full">
-        <div class="flex flex-col gap-2">
-            <div class="text-theme-yellow font-medium">Service Features</div>
-            <div class="text-sm">Video Creation</div>
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="text-theme-yellow font-medium">Plan</div>
-            <div class="text-sm">Free Plan</div>
-            <div class="text-sm">Personal Plan</div>
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="text-theme-yellow font-medium">Support</div>
-            <div class="text-sm">Get Help</div>
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="text-theme-yellow font-medium">Company</div>
-            <div class="text-sm">About Us</div>
-            <div class="text-sm">Special Commercial Code</div>
-            <div class="text-sm">Privacy Policy</div>
-        </div>
-    </footer>-->
-
-    <!--scripts-->
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
+@endsection
+@section('foot')
+    @include('authenticated-user.components.foot')
+@endsection
+@section('js')
     <script>
         tailwind.config = {
           theme: {
@@ -206,6 +145,4 @@
     </script>
 
     <!--scripts ends here-->
-
-</body>
-</html>
+@endsection
