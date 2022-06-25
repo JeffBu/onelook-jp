@@ -21,16 +21,16 @@
         <div class="justify-center items-center">
             <div class="font-semibold text-theme-white">OneLook</div>
         </div>
-        
+
         <div class="flex justify-center items-center gap-5 py-6 text-sm">
             <div class="font-semibold text-theme-white hover:text-yellow-300">
-                <a href="http://onelook-jp.test/login">Login</a>
+                <a href="{{route('login')}}">Login</a>
             </div>
             <div class="font-semibold px-2 py-1 rounded-sm bg-theme-yellow text-theme-black hover:bg-yellow-400 hover:text-theme-white">
-                <a href="http://onelook-jp.test/register">Sign Up</a>
+                <a href="{{route('register')}}">Sign Up</a>
             </div>
         </div>
-        
+
     </header>
     <!--header ends here-->
 
@@ -42,65 +42,60 @@
             <div class="text-2xl">百聞は一見に如かず</div>
         </div>
         <div class="pt-8">
-            
+
         </div>
     </div>
 
     <div class="flex flex-col justify-center text-center items-center text-lg gap-4 py-8 px-32">
         <div class="font-medium text-theme-black py-4">
             <span class="font-semibold text-theme-black bg-theme-yellow rounded-sm px-1">OneLook</span>
-            is a service that makes it easy to create videos that combine materials and words. It is confusing
-            to write in the explanation, comment, and sentences of the material. It's easy to understand if you
-            say it in words, but it's a simple solution!
+            は資料と言葉を組み合わせた動画作成が簡単にできるサービスです。
+            資料の説明やコメント、文章で書くとまどろっこしい、
+            それを言葉で伝えたらすぐにわかるのに、をシンプルに解決します！
         </div>
 
         <div class="h-10"></div>
 
         <div class="flex items-center text-center text-theme-black justify-between w-full">
             <div class="w-64 px-4 py-4 text-2xl text-sky-600 font-bold">
-                Improve your business with Video and Digital Transformation
+                動画を使ってビジネスのDXに対応
             </div>
             <div class="w-64 px-4 py-4 text-2xl text-sky-600 font-bold">
-                Making videos as teaching materials
+                教材のための動画作成
             </div>
             <div class="w-64 px-4 py-4 text-2xl text-sky-600 font-bold">
-                Easy video management
+                動画管理もラクラク
             </div>
         </div>
 
         <div class="flex items-center text-theme-black justify-between w-full">
             <div class="w-64 border border-theme-blue rounded-md px-4 py-4 font-medium">
                 <img src="/img/dx.png" alt="" class="pb-2">
-                Wouldn't it be more efficient if you could express "here, this" by pointing to the material
-                by checking the material? With OneLook, you can easily create a video with comments in words
-                while actually pointing to the material.
+                資料チェックなどで資料を指さして「ここ、これ」を表現できたらもっと効率的だと思いませんか？ OneLookでは実際に資料をポイントしながら言葉でコメントした動画作成が簡単にできます。
             </div>
             <div class="w-64 border border-theme-blue rounded-md px-4 py-4 font-medium">
                 <img src="/img/dx.png" alt="" class="pb-2">
-                Looking for recording software for questions and answers at schools and cram schools?
-                OneLook's feature is that you can convey "here, this" by adding a voice to two-dimensional
-                sentences and materials.<br><br>
+                学校や塾などでの問題・解答のための録画ソフトをお探しですか？２次元の文章や資料に声を添えることで「ここ、これ」を伝えられるのがOneLookの特徴です。<br><br>
             </div>
             <div class="w-64 border border-theme-blue rounded-md px-4 py-4 font-medium">
                 <img src="/img/dx.png" alt="" class="pb-2">
-                You can view the video just by sharing the URL without downloading.
-                Videos are automatically deleted after a certain period of time, so
-                management is easy. Of course, there is also a download function (charged)
+                ダウンロードしなくてもURLの共有だけで動画の閲覧が可能。
+一定期間で動画は自動的に削除されるので管理も楽です。もちろんダウンロード機能もあります（有料） 。
             </div>
         </div>
-        
+
         <div class="flex items-center text-theme-black mt-5 justify-between w-full">
             <button class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
-                Start Free Trial
+                無料で始める
             </button>
             <button class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
-                Start Free Trial
+                無料で始める
             </button>
             <button class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
-                Start Free Trial
+                無料で始める
             </button>
         </div>
-    
+
         <div class="h-32"></div>
     </div>
     <!--content ends here-->
@@ -108,8 +103,8 @@
     <!--footer-->
     <footer class="flex shadow bg-cyan-700 text-theme-white justify-center items-start py-5 px-5 text-base gap-32 tracking-widest w-full">
         <div class="flex flex-col gap-2">
-            <div class="text-theme-yellow font-medium">Service Features</div>
-            <div class="text-sm">Video Creation</div>
+            <div class="text-theme-yellow font-medium">活用例</div>
+            <div class="text-sm">料金体系はこちら</div>
         </div>
         <div class="flex flex-col gap-2">
             <div class="text-theme-yellow font-medium">Plan</div>
