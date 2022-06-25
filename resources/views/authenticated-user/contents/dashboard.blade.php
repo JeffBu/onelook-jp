@@ -46,7 +46,7 @@
         <div class="flex-1 justify-center items-center px-8 pt-20 mt-3">
             <div class="scroll-mt-24" id="home">
                 <div class="flex items-center text-left gap-10 px-10 w-full border border-cyan-800 h-28 rounded-md">
-                    <img src="{{asset('media/3.png')}}" alt="" class="h-14 cursor-pointer" data-tooltip-target="create-toolbar">
+                    <a href="{{route('video-creation')}}"><img src="{{asset('media/3.png')}}" alt="" class="h-14 cursor-pointer" data-tooltip-target="create-toolbar"></a>
                     <div id="create-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
                         ムービーの作成
                         <div class="tooltip-arrow" data-popper-arrow></div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="flex items-center text-left gap-10 px-10 mt-8 border border-cyan-800 h-28 rounded-md">
-                    <img src="{{asset('media/4.png')}}" alt="" class="h-12 cursor-pointer" data-tooltip-target="post-list-toolbar">
+                    <a href="{{route('post-list')}}"><img src="{{asset('media/4.png')}}" alt="" class="h-14 cursor-pointer" data-tooltip-target="post-list-toolbar"></a>
                     <div id="post-list-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
                         投稿リスト
                         <div class="tooltip-arrow" data-popper-arrow></div>

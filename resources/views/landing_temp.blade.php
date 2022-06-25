@@ -85,15 +85,15 @@
         </div>
 
         <div class="flex items-center text-theme-black mt-5 justify-between w-full">
-            <button class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
+            <a href="{{route('view-plans')}}" class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
                 無料で始める
-            </button>
-            <button class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
+            </a>
+            <a href="{{route('view-plans')}}" class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
                 無料で始める
-            </button>
-            <button class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
+            </a>
+            <a href="{{route('view-plans')}}" class="w-64 border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
                 無料で始める
-            </button>
+            </a>
         </div>
 
         <div class="h-32"></div>
@@ -107,7 +107,7 @@
             <div class="text-sm">料金体系はこちら</div>
         </div>
         <div class="flex flex-col gap-2">
-            <div class="text-theme-yellow font-medium">Plan</div>
+            <a href="{{route('view-plans')}}" class="text-theme-yellow font-medium">Plan</a>
             <div class="text-sm">Free Plan</div>
             <div class="text-sm">Personal Plan</div>
         </div>

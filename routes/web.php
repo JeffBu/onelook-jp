@@ -18,6 +18,7 @@ use App\Http\Controllers\VideoAccessController;
 */
 
 Route::get('home', [MainController::class, 'unauthorized'])->name('home');
+Route::get('view-plans', [MainController::class, 'view_plans'])->name('view-plans');
 
 Route::middleware([
     'auth:sanctum',
@@ -50,5 +51,5 @@ Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_re
 Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
 Route::get('test-frontend', function() {
-    echo 'HELLO';
+    return view('plans');
 });

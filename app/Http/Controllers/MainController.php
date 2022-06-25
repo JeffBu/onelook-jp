@@ -19,13 +19,19 @@ class MainController extends Controller
         return view('landing_temp', $data);
     }
 
+    public function view_plans()
+    {
+        $data = array();
+        return view('plans', $data);
+    }
+
     public function index()
     {
         $user = Auth::user();
         $data = array(
             'user' => $user,
         );
-        return view('dashboard_temp', $data);
+        return view('authenticated-user.contents.dashboard', $data);
     }
 
     public function video_creation()
@@ -35,7 +41,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('video_creation', $data);
+        return view('authenticated-user.contents.video_creation', $data);
     }
 
     public function post_list()
