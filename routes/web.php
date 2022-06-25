@@ -17,7 +17,7 @@ use App\Http\Controllers\VideoAccessController;
 |
 */
 
-Route::get('/', function () {
+Route::get('landing', function () {
     return view('landing_temp');
 })->name('landing');
 
