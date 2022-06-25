@@ -13,6 +13,11 @@ class MainController extends Controller
 
     }
 
+    public function unauthorized()
+    {
+        return view('landing_temp');
+    }
+
     public function index()
     {
         $user = Auth::user();
