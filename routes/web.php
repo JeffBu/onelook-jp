@@ -17,9 +17,7 @@ use App\Http\Controllers\VideoAccessController;
 |
 */
 
-Route::get('landing', function () {
-    return view('landing_temp');
-})->name('landing');
+Route::get('home', [MainController::class, 'unauthorized'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
