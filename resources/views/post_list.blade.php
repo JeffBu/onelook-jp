@@ -307,7 +307,7 @@
             title: '下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です',
             html:
                 name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
-                '動画名： ' + 'https://onelook.jp/access-video-record?video_key='+key+' <br />' +
+                '動画名： ' + '{{env("APP_URL")}}'+'/access-video-record?video_key='+key+' <br />' +
                 'パスコード: ' + code,
             showCancelButton: true,
             focusConfirm: false,

@@ -17,10 +17,10 @@ class VideoRecordingEvents extends Controller
     public function save_to_database(Request $request)
     {
 
-        $date_now = Carbon::now()->format('Y年m月d日H:i');
+        $date_now = Carbon::now()->format('Y-m-d-H:i');
         $key = Str::random(16);
         if ($request->fileName) {
-            $title = "{$date_now}_{$request->fileName}.mp4";
+            $title = $date_now."_".$request->fileName.".mp4";
         } else {
             $title = $date_now . '.mp4';
         }
@@ -29,6 +29,7 @@ class VideoRecordingEvents extends Controller
         $size = $file->getSize();
         $user_id = Auth::user()->id;
         $is_invalid = 0;
+        $video = mb_convert_encoding($video, 'UTF-8', 'UTF-8');
 
         DB::transaction(function () use($key, $title, $video, $size, $user_id, $is_invalid){
             VideoRecord::create([

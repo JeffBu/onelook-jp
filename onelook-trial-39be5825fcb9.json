@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "onelook-trial",
+  "private_key_id": "39be5825fcb928e22eed775b3a3f980a3686dd5d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwKpsnJVEooE4b\nffZdBcnaENxSgEcKIbDYYvCkbPjKlLasihH0ztqyN/wTY0T4irO+6CyNtr6RPWoi\nDnhxk466+oohKaEr/GR++tUX0rE39oJEeTcmInEMf84r+rLkzT4buwMHYxaz6iOn\nY8opuefBS4pr2eLYQ+JMLJ/OfCsNjA9IAN4ZtMYtTx8zCq6h0iRpR0fweYnvDNRK\nBt574v/3+aJsxA5MXmcCFtgLovwaEnPNG3eQGvuXLd9KQBSeo2Q4y4e5i+0zDg+w\nkb8EH/EBoYKLHQOQJYSF4Jt5yCapeB52Zf4NIu2HPXHHptraYjLNw+WTjhbAOnGM\n1a/TU14nAgMBAAECggEALMp4bmiPjQvNMDJDrH0nSFmXGybgaRQN2ca2Nqg6TY+o\nLpBgZmUdt8iCQA+yXpstfnGbumBnbZg23vfc6cvBs4q2Ch6CiyN+DccK3SbFxlvX\n3T8QpZKGOc5ZBleUmpYQn45aA8vO3um+LPYzVY6d/UiOpkNc6O3BoOqLqz1o2OWC\nWpG5nqMEQmmJCNjuvnWZKrwIB4tMZlypMtoRJjz3wPAO/2jlN+v0g6LZSgAxgau4\nqOIFwkgnxiNIzXT1HYbbOnbTCOwLkod9CPccGZith2c/3sD8cF3z0xMKzGCX8t7S\nHOz/TJfTmA6hVCiaRjUC/VuRz2eo2Z7H5khsnCpzyQKBgQDidA4eQ0xmgspmDyWb\ncfrdAP9+oAFObLqFs9G7Pbno/VgclPmEDgOr4coSc/xoLhi7D7emjzXlBjaXv8AH\nkCquw0OgKdZmAqxg+xJCel+JQETcTGbscMJoK5RHlBjZli09OKUbYYbQMx7K7NuU\nOT4N0GptA+RIU6DoecD8AEHLUwKBgQDHJuDo2il2VfoXsikEobly8SpC99VR7fDo\n70u02iyAJI98uapMSS7UwjGQf7UG50VR23nuCR2YA3vR/AIvdosiHo7XU3+v7IFW\ndGqfO62lCeFmcNgeA+1BXNm79lkXlptafi+PTLFj1TrqGnnvfcUyHqIjHEbwZ1nk\ncIgFiIJbXQKBgE1/IgXBSjgasmFS9a/Ixe00FjujTk8kboCrFS9a5HCTor/FS86h\nbSg5UQoXn12XyObbbiIWCH+kLLKp8HGmKLU+Jbp+Ft06NPvLcGhHsMIruGUb0G1B\n+YXkxA3q5MYx2rGE3RwNuDEwDW2suUh0foQDuygrmMgXto1YfW7AN8P5AoGBAI8X\nt0h34Iy/T/gQsfo6/ZXCBHyjuCmrDos/zSTAEnNsUZDrkppHhxemBJjvubGhIKSl\nTyGieRoNfr0tFqDlyyiTzkyXGUrdYz0sXqPU7HqF8+d4M0C1z5ZEUcoFQpR5SVyn\nCCMtltPFlRQ6O9zBgJv3eMZDfhEkIWnLFWDsacWdAoGBAKb+1Xxm4V0UYfm3l12w\n6OfiMMNd5L6TTFQvy6lLptoRRVcmU/6AcY6g8K569kiAkZWnKwC1U1w44TfZFsxu\ngHa4cYmi4kLzwB97dXKfL5aK1bj8AvxVP+7Npw6BpGD4G1gNzE2NaylBaa/TgACs\neTEQ7d00l8GRBPFvOg7gIxms\n-----END PRIVATE KEY-----\n",
+  "client_email": "onelook-bucket-sa@onelook-trial.iam.gserviceaccount.com",
+  "client_id": "109459660537266274040",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/onelook-bucket-sa%40onelook-trial.iam.gserviceaccount.com"
+}

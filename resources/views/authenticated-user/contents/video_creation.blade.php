@@ -427,8 +427,18 @@
                 })
             })
             .then((response) => {
-                console.log(response.data)
-            })
+                Swal.fire({
+                    title: '成功',
+                    text: 'ビデオ録画がストレージに保存されました。 これで、投稿リストページにリダイレクトされます。',
+                    icon: 'success',
+                    timer: 3000,
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                }).then((result) => {
+                    window.location = "{{route('post-list')}}"
+                })
+           })
             .catch((error) => {
                 console.log(error.response.data);
             });
