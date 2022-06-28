@@ -33,7 +33,7 @@
             <div class="text-center text-4xl font-bold text-cyan-600 pb-4">{{$record->title}}</div>
 
             <div>
-                <img src="{{asset('media/video-playback.png')}}" alt="" class="rounded-lg border border-cyan-800 mb-1">
+                <video src="{{Storage::disk('gcs')->url($record->video_path)}}" alt="" class="rounded-lg border border-cyan-800 mb-1" controls></video>
             </div>
 
             <div class="flex justify-between text-cyan-700 text-base px-1">

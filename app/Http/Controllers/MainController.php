@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VideoRecord;
 
+use Illuminate\Support\Facades\Storage;
+
+
 class MainController extends Controller
 {
     public function __construct()
@@ -174,5 +177,18 @@ class MainController extends Controller
         );
 
         return view('admin_viewer', $data);
+    }
+
+    public function test_video()
+    {
+        $video = VideoRecord::find(2);
+
+        $url = $video->video_path;
+        $source = Storage::disk('gcs')->url($url);
+        $data = array(
+            'video' => $video,
+            'url' => $source
+        );
+        return view('test', $data);
     }
 }

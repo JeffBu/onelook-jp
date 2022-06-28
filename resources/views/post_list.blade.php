@@ -65,12 +65,13 @@
             </thead>
             <tbody>
                 @forelse($video_records as $record)
+                <?php $url = Storage::disk('gcs')->url($record->video_path); ?>
                 <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">1</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
-                            <img src="{{asset('media/video-playback.png')}}" alt="thumbnail" class="h-32 w-48 object-cover">
-                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >編集</button>
+                            <video src="{{$url}}" alt="thumbnail" class="h-32 w-48 object-cover" ></video>
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">編集</button>
                         </div>
                     </td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">
@@ -104,7 +105,7 @@
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
                             <div class="flex justify-center items-center px-3 py-3 gap-3">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')" @endif>リンクコピー</button>
-                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
+                                <a href="{{$url}}" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
                             <div class="flex justify-center items-center px-3 gap-3">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">招待メール</button>
@@ -254,6 +255,32 @@
     </div>
     <div class="pt-40"></div>
 
+    <!-- Video Playback Modal -->
+    <div class="hidden fixed top-0 justify-center items-center w-screen h-screen outline-none overflow-x-hidden overflow-y-auto z-50" id="previewModal">
+        <div class="w-3/5 h-3/4">
+        <div class="modal-dialog modal-lg relative w-auto pointer-events-none">
+          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLgLabel">
+                プレビュー
+              </h5>
+              <button type="button"
+                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                data-modal-toggle="previewModal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg></button>
+            </div>
+            <div class="modal-body relative p-4">
+                <video width="100%" height="400" id="video" controls>
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+      <!-- End Video Playback Modal -->
+
     <!--content ends here-->
 
     <!--script-->
@@ -303,11 +330,12 @@
         $(document).scroll(function() {})
 
         function copyLink(key, code, name){
+            var base_url = "{{config('app.url')}}";
             Swal.fire({
             title: '下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です',
             html:
                 name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
-                '動画名： ' + '{{env("APP_URL")}}'+'/access-video-record?video_key='+key+' <br />' +
+                '動画名： ' + base_url +'/access-video-record?video_key='+key+' <br />' +
                 'パスコード: ' + code,
             showCancelButton: true,
             focusConfirm: false,
@@ -361,6 +389,12 @@
             }
 
             $('#codeField').val(result)
+        }
+
+        function previewVideo(path)
+        {
+            var video = document.querySelector('#video')
+            video.src = path
         }
     </script>
     <!--script ends here-->

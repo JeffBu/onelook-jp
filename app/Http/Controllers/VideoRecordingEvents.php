@@ -17,7 +17,7 @@ class VideoRecordingEvents extends Controller
     public function save_to_database(Request $request)
     {
 
-        $date_now = Carbon::now()->format('Y-m-d-H:i');
+        $date_now = Carbon::now()->format('Y-m-d_H.i');
         $key = Str::random(16);
         if ($request->fileName) {
             $title = $date_now."_".$request->fileName.".mp4";
@@ -31,13 +31,13 @@ class VideoRecordingEvents extends Controller
         $is_invalid = 0;
         $path = 'video-recordings/'.Auth::user()->id.'/'.$title;
         Storage::disk('gcs')->put($path, $file_source);
-        $url = Storage::disk('gcs')->url($path);
+        Storage::disk('gcs')->setVisibility($path, 'public');
 
-        DB::transaction(function () use($key, $title, $url, $size, $user_id, $is_invalid){
+        DB::transaction(function () use($key, $title, $path, $size, $user_id, $is_invalid){
             VideoRecord::create([
                 'key' => $key,
                 'title' => $title,
-                'video_path' => $url,
+                'video_path' => $path,
                 'size' => $size,
                 'user_id' => $user_id,
                 'is_invalid' => $is_invalid

@@ -50,9 +50,7 @@ Route::post('save-access-code', [VideoAccessController::class, 'save_access_code
 Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_record'])->name('access-video-record');
 Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
-Route::get('test-frontend', function() {
-    return view('plans');
-});
+Route::get('test-frontend', [MainController::class, 'test_video'])->name('test-frontend');
 
 Route::get('test-backend', function() {
     $disk = \Storage::disk('gcs');
