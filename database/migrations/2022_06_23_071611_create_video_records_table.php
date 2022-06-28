@@ -17,7 +17,7 @@ class CreateVideoRecordsTable extends Migration
             $table->id();
             $table->string('key')->unique();
             $table->string('title');
-            $table->binary('video');
+            $table->string('video_path');
             $table->bigInteger('size');
             $table->foreignId('user_id');
             $table->boolean('is_invalid')->nullable()->default(false);

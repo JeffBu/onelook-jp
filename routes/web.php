@@ -53,3 +53,8 @@ Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])
 Route::get('test-frontend', function() {
     return view('plans');
 });
+
+Route::get('test-backend', function() {
+    $disk = \Storage::disk('gcs');
+    return $disk->put('hola.txt', 'hola.txt');
+});

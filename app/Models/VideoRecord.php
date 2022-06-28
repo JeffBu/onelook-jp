@@ -13,7 +13,7 @@ class VideoRecord extends Model
     protected $fillable = [
         'key',
         'title',
-        'video',
+        'video_path',
         'size',
         'user_id',
         'is_invalid',

@@ -10,10 +10,10 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\VideoRecord;
 use Illuminate\Support\Facades\Validator;
+use Google\Cloud\Storage\StorageClient;
 
 class VideoRecordingEvents extends Controller
 {
-
     public function save_to_database(Request $request)
     {
 
@@ -25,17 +25,19 @@ class VideoRecordingEvents extends Controller
             $title = $date_now . '.mp4';
         }
         $file = $request->file;
-        $video = file_get_contents($file->getRealPath());
+        $file_source = file_get_contents($file->getRealPath());
         $size = $file->getSize();
         $user_id = Auth::user()->id;
         $is_invalid = 0;
-        $video = mb_convert_encoding($video, 'UTF-8', 'UTF-8');
+        $path = 'video-recordings/'.Auth::user()->id.'/'.$title;
+        Storage::disk('gcs')->put($path, $file_source);
+        $url = Storage::disk('gcs')->url($path);
 
-        DB::transaction(function () use($key, $title, $video, $size, $user_id, $is_invalid){
+        DB::transaction(function () use($key, $title, $url, $size, $user_id, $is_invalid){
             VideoRecord::create([
                 'key' => $key,
                 'title' => $title,
-                'video' => $video,
+                'video_path' => $url,
                 'size' => $size,
                 'user_id' => $user_id,
                 'is_invalid' => $is_invalid
