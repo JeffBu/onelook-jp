@@ -50,13 +50,13 @@ class MainController extends Controller
     public function post_list()
     {
         $user = Auth::user();
-        $video_records = VideoRecord::where('user_id', $user->id)->get();
+        $video_records = VideoRecord::where('user_id', $user->id)->latest()->get();
         $data = array(
             'user' => $user,
             'video_records' => $video_records,
         );
 
-        return view('post_list', $data);
+        return view('authenticated-user.contents.post_list', $data);
     }
 
     public function membership_info()

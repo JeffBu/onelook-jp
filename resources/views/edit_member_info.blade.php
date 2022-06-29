@@ -48,7 +48,7 @@
     <div class="flex justify-center items-center w-screen">
         <div class="justify-end items-center w-4/5">
             <div class="float-right w-1/5 w- mr-4 mb-4">
-                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" data-modal-toggle="edit-info-modal">変更</button>
             </div>
         </div>
     </div>
@@ -127,6 +127,10 @@
         </table>
     </div>
     <div class="pt-40"></div>
+
+    <!-- edit info modal -->
+
+    <!-- end edit info modal -->
 
     <!--content ends here-->
 
