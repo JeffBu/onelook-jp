@@ -191,4 +191,9 @@ class MainController extends Controller
         );
         return view('test', $data);
     }
+
+    public function phpversion()
+    {
+        phpinfo();
+    }
 }
