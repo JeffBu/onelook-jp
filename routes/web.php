@@ -51,7 +51,8 @@ Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_re
 Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
 Route::get('test-frontend', [MainController::class, 'test_video'])->name('test-frontend');
+Route::get('registration', [MainController::class, 'registration_page'])->name('registration');
 
 Route::get('test-backend', function() {
-    phpinfo();
+    return view('test-frontend');
 });
