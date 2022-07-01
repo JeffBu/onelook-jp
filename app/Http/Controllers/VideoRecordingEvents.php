@@ -46,7 +46,6 @@ class VideoRecordingEvents extends Controller
             $filepath = storage_path('app/public/uploads/'.$fileNameToStore);
             $options = [
                 'predefinedAcl' => 'publicRead',
-                'prefix' => '/video-recordings/2'
             ];
             $object = $bucket->upload(fopen($filepath, 'r'), $options);
 
