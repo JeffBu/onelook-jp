@@ -36,7 +36,7 @@ class VideoRecordingEvents extends Controller
 
         try {
             $storage = new StorageClient([
-                'keyFilePath' => base_path().'/credentials.json',
+                'keyFilePath' => env('GOOGLE_CLOUD_KEY_FILE'),
             ]);
             $bucketName = env('GOOGLE_CLOUD_STORAGE_BUCKET');
             $bucket = $storage->bucket($bucketName);
