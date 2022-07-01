@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'login_id', 'username', 'name', 'email', 'password',
     ];
 
     /**
@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function account()
+    {
+        return $this->hasOne(Subscribers::class);
+    }
 }

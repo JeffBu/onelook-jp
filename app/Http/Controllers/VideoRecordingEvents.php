@@ -14,6 +14,10 @@ use Google\Cloud\Storage\StorageClient;
 
 class VideoRecordingEvents extends Controller
 {
+    public function store(Request $request)
+    {
+
+    }
     public function save_to_database(Request $request)
     {
 
@@ -29,15 +33,35 @@ class VideoRecordingEvents extends Controller
         $size = $file->getSize();
         $user_id = Auth::user()->id;
         $is_invalid = 0;
-        $path = 'video-recordings/'.Auth::user()->id.'/'.$title;
-        Storage::disk('gcs')->put($path, $file_source);
-        Storage::disk('gcs')->setVisibility($path, 'public');
 
-        DB::transaction(function () use($key, $title, $path, $size, $user_id, $is_invalid){
+        try {
+            $storage = new StorageClient([
+                'keyFilePath' => base_path().'/credentials.json',
+            ]);
+            $bucketName = env('GOOGLE_CLOUD_STORAGE_BUCKET');
+            $bucket = $storage->bucket($bucketName);
+
+            $fileNameToStore = uniqid().'_'.$title;
+            Storage::put('public/uploads/'. $fileNameToStore, $file_source);
+            $filepath = storage_path('app/public/uploads/'.$fileNameToStore);
+            $options = [
+                'predefinedAcl' => 'publicRead',
+                'prefix' => '/video-recordings/2'
+            ];
+            $object = $bucket->upload(fopen($filepath, 'r'), $options);
+
+            Storage::delete('public/uploads/', $fileNameToStore);
+
+        }catch (Exception $e){
+            return $e->getMessage();
+        }
+
+
+        DB::transaction(function () use($key, $title, $fileNameToStore, $size, $user_id, $is_invalid){
             VideoRecord::create([
                 'key' => $key,
                 'title' => $title,
-                'video_path' => $path,
+                'video_path' => $fileNameToStore,
                 'size' => $size,
                 'user_id' => $user_id,
                 'is_invalid' => $is_invalid

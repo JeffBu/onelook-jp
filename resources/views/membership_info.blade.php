@@ -63,7 +63,7 @@
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">会社名等（任意）</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">市川欽一税理士事務所</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->company}}</td>
                     <td rowspan="8" class="px-8 py-1 border-x border-y border-cyan-600">
                         <button data-modal-toggle="edit-member-info" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </td>
@@ -71,7 +71,7 @@
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">氏名</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">市川欽一</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->name}}</td>
                 </tr>
 
                 <tr>
@@ -81,22 +81,22 @@
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">大阪府大阪市北区東天満２－６－７南森町東一号館9F</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->address}}</td>
                 </tr>
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">電話番号</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">06-6356-3366</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->phone_number}}</td>
                 </tr>
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">ユーザー名</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">これは自由設定できる。デフォルトは指名</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->username}}</td>
                 </tr>
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">メールアドレス</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">ichikawa@feel-free.biz</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->email}}</td>
                 </tr>
 
                 <tr>
@@ -113,7 +113,7 @@
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">ログインID</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">dad123</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->login_id}}</td>
                     <td rowspan="2" class="items-center px-8 py-1 border-x border-y border-cyan-600">
                         <button data-modal-toggle="change-password" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </td>
