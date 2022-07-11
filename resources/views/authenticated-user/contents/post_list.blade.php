@@ -24,7 +24,7 @@
                 @forelse($video_records as $record)
                 <?php $url = "https://storage.googleapis.com/onelook-storage/".$record->video_path; ?>
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">1</td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600">{{$record->id}}</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <video src="{{$url}}" alt="thumbnail" class="h-32 w-48 object-cover" ></video>

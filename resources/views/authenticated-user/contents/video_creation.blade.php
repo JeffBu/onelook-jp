@@ -527,7 +527,7 @@
             const blob = new Blob(recordedBlobs, {
                 type: 'video/mp4'
             });
-            var video = document.getElementById("video");
+            var video = document.getElementById("video")
             video.src = window.URL.createObjectURL(blob);
             const modal = document.querySelector('#previewModal')
 
