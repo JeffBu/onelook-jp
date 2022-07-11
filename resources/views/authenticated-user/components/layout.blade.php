@@ -20,7 +20,7 @@
         @yield('css')
     </head>
 
-    <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
+    <body class="justify-center items-center bg-white text-theme-black font-['Calibri']">
         @yield('head')
         @yield('content')
         @yield('foot')
