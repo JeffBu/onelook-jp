@@ -15,6 +15,13 @@
                 text-decoration-thickness: 2px;
             }
 
+            .sidebar-transition {
+                transition-property: width;
+                transition-duration: 2s;
+                transition-timing-function: linear;
+                transition-delay: 1s;
+            }
+
         </style>
 
         @yield('css')
@@ -35,4 +42,15 @@
         <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
         @yield('js')
     </body>
+
+    <script>
+        jQuery(window).on('scroll', function() {
+            if(jQuery(window).scrollTop() > 0) {
+                jQuery('#header-frame').css('opacity', '0.8');
+            }
+            else {
+                jQuery('#header-frame').css('opacity', '1');
+            }
+        });
+    </script>
 </html>
