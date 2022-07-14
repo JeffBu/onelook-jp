@@ -1,45 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneLook</title>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
-
-    <style>
-        .active {
-            text-decoration: underline;
-            text-decoration-color: #ff9011;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
-        }
-
-    </style>
-</head>
-
-<body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
-
-    <!--header-->
-    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
-    id="header-frame">
-
-        <div class="items-center w-32">
-            <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-        <div class="flex justify-center items-start gap-7 py-6 font-small text-sm font-bold text-theme-white w-full">
-            <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
-            <a href="{{route('video-creation')}}" id="video-maker-tab">ムービー作成</a>
-            <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
-            <a href="{{route('membership-info')}}" id="member-tab">会員情報</a>
-            <a href="#" id="faq-tab">FAQ</a>
-        </div>
-
-    </header>
-    <!--header ends here-->
-
+@extends('authenticated-user.components.layout')
+@section('css')
+@endsection
+@section('head')
+    @include('authenticated-user.components.head')
+@endsection
+@section('content')
     <!--content-->
     <div class="flex justify-center items-center pt-20">
         <table class="text-center w-[60%] border border-sky-700">
@@ -103,9 +68,9 @@
                     <td class="px-1 py-1 border-x border-y border-cyan-600">閲覧期限の通知</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">
                         <div class="flex justify-center items-center gap-6">
-                            <input type="radio" name="available" id="avail-radio" disabled checked>
+                            <input type="radio" name="available" id="avail-radio" disabled @if($user->account->notification_on == 1) checked @endif>
                             <label for="avail-radio">あり</label>
-                            <input type="radio" name="not" id="not-radio" disabled>
+                            <input type="radio" name="not" id="not-radio" disabled @if($user->account->notification_on == 0) checked @endif>
                             <label for="not-radio">なし</label>
                         </div>
                     </td>
@@ -164,7 +129,8 @@
                 </div>
                 <!--modal body-->
                 <div class="p-4 space-y-4">
-                    <form>
+                    <form id="change-registration-info-form">
+                        @csrf
                         <div class="relative z-0 w-full px-4 mb-4 group">
                             <input type="text" name="company_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->account->company}}" required />
                             <label for="company_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">会社名</label>
@@ -197,24 +163,25 @@
                                     <div class="flex py-2 justify-center items-center text-gray-500">閲覧期限の通知</div>
 
                                     <div class="flex justify-center items-center gap-4">
-                                        <input type="radio" name="avail-radio" id="cb1" data-tooltip-target="marker-toolbar">
+                                        <input type="radio" name="avail-radio" id="cb1" data-tooltip-target="marker-toolbar" @if($user->account->notification_on == 1) checked @endif>
                                         <div id="marker-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
                                             閲覧期限の３６時間前に、メールで閲覧期限の終了をお知らせする機能です。通知が不要な方は、なしにチェックしてください。（デフォルトはありにチェック）
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                         <label for="cb1" class="text-gray-500">あり</label>
-                                        <input type="radio" name="avail-radio" id="cb2">
+                                        <input type="radio" name="avail-radio" id="cb2" @if($user->account->notification_on == 0) checked @endif>
                                         <label for="cb2" class="text-gray-500">なし</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                 </div>
                 <!--modal footer-->
                 <div class="flex justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
                     <button type="submit" class="text-white bg-blue-600 hover:bg-blue-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400">変更する</button>
                 </div>
+            </form>
             </div>
         </div>
     </div>
@@ -310,55 +277,66 @@
 
     <div class="py-20"></div>
 
-    <!--content ends here-->
-
-    <!--script-->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <!-- pdf.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
-    <!-- SweetAlerts CDN -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-                colors: {
-                    transparent: 'transparent',
-                    current: 'currentColor',
-                    'theme-white': '#f6f6e9',
-                    'theme-black': '#2a221b',
-                    'theme-yellow': '#ffc300',
-                    'theme-cream': '#ffffcc',
-                    'theme-blue': '#61a6ab',
-                    'theme-pink': '#f7b9a1',
-                    'theme-orange': '#ff9011',
-                }
+@endsection
+@section('foot')
+    @include('authenticated-user.components.foot')
+@endsection
+@section('js')
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+            colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'theme-white': '#f6f6e9',
+                'theme-black': '#2a221b',
+                'theme-yellow': '#ffc300',
+                'theme-cream': '#ffffcc',
+                'theme-blue': '#61a6ab',
+                'theme-pink': '#f7b9a1',
+                'theme-orange': '#ff9011',
             }
-          }
         }
-    </script>
+      }
+    }
+    jQuery(window).on('scroll', function() {
+        if(jQuery(window).scrollTop() > 0) {
+            jQuery('#header-frame').css('opacity', '0.8');
+        }
+        else {
+            jQuery('#header-frame').css('opacity', '1');
+        }
+    });
 
-    <script>
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
-            }
-            else {
-                jQuery('#header-frame').css('opacity', '1');
-            }
-        });
+    jQuery(document).ready(function() {
+        $('#post-list-tab').addClass('active');
+    });
 
-        jQuery(document).ready(function() {
-            $('#member-tab').addClass('active');
-        });
+    $(document).scroll(function() {})
 
-        $(document).scroll(function() {})
+    $('#change-registration-info-form').on('submit', function(event) {
+        event.preventDefault()
 
-    </script>
-    <!--script ends here-->
-</body>
-</html>
+        var url = "{{route('modify-account')}}"
+        var formData = new FormData()
+
+        formData.append('company_name', '')
+        formData.append('full_name', '')
+        formData.append('address', '')
+        formData.append('phone_number', '')
+        formData.append('username', '')
+        formData.append('email', '')
+        formData.append('notification_status', '')
+        axios({
+            method: 'POST',
+            url: url,
+            data: formData,
+        }).then((response) => {
+            console.log(response.data['address'])
+        }).catch((error) => {
+            console.log(error.response.data['address'])
+        })
+    })
+</script>
+@endsection

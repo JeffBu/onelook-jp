@@ -66,7 +66,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('membership_info', $data);
+        return view('authenticated-user.contents.membership_info', $data);
     }
 
     public function change_membership_plan()

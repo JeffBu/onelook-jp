@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PDFEventsController;
 use App\Http\Controllers\VideoRecordingEvents;
 use App\Http\Controllers\VideoAccessController;
+use App\Http\Controllers\UserAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::middleware([
     Route::get('edit-personal-info', [MainController::class, 'edit_personal_info'])->name('edit-personal-info');
     Route::get('payment-history', [MainController::class, 'payment_history'])->name('payment-history');
     Route::get('payment-history-2', [MainController::class, 'payment_history_2'])->name('payment-history-2');
+
+    Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');
+
 
     Route::get('admin-home', [MainController::class, 'admin_home'])->name('admin-home');
     Route::get('admin-member-list', [MainController::class, 'admin_member_list'])->name('admin-member-list');
