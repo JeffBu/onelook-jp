@@ -39,47 +39,55 @@
     </div>
 
     <!--toolbar-->
-    <nav class="flex shadow bg-sky-600 bg-opacity-80 justify-center items-center py-5 px-5 h-11 rounded-t-md tracking-widest fixed left-1/2 -translate-x-1/2 bottom-0 w-8/12 z-50"
-    id="nav-toolbar">
-
-        <div class="items-center w-32"></div>
-
-        <div class="flex justify-center items-center py-6 font-medium text-lg text-theme-white divide-x divide-x-theme-orange w-full">
-            <div class="flex px-8 justify-center items-center gap-3">
-
-                <form action="" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <label for="pdfSource" data-tooltip-target="pdf-source" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg></label>
-                    <input type="file" id="pdfSource" name="pdfSource" accept=".pdf" hidden/>
-                </form>
-                <div id="pdf-source" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    PDFをアップロードする
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
-                <input type="text" id="video_title" name="video_title" placeholder="動画名" class="h-8 text-theme-black border-2 border-transparent focus:border-theme-yellow">
-
-                <button id="start" data-tooltip-target="start-recording" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg></button>
-                <div id="start-recording" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    録画する画面をえらんでスタート
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
-                <button id="mute" data-tooltip-target="mute-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                </svg></button>
-                <div id="mute-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    ミュート
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
+    <nav class="flex shadow text-white bg-sky-600 bg-opacity-80 justify-center items-center px-4 py-2 h-11 mt-11 rounded-b-md tracking-widest fixed left-1/2 -translate-x-1/2 top-0 md:w-2/12 z-50"
+    id="nav-toolbar-1">
+        <div class="flex justify-center items-center gap-8">
+            <form action="" method="POST" enctype="multipart/form-data">
+                @csrf
+                <label for="pdfSource" data-tooltip-target="pdf-source" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg></label>
+                <input type="file" id="pdfSource" name="pdfSource" accept=".pdf" hidden/>
+            </form>
+            <div id="pdf-source" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                録画画面にPDFファイルを表示
+                <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
 
-            <div class="flex px-8 justify-center items-center gap-3">
+            <button id="start" data-tooltip-target="start-recording" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg></button>
+            <div id="start-recording" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                録画する画面をえらんでスタート
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <button id="stop" data-tooltip-target="stop-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+            </svg></button>
+            <div id="stop-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                収録終了
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
+            <button id="preview" data-tooltip-target="preview-toolbar" data-modal-toggle="previewModal" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg></button>
+            <div id="preview-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                プレビュー
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="flex shadow text-white bg-sky-600 bg-opacity-80 justify-center items-center px-4 py-2 h-11 rounded-t-md tracking-widest fixed left-1/2 -translate-x-1/2 bottom-0 :sm:w-full md:w-4/12 z-50"
+    id="nav-toolbar-2">
+
+        <div class="flex justify-center items-center font-medium text-lg text-theme-white divide-x divide-x-theme-orange w-full">
+
+            <div class="flex px-8 justify-center items-center gap-4">
                 <button id="pointerBtn" onclick="setPointer()" data-tooltip-target="pointer-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 01M20 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg></button>
@@ -118,7 +126,9 @@
                     <option>#00FFFF</option>
                     <option>#FF9900</option>
                 </datalist>
+            </div>
 
+            <div class="flex px-8 justify-center items-center gap-4">
                 <button onclick="undoLast()" data-tooltip-target="undo-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                 </svg></button>
@@ -126,48 +136,31 @@
                     元に戻す
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
+
+                <button id="mute" data-tooltip-target="mute-toolbar" class="hover:text-theme-yellow">
+                    <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    </svg>
+
+                    <svg id="unmute-icon" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+
+                </button>
+                <div id="mute-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    <span id="mute-label" class="block">ミュート</span>
+                    <span id="unmute-label" class="hidden">ミュートを解除する</span>
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
             </div>
 
-            <div class="flex px-8 justify-center items-center gap-3">
-                <button id="preview" data-tooltip-target="preview-toolbar" data-modal-toggle="previewModal" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg></button>
-                <div id="preview-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    プレビュー
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
-                <button id="pause" data-tooltip-target="pause-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg></button>
-                <div id="pause-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    一旦停止
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
-                <button id="stop" data-tooltip-target="stop-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-                </svg></button>
-                <div id="stop-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    収録終了
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
+            <div class="flex px-8 justify-center items-center gap-4">
                 <button id="completion" data-tooltip-target="save-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg></button>
                 <div id="save-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
                     完了
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
-                <button onclick="cancelButton()" data-tooltip-target="cancel-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg></button>
-                <div id="cancel-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    キャンセル
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
             </div>
@@ -250,7 +243,7 @@
         const preview = document.querySelector('button#preview');
         const recordedVideo = document.querySelector('video#video');
         const downloadButton = document.querySelector('button#download');
-        const pause_play = document.querySelector('button#pause');
+        
         const completion = document.querySelector('button#completion');
         const muteButton = document.querySelector('button#mute');
 
@@ -534,31 +527,31 @@
             console.log(video.src)
         });
 
-        pause_play.addEventListener('click', function() {
-            if (isRecording) {
-                mediaRecorder.pause();
-                isRecording = false;
-                pause_play.innerHTML = '再開';
+        // pause_play.addEventListener('click', function() {
+        //     if (isRecording) {
+        //         mediaRecorder.pause();
+        //         isRecording = false;
+        //         pause_play.innerHTML = '再開';
 
-                Swal.fire({
-                    icon: 'info',
-                    title: '一時停止中!',
-                    showConfirmButton: false,
-                    timer: 1000
-                })
-            } else {
-                Swal.fire({
-                    icon: 'info',
-                    title: '録画再開中!',
-                    showConfirmButton: false,
-                    timer: 1000
-                }).then((result) => {
-                    mediaRecorder.resume();
-                    isRecording = true;
-                    pause_play.innerHTML = "一旦停止";
-                })
-            }
-        })
+        //         Swal.fire({
+        //             icon: 'info',
+        //             title: '一時停止中!',
+        //             showConfirmButton: false,
+        //             timer: 1000
+        //         })
+        //     } else {
+        //         Swal.fire({
+        //             icon: 'info',
+        //             title: '録画再開中!',
+        //             showConfirmButton: false,
+        //             timer: 1000
+        //         }).then((result) => {
+        //             mediaRecorder.resume();
+        //             isRecording = true;
+        //             pause_play.innerHTML = "一旦停止";
+        //         })
+        //     }
+        // })
 
         function cancelButton(id) {
             Swal.fire({
@@ -715,6 +708,13 @@
         });
 
         $(document).scroll(function() {})
+
+        jQuery('#mute').on('click', function() {
+            $('#mute-icon').toggle();
+            $('#unmute-icon').toggle();
+            $('#mute-label').toggle();
+            $('#unmute-label').toggle();
+        });
     </script>
     <!--scripts ends here-->
 @endsection
