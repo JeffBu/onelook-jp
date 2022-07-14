@@ -26,25 +26,56 @@
     <!--header ends here-->
 
     <!--content-->
-    <div class="flex justify-center items-start text-lg pt-4 w-full">
-        <div class="flex flex-col justify-center items-center gap-8 w-64 pt-12 px-2 text-left"></div>
+    <div class="flex justify-center items-center text-center pt-11 w-full">
+        <div class="flex flex-col justify-center items-center text-center w-full">
+            <div class="flex flex-col justify-center items-center text-center text-white bg-sky-600 w-11/12 sm:w-3/5 px-8 py-8 mt-4 gap-2 border-b-4 border-r-4 border-sky-700 rounded-lg">
+                <div>
+                    <h1 class="font-bold text-xl mb-4">山田さんの届出</h1>
+                </div>
+            
+                <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
+                    <div class="flex flex-row justify-between items-center text-center w-full">
+                        <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
+                            <span>投稿日:</span>
+                            <span id="dl-deadline">2021年4月1日10:00</span>
+                        </div>
+                        <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
+                            <span>閲覧期限:</span>
+                            <span id="dl-deadline">2021年4月4日10:00</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="flex-1 justify-center text-center items-center text-lg pt-12">
-            <div class="text-center text-4xl font-bold text-cyan-600 pb-4">{{$record->title}}</div>
+                <div class="border border-white w-full">
+                    <img src="{{asset('media/video-playback.png')}}" alt="">
+                </div>
 
-            <div>
-                <video src="{{"https://storage.googleapis.com/onelook-storage/".$record->video_path}}" alt="" class="rounded-lg border border-cyan-800 mb-1" controls></video>
+                <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
+                    <div class="flex flex-row justify-between items-center text-center w-full">
+                        <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
+                            <span class="text-sm">以下のファイルをダウンロードできます。</span>
+                        </div>
+                        <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
+                            <span>ファイルサイズ:</span>
+                            <div class="flex flex-row justify-center items-center text-center text-sm gap-1">
+                                <span id="file-size">427.66</span>
+                                <span id="file-size">メガバイト</span>
+                            </div>
+                            <a href="#" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a>
+                        </div>
+                    </div>
+                    <span class="text-sm mt-4">ウイルスチェックにより脅威なしと診断されました。</span>
+                    <div class="flex flex-row justify-center items-center text-center text-sm gap-1">
+                        <span>ダウンロードが開始されない場合は、から画面をリロードしてください</span>
+                        <a href="#" class="hover:text-yellow-300 underline underline-offset-1">ここ</a>
+                        <span>。</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex justify-between text-cyan-700 text-base px-1">
-                <div>投稿者 : {{$record->uploader->name}}</div>
-                <div>投稿日: {{$record->created_at->format('Y年m月d日H:i')}}~ 閲覧期限: {{$record->created_at->modify('+7 days')->format('Y年m月d日H:i')}}</div>
-            </div>
+            <div class="mb-20"></div>
 
-            <div class="h-32"></div>
         </div>
-
-        <div class="flex flex-col justify-center items-center gap-8 w-64 pt-12 px-2 text-left"></div>
     </div>
     <!--content ends here-->
 
