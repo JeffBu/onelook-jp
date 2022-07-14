@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Auth;
 
 class UserAccountController extends Controller
 {
@@ -14,8 +15,8 @@ class UserAccountController extends Controller
             'full_name' => 'required',
             'address' => 'required',
             'phone_number' => 'required',
-            'username' => 'required|unique:users',
-            'email' => 'required|unique:users',
+            'username' => 'required',
+            'email' => 'required',
             'notification_status' => 'required'
         ]);
 
@@ -27,8 +28,16 @@ class UserAccountController extends Controller
         $account = $user->account;
         $user->update([
             'username' => $request->username,
-            'name' => $request->name,
+            'name' => $request->full_name,
             'email' => $request->email
         ]);
+
+        $account->update([
+            'company' => $request->company_name,
+            'address' => $request->address,
+            'phone_number' => $request->phone_number,
+            'notification_on' => $request->notification_status
+        ]);
+        return 1;
     }
 }
