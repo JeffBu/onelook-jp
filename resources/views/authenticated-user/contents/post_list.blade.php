@@ -66,7 +66,7 @@
                             </div>
                             <div class="flex justify-center items-center px-3 gap-3">
                                 <a class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo({{$record->id}}, this)">招待メール</a>
-                                <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md">削除</button>
+                                <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md" onclick="deleteVideo({{$record->id}}, this)">削除</button>
                             </div>
                         </div>
                     </td>
@@ -351,6 +351,7 @@
 
         function downloadVideo(id, button)
         {
+            button.preventDefault()
             var url = "{{route('download')}}"
 
             axios.post(url, {
