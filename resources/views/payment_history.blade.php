@@ -46,7 +46,7 @@
 
     <!--content-->
     <div>
-        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">お支払い履歴</h1>
+        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">請求書　兼　領収書</h1>
     </div>
 
     <div class="flex justify-center items-center">

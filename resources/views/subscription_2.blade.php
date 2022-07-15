@@ -19,7 +19,7 @@
     </style>
 </head>
 
-<body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
+<body class="justify-center items-center bg-white text-theme-black font-['Calibri']">
 
     <!--header-->
     <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
@@ -58,7 +58,7 @@
             <div class="relative inline-block text-left">
                 <div>
                   <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 " id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    <span id="select_button_text">予定</span>
+                    <span id="select_button_text">選択してください</span>
                     <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -69,6 +69,7 @@
                   <div class="py-1" role="none">
                     <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:bg-opacity-30" role="menuitem" tabindex="-1" id="menu-item-0" onclick="changePlan()">パーソナルプランの申込</a>
                     <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:bg-opacity-30" role="menuitem" tabindex="-1" id="menu-item-1" onclick="cancelPlan()">パーソナルプランの解約</a>
+                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:bg-opacity-30" role="menuitem" tabindex="-1" id="menu-item-2" onclick="cancelService()">本サービスの解約</a>
                   </div>
                 </div>
             </div>
@@ -80,8 +81,8 @@
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
             </div>
 
-            <div class="flex-1 justify-center items-center text-center mt-10 mx-auto w-1/2">
-                <p class="px-4 py-4">留意点</p>
+            <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
+                <p class="px-4 py-4 text-center">留意点</p>
                 <p class="px-4 py-4">1 パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。なお、変更申込以後はパーソナルプランの機能のご利用が可能です。パーソナルプランの解約は、申込日の翌月1日以後から可能です。</p>
                 <p class="px-4 py-4">2 パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。なお、変更日以後はパーソナルプランの機能のご利用はできなくなります。</p>
             </div>
@@ -93,10 +94,23 @@
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
             </div>
 
-            <div class="flex-1 justify-center items-center text-center mt-10 mx-auto w-1/2">
-                <p class="px-4 py-4">本サービスの解約</p>
+            <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
+                <p class="px-4 py-4 text-center">留意点</p>
                 <p class="px-4 py-4">1 本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。なお、解約日以後は本サービスの機能のご利用はできなくなります。</p>
                 <p class="px-4 py-4">2 パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約できません。</p>
+            </div>
+        </div>
+
+        <!--cancel service-->
+        <div id="cancel_service" style="display: none">
+            <div class="flex justify-center items-center mx-auto w-1/4">
+                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
+            </div>
+
+            <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
+                <p class="px-4 py-4 text-center">留意点</p>
+                <p class="px-4 py-4">1　本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。なお、解約日以後は本サービスの機能のご利用はできなくなります。</p>
+                <p class="px-4 py-4">2　パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約はできません。</p>
             </div>
         </div>
 
@@ -179,6 +193,7 @@
         function changePlan() {
             $('#upgrade_plan').css('display', 'block')
             $('#select_button_text').html('パーソナルプランの申込')
+            $('#cancel_service').css('display', 'none')
             $('#cancel_plan').css('display', 'none');
             $('#menu-dropdown').css('display', 'none')
         }
@@ -186,7 +201,16 @@
         function cancelPlan() {
             $('#cancel_plan').css('display', 'block')
             $('#select_button_text').html('パーソナルプランの解約')
+            $('#cancel_service').css('display', 'none')
             $('#upgrade_plan').css('display', 'none')
+            $('#menu-dropdown').css('display', 'none')
+        }
+
+        function cancelService() {
+            $('#cancel_plan').css('display', 'none')
+            $('#select_button_text').html('本サービスの解約')
+            $('#upgrade_plan').css('display', 'none')
+            $('#cancel_service').css('display', 'block')
             $('#menu-dropdown').css('display', 'none')
         }
     </script>
