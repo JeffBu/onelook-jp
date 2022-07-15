@@ -42,16 +42,3 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
         @yield('js')
-    </body>
-
-    <script>
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
-            }
-            else {
-                jQuery('#header-frame').css('opacity', '1');
-            }
-        });
-    </script>
-</html>

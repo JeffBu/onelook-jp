@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\VideoRecord;
+use App\Models\VideoView;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
 
@@ -109,6 +110,12 @@ class VideoRecordingEvents extends Controller
         $record = VideoRecord::where('key', $key)->first();
         if($record->access->access_code == $access_code)
         {
+            VideoView::create([
+                'video_record_id' => $record->id,
+                'user_id' => null,
+                'ip_address' => $request->ip(),
+            ]);
+
             $data = array(
                 'record' => $record,
             );
