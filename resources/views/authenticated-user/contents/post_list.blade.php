@@ -28,7 +28,7 @@
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <video src="{{$url}}" alt="thumbnail" class="h-32 w-48 object-cover" ></video>
-                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">編集</button>
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">下見</button>
                         </div>
                     </td>
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
@@ -65,7 +65,7 @@
                                 <a href="{{$url}}" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
                             <div class="flex justify-center items-center px-3 gap-3">
-                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">招待メール</button>
+                                <a class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo({{$record->id}}, this)">招待メール</a>
                                 <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md">削除</button>
                             </div>
                         </div>
@@ -347,6 +347,28 @@
         {
             var video = document.querySelector('#video')
             video.src = path
+        }
+
+        function downloadVideo(id, button)
+        {
+            var url = "{{route('download')}}"
+
+            axios.post(url, {
+                id: id
+            }).then((response) => {
+                const link = document.createElement('a')
+                link.href = response.data[0]
+                link.setAttribute('download', response.data[1]);
+                link.click();
+                button.disabled = 'disabled'
+            }).catch((error) => {
+                Swal.fire({
+                    title: "ERROR",
+                    text: error.response.data['message'],
+                    icon: 'danger',
+                    showCancelButton: false
+                })
+            })
         }
     </script>
     <!--script ends here-->

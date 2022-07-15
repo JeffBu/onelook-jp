@@ -47,6 +47,7 @@ Route::middleware([
     Route::get('admin-viewer', [MainController::class, 'admin_viewer'])->name('admin-viewer');
 });
 
+Route::post('download-file', [VideoAccessController::class, 'download_file'])->name('download');
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
 Route::post('save-video-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-video-to-database');
 Route::post('save-video', [VideoRecordingEvents::class, 'save_video'])->name('save-video');
