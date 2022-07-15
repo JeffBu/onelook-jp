@@ -310,7 +310,7 @@
     });
 
     jQuery(document).ready(function() {
-        $('#post-list-tab').addClass('active');
+        $('#membership-info-tab').addClass('active');
     });
 
     $(document).scroll(function() {})

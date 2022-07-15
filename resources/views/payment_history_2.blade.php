@@ -37,6 +37,10 @@
             <a href="#" id="faq-tab">FAQ</a>
         </div>
 
+        <div class="items-center w-32">
+            <div class="hidden font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
+        </div>
+
     </header>
     <!--header ends here-->
 

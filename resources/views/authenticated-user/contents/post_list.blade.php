@@ -8,30 +8,30 @@
 
     <!--content-->
     <div class="flex justify-center items-center pt-20">
-        <table class="text-center w-4/5 border border-sky-700">
+        <table class="text-center w-3/5 border border-sky-700">
             <thead class="bg-cyan-600 text-theme-white">
                 <tr>
-                    <th class="px-3 py-3 border-x border-sky-700">No.</th>
-                    <th class="px-3 py-3 border-x border-sky-700">動画名</th>
-                    <th class="px-3 py-3 border-x border-sky-700">パスコード</th>
-                    <th class="px-3 py-3 border-x border-sky-700">投稿日</th>
-                    <th class="px-3 py-3 border-x border-sky-700">閲覧期限</th>
-                    <th class="px-3 py-3 border-x border-sky-700">閲覧数</th>
-                    <th class="px-3 py-3 border-x border-sky-700">閲覧URL</th>
+                    <th class="px-4 py-2 border-x border-sky-700 w-1/12">No.</th>
+                    <th class="px-4 py-2 border-x border-sky-700">動画名</th>
+                    <th class="px-4 py-2 border-x border-sky-700">パスコード</th>
+                    <th class="px-4 py-2 border-x border-sky-700">投稿日</th>
+                    <th class="px-4 py-2 border-x border-sky-700">閲覧期限</th>
+                    <th class="px-4 py-2 border-x border-sky-700">閲覧数</th>
+                    <th class="px-4 py-2 border-x border-sky-700 w-3/12">閲覧URL</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($video_records as $record)
                 <?php $url = "https://storage.googleapis.com/onelook-storage/".$record->video_path; ?>
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">{{$record->id}}</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">{{$record->id}}</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <video src="{{$url}}" alt="thumbnail" class="h-32 w-48 object-cover" ></video>
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center gap-3">
                             <p>
                                 @if($record->access)
@@ -43,24 +43,24 @@
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="changeAccessCode('{{$record->key}}')">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         {{date_format($record->created_at, 'Y年 m月 d日 H:i')}}
                         {{-- 2021年 4月1日 10:00 --}}
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         {{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         @if($record->views)
                             {{$record->views->count()}}
                         @else
                             0
                         @endif
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
-                            <div class="flex justify-center items-center px-3 py-3 gap-3">
+                            <div class="flex justify-center items-center px-4 py-2 gap-3">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')" @endif>リンクコピー</button>
                                 <a href="{{$url}}" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
@@ -73,33 +73,33 @@
                 </tr>
                 @empty
                     <tr>
-                        <td class="px-3 py-3 border-x border-y border-cyan-600 text-cyan-400" colspan="7">
+                        <td class="px-4 py-2 border-x border-y border-cyan-600 text-cyan-400" colspan="7">
                             表示するレコードがありません
                         </td>
                     </tr>
                 @endforelse
 
                 {{-- <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">1</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">1</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <img src="{{asset('media/video-playback.png')}}" alt="thumbnail" class="h-32 w-48 object-cover">
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center gap-3">
                             <p>123456</p>
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">5</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">5</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <span>https://onelook.jp/access-record-verification?access_id=4openRe7Az</span>
-                            <div class="flex justify-center items-center px-3 py-3 gap-3">
+                            <div class="flex justify-center items-center px-4 py-2 gap-3">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="copyLink()">リンクコピー</button>
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
                             </div>
@@ -112,26 +112,26 @@
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <img src="{{asset('media/video-playback.png')}}" alt="thumbnail" class="h-32 w-48 object-cover">
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center gap-3">
                             <p>567890</p>
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">3</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">3</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <span></span>
-                            <div class="flex justify-center items-center px-3 py-3 gap-3">
+                            <div class="flex justify-center items-center px-4 py-2 gap-3">
                                 <button class="container hidden px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="copyLink()">リンクコピー</button>
                                 <button class="container hidden px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
                             </div>
@@ -144,26 +144,26 @@
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">3</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">3</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <img src="{{asset('media/video-playback.png')}}" alt="thumbnail" class="h-32 w-48 object-cover">
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center gap-3">
                             <p>098765</p>
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <span>閲覧期限が経過しました</span>
-                            <div class="flex justify-center items-center px-3 py-3 gap-3">
+                            <div class="flex justify-center items-center px-4 py-2 gap-3">
                                 <button class="container hidden px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="copyLink()">リンクコピー</button>
                                 <button class="container hidden px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
                             </div>
@@ -176,27 +176,27 @@
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">4</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">4</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <!--<img src="{{asset('media/video-playback.png')}}" alt="thumbnail" class="h-32 w-48 object-cover">-->
                             <button class="container hidden mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                             <span>ちょっとイリーガルなもの</span>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center gap-3">
                             <p>654321</p>
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">編集</button>
                         </div>
                     </td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">6</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">2021年 4月1日 10:00</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">6</td>
+                    <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <span>運営により削除されました</span>
-                            <div class="flex justify-center items-center px-3 py-3 gap-3">
+                            <div class="flex justify-center items-center px-4 py-2 gap-3">
                                 <button class="container hidden px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="copyLink()">リンクコピー</button>
                                 <button class="container hidden px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">ダウンロード</button>
                             </div>
