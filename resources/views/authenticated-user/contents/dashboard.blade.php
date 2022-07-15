@@ -32,7 +32,7 @@
                         <p class="px-4 py-2">過去に作成した動画の一覧です。ここから招待リンクをコピーしたり、閲覧招待メールを直接送ったりすることができます。</p>
                     </a>
 
-                    <a href="{{route('post-list')}}" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                    <a href="{{route('faq')}}" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                         <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">問合せ</span>
                         <img src="{{asset('media/faq.png')}}" alt="" data-tooltip-target="inquiry-toolbar" class="h-32 w-32">
                         <div id="inquiry-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">

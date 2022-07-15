@@ -196,4 +196,9 @@ class MainController extends Controller
         return view('registration');
     }
 
+    public function faq_page()
+    {
+        return view('faq');
+    }
+
 }

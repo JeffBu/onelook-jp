@@ -17,7 +17,7 @@ id="header-frame">
         <a href="{{route('video-creation')}}" onclick="window.open('{{route('video-creation')}}', 'newwindow', 'width=883, height=584, top=40, left=80'); return false;" id="video-maker-tab">ムービー作成</a>
         <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
         <a href="{{route('membership-info')}}" id="membership-info-tab">会員情報</a>
-        <a href="#" id="faq-tab">FAQ</a>
+        <a href="{{route('faq')}}" id="faq-tab">FAQ</a>
     </div>
 
     <!-- logout -->
