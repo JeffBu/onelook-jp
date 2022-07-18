@@ -55,13 +55,19 @@ class VideoRecordingEvents extends Controller
 
 
         DB::transaction(function () use($key, $title, $fileNameToStore, $size, $user_id, $is_invalid){
-            VideoRecord::create([
+            $record = VideoRecord::create([
                 'key' => $key,
                 'title' => $title,
                 'video_path' => $fileNameToStore,
                 'size' => $size,
                 'user_id' => $user_id,
                 'is_invalid' => $is_invalid
+            ]);
+
+            VideoAccess::create([
+                'video_record_key' => $record->key,
+                'access_code' => Str::random(8),
+                'granted_by_user_id' => Auth::user()->id
             ]);
         });
 
