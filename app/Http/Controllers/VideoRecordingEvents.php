@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\VideoRecord;
 use App\Models\VideoView;
+use App\Models\VideoAccess;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
 
