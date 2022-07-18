@@ -24,11 +24,8 @@ class VideoRecordingEvents extends Controller
 
         $date_now = Carbon::now()->format('Y-m-d_H.i');
         $key = Str::random(16);
-        if ($request->fileName) {
-            $title = $date_now."_".$request->fileName.".mp4";
-        } else {
-            $title = $date_now . '.mp4';
-        }
+        $title = $date_now.".mp4";
+
         $file = $request->file;
         $file_source = file_get_contents($file->getRealPath());
         $size = $file->getSize();
@@ -75,11 +72,7 @@ class VideoRecordingEvents extends Controller
     {
         $file = $request->file;
         $date_now = Carbon::now()->format('Y年m月d日H:i');
-        if ($request->fileName) {
-            $name = "{$date_now}_{$request->fileName}.mp4";
-        } else {
-            $name = $date_now . '.mp4';
-        }
+        $name = $date_now.".mp4";
 
         $user = Auth::user()->id;
         $videoFile = file_get_contents($file->getRealPath());

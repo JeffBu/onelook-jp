@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 @forelse($video_records as $record)
-                <?php $url = "https://storage.googleapis.com/onelook-storage/".$record->video_path; ?>
+                <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                 <tr>
                     <td class="px-4 py-2 border-x border-y border-cyan-600">{{$record->id}}</td>
                     <td class="px-4 py-2 border-x border-y border-cyan-600">

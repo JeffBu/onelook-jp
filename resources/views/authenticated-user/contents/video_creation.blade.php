@@ -235,7 +235,7 @@
         const preview = document.querySelector('button#preview');
         const recordedVideo = document.querySelector('video#video');
         const downloadButton = document.querySelector('button#download');
-        
+
         const completion = document.querySelector('button#completion');
         const muteButton = document.querySelector('button#mute');
 
@@ -399,11 +399,9 @@
             const blobUrl = window.URL.createObjectURL(blob);
             fetch(blobUrl).then(response => response.blob())
             .then(blobs => {
-                const name = $("#video_title").val();
                 var form = $('form')[0]; // You need to use standard javascript object here
                 const fd = new FormData(form);
                 fd.append("file", blobs); // where `.ext` matches file `MIME` type
-                fd.append('fileName', name);
                 var url = "{{ route('save-video-to-database') }}"
                 return axios.post(url, fd, {
                     headers: {
@@ -686,22 +684,22 @@
     </script>
 
     <script>
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
+        $(window).on('scroll', function() {
+            if($(window).scrollTop() > 0) {
+                $('#header-frame').css('opacity', '0.8');
             }
             else {
-                jQuery('#header-frame').css('opacity', '1');
+                $('#header-frame').css('opacity', '1');
             }
         });
 
-        jQuery(document).ready(function() {
+        $(document).ready(function() {
             $('#video-maker-tab').addClass('active');
         });
 
         $(document).scroll(function() {})
 
-        jQuery('#mute').on('click', function() {
+        $('#mute').on('click', function() {
             $('#mute-icon').toggle();
             $('#unmute-icon').toggle();
             $('#mute-label').toggle();
