@@ -7,12 +7,10 @@
 @section('content')
     <!--content-->
     <div class="flex justify-center items-start text-lg w-full">
-        <!--<div class="flex flex-col justify-center items-center gap-8 w-64 pt-14 px-2 text-left"></div>-->
         <div class="flex flex-col w-3/5">
-
             <div class="flex-1 justify-center items-center pt-16 mt-3">
-                <div class="grid :sm:grid-rows-3 md:grid-cols-3 justify-center items-center scroll-mt-24 gap-6 w-full h-1/2" id="home">
-                    <a href="{{route('video-creation')}}" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                <div class="grid sm:grid-cols-3 justify-center items-center scroll-mt-24 gap-6 w-full h-1/2" id="home">
+                    <a href="{{route('video-creation')}}" onclick="window.open('{{route('video-creation')}}', 'newwindow', 'width=883, height=584, top=40, left=80'); return false;" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                         <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">ムービーの作成</span>
                         <img src="{{asset('media/video-editing.png')}}" alt="Video Creation Icon" data-tooltip-target="create-toolbar" class="h-32 w-32">
                         <div id="create-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -32,9 +30,9 @@
                         <p class="px-4 py-2">過去に作成した動画の一覧です。ここから招待リンクをコピーしたり、閲覧招待メールを直接送ったりすることができます。</p>
                     </a>
 
-                    <a href="{{route('faq')}}" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                    <button onclick="inquiryAlert()" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                         <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">問合せ</span>
-                        <img src="{{asset('media/faq.png')}}" alt="" data-tooltip-target="inquiry-toolbar" class="h-32 w-32">
+                        <img src="{{asset('media/q&a.png')}}" alt="" data-tooltip-target="inquiry-toolbar" class="h-32 w-32">
                         <div id="inquiry-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
                             問合せ
                             <div class="tooltip-arrow" data-popper-arrow></div>
@@ -141,6 +139,18 @@
         $(document).ready(function(){
             $('#home-tab').addClass('active');
         });
+
+    function inquiryAlert() {
+        Swal.fire({
+            title: 'お問合せ',
+            text: '登録されたメールアドレスにご連絡いたします。',
+            input: 'email',
+            inputPlaceholder: '問合せ内容をご記入ください',
+            showCancelButton: true,
+            confirmButtonText: '問合せ',
+            cancelButtonText: 'キャンセル',
+        })
+    }
 
     </script>
 

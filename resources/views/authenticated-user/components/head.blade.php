@@ -9,7 +9,7 @@ id="header-frame">
     </button>
 
     <div class="hidden sm:flex items-center w-32">
-        <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
+        <a href="{{route('dashboard')}}" class="font-semibold text-theme-white text-xl">{{config('app.name')}}</a>
     </div>
 
     <div class="hidden sm:flex justify-center items-start gap-8 py-6 font-small text-sm font-bold text-theme-white w-full">
@@ -23,8 +23,8 @@ id="header-frame">
     <!-- logout -->
     <div class="flex justify-end items-center w-32">
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-        class="font-semibold text-white hover:text-yellow-300">
-            Logout
+        class="font-semibold text-sm text-white hover:text-yellow-300">
+            ログアウト
         </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
