@@ -78,7 +78,7 @@
         <!--upgrade plan-->
         <div id="upgrade_plan" style="display: none">
             <div class="flex justify-center items-center mx-auto w-1/4">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
+                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
 
             <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
@@ -91,7 +91,7 @@
         <!--cancel plan-->
         <div id="cancel_plan" style="display: none">
             <div class="flex justify-center items-center mx-auto w-1/4">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
+                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
 
             <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
@@ -104,7 +104,7 @@
         <!--cancel service-->
         <div id="cancel_service" style="display: none">
             <div class="flex justify-center items-center mx-auto w-1/4">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
+                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
 
             <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
