@@ -192,7 +192,7 @@
 
         function changePlan() {
             $('#upgrade_plan').css('display', 'block')
-            $('#select_button_text').html('パーソナルプランの申込')
+            $('#select_button_text').html('パーソナルプランについての注意点')
             $('#cancel_service').css('display', 'none')
             $('#cancel_plan').css('display', 'none');
             $('#menu-dropdown').css('display', 'none')
