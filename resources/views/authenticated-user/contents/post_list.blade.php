@@ -1,4 +1,7 @@
 @extends('authenticated-user.components.layout')
+@section('page-title')
+    <title>{{config('app.name')}} - Records</title>
+@endsection
 @section('css')
 @endsection
 @section('head')
@@ -28,7 +31,7 @@
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <video src="{{$url}}" alt="thumbnail" class="h-32 w-48 object-cover" ></video>
-                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">はまずは修正</button>
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">プレビュー</button>
                         </div>
                     </td>
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
@@ -284,11 +287,10 @@
         function copyLink(key, code, name){
             var base_url = "{{config('app.url')}}";
             Swal.fire({
-            title: '下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です',
             html:
-                name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
-                '動画名： ' + base_url +'/access-video-record?video_key='+key+' <br />' +
-                'パスコード: ' + code,
+                '<p class="text-justify">'+name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
+                '<span class="font-bold">動画名: </span> ' + base_url +'/access-video-record?video_key='+key+' <br />' +
+                '<span class="font-bold">パスコード: </span> ' + code +'</p>',
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:

@@ -1,13 +1,12 @@
 @extends('authenticated-user.components.layout')
+@section('page-title')
+    <title>{{config('app.name')}} - 録画画面はこちらを選択</title>
+@endsection
 @section('css')
-@endsection
-@section('head')
-    @include('authenticated-user.components.head')
-@endsection
 @section('content')
     <!--content-->
     <div class="flex justify-center items-start text-lg pt-5 w-full">
-        <div class="flex flex-col justify-center items-center pt-20 mt-3 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
+        <div class="flex flex-col justify-center items-center pt-20 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
             <div class="flex justify-center items-center gap-8">
                 <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -40,7 +39,7 @@
 
     <div class="flex justify-center items-start w-full">
         <!--toolbar-->
-        <nav class="flex shadow text-white bg-sky-600 bg-opacity-80 justify-center items-center px-4 py-2 h-11 mt-11 sm:rounded-b-md tracking-widest fixed left-1/2 -translate-x-1/2 top-0 w-full sm:w-3/5 z-10"
+        <nav class="flex shadow text-white bg-sky-600 bg-opacity-80 justify-center items-center px-4 py-2 h-11 sm:rounded-b-md tracking-widest fixed left-1/2 -translate-x-1/2 top-0 w-full sm:w-3/5 z-10"
         id="nav-toolbar-1">
             <div class="flex justify-center items-center gap-4 sm:gap-8">
                 <form action="" method="POST" enctype="multipart/form-data">
@@ -330,7 +329,7 @@
         document.querySelector('button#start').addEventListener('click', async () => {
             Swal.fire({
                 title: "録画画面選択について",
-                text: 'upfiling.jpのみを録画する場合、録画開始クリック後に1. Chromeタブ 2.upfiling.jpを選択 3. 共有をクリックしてください。4. 音声なしで録画する場合、タブの音声を共有にチェックが入っていることを確認してください。音声ありで録画する場合チェックを外してください。'
+                text: 'OneLookでの録画方法 １　共有する内容を選択で「Chromeタブ」を選択 ２　「OneLook（録画画面はこちらを選択）」を選択 ３　「共有ボタン」を押すと録画スタート ★音声ありで録画する場合、左下の「システムの音声を共有」のチェックを外してください。'
             }).then((result) => {
                 const constraints = {
                     video: {
