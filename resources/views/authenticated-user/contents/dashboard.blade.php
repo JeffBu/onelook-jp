@@ -152,6 +152,13 @@
             showCancelButton: true,
             confirmButtonText: '問合せ',
             cancelButtonText: 'キャンセル',
+        }).then((result) => {
+            if(result.isConfirmed) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '送信完了しました。後日担当からメールします。',
+                })
+            }
         })
     }
 
