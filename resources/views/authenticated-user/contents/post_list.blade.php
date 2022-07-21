@@ -11,16 +11,16 @@
 
     <!--content-->
     <div class="flex justify-center items-center pt-20">
-        <table class="text-center w-3/5 border border-sky-700">
+        <table class="text-center w-4/5 border border-sky-700">
             <thead class="bg-cyan-600 text-theme-white">
                 <tr>
-                    <th class="px-4 py-2 border-x border-sky-700 w-1/12">No.</th>
+                    <th class="px-4 py-2 border-x border-sky-700">No.</th>
                     <th class="px-4 py-2 border-x border-sky-700">動画名</th>
                     <th class="px-4 py-2 border-x border-sky-700">パスコード</th>
                     <th class="px-4 py-2 border-x border-sky-700">投稿日</th>
                     <th class="px-4 py-2 border-x border-sky-700">閲覧期限</th>
                     <th class="px-4 py-2 border-x border-sky-700">閲覧数</th>
-                    <th class="px-4 py-2 border-x border-sky-700 w-3/12">閲覧URL</th>
+                    <th class="px-4 py-2 border-x border-sky-700">閲覧URL</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,11 +63,11 @@
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
-                            <div class="flex justify-center items-center px-4 py-2 gap-3">
+                            <div class="flex justify-center items-center py-2 gap-3">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')" @endif>リンクコピー</button>
                                 <a href="{{$url}}" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
-                            <div class="flex justify-center items-center px-3 gap-3">
+                            <div class="flex justify-center items-center gap-3">
                                 <a class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo({{$record->id}}, this)">招待メール</a>
                                 <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md" onclick="deleteVideo({{$record->id}}, this)">削除</button>
                             </div>
@@ -288,7 +288,8 @@
             var base_url = "{{config('app.url')}}";
             Swal.fire({
             html:
-                '<p class="text-justify">'+name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
+                '<h1 class="text-center font-semibold text-lg">下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です</h1>' + '<br /><br />' +
+                '<p class="text-justify">'+ name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
                 '<span class="font-bold">動画名: </span> ' + base_url +'/access-video-record?video_key='+key+' <br />' +
                 '<span class="font-bold">パスコード: </span> ' + code +'</p>',
             showCancelButton: true,
