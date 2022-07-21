@@ -1,4 +1,6 @@
-@extends('authenticated-user.components.layout')
+@extends('authenticated-user.components.layout')@section('page-title')
+<title>{{config('app.name')}} - FAQ</title>
+@endsection
 @section('css')
 @endsection
 @section('head')
@@ -23,7 +25,7 @@
                             <span>OneLookは、PDFなどのファイルについての説明動画を作成、共有することができるクラウドサービスです。</span>
                         </div>
                     </div>
-                    
+
                     <div class="flex flex-col items-center text-left pb-6 gap-6 w-full border border-sky-600 rounded-lg">
                         <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
                         <div class="flex flex-row items-center px-6 gap-4 w-full">
@@ -71,7 +73,7 @@
                             <span>フリープランで3日、パーソナルプランで7日間、保存されます。 期間を過ぎた動画は自動的に削除されます。</span>
                         </div>
                     </div>
-                    
+
                     <div class="flex flex-col items-center text-left pb-6 gap-6 w-full border border-sky-600 rounded-lg">
                         <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
                         <div class="flex flex-row items-center px-6 gap-4 w-full">
@@ -185,7 +187,7 @@
             }
           }
         }
-        
+
         $(document).ready(function(){
             $('#faq-tab').addClass('active');
         });

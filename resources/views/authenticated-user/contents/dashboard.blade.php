@@ -1,4 +1,7 @@
 @extends('authenticated-user.components.layout')
+@section('page-title')
+    <title>{{config('app.name')}} - Home</title>
+@endsection
 @section('css')
 @endsection
 @section('head')
