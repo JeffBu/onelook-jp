@@ -8,7 +8,7 @@
     <div class="flex justify-center items-start text-lg pt-5 w-full">
         <div class="flex flex-col justify-center items-center pt-20 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
             <div class="flex justify-center items-center gap-8">
-                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg> 前</button>
 
@@ -16,7 +16,7 @@
                     ページ: <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
                 </div>
 
-                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">次 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">次 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg></button>
             </div>
@@ -44,7 +44,7 @@
             <div class="flex justify-center items-center gap-4 sm:gap-8">
                 <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <label for="pdfSource" data-tooltip-target="pdf-source" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <label for="pdfSource" data-tooltip-target="pdf-source" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg></label>
                     <input type="file" id="pdfSource" name="pdfSource" accept=".pdf" hidden/>
@@ -54,7 +54,7 @@
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
 
-                <button id="start" data-tooltip-target="start-recording" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button id="start" data-tooltip-target="start-recording" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg></button>
                 <div id="start-recording" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -62,7 +62,7 @@
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
 
-                <button id="stop" data-tooltip-target="stop-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button id="stop" data-tooltip-target="stop-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
                 </svg></button>
@@ -80,7 +80,7 @@
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
 
-                <button id="completion" data-tooltip-target="save-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button id="completion" data-tooltip-target="save-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg></button>
                 <div id="save-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -110,7 +110,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="pencilBtn" onclick="setPencil()" data-tooltip-target="pencil-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <button id="pencilBtn" onclick="setPencil()" data-tooltip-target="pencil-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                     </svg></button>
                     <div id="pencil-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -118,7 +118,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="markerBtn" onclick="setMarker()" data-tooltip-target="marker-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <button id="markerBtn" onclick="setMarker()" data-tooltip-target="marker-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                     </svg></button>
                     <div id="marker-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -141,7 +141,7 @@
                         <option>#FF9900</option>
                     </datalist>
 
-                    <button onclick="undoLast()" data-tooltip-target="undo-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <button onclick="undoLast()" data-tooltip-target="undo-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg></button>
                     <div id="undo-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">

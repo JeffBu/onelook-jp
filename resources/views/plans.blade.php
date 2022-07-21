@@ -43,7 +43,7 @@
 
     <!--content-->
     <div>
-        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-8 pt-20">会員プランを変更します。</h1>
+        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-8 pt-20">会員プラン</h1>
     </div>
     <div class="flex justify-center items-center w-full">
 

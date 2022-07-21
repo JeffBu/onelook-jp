@@ -46,7 +46,7 @@
 
     <!--content-->
     <div class="flex-1 justify-center items-center gap-8 w-full">
-        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">会員プランを変更します。</h1>
+        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">会員プラン</h1>
 
         <div class="flex justify-left items-center gap-8 mx-auto w-1/3">
             <span>変更前：</span>
