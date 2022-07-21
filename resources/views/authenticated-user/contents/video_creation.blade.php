@@ -1,4 +1,7 @@
 @extends('authenticated-user.components.layout')
+@section('page-title')
+    <title>{{config('app.anme')}} - 録画画面はこちらを選択</title>
+@endsection
 @section('css')
 @endsection
 @section('head')
