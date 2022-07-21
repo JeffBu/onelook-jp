@@ -329,10 +329,11 @@
         document.querySelector('button#start').addEventListener('click', async () => {
             Swal.fire({
                 title: "OneLookでの録画方法",
-                html: '<ol>'+
+                html: '<ol class="text-justify">'+
                     '<li> 1. 共有する内容を選択で「Chromeタブ」を選択 </li>' +
                     '<li> 2.「OneLook（録画画面はこちらを選択）」を選択 </li>' +
-                    '<li> 3.「共有ボタン」を押すと録画スタート ★音声ありで録画する場合、左下の「システムの音声を共有」のチェックを外してください。</li>' +
+                    '<li> 3.「共有ボタン」を押すと録画スタート </li>' +
+                    '<li> ★音声ありで録画する場合、左下の「システムの音声を共有」のチェックを外してください。</li>' +
                     '</ol>',
             }).then((result) => {
                 const constraints = {
