@@ -167,8 +167,8 @@
 
                                     <div class="flex justify-center items-center gap-4">
                                         <input type="radio" name="modal-input-notification" id="cb1" data-tooltip-target="marker-toolbar" @if($user->account->notification_on == 1) checked @endif value="1">
-                                        <div id="marker-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                                            閲覧期限の３６時間前に、メールで閲覧期限の終了をお知らせする機能です。通知が不要な方は、なしにチェックしてください。（デフォルトはありにチェック）
+                                        <div id="marker-toolbar" role="tooltip" class="w-1/3 inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                                            閲覧期限の３６時間前に、メールで閲覧期限の終了をお知らせする機能です。 通知が不要な方は、なしにチェックしてください。（デフォルトはありにチェック）
                                             <div class="tooltip-arrow" data-popper-arrow></div>
                                         </div>
                                         <label for="cb1" class="text-gray-500">あり</label>
