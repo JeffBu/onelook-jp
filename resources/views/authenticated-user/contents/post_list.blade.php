@@ -28,7 +28,7 @@
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <video src="{{$url}}" alt="thumbnail" class="h-32 w-48 object-cover" ></video>
-                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">はまずは修正</button>
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">プレビュー</button>
                         </div>
                     </td>
                     <td class="px-4 py-2 border-x border-y border-cyan-600">

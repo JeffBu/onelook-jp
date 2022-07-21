@@ -330,7 +330,7 @@
         document.querySelector('button#start').addEventListener('click', async () => {
             Swal.fire({
                 title: "録画画面選択について",
-                text: 'upfiling.jpのみを録画する場合、録画開始クリック後に1. Chromeタブ 2.upfiling.jpを選択 3. 共有をクリックしてください。4. 音声なしで録画する場合、タブの音声を共有にチェックが入っていることを確認してください。音声ありで録画する場合チェックを外してください。'
+                text: 'OneLookでの録画方法 １　共有する内容を選択で「Chromeタブ」を選択 ２　「OneLook（録画画面はこちらを選択）」を選択 ３　「共有ボタン」を押すと録画スタート ★音声ありで録画する場合、左下の「システムの音声を共有」のチェックを外してください。'
             }).then((result) => {
                 const constraints = {
                     video: {
