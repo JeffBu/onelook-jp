@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "font-awesome": "^4.7.0",
+        "sweetalert2": "^11.4.23",
         "video-js": "^0.5.0",
         "videojs": "^1.0.0",
         "videojs-ima": "^2.0.1"

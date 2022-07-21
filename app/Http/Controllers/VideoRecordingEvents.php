@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Models\VideoRecord;
 use App\Models\VideoView;
+use App\Models\VideoAccess;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
 
@@ -24,11 +25,8 @@ class VideoRecordingEvents extends Controller
 
         $date_now = Carbon::now()->format('Y-m-d_H.i');
         $key = Str::random(16);
-        if ($request->fileName) {
-            $title = $date_now."_".$request->fileName.".mp4";
-        } else {
-            $title = $date_now . '.mp4';
-        }
+        $title = $date_now.".mp4";
+
         $file = $request->file;
         $file_source = file_get_contents($file->getRealPath());
         $size = $file->getSize();
@@ -58,13 +56,19 @@ class VideoRecordingEvents extends Controller
 
 
         DB::transaction(function () use($key, $title, $fileNameToStore, $size, $user_id, $is_invalid){
-            VideoRecord::create([
+            $record = VideoRecord::create([
                 'key' => $key,
                 'title' => $title,
                 'video_path' => $fileNameToStore,
                 'size' => $size,
                 'user_id' => $user_id,
                 'is_invalid' => $is_invalid
+            ]);
+
+            VideoAccess::create([
+                'video_record_key' => $record->key,
+                'access_code' => Str::random(8),
+                'granted_by_user_id' => Auth::user()->id
             ]);
         });
 
@@ -75,11 +79,7 @@ class VideoRecordingEvents extends Controller
     {
         $file = $request->file;
         $date_now = Carbon::now()->format('Y年m月d日H:i');
-        if ($request->fileName) {
-            $name = "{$date_now}_{$request->fileName}.mp4";
-        } else {
-            $name = $date_now . '.mp4';
-        }
+        $name = $date_now.".mp4";
 
         $user = Auth::user()->id;
         $videoFile = file_get_contents($file->getRealPath());

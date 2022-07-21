@@ -72,23 +72,7 @@
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
 
-                <button id="mute" data-tooltip-target="mute-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow">
-                    <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" class="block h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                    </svg>
-
-                    <svg id="unmute-icon" xmlns="http://www.w3.org/2000/svg" class="hidden h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    </svg>
-                </button>
-                <div id="mute-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                    <span id="mute-label" class="block">ミュート</span>
-                    <span id="unmute-label" class="hidden">ミュートを解除する</span>
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-
-                <button id="preview" data-tooltip-target="preview-toolbar" data-tooltip-placement="bottom" data-modal-toggle="previewModal" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button id="preview" data-tooltip-target="preview-toolbar" data-tooltip-placement="bottom" data-modal-toggle="previewModal" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg></button>
@@ -104,14 +88,22 @@
                     完了
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
+
+                <button id="cancel" data-tooltip-target="cancel-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg></button>
+                <div id="cancel-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    キャンセル
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
             </div>
         </nav>
 
         <nav class="flex shadow text-white bg-sky-600 bg-opacity-80 justify-center items-center px-4 py-2 h-11 sm:rounded-t-md tracking-widest fixed left-1/2 -translate-x-1/2 bottom-0 :sm:w-full w-full sm:w-3/5 z-10"
         id="nav-toolbar-2">
             <div class="flex justify-center items-center font-medium text-lg text-theme-white divide-x divide-x-theme-orange w-full">
-                <div class="flex px-8 justify-center items-center gap-4 sm:gap-8">
-                    <button id="pointerBtn" onclick="setPointer()" data-tooltip-target="pointer-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <div class="flex px-8 justify-center items-center gap-4 sm:gap-6">
+                    <button id="pointerBtn" onclick="setPointer()" data-tooltip-target="pointer-toolbar" class="hover:text-theme-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 01M20 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg></button>
                     <div id="pointer-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -155,6 +147,22 @@
                     </svg></button>
                     <div id="undo-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
                         元に戻す
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+
+                    <button id="mute" data-tooltip-target="mute-toolbar" data-tooltip-placement="bottom" class="hover:text-theme-yellow">
+                        <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                        </svg>
+
+                        <svg id="unmute-icon" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        </svg>
+                    </button>
+                    <div id="mute-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        <span id="mute-label" class="block">ミュート</span>
+                        <span id="unmute-label" class="hidden">ミュートを解除する</span>
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
                 </div>
@@ -235,7 +243,7 @@
         const preview = document.querySelector('button#preview');
         const recordedVideo = document.querySelector('video#video');
         const downloadButton = document.querySelector('button#download');
-        
+
         const completion = document.querySelector('button#completion');
         const muteButton = document.querySelector('button#mute');
 
@@ -399,11 +407,9 @@
             const blobUrl = window.URL.createObjectURL(blob);
             fetch(blobUrl).then(response => response.blob())
             .then(blobs => {
-                const name = $("#video_title").val();
                 var form = $('form')[0]; // You need to use standard javascript object here
                 const fd = new FormData(form);
                 fd.append("file", blobs); // where `.ext` matches file `MIME` type
-                fd.append('fileName', name);
                 var url = "{{ route('save-video-to-database') }}"
                 return axios.post(url, fd, {
                     headers: {
@@ -686,22 +692,22 @@
     </script>
 
     <script>
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
+        $(window).on('scroll', function() {
+            if($(window).scrollTop() > 0) {
+                $('#header-frame').css('opacity', '0.8');
             }
             else {
-                jQuery('#header-frame').css('opacity', '1');
+                $('#header-frame').css('opacity', '1');
             }
         });
 
-        jQuery(document).ready(function() {
+        $(document).ready(function() {
             $('#video-maker-tab').addClass('active');
         });
 
         $(document).scroll(function() {})
 
-        jQuery('#mute').on('click', function() {
+        $('#mute').on('click', function() {
             $('#mute-icon').toggle();
             $('#unmute-icon').toggle();
             $('#mute-label').toggle();

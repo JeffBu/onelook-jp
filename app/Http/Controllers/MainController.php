@@ -129,6 +129,16 @@ class MainController extends Controller
         return view('payment_history_2', $data);
     }
 
+    public function faq_page()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('authenticated-user.contents.faq', $data);
+    }
+
     public function admin_home()
     {
         $user = Auth::user();
@@ -194,11 +204,6 @@ class MainController extends Controller
 
     public function registration_page() {
         return view('registration');
-    }
-
-    public function faq_page()
-    {
-        return view('faq');
     }
 
 }

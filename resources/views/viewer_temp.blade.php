@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
     <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
-    <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet">
+    <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
 </head>
 
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
@@ -48,8 +48,8 @@
                 </div>
 
                 <div class="border border-white w-full">
-                    <video class="video-js w-full vjs-theme-city" id="playback-video" controls type="video/mp4">
-                        <source src="https://storage.googleapis.com/onelook-storage/{{str_replace(' ', '%20', $record->video_path)}}">
+                    <video class="video-js w-full vjs-theme-fantasy" id="playback-video" controls type="video/mp4">
+                        <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
                 </div>
 
