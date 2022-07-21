@@ -12,7 +12,7 @@
 
             <div class="flex-1 justify-center items-center pt-16 mt-3">
                 <div class="grid :sm:grid-rows-3 md:grid-cols-3 justify-center items-center scroll-mt-24 gap-6 w-full h-1/2" id="home">
-                    <a href="{{route('video-creation')}}" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                    <a href="{{route('video-creation')}}" onclick="window.open('{{route('video-creation')}}', 'newwindow', 'width=883, height=584, top=40, left=80'); return false;" class="flex flex-col items-center text-left gap-10 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                         <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">ムービーの作成</span>
                         <img src="{{asset('media/video-editing.png')}}" alt="Video Creation Icon" data-tooltip-target="create-toolbar" class="h-32 w-32">
                         <div id="create-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
