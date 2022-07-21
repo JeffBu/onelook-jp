@@ -287,11 +287,10 @@
         function copyLink(key, code, name){
             var base_url = "{{config('app.url')}}";
             Swal.fire({
-            title: '下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です',
             html:
-                name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
-                '動画名： ' + base_url +'/access-video-record?video_key='+key+' <br />' +
-                'パスコード: ' + code,
+                '<p class="text-justify">'+name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
+                '<span class="font-bold">動画名: </span> ' + base_url +'/access-video-record?video_key='+key+' <br />' +
+                '<span class="font-bold">パスコード: </span> ' + code +'</p>',
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:
