@@ -43,7 +43,7 @@
                                     なし
                                 @endif
                             </p>
-                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="changeAccessCode('{{$record->key}}')">編集</button>
+                            <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="changeAccessCode('{{$record->key}}', @if($record->access) '{{$record->access->access_code}}' @else '12345678'@endif)">編集</button>
                         </div>
                     </td>
                     <td class="px-4 py-2 border-x border-y border-cyan-600">
@@ -64,7 +64,7 @@
                         <div class="flex-1 justify-center items-center">
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
                             <div class="flex justify-center items-center py-2 gap-3">
-                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}')" @endif>リンクコピー</button>
+                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
                                 <a href="{{$url}}" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
                             <div class="flex justify-center items-center gap-3">
@@ -284,38 +284,48 @@
 
         $(document).scroll(function() {})
 
-        function copyLink(key, code, name){
+        function copyLink(key, code, name, exp_date){
             var base_url = "{{config('app.url')}}";
-            Swal.fire({
-            html:
-                '<h1 class="text-center font-semibold text-lg">下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です</h1>' + '<br /><br />' +
+            var html = '<h1 class="text-center font-semibold text-lg">下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です</h1>' + '<br /><br />' +
                 '<p class="text-justify">'+ name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
                 '<span class="font-bold">動画名: </span> ' + base_url +'/access-video-record?video_key='+key+' <br />' +
-                '<span class="font-bold">パスコード: </span> ' + code +'</p>',
+                '<span class="font-bold">パスコード: </span> ' + code +'<br />'+
+                '<span class="font-bold">動画の有効期限：</span> ' + exp_date +
+                '</p>'
+            Swal.fire({
+            html: html,
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:
                 '招待状をコピー',
             cancelButtonText:
                 'キャンセル',
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    copyMessage =   name+ ' さんが、あなたを動画閲覧に招待しています。\n\n\n\n' +
+                                    '動画名: \t'+ base_url +'/access-video-record?video_key='+key+ '\n' +
+                                    'パスコード: \t' + code + '\n' +
+                                    '動画の有効期限：\t' + exp_date + ''
+                    navigator.clipboard.writeText(copyMessage)
+                }
             })
         }
 
-        function changeAccessCode(key)
+        function changeAccessCode(key, code)
         {
             var html = '<div class="md:flex md:items-center mb-6 gap-1">'
                 html += '<div class="md:w-2/3">'
-                html += '<input class="text-center bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="codeField" type="text">'
+                html += '<input class="text-center bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="codeField" type="text" value="'+code+'">'
                 html += '</div>'
                 html += '<div class="md:w-1/3">'
                 html += '<button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="generateCode(8)">ランダム化</button>'
                 html += '</div>'
                 html += '</div>'
             Swal.fire({
-                title: 'アクセスコードを生成する',
+                title: 'パスコードを変更する',
                 html: html,
                 showCancelButton: true,
-                confirmButtonText: '確認',
+                confirmButtonText: '変更する',
                 cancelButtonText: 'キャンセル',
                 showLoaderOnConfirm: true,
                 preConfirm: function() {

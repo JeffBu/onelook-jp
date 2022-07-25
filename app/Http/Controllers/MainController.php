@@ -86,7 +86,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('subscription_2', $data);
+        return view('authenticated-user.contents.subscription_2', $data);
     }
 
     public function edit_member_info()
