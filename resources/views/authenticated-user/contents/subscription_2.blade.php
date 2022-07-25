@@ -83,8 +83,17 @@
 
             <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
                 <p class="px-4 py-4 text-center">留意点</p>
-                <p class="px-4 py-4">1 パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。なお、変更申込以後はパーソナルプランの機能のご利用が可能です。パーソナルプランの解約は、申込日の翌月1日以後から可能です。</p>
-                <p class="px-4 py-4">2 パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。なお、変更日以後はパーソナルプランの機能のご利用はできなくなります。</p>
+                <ol class="list-decimal text-justify">
+                    <li class="px-4 py-4">
+                        パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。<br />
+                        なお、変更申込以後はパーソナルプランの機能のご利用が可能です。<br />
+                        パーソナルプランの解約は、申込日の翌月２日以後から可能です。
+                    </li>
+                    <li class="px-4 py-4">
+                        パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。<br />
+                        なお、変更日以後はパーソナルプランの機能のご利用はできなくなります。
+                    </li>
+                </ol>
             </div>
         </div>
 
@@ -96,8 +105,15 @@
 
             <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
                 <p class="px-4 py-4 text-center">留意点</p>
-                <p class="px-4 py-4">1 本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。なお、解約日以後は本サービスの機能のご利用はできなくなります。</p>
-                <p class="px-4 py-4">2 パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約できません。</p>
+                <ol class="list-decimal text-justify">
+                    <li class="px-4 py-4">
+                        パーソナルプランの解約は、パーソナルプランの申込日の翌月２日以降から可能です。
+                    </li>
+                    <li class="px-4 py-4">
+                        パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。<br />
+                        なお、変更日以後は、新規の動画作成についてのパーソナルプランの機能のご利用はできなくなります。
+                    </li>
+                </ol>
             </div>
         </div>
 
@@ -109,8 +125,15 @@
 
             <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
                 <p class="px-4 py-4 text-center">留意点</p>
-                <p class="px-4 py-4">1　本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。なお、解約日以後は本サービスの機能のご利用はできなくなります。</p>
-                <p class="px-4 py-4">2　パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約はできません。</p>
+                <ol class="list-decimal text-justify">
+                    <li class="px-4 py-4">
+                        本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。<br />
+                        なお、解約日以後は本サービスの機能のご利用はできなくなります。
+                    </li>
+                    <li class="px-4 py-4">
+                        パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約できません。
+                    </li>
+                </ol>
             </div>
         </div>
 
@@ -192,7 +215,7 @@
 
         function changePlan() {
             $('#upgrade_plan').css('display', 'block')
-            $('#select_button_text').html('パーソナルプランについての注意点')
+            $('#select_button_text').html('パーソナルプランの申込')
             $('#cancel_service').css('display', 'none')
             $('#cancel_plan').css('display', 'none');
             $('#menu-dropdown').css('display', 'none')

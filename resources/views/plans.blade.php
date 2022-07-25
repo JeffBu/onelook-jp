@@ -101,6 +101,12 @@
                     <td class="px-3 py-3 border-x border-y border-cyan-600">あり</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">なし</td>
                 </tr>
+                <tr>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"></td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Signup for Free</button></td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Register</button></td>
+                    <td class="px-3 py-3"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Contact Us</button></td>
+                </tr>
             </tbody>
         </table>
 
