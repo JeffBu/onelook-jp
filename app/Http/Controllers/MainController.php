@@ -206,4 +206,9 @@ class MainController extends Controller
         return view('registration');
     }
 
+    public function promotion_team()
+    {
+        return view('for-promoting-team.index');
+    }
+
 }
