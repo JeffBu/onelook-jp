@@ -27,7 +27,7 @@
                 <a href="{{route('login')}}">Login</a>
             </div>
             <div class="font-semibold px-2 py-1 rounded-sm bg-theme-yellow text-theme-black hover:bg-yellow-400 hover:text-theme-white">
-                <a href="{{route('registration')}}">Sign Up</a>
+                <a href="{{route('register')}}">Sign Up</a>
             </div>
         </div>
 
