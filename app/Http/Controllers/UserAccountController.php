@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
 
 use App\Models\User;
 
@@ -47,12 +49,42 @@ class UserAccountController extends Controller
     {
         $token  = $request->token;
 
-        $user = User::where('remember_token', $token)->first();
+        $user = User::where('email_verification_token', $token)->first();
 
         $data = array(
             'user' => $user
         );
-
+        if($user->email_verified_at != '')
+        {
+            abort(403);
+        }
         return view('auth.update-password', $data);
+    }
+
+    public function verify_email(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => ['required',
+               'min:6',
+               'confirmed']
+        ]);
+
+        if($validator->fails()){
+            return redirect()->route('update-password', ['token' => $request->token])
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $user = User::where('email_verification_token', $request->token)->first();
+
+        $user->update([
+            'password' => Hash::make($request->password),
+            'email_verified_at' => Carbon::now()
+        ]);
+
+        if($user->save())
+        {
+            return redirect()->route('login');
+        }
     }
 }
