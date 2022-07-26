@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'login_id', 'username', 'name', 'email', 'password',
+        'username', 'name', 'email', 'password', 'email_verification_token'
     ];
 
     /**
@@ -62,5 +62,10 @@ class User extends Authenticatable
     public function account()
     {
         return $this->hasOne(Subscribers::class);
+    }
+
+    public function generateToken()
+    {
+
     }
 }

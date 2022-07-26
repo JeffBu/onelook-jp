@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
 
+use App\Models\User;
+
 class UserAccountController extends Controller
 {
     public function modify_account(Request $request)
@@ -39,5 +41,18 @@ class UserAccountController extends Controller
             'notification_on' => $request->notification_status
         ]);
         return 1;
+    }
+
+    public function update_password(Request $request)
+    {
+        $token  = $request->token;
+
+        $user = User::where('remember_token', $token)->first();
+
+        $data = array(
+            'user' => $user
+        );
+
+        return view('auth.update-password', $data);
     }
 }

@@ -27,7 +27,7 @@
                 <a href="{{route('login')}}">ログイン</a>
             </div>
             <div class="font-semibold px-2 py-1 rounded-sm bg-theme-yellow text-theme-black hover:bg-yellow-400 hover:text-theme-white">
-                <a href="{{route('register')}}">無料会員登録</a>
+                <a href="{{route('registration')}}">無料会員登録</a>
             </div>
         </div>
 
@@ -108,6 +108,20 @@
     <!--scripts-->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @if(Session::has('message'))
+        <script>
+            $(document).ready(function () {
+                var message = "{{Session::get('message', '')}}"
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+        </script>
+    @endif
     <script>
         tailwind.config = {
           theme: {

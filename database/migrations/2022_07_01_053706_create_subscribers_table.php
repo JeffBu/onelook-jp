@@ -17,8 +17,8 @@ class CreateSubscribersTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('user_id');
             $table->string('company');
-            $table->string('address');
-            $table->string('phone_number');
+            $table->string('address')->nullable();
+            $table->string('phone_number')->nullable();
             $table->boolean('notification_on')->nullable()->default(false);
             $table->timestamps();
             $table->softDeletes();
