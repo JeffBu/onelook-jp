@@ -65,11 +65,11 @@
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
                             <div class="flex justify-center items-center py-2 gap-3">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
-                                <a href="{{$url}}" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
+                                <a href="{{$url}}" class="hidden container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
                             <div class="flex justify-center items-center gap-3">
-                                <a class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo({{$record->id}}, this)">招待メール</a>
-                                <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md" onclick="deleteVideo({{$record->id}}, this)">削除</button>
+                                <a class="hidden container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo({{$record->id}}, this)">招待メール</a>
+                                <button class="hidden container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md" onclick="deleteVideo({{$record->id}}, this)">削除</button>
                             </div>
                         </div>
                     </td>
