@@ -206,6 +206,10 @@ class MainController extends Controller
         return view('registration');
     }
 
+    public function registration_complete() {
+        return view('registration_complete');
+    }
+
     public function promotion_team()
     {
         return view('for-promoting-team.index');
