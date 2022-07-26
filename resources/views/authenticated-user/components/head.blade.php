@@ -2,17 +2,17 @@
 <header class="flex bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50 shadow"
 id="header-frame">
 
-    <button onclick="openSidebar()" class="flex sm:hidden">
+    <button onclick="openSidebar()" class="flex md:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hover:text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </button>
 
-    <div class="hidden sm:flex items-center w-32">
+    <div class="hidden md:flex items-center w-32">
         <a href="{{route('dashboard')}}" class="font-semibold text-theme-white text-xl">{{config('app.name')}}</a>
     </div>
 
-    <div class="hidden sm:flex justify-center items-start gap-8 py-6 font-small text-sm font-bold text-theme-white w-full">
+    <div class="hidden md:flex justify-center items-start gap-8 py-6 font-small text-sm font-bold text-theme-white w-full">
         <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
         <a href="{{route('video-creation')}}" onclick="window.open('{{route('video-creation')}}', 'newwindow', 'width=883, height=584, top=40, left=80'); return false;" id="video-maker-tab">ムービー作成</a>
         <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>

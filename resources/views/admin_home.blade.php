@@ -31,13 +31,13 @@
 <body class="justify-center shadow-sm items-center bg-theme-white text-theme-black font-['Calibri']">
 
     <!--content-->
-    <div class="flex justify-center items-center w-full">
-        <nav class="flex-1 px-2 justify-left items-center text-center w-64 nav-bg shadow-md divide-y divide-theme-white h-screen fixed left-0 top-0">
-            <div class="flex justify-left px-4 py-6 items-center text-xl font-semibold text-theme-white gap-3">
+    <div class="flex flex-row justify-center items-center min-h-screen w-full">
+        <nav id="menu" class="hidden sm:flex flex-col px-2 justify-left items-center text-center w-72 nav-bg shadow-md divide-y divide-theme-white min-h-screen">
+            <div class="flex justify-left px-4 py-6 items-center text-xl font-semibold text-theme-white gap-3 w-full">
                 {{config('app.name')}}
             </div>
 
-            <div class="py-4">
+            <div class="py-4 w-full">
                 <a href="#" class="flex px-4  py-2 justify-left items-center text-base font-semibold text-theme-white gap-3 w-full" id="user"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
                 </svg> ユーザー</a>
@@ -59,16 +59,37 @@
                 <a href="#" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white hover:bg-slate-500 hover:bg-opacity-20 rounded-md gap-3 w-full" id="settings"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                 </svg> 各種設定</a>
+
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex px-4 py-2 justify-left items-center text-base font-semibold text-theme-white hover:bg-slate-500 hover:bg-opacity-20 rounded-md gap-3 w-full" id="settings"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg> ログアウト</a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
             </div>
         </nav>
 
-        <div class="flex flex-col justify-center items-center ml-64 w-full">
-            <div class="flex justify-between items-center px-4 header-bg h-12 w-full sticky top-0">
-                <h1 class="text-lg font-semibold text-theme-white">ホーム</h1>
+        <div id="content" class="flex flex-col justify-center items-center w-full">
+            <div class="flex justify-between items-center px-4 header-bg h-12 w-full sticky top-0 z-30">
+                <div class="flex justify-start items-center gap-8">
+                    <div class="hidden sm:flex justify-start items-center">
+                        <button id="close-button" onclick="closeMenu()" class="flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg></button>
+                        <button id="open-button" onclick="openMenu()" class="hidden"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg></button>
+                    </div>
+                    <button id="menu-button" onclick="toggleMenu()" class="flex sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg></button>
+                    <h1 class="text-lg font-semibold text-theme-white">ホーム</h1>
+                </div>
                 <h1 class="text-lg font-semibold text-theme-white">管理画面</h1>
             </div>
 
-            <div class="flex flex-col justify-center items-center mt-8 w-3/4">
+            <div class="flex flex-col justify-center items-center mt-8 w-3/4 z-10">
                 <div class="text-left w-full">
                     <h1 class="text-xl font-semibold text-lime-600">登録状況</h1>
                 </div>
@@ -220,8 +241,26 @@
 
         $(document).ready(function(){
             $('#home').addClass('active');
-
         });
+
+        function closeMenu() {
+            $('#menu').toggle();
+            $('#close-button').toggle();
+            $('#open-button').toggle();
+            $('#content').css('margin-left', '0');
+        }
+
+        function openMenu() {
+            $('#menu').toggle();
+            $('#close-button').toggle();
+            $('#open-button').toggle();
+            $('#content').css('margin-left', '256px');
+        }
+
+        function toggleMenu() {
+            $('#menu').toggle();
+            $('#menu').css('z-index', '20');
+        }
 
     </script>
     <!--script ends here-->

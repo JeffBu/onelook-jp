@@ -59,6 +59,7 @@ Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_re
 Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
 Route::get('registration', [MainController::class, 'registration_page'])->name('registration');
+Route::get('registration-complete', [MainController::class, 'registration_complete'])->name('registration-complete');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 
 Route::get('promotion', [MainController::class, 'promotion_team'])->name('promotion');
