@@ -51,7 +51,7 @@
             それを言葉で伝えたらすぐにわかるのに、をシンプルに解決します！
         </div>
 
-        <div class="flex flex-col lg:flex-row items-center text-center text-base sm:text-lg text-theme-black justify-between w-full gap-0 lg:gap-4 xl:gap-8 2xl:gap-40">
+        <div class="flex flex-col lg:flex-row items-center text-center text-base sm:text-lg text-theme-black justify-between w-full gap-0 lg:gap-4 xl:gap-20 2xl:gap-40">
             <div class="flex flex-col justify-center items-center px-4 py-4 gap-6">
                 <span class="text-2xl text-sky-600 font-bold">動画を使ってビジネスのDXに対応</span>
                 <span class="px-4 py-4 border border-sky-600 rounded-lg h-80 2xl:h-72">資料チェックなどで資料を指さして「ここ、これ」を表現できたらもっと効率的だと思いませんか？ OneLookでは実際に資料をポイントしながら言葉でコメントした動画作成が簡単にできます。</span>
