@@ -330,6 +330,7 @@
                 showLoaderOnConfirm: true,
                 preConfirm: function() {
                     var access_code = $('#codeField').val()
+
                     var url = "{{route('save-access-code')}}"
                     return axios.post(url, {
                         code : access_code,
