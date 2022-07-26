@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use App\Mail\NewRegistration;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Session;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -24,29 +28,28 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'company_name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string'],
-            'phone_number' => ['required', 'string'],
-            'username' => ['required', 'string', 'max:10'],
             'full_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
         return DB::transaction(function () use ($input) {
-            return tap(User::create([
-                'username' => $input['username'],
+            $user = User::create([
                 'name' => $input['full_name'],
                 'email' => $input['email'],
-                'password' => Hash::make($input['password']),
-            ]), function (User $user) use($input) {
+                'password' => Hash::make(Str::random(10)),
+                'email_verification_token' => Str::random(100),
+            ]);
+
+            if($input['company_name'] != '' && $input['company_name'] != null)
+            {
                 $this->createSubscriber($user, $input);
-                $user->update([
-                    'login_id' => 'U'.date('Y').$user->id
-                ]);
-                $user->save();
-            });
+            }
+
+            $user->createToken('AuthToken');
+            $this->sendMail($user);
+
+            Session::put('message', 'Account created. Check your email for confirmation.');
+            return redirect()->route('view-plans');
         });
     }
 
@@ -58,13 +61,13 @@ class CreateNewUser implements CreatesNewUsers
      * @return void
      */
 
+
+
      protected function createSubscriber(User $user, $input)
      {
         Subscribers::forceCreate([
             'user_id' => $user->id,
             'company' => $input['company_name'],
-            'address' => $input['address'],
-            'phone_number' => $input['phone_number']
         ]);
      }
 
@@ -81,5 +84,15 @@ class CreateNewUser implements CreatesNewUsers
             'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
         ]));
+    }
+
+    protected function sendMail(User $user)
+    {
+        if($user)
+        {
+            Mail::to($user->email)->send(new NewRegistration($user->email_verification_token, $user->email, $user->name));
+
+
+        }
     }
 }

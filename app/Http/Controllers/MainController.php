@@ -34,6 +34,11 @@ class MainController extends Controller
         $data = array(
             'user' => $user,
         );
+
+        if($user->is_admin == 1)
+        {
+            return redirect()->route('admin-home');
+        }
         return view('authenticated-user.contents.dashboard', $data);
     }
 

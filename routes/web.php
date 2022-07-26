@@ -6,6 +6,7 @@ use App\Http\Controllers\PDFEventsController;
 use App\Http\Controllers\VideoRecordingEvents;
 use App\Http\Controllers\VideoAccessController;
 use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::middleware([
     Route::get('admin-viewer', [MainController::class, 'admin_viewer'])->name('admin-viewer');
 });
 
+Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');
+Route::post('update-password', [UserAccountController::class, 'verify_email']);
 Route::post('download-file', [VideoAccessController::class, 'download_file'])->name('download');
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
 Route::post('save-video-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-video-to-database');
