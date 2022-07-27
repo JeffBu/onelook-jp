@@ -194,6 +194,16 @@ class MainController extends Controller
         return view('admin_viewer', $data);
     }
 
+    public function admin_settings()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('admin_settings', $data);
+    }
+
     public function test_video()
     {
         $video = VideoRecord::find(2);
