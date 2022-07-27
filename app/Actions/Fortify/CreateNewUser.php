@@ -91,8 +91,6 @@ class CreateNewUser implements CreatesNewUsers
         if($user)
         {
             Mail::to($user->email)->send(new NewRegistration($user->email_verification_token, $user->email, $user->name));
-
-
         }
     }
 }

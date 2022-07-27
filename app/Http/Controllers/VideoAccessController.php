@@ -7,6 +7,10 @@ use App\Models\VideoAccess;
 use App\Models\VideoRecord;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+use App\Mail\InvitationToWatchVideoMail;
+use Illuminate\Support\Facades\Mail;
 
 class VideoAccessController extends Controller
 {
@@ -48,5 +52,23 @@ class VideoAccessController extends Controller
         $name = $file_db->title;
 
         return array(url($file), $name);
+    }
+
+    public function send_invitation(Request $request)
+    {
+        $record = VideoRecord::find($request->record_id);
+
+        $validator = Validator::make($request->all(), [
+            'target' => 'required|email:rfc,dns'
+        ]);
+
+        if($validator->fails())
+        {
+            return $validator->getMessageBag();
+        }
+
+        Mail::to($request->target)->send(new InvitationToWatchVideoMail(Auth::user(), $record->key, $record->access->access_code, $record));
+
+        return 1;
     }
 }
