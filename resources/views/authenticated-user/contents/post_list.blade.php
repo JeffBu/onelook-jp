@@ -30,7 +30,11 @@
                     <td class="px-4 py-2 border-y border-cyan-600">{{$record->id}}</td>
                     <td class="px-4 py-2 border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
-                            <div data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')" class="cursor-pointer">
+                            <div data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')" class="flex justify-center items-center cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fixed opacity-50 text-neutral-800"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
                                 <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
                             </div>
                             <button class="hidden container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">プレビュー</button>
@@ -225,12 +229,12 @@
         <div class="modal-dialog modal-lg relative w-auto pointer-events-none">
           <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
             <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLgLabel">
+              <h5 class="text-xl font-medium leading-normal text-neutral-800" id="exampleModalLgLabel">
                 プレビュー
               </h5>
               <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-modal-toggle="previewModal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                class="flex items-center btn-close box-content rounded-full opacity-60 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-neutral-900 hover:opacity-75 hover:no-underline"
+                data-modal-toggle="previewModal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                   </svg></button>
             </div>
