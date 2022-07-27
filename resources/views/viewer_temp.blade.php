@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="border border-white w-full">
-                    <video class="video-js w-full vjs-theme-fantasy" id="playback-video" controls type="video/mp4">
+                    <video class="video-js w-full vjs-theme-fantasy vjs-fluid" id="playback-video" controls type="video/mp4">
                         <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
                 </div>
