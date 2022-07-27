@@ -65,7 +65,7 @@
                             <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
                             <div class="flex justify-center items-center py-2 gap-3 w-full">
                                 <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
-                                <a class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">招待メール</a>
+                                <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
                                 <a href="{{$url}}" class="hidden container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
                             </div>
                             <div class="flex justify-center items-center gap-3">
@@ -361,6 +361,53 @@
         {
             var video = document.querySelector('#video')
             video.src = path
+        }
+
+        function sendInvitationMail(id)
+        {
+            Swal.fire({
+                title: '電子メールを介して招待リンクを送信します。',
+                input: 'email',
+                inputLabel: '電子メールアドレス',
+                confirmButtonText: '招待状を送る',
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                preConfirm: (email) => {
+                    var url = "{{route('send-invitation')}}"
+                    return axios.post(url, {
+                        record_id: id,
+                        target: email
+                    }).then((response) => {
+                        if(response.data != 1) {
+                            return 2
+                        }
+                        return 1
+                    }).catch((error) => {
+                        Swal.showValidationMessage(
+                            'Request failed: ' + error.response.data
+                        )
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if(result.value == 1) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '招待状が正常に送信されました。',
+                        timer: 2000,
+                        showConfirmButton: false
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '予期せぬエラーが発生した。',
+                        text: '後でもう一度やり直してください。',
+                        timer: 3000,
+                        showConfirmButton: false
+                    })
+                }
+            })
         }
 
         function downloadVideo(id, button)

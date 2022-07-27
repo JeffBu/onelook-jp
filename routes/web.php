@@ -39,7 +39,7 @@ Route::middleware([
     Route::get('payment-history-2', [MainController::class, 'payment_history_2'])->name('payment-history-2');
 
     Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');
-
+    Route::post('send-invitation', [VideoAccessController::class, 'send_invitation'])->name('send-invitation');
 
     Route::get('admin-home', [MainController::class, 'admin_home'])->name('admin-home');
     Route::get('admin-member-list', [MainController::class, 'admin_member_list'])->name('admin-member-list');
