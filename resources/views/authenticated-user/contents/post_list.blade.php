@@ -14,7 +14,6 @@
         <table class="text-center w-4/5 border border-sky-700">
             <thead class="bg-sky-600 text-theme-white">
                 <tr>
-                    <th class="px-4 py-2 border-sky-700 font-medium">No.</th>
                     <th class="px-4 py-2 border-sky-700 font-medium">動画名</th>
                     <th class="px-4 py-2 border-sky-700 w-2/12 font-medium">パスコード</th>
                     <th class="px-4 py-2 border-sky-700 font-medium">投稿日</th>
@@ -27,7 +26,6 @@
                 @forelse($video_records as $record)
                 <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                 <tr class="hover:bg-neutral-200">
-                    <td class="px-4 py-2 border-y border-cyan-600">{{$record->id}}</td>
                     <td class="px-4 py-2 border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <div data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')" class="flex justify-center items-center cursor-pointer">
@@ -310,10 +308,10 @@
                 'キャンセル',
             }).then((result) => {
                 if(result.isConfirmed) {
-                    copyMessage =   name+ ' さんが、あなたを動画閲覧に招待しています。\n\n\n\n' +
-                                    '動画名: \t'+ base_url +'/access-video-record?video_key='+key+ '\n' +
-                                    'パスコード: \t' + code + '\n' +
-                                    '動画の有効期限：\t' + exp_date + ''
+                    copyMessage =   name+ ' さんが、あなたを動画閲覧に招待しています。\n\n' +
+                                    '動画名: '+ base_url +'/access-video-record?video_key='+key+ '\n' +
+                                    'パスコード: ' + code + '\n' +
+                                    '動画の有効期限：' + exp_date + ''
                     navigator.clipboard.writeText(copyMessage)
                 }
             })
