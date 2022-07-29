@@ -49,7 +49,7 @@
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->address}}</td>
+                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->address}} -</td>
                 </tr>
 
                 <tr>

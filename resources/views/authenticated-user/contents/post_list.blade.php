@@ -31,7 +31,7 @@
                     <td class="px-4 py-2 border-y border-cyan-600">
                         <div class="flex-1 justify-center items-center">
                             <div data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')" class="flex justify-center items-center cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 fixed opacity-50 text-neutral-800"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 absolute opacity-50 text-neutral-800"
                                 viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                                 </svg>
