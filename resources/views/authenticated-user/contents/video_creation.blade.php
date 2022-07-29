@@ -8,7 +8,7 @@
     <div class="flex justify-center items-start text-lg pt-5 w-full">
         <div class="flex flex-col justify-center items-center pt-20 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
             <div class="flex justify-center items-center gap-8">
-                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <!--<button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg> 前</button>
 
@@ -18,7 +18,7 @@
 
                 <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">次 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg></button>
+                </svg></button>-->
             </div>
 
             <div class="flex justify-center items-center mt-5 text-white">
@@ -40,7 +40,7 @@
     <div class="flex justify-center items-start w-full">
         <!--toolbar-->
         <div class="flex flex-col justify-center items-center fixed left-1/2 -translate-x-1/2 top-0 w-full">
-            <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-b-md tracking-widest w-full sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3 z-10"
+            <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-b-md tracking-widest w-full z-10"
             id="nav-toolbar-1">
                 <div class="flex justify-center items-center gap-4 sm:gap-8">
                     <form action="" method="POST" enctype="multipart/form-data">
@@ -96,6 +96,33 @@
                         キャンセル
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
+
+                    <button data-tooltip-target="previous-toolbar" class="flex items-center text-base text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        <span class="hidden sm:flex">前</span>
+                    </button>
+                    <div id="previous-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        前
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+
+                    <div class="flex flex-row text-base text-cyan-800 font-semibold">
+                        <span class="hidden sm:flex">ページ:</span>
+                        <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
+                    </div>
+
+                    <button data-tooltip-target="next-toolbar" class="flex items-center text-base text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">
+                        <span class="hidden sm:flex">次</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <div id="next-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        次
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
                 </div>
             </nav>
 
@@ -119,8 +146,9 @@
                 </svg>
             </button>
 
-            <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-t-md tracking-widest w-full sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3 z-10"
+            <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-t-md tracking-widest w-full z-10"
             id="nav-toolbar-2">
+            <!--sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3-->
                 <div class="flex justify-center items-center font-medium text-lg w-full">
                     <div class="flex px-8 justify-center items-center gap-4 sm:gap-6">
                         <button id="pointerBtn" onclick="setPointer()" data-tooltip-target="pointer-toolbar" class="h-5 w-5 hover:text-theme-yellow">
