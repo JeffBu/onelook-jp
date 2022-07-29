@@ -7,6 +7,7 @@ use App\Http\Controllers\VideoRecordingEvents;
 use App\Http\Controllers\VideoAccessController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,7 @@ Route::get('registration', [MainController::class, 'registration_page'])->name('
 Route::get('registration-complete', [MainController::class, 'registration_complete'])->name('registration-complete');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 
-Route::get('promotion', [MainController::class, 'promotion_team'])->name('promotion');
+Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 
 Route::get('test', function() {
     return view('viewer_temp');
