@@ -19,7 +19,7 @@
     id="header_frame">
 
         <div class="justify-center items-center">
-            <div class="font-semibold text-theme-white">OneLook</div>
+            <a href="{{route('home')}}" class="font-semibold text-theme-white">OneLook</a>
         </div>
 
         <div class="flex justify-center items-center gap-5 py-6 text-sm">

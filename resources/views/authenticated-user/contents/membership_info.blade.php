@@ -14,7 +14,7 @@
             <thead class="bg-cyan-600 text-theme-white">
                 <tr>
                     <th class="px-1 py-1 border-x border-sky-700">使用状況</th>
-                    <th colspan="3" class="px-1 py-1 border-x border-sky-700">投稿動画：●件（うち閲覧期限内の動画：●件）<br>投稿可能件数：●件/50件（月末まで）</th>
+                    <th colspan="3" class="px-1 py-1 border-x border-sky-700">投稿動画：●件（うち閲覧期限内の動画：●件）<br><br>投稿可能件数：●件/50件（月末まで）</th>
                     <th class="px-1 py-1 border-x border-sky-700"></th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">会社名等（任意）</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->company}}</td>
-                    <td rowspan="8" class="px-8 py-1 border-x border-y border-cyan-600">
+                    <td rowspan="3" class="px-8 py-1 border-x border-y border-cyan-600">
                         <button data-modal-toggle="edit-member-info" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </td>
                 </tr>
@@ -42,7 +42,7 @@
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->name}}</td>
                 </tr>
 
-                <tr>
+                <!--<tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">住所</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">〒550-0044</td>
                 </tr>
@@ -60,7 +60,7 @@
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">ユーザー名</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->username}}</td>
-                </tr>
+                </tr>-->
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">メールアドレス</td>
@@ -79,17 +79,20 @@
                     </td>
                 </tr>
 
-                <tr>
+                <!--<tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">ログインID</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->login_id}}</td>
-                    <td rowspan="2" class="items-center px-8 py-1 border-x border-y border-cyan-600">
+                    <td  class="items-center px-8 py-1 border-x border-y border-cyan-600">
                         <button data-modal-toggle="change-password" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </td>
-                </tr>
+                </tr>-->
 
                 <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">パスワード</td>
                     <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">********</td>
+                    <td  class="items-center px-8 py-1 border-x border-y border-cyan-600">
+                        <button data-modal-toggle="change-password" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                    </td>
                 </tr>
 
                 <tr>

@@ -26,24 +26,25 @@
     id="header_frame">
 
         <div class="justify-center items-center">
-            <div class="font-semibold text-theme-white">OneLook</div>
+            <a href="{{route('home')}}" class="font-semibold text-theme-white">OneLook</a>
         </div>
 
-        <div class="flex justify-center items-center gap-5 py-6 text-sm">
+        <!--<div class="flex justify-center items-center gap-5 py-6 text-sm">
             <div class="font-semibold text-theme-white hover:text-yellow-300">
-                <a href="{{route('login')}}">Login</a>
+                <a href="{{route('login')}}">ログイン</a>
             </div>
             <div class="font-semibold px-2 py-1 rounded-sm bg-theme-yellow text-theme-black hover:bg-yellow-400 hover:text-theme-white">
-                <a href="{{route('register')}}">Sign Up</a>
+                <a href="{{route('registration')}}">無料会員登録</a>
             </div>
-        </div>
+        </div>-->
 
     </header>
     <!--header ends here-->
 
     <!--content-->
-    <div class="flex justify-center items-center text-center text-white text-lg font-semibold pt-11 w-full">
-        <span class="px-4 py-2 bg-green-500 h-11 w-full">Account successfully created! Please check your email for verification process.</span>
+    <div class="flex justify-center items-center text-center text-white text-lg font-medium pt-11 w-full">
+        <!--<span class="px-4 py-2 bg-emerald-500 h-11 w-full">Account successfully created! Please check your email for verification process.</span>-->
+        <span class="px-4 py-2 bg-emerald-500 h-11 w-full">アカウントが作成されました！ 確認プロセスについては、メールを確認してください。</span>
     </div>
 
     <div class="py-20"></div>
