@@ -23,6 +23,10 @@
                 transition-delay: 1s;
             }
 
+            .button-pointer {
+                cursor: url('{{asset('media/button-pointer.png')}}'), auto;
+            }
+
         </style>
 
         @yield('css')

@@ -21,12 +21,11 @@
                 </svg></button>-->
             </div>
 
-            <div class="flex justify-center items-center mt-5 text-white">
+            <div class="flex justify-center items-center mt-5 text-white w-full">
                 <canvas id="pdf-canvas"></canvas>
             </div>
         </div>
-        <input type="hidden" id="file_url" name="file_url" class="form-control" placeholder="動画のURLを表示"
-                    readonly>
+        <input type="hidden" id="file_url" name="file_url" class="form-control" placeholder="動画のURLを表示" readonly>
 
         {{-- <div class="flex flex-col justify-center items-center gap-8 w-80 pt-14 px-2 ml-2 text-left" data-name="toolbox">
             <div class="mb-3 xl:w-96">
@@ -97,7 +96,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button data-tooltip-target="previous-toolbar" class="flex items-center text-base text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev">
+                    <button data-tooltip-target="previous-toolbar" class="flex items-center text-base text-sky-800 font-semibold hover:text-theme-yellow gap-2" id="prev">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
@@ -108,12 +107,12 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <div class="flex flex-row text-base text-cyan-800 font-semibold">
+                    <div class="flex flex-row text-base text-sky-800 font-semibold">
                         <span class="hidden sm:flex">ページ:</span>
                         <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
                     </div>
 
-                    <button data-tooltip-target="next-toolbar" class="flex items-center text-base text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">
+                    <button data-tooltip-target="next-toolbar" class="flex items-center text-base text-sky-800 font-semibold hover:text-theme-yellow gap-2" id="next">
                         <span class="hidden sm:flex">次</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -211,6 +210,22 @@
                             <span id="unmute-label" class="hidden">ミュートを解除する</span>
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
+
+                        <button onclick="zoominBtn()" data-tooltip-target="zoomin-toolbar" class="h-8 w-8 hover:text-theme-yellow">
+                            <img src="{{asset('media/button-zoom-in.png')}}" alt="undo-button">
+                        </button>
+                        <div id="zoomin-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                            ズームイン
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+
+                        <button onclick="zoomOutBtn()" data-tooltip-target="zoomout-toolbar" class="h-8 w-8 hover:text-theme-yellow">
+                            <img src="{{asset('media/button-zoom-out.png')}}" alt="undo-button">
+                        </button>
+                        <div id="zoomout-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                            ズームアウトする
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -279,7 +294,7 @@
             pageNum = 1,
             pageRendering = false,
             pageNumPending = null,
-            scale = 1.5,
+            scale = 1,
             canvas = document.getElementById('pdf-canvas');
         ctx = canvas.getContext('2d')
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -321,6 +336,17 @@
             })
             page.textContent = num
         }
+
+        function zoominBtn() {
+            scale = scale + 0.25;
+            queueRenderPage(pageNum)
+        }
+
+        function zoomOutBtn() {
+            scale = scale - 0.25;
+            queueRenderPage(pageNum);
+        }
+
         function queueRenderPage(num) {
             if (pageRendering) {
                 pageNumPending = num
@@ -788,6 +814,10 @@
             $('#nav-up').toggle();
             $('#nav-down').toggle();
             $('#nav-toolbar-1').toggle();
+        });
+
+        $('#pointerBtn').on('click', function() {
+            //$('#pdf-canvas').css('cursor', 'wait');
         });
     </script>
     <!--scripts ends here-->
