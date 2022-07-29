@@ -43,7 +43,7 @@
 
     <!--content-->
     <div class="flex justify-center items-center pt-20">
-        <div class="flex justify-center items-center w-1/3 h-modal md:h-full">
+        <div class="flex justify-center items-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 xl:w-4/12 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                 <!--modal content-->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
