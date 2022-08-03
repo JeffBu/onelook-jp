@@ -157,18 +157,46 @@
                         '</div>'+
                         '<div class="mb-6">'+
                             '<label for="inquiry-content" class="block mb-2 text-sm font-bold text-gray-900 dark:text-gray-300">お問い合わせ内容</label>'+
-                            '<textarea rows="5" type="text" id="inquiry-content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ></textarea>'+
+                            '<textarea rows="5" type="text" id="inquiry-content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>'+
                         '</div>'+
                     '</div>',
             showCancelButton: true,
             confirmButtonText: '問合せ',
             cancelButtonText: 'キャンセル',
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                var reply_to = $('#inquiry-email').val()
+                var inquiry = $('#inquiry-content').val()
+                var url = "{{route('send-inquiry')}}"
+
+                if(inquiry === null || inquiry === '')
+                {
+                    return "error"
+                } else {
+                    return axios.post(url, {
+                        sender: reply_to,
+                        content: inquiry,
+                    }).catch((error) => {
+                        console.log(error.response.data)
+                    })
+                }
+
+            },
+            allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
-            if(result.isConfirmed) {
-                Swal.fire({
-                    icon: 'success',
-                    title: '送信完了しました。後日担当からメールします。',
-                })
+            if(result.isConfirmed)
+            {
+                if(result.value === "error") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '不明なエラーが発生しました。 後でもう一度試してください。'
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'お問い合わせは管理者に送信されました。 ご登録のメールアドレスへの返信をお待ちください。'
+                    })
+                }
             }
         })
     }

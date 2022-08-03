@@ -8,6 +8,8 @@ use App\Models\VideoRecord;
 
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InquiryMail;
 
 class MainController extends Controller
 {
@@ -40,6 +42,13 @@ class MainController extends Controller
             return redirect()->route('admin-home');
         }
         return view('authenticated-user.contents.dashboard', $data);
+    }
+
+    public function send_inquiry(Request $request)
+    {
+        Mail::to('info@onelook.jp')->send(new InquiryMail(Auth::user(), $request->content));
+
+        return 1;
     }
 
     public function video_creation()

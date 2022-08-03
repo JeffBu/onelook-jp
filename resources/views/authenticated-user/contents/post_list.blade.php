@@ -341,6 +341,8 @@
                     return axios.post(url, {
                         code : access_code,
                         key : key
+                    }).catch((error) => {
+                        console.log(error.response.data)
                     })
                 },
                 allowOutsideClick: () => !Swal.isLoading()
