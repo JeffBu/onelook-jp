@@ -66,7 +66,7 @@
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
                         <div class="flex flex-col justify-center items-center gap-2">
-                            <span>{{route('access-video-record', ['video_key' => $record->key])}}</span>
+                            <span id="video-link-{{$record->id}}">{{route('access-video-record', ['video_key' => $record->key])}}</span>
                             <div class="flex flex-col md:flex-row gap-3 w-full">
                                 <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                                     <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
@@ -341,6 +341,8 @@
                     return axios.post(url, {
                         code : access_code,
                         key : key
+                    }).catch((error) => {
+                        console.log(error.response.data)
                     })
                 },
                 allowOutsideClick: () => !Swal.isLoading()

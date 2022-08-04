@@ -64,7 +64,7 @@
                                 <span id="file-size">{{round($record->size/1024/1024, 2, PHP_ROUND_HALF_UP)}}</span>
                                 <span id="file-size">MB</span>
                             </div>
-                            <a onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a>
+                            {{-- <a onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a> --}}
                         </div>
                     </div>
                     <span class="text-sm mt-4">ウイルスチェックにより脅威なしと診断されました。</span>

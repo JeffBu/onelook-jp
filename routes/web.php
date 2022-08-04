@@ -7,6 +7,7 @@ use App\Http\Controllers\VideoRecordingEvents;
 use App\Http\Controllers\VideoAccessController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::middleware([
 
     Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');
     Route::post('send-invitation', [VideoAccessController::class, 'send_invitation'])->name('send-invitation');
+    Route::post('send-inquiry', [MainController::class, 'send_inquiry'])->name('send-inquiry');
 
     Route::get('admin-home', [MainController::class, 'admin_home'])->name('admin-home');
     Route::get('admin-member-list', [MainController::class, 'admin_member_list'])->name('admin-member-list');
@@ -63,7 +65,7 @@ Route::get('registration', [MainController::class, 'registration_page'])->name('
 Route::get('registration-complete', [MainController::class, 'registration_complete'])->name('registration-complete');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 
-Route::get('promotion', [MainController::class, 'promotion_team'])->name('promotion');
+Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 
 Route::get('test', function() {
     return view('viewer_temp');
