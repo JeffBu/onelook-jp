@@ -34,7 +34,7 @@ id="header-frame">
     <!-- /logout -->
 </header>
 
-<aside class="hidden flex-col justify-center items-center bg-black bg-opacity-20 min-h-screen tracking-widest fixed left-0 top-0 z-20 w-full shadow"
+<aside class="hidden md:invisible flex-col justify-center items-center bg-black bg-opacity-20 min-h-screen tracking-widest fixed left-0 top-0 z-20 w-full shadow"
 id="bg-sidebar" onclick="openSidebar()">
     <div class="bg-sky-600 min-h-screen w-0" id="sidebar">
         <div class="justify-center items-center text-center px-4 py-2 mt-11 w-full">
