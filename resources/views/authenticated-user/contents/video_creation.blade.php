@@ -281,6 +281,7 @@
             }
         }
         }
+        var curr_time = 0;
         var pdf_file = '';
         var imageData_store = [];
         let restore_array = [];
@@ -476,8 +477,22 @@
                     }
                 });
             }
+
+            startTimer();
         }
 
+
+        function startTimer() {
+           const timer = setInterval(function () {
+                curr_time ++
+                console.log(curr_time)
+                if(curr_time == 300)
+                {
+                    stopRecording()
+                    clearInterval(timer)
+                }
+            }, 1000)
+        }
         completion.addEventListener('click', () => {
             const blob = new Blob(recordedBlobs, {
                 type: 'video/mp4'
@@ -515,6 +530,11 @@
 
         stopButton.addEventListener('click', () => {
             stopRecording();
+
+        })
+
+        function stopRecording() {
+            curr_time = 0
             window.stream = null;
             setTimeout(() => {
                 $("#overlay").fadeIn(300);
@@ -550,9 +570,7 @@
                         console.log(error.response.data);
                     });
             }, 100);
-        })
 
-        function stopRecording() {
             mediaRecorder.stop();
             isRecording = false;
             Swal.fire({
@@ -797,7 +815,7 @@
             $('#nav2-down').toggle();
             $('#nav-toolbar-2').toggle();
         });
-        
+
         $('#nav2-down').on('click', function() {
             $('#nav2-up').toggle();
             $('#nav2-down').toggle();
@@ -809,7 +827,7 @@
             $('#nav-down').toggle();
             $('#nav-toolbar-1').toggle();
         });
-        
+
         $('#nav-down').on('click', function() {
             $('#nav-up').toggle();
             $('#nav-down').toggle();

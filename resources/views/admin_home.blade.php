@@ -196,8 +196,8 @@
     <!--content ends here-->
 
     <!--script-->
-    {{-- <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{asset('js/app.js')}}"></script>
     <!-- pdf.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
