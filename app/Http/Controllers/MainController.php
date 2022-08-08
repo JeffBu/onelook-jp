@@ -39,7 +39,7 @@ class MainController extends Controller
 
         if($user->is_admin == 1)
         {
-            return redirect()->route('admin-home');
+            return redirect()->route('admin.contents.admin-home');
         }
         return view('authenticated-user.contents.dashboard', $data);
     }
@@ -160,7 +160,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('admin_home', $data);
+        return view('admin.contents.admin_home', $data);
     }
 
     public function admin_member_list()
@@ -170,7 +170,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('admin_member_list', $data);
+        return view('admin.contents.admin_member_list', $data);
     }
 
     public function admin_member_info()
@@ -180,7 +180,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('admin_member_info', $data);
+        return view('admin.contents.admin_member_info', $data);
     }
 
     public function admin_post_list()
@@ -190,7 +190,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('admin_post_list', $data);
+        return view('admin.contents.admin_post_list', $data);
     }
 
     public function admin_viewer()
@@ -200,7 +200,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('admin_viewer', $data);
+        return view('admin.contents.admin_viewer', $data);
     }
 
     public function admin_settings()
@@ -210,7 +210,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('admin_settings', $data);
+        return view('admin.contents.admin_settings', $data);
     }
 
     public function test_video()
