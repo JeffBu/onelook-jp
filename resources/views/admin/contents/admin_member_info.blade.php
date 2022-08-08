@@ -118,7 +118,7 @@
             </div>
 
             <div class="justify-center items-center w-full sticky top-0">
-                <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus-outline-0 focus-border-0" placeholder="コメント欄" id="comment">
+                <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
             </div>
 
             <div class="flex justify-between pt-3 text-left w-full">
