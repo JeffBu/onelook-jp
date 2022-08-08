@@ -163,6 +163,16 @@ class MainController extends Controller
         return view('admin.contents.admin_home', $data);
     }
 
+    public function admin_posting()
+    {
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+        );
+
+        return view('admin.contents.admin_posting', $data);
+    }
+
     public function admin_member_list()
     {
         $user = Auth::user();

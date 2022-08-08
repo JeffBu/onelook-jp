@@ -49,6 +49,7 @@ Route::middleware([
     Route::get('admin-post-list', [MainController::class, 'admin_post_list'])->name('admin-post-list');
     Route::get('admin-viewer', [MainController::class, 'admin_viewer'])->name('admin-viewer');
     Route::get('admin-settings', [MainController::class, 'admin_settings'])->name('admin-settings');
+    Route::get('admin-posting', [MainController::class, 'admin_posting'])->name('admin-posting');
 });
 
 Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');
