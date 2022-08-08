@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="justify-center items-center w-full">
-                    <input type="text" id="comment"  class="w-full h-48 border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="ここにメッセージを入力" id="comment">
+                    <textarea name="news" id="news" class="w-full h-48 border-2 px-4 py-4 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="ここにメッセージを入力"></textarea>
                 </div>
 
                 <div class="flex justify-between text-left w-full">
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="justify-center items-center w-full">
-                    <input type="text" id="comment"  class="w-full h-48 border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="ここにメッセージを入力" id="comment">
+                    <textarea name="announcement" id="announcement" class="w-full h-48 border-2 px-4 py-4 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="ここにメッセージを入力"></textarea>
                 </div>
 
                 <div class="flex justify-between text-left w-full">
