@@ -117,7 +117,7 @@
                 <h1 class="text-xl font-semibold text-lime-600">対象顧客への連絡</h1>
             </div>
 
-            <div class="justify-center items-center w-full sticky top-0">
+            <div class="justify-center items-center w-full">
                 <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
             </div>
 

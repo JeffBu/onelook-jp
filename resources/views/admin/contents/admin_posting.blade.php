@@ -24,7 +24,7 @@
                     <h1 class="text-xl font-semibold text-lime-600">お知らせ</h1>
                 </div>
 
-                <div class="justify-center items-center w-full sticky top-0">
+                <div class="justify-center items-center w-full">
                     <input type="text" id="comment"  class="w-full h-48 border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="ここにメッセージを入力" id="comment">
                 </div>
 
@@ -41,7 +41,7 @@
                     <h1 class="text-xl font-semibold text-lime-600">投稿履歴</h1>
                 </div>
 
-                <div class="justify-center items-center w-full sticky top-0">
+                <div class="justify-center items-center w-full">
                     <input type="text" id="comment"  class="w-full h-48 border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="ここにメッセージを入力" id="comment">
                 </div>
 
