@@ -245,7 +245,7 @@
         </div>
         </div>
     </div>
-      <!-- End Video Playback Modal -->
+    <!-- End Video Playback Modal -->
 
     <!--content ends here-->
 

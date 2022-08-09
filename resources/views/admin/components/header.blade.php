@@ -1,4 +1,4 @@
-<nav id="menu" class="hidden sm:flex flex-col px-2 justify-left items-center text-center w-72 nav-bg shadow divide-y divide-theme-white min-h-screen fixed md:sticky top-0 left-0 z-50">
+<nav id="menu" class="hidden lg:flex flex-col px-2 justify-left items-center text-center w-72 nav-bg shadow divide-y divide-theme-white min-h-screen fixed md:sticky top-0 left-0 z-50">
     <div class="flex justify-left px-4 py-6 pt-16 md:pt-6 items-center text-xl font-semibold text-theme-white gap-3 w-full">
         {{config('app.name')}}
     </div>
