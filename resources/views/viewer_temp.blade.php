@@ -403,7 +403,8 @@
         const advert = videojs('ad-video', {})
 
         advert.on('ended', function() {
-            console.log('asdasdasdasdasd')
+            $('#playback-video').toggle()
+            $('#ad-video').toggle()
         })
 
         function downloadVideo(id, button)
