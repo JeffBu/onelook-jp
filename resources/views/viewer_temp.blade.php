@@ -326,7 +326,7 @@
                     <video class="video-js w-full vjs-fluid" id="ad-video" autoplay type="video/mp4">
                         <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}">
                     </video>
-                    <video class="video-js w-full vjs-fluid" id="playback-video" controls type="video/mp4">
+                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" controls type="video/mp4">
                         <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
                 </div>
@@ -401,8 +401,6 @@
 
         var player = videojs('playback-video', {})
         var advert = videojs('ad-video', {})
-
-        player.style.display = 'hidden'
 
         advert.on('ended', function() {
             advert.style.display = 'hidden'
