@@ -400,10 +400,12 @@
         $(document).scroll(function() {})
 
         const player = videojs('playback-video', {})
+        player.style.display = 'none'
         const advert = videojs('ad-video', {})
 
         advert.on('ended', function() {
-            console.log('asdasdasdasdas')
+            advert.style.display = 'none'
+            player.style.display = 'block'
         })
 
         function downloadVideo(id, button)
