@@ -36,7 +36,7 @@ id="header-frame">
 
 <aside class="hidden md:invisible flex-col justify-center items-center bg-black bg-opacity-20 min-h-screen tracking-widest fixed left-0 top-0 z-20 w-full shadow"
 id="bg-sidebar" onclick="openSidebar()">
-    <div class="bg-sky-600 min-h-screen w-0" id="sidebar">
+    <div class="bg-sky-600 min-h-screen w-72" id="sidebar">
         <div class="justify-center items-center text-center px-4 py-2 mt-11 w-full">
             <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
         </div>
@@ -53,9 +53,9 @@ id="bg-sidebar" onclick="openSidebar()">
 
 <script>
     function openSidebar() {
-        jQuery('#bg-sidebar').toggle();
-        jQuery('#sidebar').css('width', '65%');
-        jQuery('#sidebar').css('transition', 'width 1s');
+        jQuery('#bg-sidebar').animate({
+            width: 'toggle'
+        });
     }
 </script>
 <!--header ends here-->
