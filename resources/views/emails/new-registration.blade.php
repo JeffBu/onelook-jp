@@ -1,16 +1,20 @@
 @component('mail::message')
-# Your account has been registered!
+# 【OneLook】ユーザー登録のお知らせ
 
-Dear {{$target_name}},
+{{$target_name}} 様
 
-Welcome to Onelook.jp - an online video sharing platform. In order to continue with your account, you need to verify your email address and update your password. <br />
-Click this button below or copy this link to proceed:
-{{$url}}
-
-@component('mail::button', ['url' => $url])
-Update Password
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
+OneLook.jpにご登録いただきありがとうございます。<br>
+以下のURLからアクセスしてログイン情報を設定してください。<br>
+<hr>
+{{$url}} <br><br>
+ログインIDは本メールアドレスです。<br>
+（ログイン時にパスワードの設定をお願いしております）
+<hr>
+<br>
+このメールは送信専用です。<br>
+ご不明点等は当社WEBサイトよりお問い合わせください。<br>
+<br>
+◆ OneLook.jp ◆<br>
+百聞は一見に如かず<br>
+https://onelook.jp/ <br>
 @endcomponent

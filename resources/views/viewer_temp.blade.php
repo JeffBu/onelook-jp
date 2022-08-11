@@ -353,7 +353,6 @@
                             {{-- <a onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a> --}}
                         </div>
                     </div>
-
                 </div>
             </div>
 
