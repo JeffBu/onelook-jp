@@ -818,30 +818,30 @@
         });
 
         $('#start').on('click', function() {
-            $('#stop').css('display', 'flex');
+            $('#stop').fadeIn();
         });
 
         $('#stop').on('click', function() {
-            $('#preview').css('display', 'flex');
-            $('#completion').css('display', 'flex');
-            $('#cancel').css('display', 'flex');
+            $('#preview').fadeIn();
+            $('#completion').fadeIn();
+            $('#cancel').fadeIn();
         });
 
-        $('#completion').on('click', function() {
-            $('#stop').css('display', 'none');
-            $('#preview').css('display', 'none');
-            $('#completion').css('display', 'none');
-            $('#cancel').css('display', 'none');
+        $('#cancel').on('click', function() {
+            $('#stop').fadeOut();
+            $('#preview').fadeOut();
+            $('#completion').fadeOut();
+            $('#cancel').fadeOut();
         });
 
         function toggleNav1() {
-            $('#nav-toolbar-1').toggle();
+            $('#nav-toolbar-1').slideToggle();
             $('#nav-up').toggle();
             $('#nav-down').toggle();
         }
 
         function toggleNav2() {
-            $('#nav-toolbar-2').toggle();
+            $('#nav-toolbar-2').slideToggle();
             $('#nav2-up').toggle();
             $('#nav2-down').toggle();
         }
