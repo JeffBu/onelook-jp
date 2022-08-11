@@ -323,6 +323,9 @@
                 </div>
 
                 <div class="border border-white w-full">
+                    <video class="video-js w-full bjs-fluid" id="ad-video" autoplay type="video/mp4">
+                        <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}">
+                    </video>
                     <video class="video-js w-full vjs-fluid" id="playback-video" controls type="video/mp4">
                         <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
@@ -419,6 +422,22 @@
                 })
             })
         }
+
+        var ad = document.getElementById('ad-video')
+        var player = document.getElementById('playback-video')
+        player.style.display = 'none'
+
+        ad.onLoadeddata = function () {
+            ad.currentTime = 872
+            ad.play()
+        }
+
+        ad.onended = function() {
+            player.play()
+            ad.style.display = 'none'
+            player.style.display = 'block'
+        }
+
       </script>
 
     <!--scripts ends here-->
