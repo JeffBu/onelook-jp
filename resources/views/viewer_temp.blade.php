@@ -323,10 +323,10 @@
                 </div>
 
                 <div class="border border-white w-full">
-                    <video class="video-js w-full vjs-fluid" id="ad-video" autoplay type="video/mp4">
+                    <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4">
                         <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}">
                     </video>
-                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" controls type="video/mp4">
+                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" type="video/mp4">
                         <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
                 </div>
@@ -399,12 +399,11 @@
 
         $(document).scroll(function() {})
 
-        var player = videojs('playback-video', {})
-        var advert = videojs('ad-video', {})
+        const player = videojs('playback-video', {})
+        const advert = videojs('ad-video', {})
 
         advert.on('ended', function() {
-            advert.style.display = 'hidden'
-            player.style.display = 'block'
+            console.log('asdasdasdasdasd')
         })
 
         function downloadVideo(id, button)
