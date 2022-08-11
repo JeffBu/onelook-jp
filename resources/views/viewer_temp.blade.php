@@ -399,8 +399,8 @@
 
         $(document).scroll(function() {})
 
-        const player = videojs('playback-video', {});
-
+        const player = videojs('playback-video', {})
+        const advert = videojs('ad-video', {})
         function downloadVideo(id, button)
         {
             var url = "{{route('download')}}"
@@ -428,7 +428,7 @@
         main.style.display = 'none'
 
         ad.onLoadeddata = function () {
-            ad.currentTime = 872
+            ad.currentTime = 10
             ad.play()
         }
 
