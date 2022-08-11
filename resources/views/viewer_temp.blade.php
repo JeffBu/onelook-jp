@@ -306,7 +306,7 @@
         <div class="flex flex-col justify-center items-center text-center w-full">
             <div class="flex flex-col justify-center items-center text-center text-white bg-sky-600 w-11/12 sm:w-3/5 px-8 py-8 mt-4 gap-2 border-b-4 border-r-4 border-sky-700 rounded-lg">
                 <div>
-                    <h1 class="font-bold text-xl mb-4"><span class="font-bold">{{$record->uploader->username}}</span>さんの届出</h1>
+                    <!--<h1 class="font-bold text-xl mb-4"><span class="font-bold">{{$record->uploader->username}}</span>さんの届出</h1>-->
                 </div>
 
                 <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
@@ -331,9 +331,9 @@
                     </video>
                 </div>
 
-                <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
-                    <div class="flex flex-row justify-between items-center text-center w-full">
-                        <div class="flex flex-col justify-center items-center text-center text-sm gap-2">
+                <div class="flex flex-col justify-center items-center gap-2 w-full">
+                    <div class="flex flex-row justify-between items-start text-center w-full">
+                        <div class="flex flex-col justify-start items-start text-sm gap-2">
                             <div class="flex flex-row items-center text-left text-sm gap-2">
                                 <span id="contributor-label">投稿者：</span>
                                 <span id="contributor"></span>
