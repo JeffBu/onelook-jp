@@ -402,10 +402,10 @@
         var player = videojs('playback-video', {})
         var advert = videojs('ad-video', {})
 
-        player.style.display = 'none'
+        player.style.display = 'hidden'
 
         advert.on('ended', function() {
-            advert.style.display = 'none'
+            advert.style.display = 'hidden'
             player.style.display = 'block'
         })
 
