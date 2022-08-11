@@ -125,7 +125,7 @@
                 </div>
             </nav>
 
-            <button class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-b-md">
+            <button onclick="toggleNav1()" class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-b-md">
                 <svg id="nav-up" xmlns="http://www.w3.org/2000/svg" class="flex h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
                 </svg>
@@ -136,7 +136,7 @@
         </div>
 
         <div class="flex flex-col justify-center items-center fixed left-1/2 -translate-x-1/2 bottom-0 w-full">
-            <button class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-t-md">
+            <button onclick="toggleNav2()" class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-t-md">
                 <svg id="nav2-up" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
                 </svg>
@@ -810,29 +810,17 @@
             $('#unmute-label').toggle();
         });
 
-        $('#nav2-up').on('click', function() {
-            $('#nav2-up').toggle();
-            $('#nav2-down').toggle();
-            $('#nav-toolbar-2').toggle();
-        });
-
-        $('#nav2-down').on('click', function() {
-            $('#nav2-up').toggle();
-            $('#nav2-down').toggle();
-            $('#nav-toolbar-2').toggle();
-        });
-
-        $('#nav-up').on('click', function() {
+        function toggleNav1() {
+            $('#nav-toolbar-1').toggle();
             $('#nav-up').toggle();
             $('#nav-down').toggle();
-            $('#nav-toolbar-1').toggle();
-        });
+        }
 
-        $('#nav-down').on('click', function() {
-            $('#nav-up').toggle();
-            $('#nav-down').toggle();
-            $('#nav-toolbar-1').toggle();
-        });
+        function toggleNav2() {
+            $('#nav-toolbar-2').toggle();
+            $('#nav2-up').toggle();
+            $('#nav2-down').toggle();
+        }
 
         $('#pointerBtn').on('click', function() {
             //$('#pdf-canvas').css('cursor', 'wait');

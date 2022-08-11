@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" translate="no" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,7 +74,7 @@
                                 <div class="flex flex-col items-end gap-2 w-full">
                                     <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400 w-full">ログイン</button>
                                 </div>
-                                
+
                                 <div class="flex flex-col items-end gap-2 w-full">
                                     <a href="#" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">パスワードをお忘れですか?</a>
                                 </div>
