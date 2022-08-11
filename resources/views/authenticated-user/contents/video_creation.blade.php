@@ -64,7 +64,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="stop" data-tooltip-target="stop-toolbar" data-tooltip-placement="bottom" class="h-8 w-8 hover:text-theme-yellow">
+                    <button id="stop" data-tooltip-target="stop-toolbar" data-tooltip-placement="bottom" class="hidden h-8 w-8 hover:text-theme-yellow">
                         <img src="{{asset('media/button-sto.png')}}" alt="record-button">
                     </button>
                     <div id="stop-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -72,7 +72,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="preview" data-tooltip-target="preview-toolbar" data-tooltip-placement="bottom" data-modal-toggle="previewModal" class="h-8 w-8 hover:text-theme-yellow">
+                    <button id="preview" data-tooltip-target="preview-toolbar" data-tooltip-placement="bottom" data-modal-toggle="previewModal" class="hidden h-8 w-8 hover:text-theme-yellow">
                         <img src="{{asset('media/button-preview.png')}}" alt="preview-button">
                     </button>
                     <div id="preview-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -80,7 +80,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="completion" data-tooltip-target="save-toolbar" data-tooltip-placement="bottom" class="h-7 w-7 hover:text-theme-yellow">
+                    <button id="completion" data-tooltip-target="save-toolbar" data-tooltip-placement="bottom" class="hidden h-7 w-7 hover:text-theme-yellow">
                         <img src="{{asset('media/button-sav.png')}}" alt="save-button">
                     </button>
                     <div id="save-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -88,7 +88,7 @@
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="cancel" data-tooltip-target="cancel-toolbar" data-tooltip-placement="bottom" class="h-8 w-8 hover:text-theme-yellow">
+                    <button id="cancel" data-tooltip-target="cancel-toolbar" data-tooltip-placement="bottom" class="hidden h-8 w-8 hover:text-theme-yellow">
                         <img src="{{asset('media/button-cancel.png')}}" alt="cancel-button">
                     </button>
                     <div id="cancel-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
@@ -808,6 +808,30 @@
             $('#unmute-icon').toggle();
             $('#mute-label').toggle();
             $('#unmute-label').toggle();
+        });
+
+        $('#mute').on('click', function() {
+            $('#mute-icon').toggle();
+            $('#unmute-icon').toggle();
+            $('#mute-label').toggle();
+            $('#unmute-label').toggle();
+        });
+
+        $('#start').on('click', function() {
+            $('#stop').css('display', 'flex');
+        });
+
+        $('#stop').on('click', function() {
+            $('#preview').css('display', 'flex');
+            $('#completion').css('display', 'flex');
+            $('#cancel').css('display', 'flex');
+        });
+
+        $('#completion').on('click', function() {
+            $('#stop').css('display', 'none');
+            $('#preview').css('display', 'none');
+            $('#completion').css('display', 'none');
+            $('#cancel').css('display', 'none');
         });
 
         function toggleNav1() {
