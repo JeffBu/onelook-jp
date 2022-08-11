@@ -70,11 +70,11 @@
                             <div class="flex flex-col md:flex-row gap-3 w-full">
                                 <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                                     <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
-                                    <a href="{{$url}}" class="hidden container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download>ダウンロード</a>
+                                    <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-3 w-full">
                                     <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
-                                    <button class="hidden container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md" onclick="deleteVideo({{$record->id}}, this)">削除</button>
+                                    <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo()">削除</button>
                                 </div>
                             </div>
                         </div>
@@ -420,7 +420,13 @@
 
         function downloadVideo(id, button)
         {
-            button.preventDefault()
+            Swal.fire({
+                icon: 'warning',
+                title: 'ごめん',
+                text: 'この機能は個人プランでのみ利用できます。',
+            })
+
+            /*button.preventDefault()
             var url = "{{route('download')}}"
 
             axios.post(url, {
@@ -438,6 +444,14 @@
                     icon: 'danger',
                     showCancelButton: false
                 })
+            })*/
+        }
+
+        function deleteVideo() {
+            Swal.fire({
+                icon: 'warning',
+                title: 'ごめん',
+                text: 'この機能は個人プランでのみ利用できます。',
             })
         }
     </script>

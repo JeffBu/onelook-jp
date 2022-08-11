@@ -326,15 +326,23 @@
                     <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4">
                         <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}">
                     </video>
-                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" type="video/mp4">
+                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" controls type="video/mp4">
                         <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
                 </div>
 
                 <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
                     <div class="flex flex-row justify-between items-center text-center w-full">
-                        <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
-
+                        <div class="flex flex-col justify-center items-center text-center text-sm gap-2">
+                            <div class="flex flex-row items-center text-left text-sm gap-2">
+                                <span id="contributor-label">投稿者：</span>
+                                <span id="contributor"></span>
+                            </div>
+                            
+                            <div class="flex flex-row items-center text-left text-sm gap-2">
+                                <span id="email-label">メールアドレス：</span>
+                                <span id="email"></span>
+                            </div>
                         </div>
                         <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
                             <span>ファイルサイズ:</span>
