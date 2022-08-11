@@ -400,8 +400,9 @@
         $(document).scroll(function() {})
 
         var player = videojs('playback-video', {})
-        player.style.display = 'none'
         var advert = videojs('ad-video', {})
+
+        player.style.display = 'none'
 
         advert.on('ended', function() {
             advert.style.display = 'none'
