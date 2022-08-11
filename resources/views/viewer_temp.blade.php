@@ -334,7 +334,7 @@
                 <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
                     <div class="flex flex-row justify-between items-center text-center w-full">
                         <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
-                            <span class="text-sm">以下のファイルをダウンロードできます。</span>
+
                         </div>
                         <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
                             <span>ファイルサイズ:</span>
@@ -345,12 +345,7 @@
                             {{-- <a onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a> --}}
                         </div>
                     </div>
-                    <span class="text-sm mt-4">ウイルスチェックにより脅威なしと診断されました。</span>
-                    <div class="flex flex-row justify-center items-center text-center text-sm gap-1">
-                        <span>ダウンロードが開始されない場合は、から画面をリロードしてください</span>
-                        <a class="hover:text-yellow-300 underline underline-offset-1" onclick="window.location.reload()" >ここ</a>
-                        <span>。</span>
-                    </div>
+
                 </div>
             </div>
 
