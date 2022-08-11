@@ -401,6 +401,11 @@
 
         const player = videojs('playback-video', {})
         const advert = videojs('ad-video', {})
+
+        advert.on('ended', function() {
+            console.log('asdasdasdasdas')
+        })
+
         function downloadVideo(id, button)
         {
             var url = "{{route('download')}}"
@@ -421,21 +426,6 @@
                     showCancelButton: false
                 })
             })
-        }
-
-        var ad = document.getElementById('ad-video')
-        var main = document.getElementById('playback-video')
-        main.style.display = 'none'
-
-        ad.onLoadeddata = function () {
-            ad.currentTime = 10
-            ad.play()
-        }
-
-        ad.onended = function() {
-            main.play()
-            ad.style.display = 'none'
-            main.style.display = 'block'
         }
 
       </script>
