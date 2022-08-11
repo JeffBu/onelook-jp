@@ -48,14 +48,14 @@
             <div class="grid grid-rows-2 lg:grid-cols-2 justify-center items-start gap-8 w-full pt-14 text-left">
                 <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-sky-800 font-bold bg-sky-600 text-white text-xl pb-2">お知らせ</h2>
-                    <div class="border-b border-x border-sky-800 px-2 py-2">
+                    <div class="border-b border-x border-sky-800 px-2 py-2 h-64 overflow-auto">
                         <table class="w-full h-full text-base">
                             <tbody>
                                 <tr>
-                                    <td class="text-xs">2021/10/01</td>
+                                    <td id="news-date" class="text-xs"></td>
                                 </tr>
                                 <tr>
-                                    <td class="border-b border-sky-800 pb-2">メンテナンスのお知らせ</td>
+                                    <td id="news-label" class="border-b border-sky-800 pb-2"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-xs pt-2">2021/01/01</td>
@@ -70,11 +70,30 @@
                                     <td class="border-b border-sky-800 pb-2">メリークリスマス</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-xs pt-2">2020/10/31</td>
+                                    <td class="text-xs pt-2">2020/12/24</td>
                                 </tr>
                                 <tr>
-                                    <td>ハッピーハロウィン</td>
+                                    <td class="border-b border-sky-800 pb-2">メリークリスマス</td>
                                 </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2020/12/24</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">メリークリスマス</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2020/12/24</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">メリークリスマス</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2020/12/24</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">メリークリスマス</td>
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -82,14 +101,14 @@
 
                 <div class="w-full h-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-sky-800 font-bold bg-sky-600 text-white text-xl pb-2">投稿履歴</h2>
-                    <div class="border-b border-x border-sky-800 px-2 py-2">
+                    <div class="border-b border-x border-sky-800 px-2 py-2 h-64 overflow-auto">
                         <table class="w-full text-base">
                             <tbody>
                                 <tr>
-                                    <td class="text-xs">2021/10/01</td>
+                                    <td id="post-date" class="text-xs">2021/10/01</td>
                                 </tr>
                                 <tr>
-                                    <td class="border-b border-sky-800 pb-2">テストが投稿されました。</td>
+                                    <td id="post-label" class="border-b border-sky-800 pb-2">テストが投稿されました。</td>
                                 </tr>
                                 <tr>
                                     <td class="text-xs pt-2">2021/01/01</td>
@@ -98,10 +117,34 @@
                                     <td class="border-b border-sky-800 pb-2">ちょっとイリーガルが運営により削除されました。</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-xs pt-2">2020/12/30</td>
+                                    <td class="text-xs pt-2">2021/01/01</td>
                                 </tr>
                                 <tr>
-                                    <td>ちょっとイリーガルについて、お知らせがありますので、メールをご確認ください。</td>
+                                    <td class="border-b border-sky-800 pb-2">ちょっとイリーガルが運営により削除されました。</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2021/01/01</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">ちょっとイリーガルが運営により削除されました。</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2021/01/01</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">ちょっとイリーガルが運営により削除されました。</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2021/01/01</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">ちょっとイリーガルが運営により削除されました。</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-xs pt-2">2021/01/01</td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b border-sky-800 pb-2">ちょっとイリーガルが運営により削除されました。</td>
                                 </tr>
                             </tbody>
                         </table>

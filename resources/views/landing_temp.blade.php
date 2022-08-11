@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth font-sans">
+<html lang="en" translate="no" class="scroll-smooth font-sans">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,7 +81,7 @@
     </div>
     <!--content ends here-->
 
-    <!--footer-->
+    <!--footer
     <footer class="flex flex-col sm:flex-row shadow bg-cyan-700 text-theme-white justify-center items-start py-5 px-5 text-base gap-8 md:gap-20 lg:gap-32 tracking-widest w-full">
         <div class="flex flex-col gap-2">
             <div class="text-theme-yellow font-medium">活用例</div>
@@ -103,7 +103,7 @@
             <div class="text-sm">Privacy Policy</div>
         </div>
     </footer>
-    <!--footer ends here-->
+    footer ends here-->
 
     <!--scripts-->
     <script src="https://cdn.tailwindcss.com"></script>
