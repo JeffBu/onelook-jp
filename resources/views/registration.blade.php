@@ -98,6 +98,10 @@
                                 <x-jet-validation-errors class="mb-4" />
                             </div>
 
+                            <div class="flex flex-col items-center py-6 gap-2 w-full">
+                                <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400 w-full">登録</button>
+                            </div>
+
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
@@ -105,7 +109,6 @@
                             <span>すでに登録？</span>
                             <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">ログインする</a>
                         </div>
-                        <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400 w-1/5">登録</button>
                     </div>
                     </form>
                 </div>
