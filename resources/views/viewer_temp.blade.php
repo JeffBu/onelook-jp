@@ -399,9 +399,9 @@
 
         $(document).scroll(function() {})
 
-        const player = videojs('playback-video', {})
+        var player = videojs('playback-video', {})
         player.style.display = 'none'
-        const advert = videojs('ad-video', {})
+        var advert = videojs('ad-video', {})
 
         advert.on('ended', function() {
             advert.style.display = 'none'
