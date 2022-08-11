@@ -323,7 +323,7 @@
                 </div>
 
                 <div class="border border-white w-full">
-                    <video class="video-js w-full bjs-fluid" id="ad-video" autoplay type="video/mp4">
+                    <video class="video-js w-full vjs-fluid" id="ad-video" autoplay type="video/mp4">
                         <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}">
                     </video>
                     <video class="video-js w-full vjs-fluid" id="playback-video" controls type="video/mp4">
@@ -424,8 +424,8 @@
         }
 
         var ad = document.getElementById('ad-video')
-        var player = document.getElementById('playback-video')
-        player.style.display = 'none'
+        var main = document.getElementById('playback-video')
+        main.style.display = 'none'
 
         ad.onLoadeddata = function () {
             ad.currentTime = 872
@@ -433,9 +433,9 @@
         }
 
         ad.onended = function() {
-            player.play()
+            main.play()
             ad.style.display = 'none'
-            player.style.display = 'block'
+            main.style.display = 'block'
         }
 
       </script>
