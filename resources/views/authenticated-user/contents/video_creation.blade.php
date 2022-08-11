@@ -818,20 +818,20 @@
         });
 
         $('#start').on('click', function() {
-            $('#stop').css('display', 'flex');
+            $('#stop').fadeIn();
         });
 
         $('#stop').on('click', function() {
-            $('#preview').css('display', 'flex');
-            $('#completion').css('display', 'flex');
-            $('#cancel').css('display', 'flex');
+            $('#preview').fadeIn();
+            $('#completion').fadeIn();
+            $('#cancel').fadeIn();
         });
 
         $('#cancel').on('click', function() {
-            $('#stop').css('display', 'none');
-            $('#preview').css('display', 'none');
-            $('#completion').css('display', 'none');
-            $('#cancel').css('display', 'none');
+            $('#stop').fadeOut();
+            $('#preview').fadeOut();
+            $('#completion').fadeOut();
+            $('#cancel').fadeOut();
         });
 
         function toggleNav1() {
