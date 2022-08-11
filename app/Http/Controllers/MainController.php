@@ -45,7 +45,7 @@ class MainController extends Controller
 
         if($user->is_admin == 1)
         {
-            return view('admin.contents.admin-home', $data);
+            return view('admin.contents.admin_home', $data);
         }
         return view('authenticated-user.contents.dashboard', $data);
     }
