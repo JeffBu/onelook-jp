@@ -13,6 +13,12 @@ use App\Mail\InquiryMail;
 
 class MainController extends Controller
 {
+    public function login_test()
+    {
+        $data = array();
+        return view('login', $data);
+    }
+
     public function __construct()
     {
 

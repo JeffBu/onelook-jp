@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('home', [MainController::class, 'unauthorized'])->name('home');
 Route::get('view-plans', [MainController::class, 'view_plans'])->name('view-plans');
+Route::get('login-test', [MainController::class, 'login_test'])->name('login-test');
 
 Route::middleware([
     'auth:sanctum',
