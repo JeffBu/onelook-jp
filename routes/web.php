@@ -22,7 +22,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('home', [MainController::class, 'unauthorized'])->name('home');
 Route::get('view-plans', [MainController::class, 'view_plans'])->name('view-plans');
-Route::get('login-test', [MainController::class, 'login_test'])->name('login-test');
+Route::get('registration', [MainController::class, 'registration_page'])->name('registration');
 
 Route::middleware([
     'auth:sanctum',
@@ -63,7 +63,7 @@ Route::post('save-access-code', [VideoAccessController::class, 'save_access_code
 Route::get('access-video-record', [VideoRecordingEvents::class, 'access_video_record'])->name('access-video-record');
 Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])->name('access-video-record');
 
-Route::get('registration', [MainController::class, 'registration_page'])->name('registration');
+
 Route::get('registration-complete', [MainController::class, 'registration_complete'])->name('registration-complete');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 
