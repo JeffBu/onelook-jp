@@ -33,7 +33,7 @@ class NewRegistration extends Mailable
     public function build()
     {
         return $this
-                ->subject('Account Registered!')
+                ->subject('【OneLook】ユーザー登録のお知らせ')
                 ->markdown('emails.new-registration');
     }
 }
