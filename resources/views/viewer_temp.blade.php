@@ -407,6 +407,7 @@
         advert.on('ended', function() {
             $('#playback-video').toggle()
             $('#ad-video').toggle()
+            player.play()
         })
 
         function downloadVideo(id, button)
