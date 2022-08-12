@@ -96,7 +96,7 @@ class MainController extends Controller
             'user' => $user,
         );
 
-        return view('subscription', $data);
+        return view('authenticated-user.contents.subscription', $data);
     }
 
     public function update_cancel_plan()

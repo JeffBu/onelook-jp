@@ -264,23 +264,6 @@
 @endsection
 @section('js')
     <script>
-        tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    transparent: 'transparent',
-                    current: 'currentColor',
-                    'theme-white': '#f6f6e9',
-                    'theme-black': '#2a221b',
-                    'theme-yellow': '#ffc300',
-                    'theme-cream': '#ffffcc',
-                    'theme-blue': '#61a6ab',
-                    'theme-pink': '#f7b9a1',
-                    'theme-orange': '#ff9011',
-                }
-            }
-        }
-        }
         var curr_time = 0;
         var pdf_file = '';
         var imageData_store = [];
@@ -784,24 +767,11 @@
             restore_array = [];
             start_index = -1;
         }
-
-    </script>
-
-    <script>
-        $(window).on('scroll', function() {
-            if($(window).scrollTop() > 0) {
-                $('#header-frame').css('opacity', '0.8');
-            }
-            else {
-                $('#header-frame').css('opacity', '1');
-            }
-        });
-
+        
         $(document).ready(function() {
             $('#video-maker-tab').addClass('active');
+            $('#m-video-maker-tab').addClass('active');
         });
-
-        $(document).scroll(function() {})
 
         $('#mute').on('click', function() {
             $('#mute-icon').toggle();

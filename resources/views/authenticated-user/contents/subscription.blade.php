@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneLook</title>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
-
+@extends('authenticated-user.components.layout')
+@section('page-title')
+    <title>{{config('app.name')}} - Subcriptions</title>
+@endsection
+@section('css')
     <style>
-        .active {
-            text-decoration: underline;
-            text-decoration-color: #ff9011;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
-        }
-
-        .active-header {
-            background: #fde047;
-            color: #0284c7;
-            border: 1px solid;
-            border-color: #0284c7;
-
-        }
-
         .active-cell {
             background: #fef9c3;
             color: #0284c7;
@@ -33,40 +13,18 @@
         }
 
     </style>
-</head>
-
-<body class="justify-center items-center bg-white text-theme-black font-['Calibri']">
-
-    <!--header-->
-    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
-    id="header-frame">
-
-        <div class="items-center w-32">
-            <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-        <div class="flex justify-center items-start gap-7 py-6 font-small text-sm font-bold text-theme-white w-full">
-            <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
-            <a href="{{route('video-creation')}}" id="video-maker-tab">ムービー作成</a>
-            <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
-            <a href="{{route('membership-info')}}" id="member-tab">会員情報</a>
-            <a href="#" id="faq-tab">FAQ</a>
-        </div>
-
-        <div class="items-center w-32">
-            <div class="hidden font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-    </header>
-    <!--header ends here-->
-
+@endsection
+@section('head')
+    @include('authenticated-user.components.head')
+@endsection
+@section('content')
     <!--content-->
     <div>
         <h1 class="text-center text-3xl font-bold text-cyan-600 pb-8 pt-20">会員プラン</h1>
     </div>
     <div class="flex justify-center items-center w-full">
 
-        <table class="text-center w-3/5 border border-sky-700" id="membership-info-table">
+        <table class="text-center w-11/12 md:w-3/5 border border-sky-700" id="membership-info-table">
             <thead class="bg-cyan-600 text-theme-white">
                 <tr>
                     <th class="px-3 py-3 border-x border-sky-700"></th>
@@ -137,7 +95,7 @@
                 <tr>
                     <td colspan="4" class="border border-theme-white">
                         <div class="flex justify-center items-center text-center mt-8">
-                            <a href="{{route('update-cancel-plan')}}" class="px-4 py-2 bg-theme-yellow font-semibold text-theme-white hover:bg-yellow-300 rounded-md w-2/12">プラン変更</a>
+                            <a href="{{route('update-cancel-plan')}}" class="px-4 py-2 bg-theme-yellow font-semibold text-theme-white hover:bg-yellow-300 rounded-md w-32">プラン変更</a>
                         </div>
                     </td>
                 </tr>
@@ -146,56 +104,17 @@
 
     </div>
 
-
-
     <div class="pt-40"></div>
-
     <!--content ends here-->
+@endsection
 
+@section('js')
     <!--script-->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <!-- pdf.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
-    <!-- SweetAlerts CDN -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
     <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-                colors: {
-                    transparent: 'transparent',
-                    current: 'currentColor',
-                    'theme-white': '#f6f6e9',
-                    'theme-black': '#2a221b',
-                    'theme-yellow': '#ffc300',
-                    'theme-cream': '#ffffcc',
-                    'theme-blue': '#61a6ab',
-                    'theme-pink': '#f7b9a1',
-                    'theme-orange': '#ff9011',
-                }
-            }
-          }
-        }
-
-
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
-            }
-            else {
-                jQuery('#header-frame').css('opacity', '1');
-            }
-        });
-
         jQuery(document).ready(function() {
-            $('#member-tab').addClass('active');
+            $('#membership-info-tab').addClass('active');
+            $('#m-membership-info-tab').addClass('active');
         });
-
-        $(document).scroll(function() {})
 
         function planAlert(){
 
@@ -212,8 +131,6 @@
 
         $('table#membership-info-table tbody td:nth-child(1)').addClass('px-8 font-semibold text-left text-neutral-600')
 
-
     </script>
     <!--script ends here-->
-</body>
-</html>
+@endsection

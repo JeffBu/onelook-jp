@@ -1,59 +1,23 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneLook</title>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
-
-    <style>
-        .active {
-            text-decoration: underline;
-            text-decoration-color: #ff9011;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
-        }
-
-    </style>
-</head>
-
-<body class="justify-center items-center bg-white text-theme-black font-['Calibri']">
-
-    <!--header-->
-    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
-    id="header-frame">
-
-        <div class="items-center w-32">
-            <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-        <div class="flex justify-center items-start gap-7 py-6 font-small text-sm font-bold text-theme-white w-full">
-            <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
-            <a href="{{route('video-creation')}}" id="video-maker-tab">ムービー作成</a>
-            <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
-            <a href="{{route('membership-info')}}" id="member-tab">会員情報</a>
-            <a href="#" id="faq-tab">FAQ</a>
-        </div>
-
-        <div class="items-center w-32">
-            <div class="hidden font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-    </header>
-    <!--header ends here-->
-
+@extends('authenticated-user.components.layout')
+@section('page-title')
+    <title>{{config('app.name')}} - Subcriptions</title>
+@endsection
+@section('css')
+@endsection
+@section('head')
+    @include('authenticated-user.components.head')
+@endsection
+@section('content')
     <!--content-->
-    <div class="flex-1 justify-center items-center gap-8 w-full">
+    <div class="flex flex-col justify-center items-center gap-8 w-full">
         <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">会員プラン</h1>
 
-        <div class="flex justify-left items-center gap-8 mx-auto w-1/3">
+        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 md:w-1/3">
             <span>変更前：</span>
             <span>フリープラン</span>
         </div>
 
-        <div class="flex justify-left items-center gap-8 mx-auto w-1/3">
+        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 md:w-1/3">
             <span>変更後：</span>
             <div class="relative inline-block text-left">
                 <div>
@@ -76,14 +40,14 @@
         </div>
 
         <!--upgrade plan-->
-        <div id="upgrade_plan" style="display: none">
-            <div class="flex justify-center items-center mx-auto w-1/12">
+        <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-1/3">
+            <div class="flex justify-center items-center mx-auto w-32">
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
 
-            <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
+            <div class="flex flex-col justify-center items-center text-left mt-10">
                 <p class="px-4 py-4 text-center">留意点</p>
-                <ol class="list-decimal text-justify">
+                <ol class="list-decimal text-left px-4 py-4">
                     <li class="px-4 py-4">
                         パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。
                     </li>
@@ -96,14 +60,14 @@
         </div>
 
         <!--cancel plan-->
-        <div id="cancel_plan" style="display: none">
-            <div class="flex justify-center items-center mx-auto w-1/12">
+        <div id="cancel_plan" class="hidden flex-col justify-center w-11/12 md:w-1/3">
+            <div class="flex justify-center items-center mx-auto w-32">
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
 
-            <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
+            <div class="flex flex-col justify-center items-center text-left mt-10">
                 <p class="px-4 py-4 text-center">留意点</p>
-                <ol class="list-decimal text-justify">
+                <ol class="list-decimal text-left px-4 py-4">
                     <li class="px-4 py-4">
                         パーソナルプランの解約は、パーソナルプランの申込日の翌月２日以降から可能です。
                     </li>
@@ -116,14 +80,14 @@
         </div>
 
         <!--cancel service-->
-        <div id="cancel_service" style="display: none">
-            <div class="flex justify-center items-center mx-auto w-1/12">
+        <div id="cancel_service" class="hidden flex-col justify-center w-11/12 md:w-1/3">
+            <div class="flex justify-center items-center mx-auto w-32">
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
 
-            <div class="flex-1 justify-center items-center text-left mt-10 mx-auto w-1/2">
+            <div class="flex flex-col justify-center items-center text-left mt-10">
                 <p class="px-4 py-4 text-center">留意点</p>
-                <ol class="list-decimal text-justify">
+                <ol class="list-decimal text-left px-4 py-4">
                     <li class="px-4 py-4">
                         本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。<br />
                         なお、解約日以後は本サービスの機能のご利用はできなくなります。
@@ -138,57 +102,18 @@
     </div>
 
     <div class="pt-40"></div>
-
     <!--content ends here-->
+@endsection
 
+@section('js')
     <!--script-->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <!-- pdf.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
-    <!-- SweetAlerts CDN -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-
     <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-                colors: {
-                    transparent: 'transparent',
-                    current: 'currentColor',
-                    'theme-white': '#f6f6e9',
-                    'theme-black': '#2a221b',
-                    'theme-yellow': '#ffc300',
-                    'theme-cream': '#ffffcc',
-                    'theme-blue': '#61a6ab',
-                    'theme-pink': '#f7b9a1',
-                    'theme-orange': '#ff9011',
-                }
-            }
-          }
-        }
-    </script>
-
-    <script>
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
-            }
-            else {
-                jQuery('#header-frame').css('opacity', '1');
-            }
-        });
-
         jQuery(document).ready(function() {
-            $('#member-tab').addClass('active');
+            $('#membership-info-tab').addClass('active');
+            $('#m-membership-info-tab').addClass('active');
         });
-
-        $(document).scroll(function() {})
 
         function planAlert(){
-
             Swal.fire({
                 title: 'ビジネスプランのご相談',
                 text: '申請検討ありがとうございます。こちらを送信いただけましたらご登録者様宛に当社担当よりご連絡を申し上げます。貴社のご希望の使用イメージなどございましたらご記入いただけますとスムーズです。よろしくお願いいたします。',
@@ -236,5 +161,4 @@
         }
     </script>
     <!--script ends here-->
-</body>
-</html>
+@endsection

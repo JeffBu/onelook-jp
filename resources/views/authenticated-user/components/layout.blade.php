@@ -45,4 +45,24 @@
         <!-- SweetAlerts CDN -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            transparent: 'transparent',
+                            current: 'currentColor',
+                            'theme-white': '#ffffff',
+                            'theme-black': '#2a221b',
+                            'theme-yellow': '#ffc300',
+                            'theme-cream': '#ffffcc',
+                            'theme-blue': '#61a6ab',
+                            'theme-pink': '#f7b9a1',
+                            'theme-orange': '#ff9011',
+                        }
+                    }
+                }
+            }
+        </script>
+        
         @yield('js')

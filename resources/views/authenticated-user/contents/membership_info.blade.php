@@ -10,7 +10,7 @@
 @section('content')
     <!--content-->
     <div class="flex justify-center items-center pt-20">
-        <table class="text-center w-[60%] border border-sky-700">
+        <table class="text-center w-11/12 md:w-3/5 border border-sky-700">
             <thead class="bg-cyan-600 text-theme-white">
                 <tr>
                     <th class="px-1 py-1 border-x border-sky-700">使用状況</th>
@@ -288,80 +288,55 @@
     @include('authenticated-user.components.foot')
 @endsection
 @section('js')
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-            colors: {
-                transparent: 'transparent',
-                current: 'currentColor',
-                'theme-white': '#f6f6e9',
-                'theme-black': '#2a221b',
-                'theme-yellow': '#ffc300',
-                'theme-cream': '#ffffcc',
-                'theme-blue': '#61a6ab',
-                'theme-pink': '#f7b9a1',
-                'theme-orange': '#ff9011',
-            }
-        }
-      }
-    }
-    jQuery(window).on('scroll', function() {
-        if(jQuery(window).scrollTop() > 0) {
-            jQuery('#header-frame').css('opacity', '0.8');
-        }
-        else {
-            jQuery('#header-frame').css('opacity', '1');
-        }
-    });
+    <!--script-->
+    <script>
+        jQuery(document).ready(function() {
+            $('#membership-info-tab').addClass('active');
+            $('#m-membership-info-tab').addClass('active');
+        });
 
-    jQuery(document).ready(function() {
-        $('#membership-info-tab').addClass('active');
-    });
+        $('#change-registration-info-form').on('submit', function(event) {
+            event.preventDefault()
 
-    $(document).scroll(function() {})
+            var url = "{{route('modify-account')}}"
+            var formData = new FormData()
 
-    $('#change-registration-info-form').on('submit', function(event) {
-        event.preventDefault()
-
-        var url = "{{route('modify-account')}}"
-        var formData = new FormData()
-
-        formData.append('company_name', $('input[name="modal-input-company-name"]').val())
-        formData.append('full_name', $('input[name="modal-input-full-name"]').val())
-        formData.append('address', $('input[name="modal-input-address"]').val())
-        formData.append('phone_number', $('input[name="modal-input-phone-number"]').val())
-        formData.append('username', $('input[name="modal-input-username"]').val())
-        formData.append('email', $('input[name="modal-input-email-address"]').val())
-        formData.append('notification_status', $('input[name="modal-input-notification"]:checked').val())
-        axios({
-            method: 'POST',
-            url: url,
-            data: formData,
-        }).then((response) => {
-            if(response.data != 1){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'エラー',
-                    text: 'アカウントの変更は失敗しました。',
-                    html: "<span class='text-red-200 text-sm'>"+response.data+"</span>",
-                    showCancelButton: false
-                })
-            }
-
-            Swal.fire({
-                icon: 'success',
-                title: '成功',
-                text: 'アカウントへの変更は正常に公開されました。',
-                showCancelButton: false,
-            }).then((result)=> {
-                if(result) {
-                    window.location.reload()
+            formData.append('company_name', $('input[name="modal-input-company-name"]').val())
+            formData.append('full_name', $('input[name="modal-input-full-name"]').val())
+            formData.append('address', $('input[name="modal-input-address"]').val())
+            formData.append('phone_number', $('input[name="modal-input-phone-number"]').val())
+            formData.append('username', $('input[name="modal-input-username"]').val())
+            formData.append('email', $('input[name="modal-input-email-address"]').val())
+            formData.append('notification_status', $('input[name="modal-input-notification"]:checked').val())
+            axios({
+                method: 'POST',
+                url: url,
+                data: formData,
+            }).then((response) => {
+                if(response.data != 1){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'エラー',
+                        text: 'アカウントの変更は失敗しました。',
+                        html: "<span class='text-red-200 text-sm'>"+response.data+"</span>",
+                        showCancelButton: false
+                    })
                 }
+
+                Swal.fire({
+                    icon: 'success',
+                    title: '成功',
+                    text: 'アカウントへの変更は正常に公開されました。',
+                    showCancelButton: false,
+                }).then((result)=> {
+                    if(result) {
+                        window.location.reload()
+                    }
+                })
+            }).catch((error) => {
+                console.log(error.response.data)
             })
-        }).catch((error) => {
-            console.log(error.response.data)
         })
-    })
-</script>
+    </script>
+    <!--script ends here-->
 @endsection

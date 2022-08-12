@@ -246,14 +246,14 @@
         </div>
     </div>
     <!-- End Video Playback Modal -->
-
     <!--content ends here-->
 
-    @endsection
-    @section('foot')
-        @include('authenticated-user.components.foot')
-    @endsection
-    @section('js')
+@endsection
+@section('foot')
+    @include('authenticated-user.components.foot')
+@endsection
+@section('js')
+    <!--scripts-->
     <script>
         tailwind.config = {
           theme: {
@@ -275,20 +275,10 @@
     </script>
 
     <script>
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
-            }
-            else {
-                jQuery('#header-frame').css('opacity', '1');
-            }
-        });
-
         jQuery(document).ready(function() {
             $('#post-list-tab').addClass('active');
+            $('#m-post-list-tab').addClass('active');
         });
-
-        $(document).scroll(function() {})
 
         function copyLink(key, code, name, exp_date){
             var base_url = "{{config('app.url')}}";
