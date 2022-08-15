@@ -39,28 +39,20 @@
                 </form>
                 </div>
             </div>
-                <div class="flex flex-col justify-center items-center w-full z-10 gap-4">
-                    <div class="text-left w-full">
-                        <h1 class="text-xl font-semibold text-lime-600">投稿履歴</h1>
-                    </div>
-                    <input type="hidden" name="target" value="">
-                    <div class="justify-center items-center w-full">
-                        <textarea name="announcement" id="announcement" class="w-full h-48 border-2 px-4 py-4 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="ここにメッセージを入力"></textarea>
-                    </div>
 
-                    <div class="flex justify-between text-left w-full">
-                        <div></div>
-                        <div>
-                            <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">公開</button>
-                        </div>
+            <div class="grid grid-rows-2 lg:grid-cols-2 justify-center items-start gap-8 w-full text-left">
+                <div class="invisible w-full h-full">
+                    <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">投稿履歴</h2>
+                    <div class="border-b border-x border-lime-600 px-2 py-2">
+                        <table class="min-w-max w-full h-64 text-base">
+                        </table>
                     </div>
                 </div>
 
-            <div class="grid grid-rows-2 lg:grid-cols-2 justify-center items-start gap-8 w-full pt-14 text-left">
                 <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">お知らせ</h2>
                     <div class="border-b border-x border-lime-600 px-2 py-2">
-                        <table class="w-full h-full text-base">
+                        <table class="min-w-max w-full h-64 text-base">
                             <tbody>
                                 <tr>
                                     <td class="text-xs">2021/10/01</td>
@@ -85,34 +77,6 @@
                                 </tr>
                                 <tr>
                                     <td>ハッピーハロウィン</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="w-full h-full">
-                    <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">投稿履歴</h2>
-                    <div class="border-b border-x border-lime-600 px-2 py-2">
-                        <table class="w-full text-base">
-                            <tbody>
-                                <tr>
-                                    <td class="text-xs">2021/10/01</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-b border-lime-600 pb-2">テストが投稿されました。</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-xs pt-2">2021/01/01</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-b border-lime-600 pb-2">ちょっとイリーガルが運営により削除されました。</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-xs pt-2">2020/12/30</td>
-                                </tr>
-                                <tr>
-                                    <td>ちょっとイリーガルについて、お知らせがありますので、メールをご確認ください。</td>
                                 </tr>
                             </tbody>
                         </table>
