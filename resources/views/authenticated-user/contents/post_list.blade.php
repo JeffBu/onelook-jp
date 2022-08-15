@@ -10,16 +10,16 @@
 @section('content')
 
     <!--content-->
-    <div class="flex justify-center items-center pt-20">
+    <div class="flex justify-center items-center pt-20 w-full">
         <table class="text-center w-4/5 border border-sky-700">
             <thead class="bg-sky-600 text-theme-white">
                 <tr>
-                    <th class="px-4 py-2 border-sky-700 font-medium">動画名</th>
-                    <th class="px-4 py-2 border-sky-700 w-2/12 font-medium">パスコード</th>
-                    <th class="px-4 py-2 border-sky-700 font-medium">投稿日</th>
-                    <th class="px-4 py-2 border-sky-700 font-medium">閲覧期限</th>
-                    <th class="px-4 py-2 border-sky-700 w-1/12 font-medium">閲覧数</th>
-                    <th class="px-4 py-2 border-sky-700 font-medium">閲覧URL</th>
+                    <th class="px-2 py-2 border-sky-700 font-medium">動画名</th>
+                    <th class="px-2 py-2 border-sky-700 w-2/12 font-medium">パスコード</th>
+                    <th class="px-2 py-2 border-sky-700 font-medium">投稿日</th>
+                    <th class="px-2 py-2 border-sky-700 font-medium">閲覧期限</th>
+                    <th class="px-2 py-2 border-sky-700 w-1/12 font-medium">閲覧数</th>
+                    <th class="px-2 py-2 border-sky-700 font-medium">閲覧URL</th>
                 </tr>
             </thead>
             <tbody>

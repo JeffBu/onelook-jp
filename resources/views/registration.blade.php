@@ -105,9 +105,20 @@
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
-                        <div class="flex flex-row gap-2">
-                            <span>すでに登録？</span>
-                            <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">ログインする</a>
+                        <div class="flex flex-row justify-between md:px-4 text-sm w-full">
+                            <div class="flex flex-row items-center gap-2">
+                                <input type="radio" name="accept" id="accept-radio">
+                                <label for="accept-radio">
+                                    <a href="#" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">利用規約</a>
+                                    に同意して進む
+                                </label>
+                            </div>
+
+                            <div class="flex flex-row">
+                                <span>すでに登録？</span>
+                                
+                                <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">ログインする</a>
+                            </div>
                         </div>
                     </div>
                     </form>

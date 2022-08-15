@@ -9,114 +9,138 @@
 @endsection
 @section('content')
     <!--content-->
-    <div class="flex justify-center items-center pt-20">
-        <table class="text-center w-11/12 md:w-3/5 border border-sky-700">
-            <thead class="bg-cyan-600 text-theme-white">
-                <tr>
-                    <th class="px-1 py-1 border-x border-sky-700">使用状況</th>
-                    <th colspan="3" class="px-1 py-1 border-x border-sky-700">投稿動画：●件（うち閲覧期限内の動画：●件）<br><br>投稿可能件数：●件/50件（月末まで）</th>
-                    <th class="px-1 py-1 border-x border-sky-700"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">現在のプラン</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">パーソナルプラン</td>
-                    <td class="px-8 py-1 border-x border-y border-cyan-600">
-                        <a  href="{{route('change-membership-plan')}}">
+    <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
+        <div class="flex flex-row justify-center items-center w-11/12 md:w-3/5 gap-4">
+            <span class="font-semibold text-sky-600 text-right">使用状況</span>
+            <span class="font-semibold text-sky-600">投稿動画：●件（うち閲覧期限内の動画：●件）投稿可能件数：●件/50件（月末まで）</span>
+        </div>
+
+        <div class="grid lg:grid-cols-1 justify-center items-center scroll-mt-24 gap-6 w-11/12 md:w-3/5 h-1/2" id="home">
+            <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
+                
+                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+                    <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                        <span class="px-4 py-2 w-40">現在のプラン</span>
+                        <span class="px-4 py-2">パーソナルプラン</span>
+                    </div>
+
+                    <div class="flex flex-row justify-center items-center gap-2">
+                        <a  href="{{route('change-membership-plan')}}" class="px-4 py-2">
                             <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                         </a>
-                    </td>
-                </tr>
+                    </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">会社名等（任意）</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->company}}</td>
-                    <td rowspan="3" class="px-8 py-1 border-x border-y border-cyan-600">
-                        <button data-modal-toggle="edit-member-info" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
-                    </td>
-                </tr>
+                </div>
+            </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">氏名</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->name}}</td>
-                </tr>
+            <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
+                
+                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+                    <div class="flex flex-col justify-center items-start text-left gap-4">
+                        <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                            <span class="px-4 py-2 w-40">会社名等（任意）</span>
+                            <span class="px-4 py-2">{{$user->account->company}}</span>
+                        </div>
 
-                <!--<tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">住所</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">〒550-0044</td>
-                </tr>
+                        <div class="flex flex-row justify-start items-center text-left divide-x divide-sky-700 gap-2">
+                            <span class="px-4 py-2 w-40">氏名</span>
+                            <span class="px-4 py-2">{{$user->name}}</span>
+                        </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->address}} -</td>
-                </tr>
+                        <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                            <span class="px-4 py-2 w-40">メールアドレス</span>
+                            <span class="px-4 py-2">{{$user->email}}</span>
+                        </div>
+                    </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">電話番号</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->account->phone_number}}</td>
-                </tr>
+                    <div class="flex flex-row justify-center items-center gap-2">
+                        <button data-modal-toggle="edit-member-info" class="container mx-4 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                    </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">ユーザー名</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->username}}</td>
-                </tr>-->
+                </div>
+            </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">メールアドレス</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->email}}</td>
-                </tr>
+            <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
+                
+                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+                    <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                        <span class="px-4 py-2 w-40">パスワード</span>
+                        <span class="px-4 py-2">********</span>
+                    </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">閲覧期限の通知</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">
-                        <div class="flex justify-center items-center gap-6">
+                    <div class="flex flex-row justify-center items-center gap-2">
+                        <button data-modal-toggle="change-password" class="container mx-4 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
+                
+                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+                    <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                        <span class="px-4 py-2 w-40">閲覧期限の通知</span>
+                        
+                        <div class="flex justify-center items-center px-4 py-2 gap-6">
                             <input type="radio" name="available" id="avail-radio" disabled @if($user->account->notification_on == 1) checked @endif>
                             <label for="avail-radio">あり</label>
                             <input type="radio" name="not" id="not-radio" disabled @if($user->account->notification_on == 0) checked @endif>
                             <label for="not-radio">なし</label>
                         </div>
-                    </td>
-                </tr>
+                    </div>
 
-                <!--<tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">ログインID</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">{{$user->login_id}}</td>
-                    <td  class="items-center px-8 py-1 border-x border-y border-cyan-600">
-                        <button data-modal-toggle="change-password" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
-                    </td>
-                </tr>-->
+                    <div></div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">パスワード</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">********</td>
-                    <td  class="items-center px-8 py-1 border-x border-y border-cyan-600">
-                        <button data-modal-toggle="change-password" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
-                    </td>
-                </tr>
+                </div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">支払履歴</td>
-                    <td colspan="3" class="px-1 py-1 border-x border-y border-cyan-600">
-                        <div class="flex justify-center items-center gap-3">
-                        <span>支払履歴は</span>
-                        <a href="{{route('payment-history')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">こちら</a>
+                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+                    <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                        <span class="px-4 py-2 w-40">支払履歴</span>
+                        
+                        <div class="flex flex-row justify-center items-center text-left px-4 py-2 gap-2">
+                            <span>支払履歴</span>
+                            <a href="{{route('payment-history')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">こちら</a>
                         </div>
-                    </td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                </tr>
+                    </div>
+                
+                    <div></div>
 
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">支払情報</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">カード番号<br>********5555</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">カード名義<br>KINICHICIHIKA</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">有効期限<br>03/2022</td>
-                    <td class="px-8 py-1 border-x border-y border-cyan-600">
-                        <button data-modal-toggle="edit-card" class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">支払情報</span>
+                
+                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+
+                    <div class="flex flex-col justify-center items-start text-left gap-4">
+                        <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                            <span class="px-4 py-2 w-40">カード番号</span>
+                            <span class="px-4 py-2">********5555</span>
+                        </div>
+
+                        <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                            <span class="px-4 py-2 w-40">カード名義</span>
+                            <span class="px-4 py-2">KINICHICIHIKA</span>
+                        </div>
+
+                        <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
+                            <span class="px-4 py-2 w-40">有効期限</span>
+                            <span class="px-4 py-2">03/2022</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center items-center gap-2">
+                        <button data-modal-toggle="edit-card" class="container mx-4 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--edit member info modal-->
@@ -146,42 +170,9 @@
                             <label for="modal-input-full-name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">氏名</label>
                         </div>
                         <div class="relative z-0 w-full px-4 mb-4 group">
-                            <input type="text" name="modal-input-address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->account->address}}" required />
-                            <label for="modal-input-address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">住所</label>
+                            <input type="email" name="modal-input-email-address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->email}}" required />
+                            <label for="modal-input-email-address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
                         </div>
-                        <div class="relative z-0 w-full px-4 mb-4 group">
-                            <input type="text" name="modal-input-phone-number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->account->phone_number}}" required />
-                            <label for="modal-input-phone-number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">電話番号</label>
-                        </div>
-                        <div class="grid xl:grid-cols-2 xl:gap-6">
-                            <div class="relative z-0 w-full pl-4 mb-4 group">
-                                <input type="text" name="modal-input-username" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->username}}" required />
-                                <label for="modal-input-username" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">ユーザー名</label>
-                            </div>
-                            <div class="relative z-0 w-full pr-4 mb-4 group">
-                                <input type="email" name="modal-input-email-address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->email}}" required />
-                                <label for="modal-input-email-address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
-                            </div>
-                        </div>
-                        <div class="relative z-0 w-full group">
-                            <div class="flex-1 py-2 justify-center items-center">
-                                <div class="flex flex-row justify-center items-center gap-24">
-                                    <div class="flex py-2 justify-center items-center text-gray-500">閲覧期限の通知</div>
-
-                                    <div class="flex justify-center items-center gap-4">
-                                        <input type="radio" name="modal-input-notification" id="cb1" data-tooltip-target="marker-toolbar" @if($user->account->notification_on == 1) checked @endif value="1">
-                                        <div id="marker-toolbar" role="tooltip" class="w-1/3 inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                                            閲覧期限の３６時間前に、メールで閲覧期限の終了をお知らせする機能です。 通知が不要な方は、なしにチェックしてください。（デフォルトはありにチェック）
-                                            <div class="tooltip-arrow" data-popper-arrow></div>
-                                        </div>
-                                        <label for="cb1" class="text-gray-500">あり</label>
-                                        <input type="radio" name="modal-input-notification" id="cb2" @if($user->account->notification_on == 0) checked @endif value="0">
-                                        <label for="cb2" class="text-gray-500">なし</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                 </div>
                 <!--modal footer-->
                 <div class="flex justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
