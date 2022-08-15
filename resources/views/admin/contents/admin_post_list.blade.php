@@ -45,8 +45,8 @@
                             <td class="px-4 py-1 border border-lime-700">{{$record->uploader->name}}</td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->key}}</td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->views->count()}}</td>
-                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->format(Y年m月d日H:i)}}</td>
-                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format(Y年m月d日)}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->format('Y年m月d日H:i')}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format('Y年m月d日')}}</td>
                             <td class="px-4 py-1 border border-lime-700">
                                 <div class="flex flex-col justify-center items-center gap-3">
                                     <a href="{{route('admin-viewer')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://oenlook.com/access-video-from-admin/{{$record->key}}</a>
