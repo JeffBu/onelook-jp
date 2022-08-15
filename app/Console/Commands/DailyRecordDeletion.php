@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\VideoRecord;
+use Carbon\Carbon;
 
 class DailyRecordDeletion extends Command
 {
@@ -37,7 +39,8 @@ class DailyRecordDeletion extends Command
      */
     public function handle()
     {
-
-        echo 'basic scheduler';
+        $now = Carbon::now()->format('Y-m-d');
+        $todelete = $now->date_modify('-7 days');
+        VideoRecord::where('created_at', 'LIKE', $todelete.'%')->delete();
     }
 }

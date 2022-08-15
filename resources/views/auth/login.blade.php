@@ -76,7 +76,7 @@
                                 </div>
 
                                 <div class="flex flex-col items-end gap-2 w-full">
-                                    <a href="#" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">パスワードをお忘れですか?</a>
+                                    <a href="forgot-password" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">パスワードをお忘れですか?</a>
                                 </div>
                             </div>
 
