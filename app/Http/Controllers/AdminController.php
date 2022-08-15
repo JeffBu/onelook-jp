@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 //Models
 use App\Models\User;
 use App\Models\News;
+use App\Models\VideoRecord;
 
 //Helpers
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -34,6 +36,18 @@ class AdminController extends Controller
         );
 
         return view('admin.contents.admin_member_list', $data);
+    }
+
+    public function post_list()
+    {
+        $user = Auth::user();
+        $records = VideoRecord::latest()->get();
+        $data = array(
+            'user' => $user,
+            'records' => $records,
+        );
+
+        return view('admin.contents.admin_post_list', $data);
     }
 
 

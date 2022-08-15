@@ -193,15 +193,7 @@ class MainController extends Controller
         return view('admin.contents.admin_member_info', $data);
     }
 
-    public function admin_post_list()
-    {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
 
-        return view('admin.contents.admin_post_list', $data);
-    }
 
     public function admin_viewer()
     {

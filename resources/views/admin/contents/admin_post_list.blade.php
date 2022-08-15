@@ -38,63 +38,29 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700">2021年4月1日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">2021年4月4日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <div class="flex flex-col justify-center items-center gap-3">
-                                <a href="{{route('admin-viewer')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://www.OneLook.com/Dkakanak123/</a>
+                    @forelse($records as $record)
+                        <tr>
+                            <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id=""></td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
+                            <td class="px-4 py-1 border border-lime-700">2021年4月1日10:00</td>
+                            <td class="px-4 py-1 border border-lime-700">2021年4月4日10:00</td>
+                            <td class="px-4 py-1 border border-lime-700">
+                                <div class="flex flex-col justify-center items-center gap-3">
+                                    <a href="{{route('admin-viewer')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://www.OneLook.com/Dkakanak123/</a>
 
-                                <div class="flex flex-col sm:flex-row gap-3 w-full">
-                                    <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
-                                    data-modal-toggle="previewModal">詳細</button>
-                                    <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
+                                    <div class="flex flex-col sm:flex-row gap-3 w-full">
+                                        <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
+                                        data-modal-toggle="previewModal">詳細</button>
+                                        <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700">2021年4月1日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">2021年4月4日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://www.OneLook.com/Dkakanak123/</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700">2021年4月1日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">2020年4月4日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://www.OneLook.com/Dkakanak123/</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700">ちょっとイリーガルなもの</td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700">2021年4月1日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">2020年4月4日10:00</td>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">運営により削除されました</a>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @empty
+                    @endforelse
                 </tbody>
             </table>
 
