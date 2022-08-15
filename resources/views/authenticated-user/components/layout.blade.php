@@ -7,6 +7,9 @@
         <meta description="A video sharing platform for business professionals">
         @yield('page-title')
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 
         <style>
             .active {
@@ -45,6 +48,8 @@
         <!-- SweetAlerts CDN -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+        <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+
         <script>
             tailwind.config = {
                 theme: {

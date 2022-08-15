@@ -412,7 +412,6 @@
         {
             Swal.fire({
                 icon: 'warning',
-                title: 'ごめん',
                 text: 'この機能は個人プランでのみ利用できます。',
             })
 
@@ -440,7 +439,6 @@
         function deleteVideo() {
             Swal.fire({
                 icon: 'warning',
-                title: 'ごめん',
                 text: 'この機能は個人プランでのみ利用できます。',
             })
         }
