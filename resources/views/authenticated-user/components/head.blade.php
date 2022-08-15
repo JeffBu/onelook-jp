@@ -33,12 +33,14 @@ id="header-frame">
     </div>
     <!-- /logout -->
 </header>
+<!--header ends here-->
 
+<!--aside-->
 <div class="hidden md:invisible bg-black bg-opacity-20 w-full min-h-screen fixed top-0 bottom-0 left-0 right-0" id="bg-sidebar" onclick="toggleSidebar()"></div>
 
 <aside class="hidden md:invisible flex-col justify-center items-center min-h-screen tracking-widest fixed left-0 top-0 z-20 w-72 shadow"
 id="sidebar">
-    <div class="bg-sky-600 min-h-screen w-72" id="sidebar">
+    <div class="bg-sky-600 min-h-screen w-72">
         <div class="justify-center items-center text-center px-4 py-2 mt-11 w-full">
             <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
         </div>
@@ -52,6 +54,7 @@ id="sidebar">
         </div>
     </div>
 </aside>
+<!--aside ends here-->
 
 <script>
     jQuery(window).on('scroll', function() {
