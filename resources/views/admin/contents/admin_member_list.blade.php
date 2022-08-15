@@ -51,39 +51,21 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <a href="{{route('admin-member-info')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">市川欽一税理士事務所</a>
-                        </td>
-                        <td class="px-4 py-1 border border-lime-700">2021/1/1</td>
-                        <td class="px-4 py-1 border border-lime-700">パーソナル</td>
-                        <td class="px-4 py-1 border border-lime-700">30</td>
-                        <td class="px-4 py-1 border border-lime-700">10</td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">フィールフリーコンサルティング</a>
-                        </td>
-                        <td class="px-4 py-1 border border-lime-700">2020/10/30</td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                    </tr>
-                    <tr>
-                        <td class="px-4 py-1 border border-lime-700">
-                            <a href="#" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">ライフシェルパ</a>
-                        </td>
-                        <td class="px-4 py-1 border border-lime-700">2020/9/30</td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
-                    </tr>
+                    @forelse($users as $user)
+                        <tr>
+                            <td class="px-4 py-1 border border-lime-700">
+                                <a href="{{route('admin-member-info', ['user_id' => $user->id])}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">{{$user->name}}</a>
+                            </td>
+                            <td class="px-4 py-1 border border-lime-700">{{$user->created_at->format('Y年m月d日')}}</td>
+                            <td class="px-4 py-1 border border-lime-700">パーソナル</td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
+                            <td class="px-4 py-1 border border-lime-700">10</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$user->email}}</td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
+                        </tr>
+                    @empty
+
+                    @endforelse
                 </tbody>
             </table>
 

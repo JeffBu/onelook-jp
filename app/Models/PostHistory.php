@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PostHistory extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'content',
+        'user_id',
+    ];
 }

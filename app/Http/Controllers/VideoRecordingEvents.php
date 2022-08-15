@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\VideoRecord;
 use App\Models\VideoView;
 use App\Models\VideoAccess;
+use App\Models\PostHistory;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
 
@@ -70,6 +71,12 @@ class VideoRecordingEvents extends Controller
                 'access_code' => Str::random(8),
                 'granted_by_user_id' => Auth::user()->id
             ]);
+
+            PostHistory::create([
+                'content' => '',
+                'user_id' => Auth::user()->id,
+            ]);
+
         });
 
         return 'Success';

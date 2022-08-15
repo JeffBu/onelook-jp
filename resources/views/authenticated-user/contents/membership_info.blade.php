@@ -12,13 +12,13 @@
     <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
         <div class="flex flex-row justify-center items-center w-11/12 md:w-3/5 gap-4">
             <span class="font-semibold text-sky-600 text-right">使用状況</span>
-            <span class="font-semibold text-sky-600">投稿動画：●件（うち閲覧期限内の動画：●件）投稿可能件数：●件/50件（月末まで）</span>
+            <span class="font-semibold text-sky-600">投稿動画：{{$user->records->count()}} 件（うち閲覧期限内の動画：●件）投稿可能件数：●件/5件（月末まで）</span>
         </div>
 
         <div class="grid lg:grid-cols-1 justify-center items-center scroll-mt-24 gap-6 w-11/12 md:w-3/5 h-1/2" id="home">
             <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
-                
+
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                         <span class="px-4 py-2 w-40">現在のプラン</span>
@@ -36,7 +36,7 @@
 
             <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
-                
+
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-col justify-center items-start text-left gap-4">
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
@@ -64,7 +64,7 @@
 
             <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
-                
+
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                         <span class="px-4 py-2 w-40">パスワード</span>
@@ -80,11 +80,11 @@
 
             <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
-                
+
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                         <span class="px-4 py-2 w-40">閲覧期限の通知</span>
-                        
+
                         <div class="flex justify-center items-center px-4 py-2 gap-6">
                             <input type="radio" name="available" id="avail-radio" disabled @if($user->account->notification_on == 1) checked @endif>
                             <label for="avail-radio">あり</label>
@@ -100,13 +100,13 @@
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                         <span class="px-4 py-2 w-40">支払履歴</span>
-                        
+
                         <div class="flex flex-row justify-center items-center text-left px-4 py-2 gap-2">
                             <span>支払履歴</span>
                             <a href="{{route('payment-history')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">こちら</a>
                         </div>
                     </div>
-                
+
                     <div></div>
 
                 </div>
@@ -114,7 +114,7 @@
 
             <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">支払情報</span>
-                
+
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
 
                     <div class="flex flex-col justify-center items-start text-left gap-4">

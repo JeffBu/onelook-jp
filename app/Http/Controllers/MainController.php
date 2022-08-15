@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\VideoRecord;
+use App\Models\News;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -39,9 +40,12 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $news = News::where('target_user', null)->orWhere('target_user', $user->id)->latest()->get();
         $data = array(
             'user' => $user,
+            'news' => $news,
         );
+
 
         if($user->is_admin == 1)
         {
@@ -177,16 +181,6 @@ class MainController extends Controller
         );
 
         return view('admin.contents.admin_posting', $data);
-    }
-
-    public function admin_member_list()
-    {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
-
-        return view('admin.contents.admin_member_list', $data);
     }
 
     public function admin_member_info()

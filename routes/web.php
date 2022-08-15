@@ -45,12 +45,13 @@ Route::middleware([
     Route::post('send-inquiry', [MainController::class, 'send_inquiry'])->name('send-inquiry');
 
     Route::get('admin-home', [MainController::class, 'admin_home'])->name('admin-home');
-    Route::get('admin-member-list', [MainController::class, 'admin_member_list'])->name('admin-member-list');
+    Route::get('admin-member-list', [AdminController::class, 'member_list'])->name('admin-member-list');
     Route::get('admin-member-info', [MainController::class, 'admin_member_info'])->name('admin-member-info');
     Route::get('admin-post-list', [MainController::class, 'admin_post_list'])->name('admin-post-list');
     Route::get('admin-viewer', [MainController::class, 'admin_viewer'])->name('admin-viewer');
     Route::get('admin-settings', [MainController::class, 'admin_settings'])->name('admin-settings');
     Route::get('admin-posting', [MainController::class, 'admin_posting'])->name('admin-posting');
+    Route::post('add-announcement', [AdminController::class, 'add_news'])->name('add-announcement');
 });
 
 Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');

@@ -24,7 +24,10 @@
                     <h1 class="text-xl font-semibold text-lime-600">お知らせ</h1>
                 </div>
 
+
                 <div class="justify-center items-center w-full">
+                <form action="{{route('add-announcement')}}" method="post">
+                    @csrf
                     <textarea name="news" id="news" class="w-full h-48 border-2 px-4 py-4 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="ここにメッセージを入力"></textarea>
                 </div>
 
@@ -33,25 +36,25 @@
                     <div>
                         <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">公開</button>
                     </div>
+                </form>
                 </div>
             </div>
+                <div class="flex flex-col justify-center items-center w-full z-10 gap-4">
+                    <div class="text-left w-full">
+                        <h1 class="text-xl font-semibold text-lime-600">投稿履歴</h1>
+                    </div>
+                    <input type="hidden" name="target" value="">
+                    <div class="justify-center items-center w-full">
+                        <textarea name="announcement" id="announcement" class="w-full h-48 border-2 px-4 py-4 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="ここにメッセージを入力"></textarea>
+                    </div>
 
-            <div class="flex flex-col justify-center items-center w-full z-10 gap-4">
-                <div class="text-left w-full">
-                    <h1 class="text-xl font-semibold text-lime-600">投稿履歴</h1>
-                </div>
-
-                <div class="justify-center items-center w-full">
-                    <textarea name="announcement" id="announcement" class="w-full h-48 border-2 px-4 py-4 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="ここにメッセージを入力"></textarea>
-                </div>
-
-                <div class="flex justify-between text-left w-full">
-                    <div></div>
-                    <div>
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">公開</button>
+                    <div class="flex justify-between text-left w-full">
+                        <div></div>
+                        <div>
+                            <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">公開</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             <div class="grid grid-rows-2 lg:grid-cols-2 justify-center items-start gap-8 w-full pt-14 text-left">
                 <div class="w-full">
