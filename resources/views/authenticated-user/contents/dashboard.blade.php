@@ -49,7 +49,7 @@
                 <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-sky-800 font-bold bg-sky-600 text-white text-xl pb-2">お知らせ</h2>
                     <div class="border-b border-x border-sky-800 px-2 py-2 h-64 overflow-auto">
-                        <table class="container text-base">
+                        <table class="min-w-max w-full text-base">
                             <tbody>
                                 @forelse($news as $item)
                                     <tr>
@@ -74,7 +74,7 @@
                 <div class="w-full h-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-sky-800 font-bold bg-sky-600 text-white text-xl pb-2">投稿履歴</h2>
                     <div class="border-b border-x border-sky-800 px-2 py-2 h-64 overflow-auto">
-                        <table class="w-full text-base">
+                        <table class="min-w-max w-full text-base">
                             <tbody>
                                 <tr>
                                     <td id="post-date" class="text-xs"></td>
