@@ -41,15 +41,15 @@
                     @forelse($records as $record)
                         <tr>
                             <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id=""></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700">2021年4月1日10:00</td>
-                            <td class="px-4 py-1 border border-lime-700">2021年4月4日10:00</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->title}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->uploader->name}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->key}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->views->count()}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->format(Y年m月d日H:i)}}</td>
+                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format(Y年m月d日)}}</td>
                             <td class="px-4 py-1 border border-lime-700">
                                 <div class="flex flex-col justify-center items-center gap-3">
-                                    <a href="{{route('admin-viewer')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://www.OneLook.com/Dkakanak123/</a>
+                                    <a href="{{route('admin-viewer')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://oenlook.com/access-video-from-admin/{{$record->key}}</a>
 
                                     <div class="flex flex-col sm:flex-row gap-3 w-full">
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
