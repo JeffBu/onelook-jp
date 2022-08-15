@@ -40,7 +40,7 @@ id="header-frame">
 
 <aside class="hidden md:invisible flex-col justify-center items-center min-h-screen tracking-widest fixed left-0 top-0 z-20 w-72 shadow"
 id="sidebar">
-    <div class="bg-sky-600 min-h-screen w-72" id="sidebar">
+    <div class="bg-sky-600 min-h-screen w-72">
         <div class="justify-center items-center text-center px-4 py-2 mt-11 w-full">
             <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
         </div>
