@@ -61,7 +61,7 @@
                     <td class="px-3 py-3 border-x border-y border-cyan-600">月額料金</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">無料</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600"></td>
-                    <td rowspan="6" class="px-3 py-3 border-x border-y border-cyan-600 w-1/4">
+                    <td rowspan="3" class="px-3 py-3 border-x border-y border-cyan-600 w-1/4">
                         <div class="flex-1 justify-center items-center text-center">
                             <span>自社専用サイト 管理者画面の追加 セキュリティ強化 保管期限の延長 などのカスタムプランもご相談ください</span>
                         </div>
@@ -80,7 +80,7 @@
                     <td class="px-3 py-3 border-x border-y border-cyan-600"></td>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">ダウンロード<br>（mp4ファイル）</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -100,7 +100,7 @@
                     <td class="px-3 py-3 border-x border-y border-cyan-600">広告</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">あり</td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600"></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600"></td>
                     <td class="px-3 py-3 border-x border-y border-cyan-600"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Signup for Free</button></td>
