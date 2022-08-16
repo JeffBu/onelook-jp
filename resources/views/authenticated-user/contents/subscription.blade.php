@@ -44,7 +44,7 @@
                         </div>
                     </td>
                     <td class="px-3 py-3 border border-cyan-600"></td>
-                    <td rowspan="4" class="px-3 py-3 border border-cyan-600 w-1/4">
+                    <td rowspan="7" class="px-3 py-3 border border-cyan-600 w-1/4">
                         <div class="flex-1 justify-center items-center text-center">
                             <span>自社専用OneLookの構築プランです。 自社管理者用の画面の追加、セキュリティ強化、保管期限の延長などのカスタムプランもご相談ください</span>
                             <button class="container mt-16 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</button>
@@ -55,27 +55,27 @@
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">月額料金</td>
                     <td class="px-3 py-3 active-cell">無料</td>
-                    <td class="px-3 py-3 border border-cyan-600"></td>
+                    <td class="px-3 py-3 border border-cyan-600">300円</td>
                 </tr>
 
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">最大録画時間</td>
                     <td class="px-3 py-3 active-cell">5分</td>
-                    <td class="px-3 py-3 border border-cyan-600"></td>
+                    <td class="px-3 py-3 border border-cyan-600">15分</td>
                 </tr>
 
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">月間の作成件数</td>
                     <td class="px-3 py-3 active-cell">5件</td>
-                    <td class="px-3 py-3 border border-cyan-600"></td>
+                    <td class="px-3 py-3 border border-cyan-600">100件</td>
                 </tr>
 
-                <!-- <tr>
+                <tr>
                     <td class="px-3 py-3 border border-cyan-600">ダウンロード<br>（mp4ファイル）</td>
                     <td class="px-3 py-3 active-cell"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg></td>
-                    <td class="px-3 py-3 border border-cyan-600"><svg xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <td class="px-3 py-3 border border-cyan-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 01M12 01M16 01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg></td>
                 </tr>
@@ -83,14 +83,14 @@
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">ストレージサービス<br>（クラウドでの保管・閲覧）</td>
                     <td class="px-3 py-3 active-cell">3日</td>
-                    <td class="px-3 py-3 border border-cyan-600"></td>
+                    <td class="px-3 py-3 border border-cyan-600">7日</td>
                 </tr>
 
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">広告</td>
                     <td class="px-3 py-3 active-cell">あり</td>
-                    <td class="px-3 py-3 border border-cyan-600"></td>
-                </tr> -->
+                    <td class="px-3 py-3 border border-cyan-600">なし</td>
+                </tr>
 
                 <tr>
                     <td colspan="4" class="border border-theme-white">
