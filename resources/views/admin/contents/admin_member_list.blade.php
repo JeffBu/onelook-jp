@@ -59,7 +59,7 @@
                             <td class="px-4 py-1 border border-lime-700">{{$user->created_at->format('Y年m月d日')}}</td>
                             <td class="px-4 py-1 border border-lime-700">パーソナル</td>
                             <td class="px-4 py-1 border border-lime-700"></td>
-                            <td class="px-4 py-1 border border-lime-700">10</td>
+                            <td class="px-4 py-1 border border-lime-700"></td>
                             <td class="px-4 py-1 border border-lime-700">{{$user->email}}</td>
                             <td class="px-4 py-1 border border-lime-700"></td>
                         </tr>

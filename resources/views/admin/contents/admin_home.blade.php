@@ -26,7 +26,7 @@
             <table class="text-center mt-6 border border-lime-600 w-full">
                 <thead>
                     <tr>
-                        <th rowspan="2" class="px-4 py-1 border border-lime-700">10月</th>
+                        <th rowspan="2" class="px-4 py-1 border border-lime-700">{{$currentMonth.'月'}}</th>
                         <th rowspan="2" class="px-4 py-1 border border-lime-700">会員数合計</th>
                         <th colspan="4" class="px-4 py-1 border border-lime-700">動画数</th>
                     </tr>
@@ -41,8 +41,8 @@
                 <tbody>
                     <tr>
                         <td class="px-4 py-1 border border-lime-700">フリープラン</td>
-                        <td class="px-4 py-1 border border-lime-700">30</td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
+                        <td class="px-4 py-1 border border-lime-700">{{$recentSubs->count()}}</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$recentRecords->count()}}</td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td class="px-4 py-1 border border-lime-700">ビジネスプラン</td>
-                        <td class="px-4 py-1 border border-lime-700">300</td>
+                        <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
@@ -77,7 +77,7 @@
             <table class="text-center mt-6 border border-lime-600 w-full">
                 <thead>
                     <tr>
-                        <th rowspan="2" class="px-4 py-1 border border-lime-700">9月</th>
+                        <th rowspan="2" class="px-4 py-1 border border-lime-700">{{$lastMonth.'月'}}</th>
                         <th rowspan="2" class="px-4 py-1 border border-lime-700">会員数合計</th>
                         <th colspan="4" class="px-4 py-1 border border-lime-700">動画数</th>
                     </tr>
@@ -92,8 +92,8 @@
                 <tbody>
                     <tr>
                         <td class="px-4 py-1 border border-lime-700">フリープラン</td>
-                        <td class="px-4 py-1 border border-lime-700">30</td>
-                        <td class="px-4 py-1 border border-lime-700"></td>
+                        <td class="px-4 py-1 border border-lime-700">{{$lastMonthSubs->count()}}</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$lastMonthRecords->count()}}</td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
                         <td class="px-4 py-1 border border-lime-700">ビジネスプラン</td>
-                        <td class="px-4 py-1 border border-lime-700">300</td>
+                        <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>

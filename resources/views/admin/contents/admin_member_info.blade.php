@@ -33,38 +33,26 @@
                 <tbody>
                     <tr>
                         <th class="px-4 py-1 border border-lime-700">事業者名</th>
-                        <td class="px-4 py-1 border border-lime-700">市川欽一税理士事務所</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$target->account->company}}</td>
                     </tr>
                     <tr>
                         <th class="px-4 py-1 border border-lime-700">代表者</th>
-                        <td class="px-4 py-1 border border-lime-700">市川欽一</td>
-                    </tr>
-                    <tr>
-                        <th class="px-4 py-1 border border-lime-700">住所</th>
-                        <td class="px-4 py-1 border border-lime-700">〒550-0044</td>
-                    </tr>
-                    <tr>
-                        <th class="px-4 py-1 border border-lime-700"></th>
-                        <td class="px-4 py-1 border border-lime-700">大阪府大阪市北区東天満２－６－７南森町東一号館9F</td>
-                    </tr>
-                    <tr>
-                        <th class="px-4 py-1 border border-lime-700">電話番号</th>
-                        <td class="px-4 py-1 border border-lime-700">06-6356-3366</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$target->name}}</td>
                     </tr>
                     <tr>
                         <th class="px-4 py-1 border border-lime-700">メールアドレス</th>
-                        <td class="px-4 py-1 border border-lime-700">ichikawa@feel-free.biz</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$target->email}}</td>
                     </tr>
                     <tr>
                         <th class="px-4 py-1 border border-lime-700">閲覧期限の通知</th>
                         <td class="px-4 py-1 border border-lime-700">
                             <div class="flex justify-center items-center gap-8">
                                 <div class="flex justify-center items-center gap-3">
-                                    <input type="radio" name="view-select" id="cb1" checked>
+                                    <input type="radio" name="view-select" id="cb1" checked readonly>
                                     <label for="cb1">あり</label>
                                 </div>
                                 <div class="flex justify-center items-center gap-3">
-                                    <input type="radio" name="view-select" id="cb2">
+                                    <input type="radio" name="view-select" id="cb2" disabled>
                                     <label for="cb2">なし</label>
                                 </div>
                             </div>
@@ -102,11 +90,11 @@
 
                 <tbody>
                     <tr>
-                        <td class="px-4 py-1 border border-lime-700">>市川欽一税理士事務所</td>
-                        <td class="px-4 py-1 border border-lime-700">2021/1/1</td>
+                        <td class="px-4 py-1 border border-lime-700">>{{$target->name}}</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$target->created_at->format('Y/m/d')}}</td>
                         <td class="px-4 py-1 border border-lime-700">パーソナル</td>
-                        <td class="px-4 py-1 border border-lime-700">30</td>
-                        <td class="px-4 py-1 border border-lime-700">10</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$video_records->count()}}</td>
+                        <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                     </tr>
@@ -116,19 +104,21 @@
             <div class="flex justify-between items-center pt-6 pb-3 w-full sticky top-0">
                 <h1 class="text-xl font-semibold text-lime-600">対象顧客への連絡</h1>
             </div>
-
-            <div class="justify-center items-center w-full">
-                <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
-            </div>
-
-            <div class="flex justify-between pt-3 text-left w-full">
-                <div></div>
-                <div>
-                    <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">登録</button>
+            <form action="send-notif" method="post">
+                @csrf
+                <input type="hidden" name="user_id" value="{{$target->id}}">
+                <div class="justify-center items-center w-full">
+                    <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
                 </div>
 
-            </div>
+                <div class="flex justify-between pt-3 text-left w-full">
+                    <div></div>
+                    <div>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">登録</button>
+                    </div>
 
+                </div>
+            </form>
             <div class="pt-32"></div>
         </div>
     </div>

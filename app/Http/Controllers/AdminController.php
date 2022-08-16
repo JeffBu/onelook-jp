@@ -19,13 +19,30 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
         $data = array();
         $user = User::find(1);
         $currentYear = Carbon::now()->year;
         $currentMonth = Carbon::now()->format('m');
+        $lastMonth = Carbon::now()->submonth()->format('m');
 
-        $subscribers = User::where('created_at', 'LIKE', $currentYear.'-'.$currentMonth.'%')->where('is_admin','<>', '1')->count();
-        dd($subscribers);
+        $recentSubs = User::where('created_at', 'LIKE', $currentYear.'-'.$currentMonth.'%')->where('is_admin','<>', '1')->get();
+        $lastMonthSubs = User::where('created_at', 'LIKE', $currentYear.'-'.$lastMonth.'%')->where('is_admin','<>', '1')->get();
+
+        $recentRecords = VideoRecord::where('created_at', 'LIKE', $currentYear.'-'.$currentMonth.'%')->get();
+        $lastMonthRecords = VideoRecord::where('created_at', 'LIKE', $currentYear.'-'.$lastMonth.'%')->get();
+        $data = array(
+            'currentMonth' => $currentMonth,
+            'lastMonth' => $lastMonth,
+            'recentSubs' => $recentSubs,
+            'lastMonthSubs' => $lastMonthSubs,
+            'recentRecords' => $recentRecords,
+            'lastMonthRecords' => $lastMonthRecords,
+            'user' => $user,
+        );
+
+
+        return view('admin.contents.admin_home', $data);
     }
 
     public function member_list()
@@ -36,6 +53,21 @@ class AdminController extends Controller
         );
 
         return view('admin.contents.admin_member_list', $data);
+    }
+
+    public function user_info(Request $request)
+    {
+        $user_id = $request->user_id;
+        $target = User::find($user_id);
+        $video_records = VideoRecord::where('user_id', $user_id)->get();
+        $user = Auth::user();
+        $data = array(
+            'user' => $user,
+            'target' => $target,
+            'video_records' => $video_records,
+        );
+
+        return view('admin.contents.admin_member_info', $data);
     }
 
     public function post_list()
@@ -79,5 +111,16 @@ class AdminController extends Controller
         });
 
         return redirect()->route('admin-posting');
+    }
+
+    public function send_notif(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'comment' => 'required'
+        ]);
+
+        if($validator->fails()){
+
+        }
     }
 }
