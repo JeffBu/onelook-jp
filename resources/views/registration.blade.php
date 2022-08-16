@@ -111,11 +111,9 @@
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
                         <div class="flex flex-row justify-between md:px-4 text-sm w-full">
                             <div class="flex flex-row items-center gap-2">
-                                <input type="checkbox" name="accept" id="accept-radio">
+                                <input type="checkbox" name="accept" id="accept-radio" class="focus:ring-0">
                                 <button type="button" class="text-sky-600 hover:text-sky-400 underline underline-offset-2" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">利用規約</button>
-                                <label for="accept-radio">
-                                    に同意して進む
-                                </label>
+                                <span>に同意して進む</span>
                             </div>
 
                             <div class="flex flex-row">
@@ -139,7 +137,11 @@
             <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                 <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
                     <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">利用規約</h5>
-                    <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" data-bs-dismiss="modal" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neutral-600 hover:text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="modal-body relative p-4">
@@ -480,7 +482,7 @@
                 </div>
 
                 <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                    <button type="button" class="inline-block px-6 py-2.5 bg-sky-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-sky-400 hover:shadow-lg focus:bg-sky-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-400 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="inline-block px-6 py-2.5 bg-sky-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-sky-400 hover:shadow-lg focus:bg-sky-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-400 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">わかりました</button>
                 </div>
             </div>
         </div>

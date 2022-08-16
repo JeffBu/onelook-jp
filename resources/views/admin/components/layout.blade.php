@@ -75,6 +75,21 @@
                 $('#menu').css('z-index', '20');
             }
         }
+
+        function toggleSidebar() {
+            jQuery('#sidebar').animate({
+                width: 'toggle'
+            });
+
+            jQuery('#sb-app-name').fadeToggle(200)
+            jQuery('#user').fadeToggle(200)
+            jQuery('#home').fadeToggle(200)
+            jQuery('#member-list').fadeToggle(200)
+            jQuery('#video-list').fadeToggle(200)
+            jQuery('#posting').fadeToggle(200)
+            jQuery('#settings').fadeToggle(200)
+            jQuery('#logout').fadeToggle(200)
+        }
     </script>
     
     @yield('extra-scripts')

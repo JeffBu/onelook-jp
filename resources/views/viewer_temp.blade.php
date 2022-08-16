@@ -405,7 +405,7 @@
         const advert = videojs('ad-video', {})
 
         advert.on('ended', function() {
-            $('#playback-video').toggle()
+            $('#playback-video').toggle()           
             $('#ad-video').toggle()
             player.play()
         })

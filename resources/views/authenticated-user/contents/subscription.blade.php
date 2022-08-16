@@ -54,20 +54,20 @@
 
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">月額料金</td>
-                    <td class="px-3 py-3 active-cell">無料</td>
-                    <td class="px-3 py-3 border border-cyan-600">300円</td>
+                    <td class="px-3 py-3 active-cell"><span class="hidden">無料</span></td>
+                    <td class="px-3 py-3 border border-cyan-600"><span class="hidden">300円</span></td>
                 </tr>
 
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">最大録画時間</td>
-                    <td class="px-3 py-3 active-cell">5分</td>
-                    <td class="px-3 py-3 border border-cyan-600">15分</td>
+                    <td class="px-3 py-3 active-cell"><span class="hidden">5分</span></td>
+                    <td class="px-3 py-3 border border-cyan-600"><span class="hidden">15分</span></td>
                 </tr>
 
                 <tr>
                     <td class="px-3 py-3 border border-cyan-600">月間の作成件数</td>
-                    <td class="px-3 py-3 active-cell">5件</td>
-                    <td class="px-3 py-3 border border-cyan-600">100件</td>
+                    <td class="px-3 py-3 active-cell"><span class="hidden">5件</span></td>
+                    <td class="px-3 py-3 border border-cyan-600"><span class="hidden">100件</span></td>
                 </tr>
 
                 <tr>

@@ -59,8 +59,8 @@
             <tbody>
                 <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">月額料金</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">無料</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">300円</td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">無料</span></td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">300円</span></td>
                     <td rowspan="6" class="px-3 py-3 border-x border-y border-cyan-600 w-1/4">
                         <div class="flex-1 justify-center items-center text-center">
                             <span>自社専用サイト 管理者画面の追加 セキュリティ強化 保管期限の延長 などのカスタムプランもご相談ください</span>
@@ -70,14 +70,14 @@
 
                 <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">最大録画時間</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">5分</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">15分</td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">5分</span></td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">15分</span></td>
                 </tr>
 
                 <tr>
                     <td class="px-3 py-3 border-x border-y border-cyan-600">月間の作成件数</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">5件</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">100件</td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">5件</span></td>
+                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">100件</span></td>
                 </tr>
 
                 <tr>
