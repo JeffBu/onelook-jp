@@ -104,17 +104,17 @@
             <div class="flex justify-between items-center pt-6 pb-3 w-full sticky top-0">
                 <h1 class="text-xl font-semibold text-lime-600">対象顧客への連絡</h1>
             </div>
-            <form action="send-notif" method="post">
+            <form method="post" class="justify-center items-center w-full" id="send-notif-form">
                 @csrf
-                <input type="hidden" name="user_id" value="{{$target->id}}">
+                <input type="hidden" name="user_id" id="user_id" value="{{$target->id}}">
                 <div class="justify-center items-center w-full">
-                    <input type="text" id="comment"  class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
+                    <input type="text" id="comment" class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
                 </div>
 
                 <div class="flex justify-between pt-3 text-left w-full">
                     <div></div>
                     <div>
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">登録</button>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500" type="submit">登録</button>
                     </div>
 
                 </div>
@@ -129,9 +129,53 @@
 @section('extra-scripts')
 <!--script-->
 <script>
-    $('#member-list').css('background-color', '#65a30d');
-    $('#member-list').css('opacity', '1');
+    $('#member-list').css('background-color', '#65a30d')
+    $('#member-list').css('opacity', '1')
 
+    $('#send-notif-form').on('submit', function(e)
+    {
+        e.preventDefault()
+
+        var user_id = $('#user_id').val()
+        var news = $('#comment').val()
+        var url = "{{route('send-notif')}}"
+
+        axios.post(url, {
+            target : user_id,
+            comment : news,
+        }).then(function (response) {
+            switch(response.data) {
+                case 0:
+                    Swal.fire({
+                        icon: 'danger',
+                        title: 'エラー',
+                        text: '続行するには、コメント欄に入力してください。',
+                        timer: 3000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    })
+                    break
+                case 1:
+                    Swal.fire({
+                        icon: 'success',
+                        title: '成功',
+                        text: '通知がユーザーに送信されました',
+                        timer: 3000,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                    })
+                    break;
+                default:
+                    console.log('An unexpected error occured')
+                    break
+            }
+
+            $('#comment').val('')
+        }).catch(function(error) {
+            console.log(error.response.data)
+        })
+
+    })
 </script>
 <!--script ends here-->
 @endsection

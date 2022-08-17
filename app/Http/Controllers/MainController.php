@@ -162,15 +162,6 @@ class MainController extends Controller
 
         return view('authenticated-user.contents.faq', $data);
     }
-    public function admin_posting()
-    {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
-
-        return view('admin.contents.admin_posting', $data);
-    }
 
     public function admin_viewer()
     {

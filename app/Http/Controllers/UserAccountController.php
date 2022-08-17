@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 use App\Models\User;
+
+use App\Mail\ForgotPasswordMail;
 
 class UserAccountController extends Controller
 {
@@ -87,4 +90,41 @@ class UserAccountController extends Controller
             return redirect()->route('login');
         }
     }
+
+    public function forgot_password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email:rfc,dns'
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->route('forgot-password')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        if(!$user)
+        {
+            $validator->after(function($validator)
+            {
+                $validator->errors()->add('email', 'あなたのメールアドレスは onelook.jp に登録されていません。');
+                return redirect()->route('forgot-password')
+                    ->withErrors($validator)
+                    ->withInput();
+            });
+        }
+
+        Mail::to($request->email)->send(new ForgotPasswordMail($user));
+
+        return redirect()->route('success-screen');
+    }
+
+    public function success_screen()
+    {
+        return view('registration_complete');
+    }
+
 }

@@ -50,13 +50,15 @@ Route::middleware([
     Route::get('admin-post-list', [AdminController::class, 'post_list'])->name('admin-post-list');
     Route::get('admin-viewer', [MainController::class, 'admin_viewer'])->name('admin-viewer');
     Route::get('admin-settings', [MainController::class, 'admin_settings'])->name('admin-settings');
-    Route::get('admin-posting', [MainController::class, 'admin_posting'])->name('admin-posting');
+    Route::get('admin-posting', [AdminController::class, 'announcement'])->name('admin-posting');
     Route::post('add-announcement', [AdminController::class, 'add_news'])->name('add-announcement');
     Route::post('send-notif', [AdminController::class, 'send_notif'])->name('send-notif');
 });
 
 Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');
+Route::get('success-screen', [UserAccountController::class, 'success_screen'])->name('success-screen');
 Route::post('update-password', [UserAccountController::class, 'verify_email']);
+Route::post('password-forget', [UserAccountController::class, 'forgot_password'])->name('password-forget');
 Route::post('download-file', [VideoAccessController::class, 'download_file'])->name('download');
 Route::post('get-pdf-source', [PDFEventsController::class, 'get_source'])->name('get-pdf-source');
 Route::post('save-video-to-database', [VideoRecordingEvents::class, 'save_to_database'])->name('save-video-to-database');

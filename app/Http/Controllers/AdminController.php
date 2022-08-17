@@ -82,6 +82,16 @@ class AdminController extends Controller
         return view('admin.contents.admin_post_list', $data);
     }
 
+    public function announcement()
+    {
+        $user = Auth::user();
+        $news = News::latest()->get();
+        $data = array(
+            'user' => $user,
+            'news' => $news,
+        );
+        return view('admin.contents.admin_posting', $data);
+    }
 
     public function add_news(Request $request)
     {
@@ -120,7 +130,14 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-
+            return 0;
         }
+
+        News::create([
+            'content' => nl2br($request->comment),
+            'target_user' => $request->user_id
+        ]);
+
+        return 1;
     }
 }

@@ -44,7 +44,7 @@
     <!--content-->
     <div class="flex justify-center items-center text-center text-white text-lg font-medium pt-11 w-full">
         <!--<span class="px-4 py-2 bg-emerald-500 h-11 w-full">Account successfully created! Please check your email for verification process.</span>-->
-        <span class="px-4 py-2 bg-emerald-500 h-11 w-full">アカウントが作成されました！ 確認プロセスについては、メールを確認してください。</span>
+        <span class="px-4 py-2 bg-emerald-500 h-11 w-full">パスワードのリセット手順をメールで送信しました。</span>
     </div>
 
     <div class="py-20"></div>
