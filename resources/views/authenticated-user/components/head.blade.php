@@ -9,7 +9,9 @@ id="header-frame">
     </button>
 
     <div class="hidden md:flex items-center w-32">
-        <a href="{{route('dashboard')}}" class="font-semibold text-theme-white text-xl">{{config('app.name')}}</a>
+        <a href="{{route('dashboard')}}">
+            <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-11 mt-1">
+        </a>
     </div>
 
     <div class="hidden md:flex justify-center items-start gap-8 py-6 font-small text-sm font-bold text-theme-white w-full">

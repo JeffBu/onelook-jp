@@ -25,9 +25,9 @@
     <header class="flex shadow bg-sky-700 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
     id="header_frame">
 
-        <div class="justify-center items-center">
-            <h1 class="font-semibold text-theme-white">OneLook</h1>
-        </div>
+        <a href="{{route('dashboard')}}">
+            <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-11 mt-1">
+        </a>
 
         <!--<div class="flex justify-center items-center gap-5 py-6 text-sm">
             <div class="font-semibold text-theme-white hover:text-yellow-300">
@@ -47,10 +47,10 @@
         <div class="flex justify-center items-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 xl:w-4/12 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                 <!--modal content-->
-                <div class="relative bg-white rounded-lg shadow">
+                <div class="relative bg-white rounded-lg shadow border border-sky-600">
                     <!--modal header-->
-                    <div class="flex justify-between items-center p-5 rounded-t border-b">
-                        <h3 class="text-xl font-bold text-sky-600">
+                    <div class="flex justify-between items-center p-5 rounded-t bg-sky-600">
+                        <h3 class="text-xl font-bold text-white">
                             クレジットカードの詳細
                         </h3>
 
@@ -92,10 +92,10 @@
         <div class="flex justify-center items-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 xl:w-4/12 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                 <!--modal content-->
-                <div class="relative bg-white rounded-lg shadow">
+                <div class="relative bg-white rounded-lg shadow  border border-sky-600">
                     <!--modal header-->
-                    <div class="flex justify-between items-center p-5 rounded-t border-b">
-                        <h3 class="text-xl font-bold text-sky-600">
+                    <div class="flex justify-between items-center p-5 rounded-t bg-sky-600">
+                        <h3 class="text-xl font-bold text-white">
                             請求概要
                         </h3>
 
