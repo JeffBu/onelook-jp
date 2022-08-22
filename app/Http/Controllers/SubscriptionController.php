@@ -13,7 +13,7 @@ class SubscriptionController extends Controller
 {
     public function index()
     {
-        return view('test');
+        return view('authenticated-user.contents.checkout');
     }
 
     public function subscribe(Request $request)

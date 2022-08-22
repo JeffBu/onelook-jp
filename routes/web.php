@@ -71,10 +71,10 @@ Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])
 
 Route::get('registration-complete', [MainController::class, 'registration_complete'])->name('registration-complete');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
-Route::get('checkout', [MainController::class, 'checkout_page'])->name('checkout');
+Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
+Route::post('checkout', [SubscriptionController::class, 'subscribe']);
 
 Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 
 Route::get('test', [SubscriptionController::class, 'index'])->name('test');
 
-Route::get('order-post', [SubscriptionController::class, 'subscribe'])->name('order-post');
