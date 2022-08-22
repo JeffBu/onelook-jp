@@ -19,15 +19,6 @@
             <h1 class="font-semibold text-theme-white">OneLook</h1>
         </div>
 
-        <!--<div class="flex justify-center items-center gap-5 py-6 text-sm">
-            <div class="font-semibold text-theme-white hover:text-yellow-300">
-                <a href="{{route('login')}}">ログイン</a>
-            </div>
-            <div class="font-semibold px-2 py-1 rounded-sm bg-theme-yellow text-theme-black hover:bg-yellow-400 hover:text-theme-white">
-                <a href="{{route('registration')}}">無料会員登録</a>
-            </div>
-        </div>-->
-
     </header>
     <!--header ends here-->
 
@@ -46,7 +37,7 @@
                         </div>
                         <!--modal body-->
                         <div class="px-8 py-4 space-y-4">
-                            <form method="POST">
+                            <form method="POST" action="password-forget">
                                 @csrf
                                 <div class="relative z-0 w-full mb-4 group">
                                     <span class="text-neutral-600">パスワードをお忘れですか？問題ない。メール アドレスをお知らせいただければ、新しいパスワードを選択できるパスワード リセット リンクをメールでお送りします。</span>

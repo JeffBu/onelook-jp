@@ -49,7 +49,7 @@ class MainController extends Controller
 
         if($user->is_admin == 1)
         {
-            return view('admin.contents.admin_home', $data);
+            return redirect()->route('admin-home');
         }
         return view('authenticated-user.contents.dashboard', $data);
     }
@@ -162,38 +162,6 @@ class MainController extends Controller
 
         return view('authenticated-user.contents.faq', $data);
     }
-
-    public function admin_home()
-    {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
-
-        return view('admin.contents.admin_home', $data);
-    }
-
-    public function admin_posting()
-    {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
-
-        return view('admin.contents.admin_posting', $data);
-    }
-
-    public function admin_member_info()
-    {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
-
-        return view('admin.contents.admin_member_info', $data);
-    }
-
-
 
     public function admin_viewer()
     {

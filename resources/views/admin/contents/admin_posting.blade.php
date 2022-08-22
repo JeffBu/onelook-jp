@@ -49,39 +49,27 @@
                     </div>
                 </div>
 
-                <div class="w-full">
+                {{-- <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">お知らせ</h2>
                     <div class="border-b border-x border-lime-600 px-2 py-2">
-                        <table class="min-w-max w-full h-64 text-base">
+                        {{-- <table class="min-w-max w-full h-64 text-base">
                             <tbody>
-                                <tr>
-                                    <td class="text-xs">2021/10/01</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-b border-lime-600 pb-2">メンテナンスのお知らせ</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-xs pt-2">2021/01/01</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-b border-lime-600 pb-2">あけましておめでとうございます。</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-xs pt-2">2020/12/24</td>
-                                </tr>
-                                <tr>
-                                    <td class="border-b border-lime-600 pb-2">メリークリスマス</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-xs pt-2">2020/10/31</td>
-                                </tr>
-                                <tr>
-                                    <td>ハッピーハロウィン</td>
-                                </tr>
+
+                                @forelse($news as $item)
+                                    <tr>
+                                        <td class="text-xs">{{$item->created_at->format('Y/m/d')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b border-lime-600 pb-2">{{$item->content}}</td>
+                                    </tr>
+                                @empty
+
+                                @endforelse
+
                             </tbody>
-                        </table>
-                    </div>
-                </div>
+                        </table> --}}
+                    {{-- </div>
+                </div> --}}
             </div>
 
             <div class="pt-32"></div>
