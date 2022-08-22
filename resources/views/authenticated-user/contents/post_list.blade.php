@@ -282,7 +282,7 @@
 
         function copyLink(key, code, name, exp_date){
             var base_url = "{{config('app.url')}}";
-            var html = '<h1 class="text-center font-semibold text-lg">下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です</h1>' + '<br /><br />' +
+            var html = '<h1 class="text-center font-semibold text-base sm:text-lg">下記の招待状をコピーし、メール等で共有いただければ動画閲覧が可能です</h1>' + '<br /><br />' +
                 '<p class="text-justify">'+ name + ' さんが、あなたを動画閲覧に招待しています。<br /><br />' +
                 '<span class="font-bold">動画名: </span> ' + base_url +'/access-video-record?video_key='+key+' <br />' +
                 '<span class="font-bold">パスコード: </span> ' + code +'<br />'+

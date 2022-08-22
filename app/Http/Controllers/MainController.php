@@ -209,4 +209,9 @@ class MainController extends Controller
         return view('for-promoting-team.index');
     }
 
+    public function checkout_page()
+    {
+        return view('authenticated-user.contents.checkout');
+    }
+
 }

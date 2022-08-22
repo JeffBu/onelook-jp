@@ -35,7 +35,7 @@
         @yield('css')
     </head>
 
-    <body class="justify-center items-center bg-white text-theme-black font-['Calibri'] w-full">
+    <body class="justify-center items-center text-sm sm:text-base bg-white text-theme-black font-['Calibri'] w-full">
         @yield('head')
         @yield('content')
         @yield('foot')

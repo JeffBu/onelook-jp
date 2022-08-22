@@ -46,10 +46,10 @@
         <div class="flex justify-center items-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 xl:w-4/12 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                 <!--modal content-->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative bg-white rounded-lg shadow">
                     <!--modal header-->
-                    <div class="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
-                        <h3 class="text-xl font-bold text-sky-600 dark:text-white">
+                    <div class="flex justify-between items-center p-5 rounded-t border-b">
+                        <h3 class="text-xl font-bold text-sky-600">
                             ログイン
                         </h3>
 
@@ -59,12 +59,12 @@
                         <form action="{{route('login')}}" method="POST">
                             @csrf
                             <div class="relative z-0 w-full mb-4 group">
-                                <input type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
+                                <input type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
                             </div>
                             <div class="relative z-0 w-full mb-4 group">
-                                <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">パスワード</label>
+                                <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">パスワード</label>
                             </div>
                             <div class="relative z-0 w-full mb-4 group">
                                 <x-jet-validation-errors class="mb-4" />
@@ -72,7 +72,7 @@
 
                             <div class="flex flex-col items-center py-6 gap-2 w-full">
                                 <div class="flex flex-col items-end gap-2 w-full">
-                                    <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400 w-full">ログイン</button>
+                                    <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">ログイン</button>
                                 </div>
 
                                 <div class="flex flex-col items-end gap-2 w-full">
@@ -82,7 +82,7 @@
 
                     </div>
                     <!--modal footer-->
-                    <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
+                    <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
                         <div class="flex flex-row gap-2">
                             <span>アカウントを持っていません？</span>
                             <a href="{{route('registration')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">無料会員登録</a>
