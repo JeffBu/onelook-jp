@@ -8,6 +8,7 @@ use App\Http\Controllers\VideoAccessController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,6 @@ Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 
 Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 
-Route::get('test', function() {
-    return view('viewer_temp');
-});
+Route::get('test', [SubscriptionController::class, 'index'])->name('test');
+
+Route::get('order-post', [SubscriptionController::class, 'subscribe'])->name('order-post');
