@@ -65,15 +65,15 @@
                     <div class="px-8 py-4 space-y-4">
                         <form action="{{route('register')}}" method="POST">
                             @csrf
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <input type="text" name="full_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                 <label for="full_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">氏名</label>
                             </div>
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <input type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                 <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
                             </div>
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <input type="text" name="company_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                                 <label for="company_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">会社名（任意）</label>
                             </div>
@@ -101,22 +101,26 @@
                                     <label for="password_confirmation" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">パスワードを認証する</label>
                                 </div>
                             </div>-->
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <x-jet-validation-errors class="mb-4" />
                             </div>
 
-                            <div class="flex flex-col items-center py-6 gap-2 w-full">
+                            <div class="flex flex-col items-center pt-6 pb-4 gap-2 w-full">
                                 <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400 w-full">登録</button>
+                            </div>
+
+                            <div class="flex flex-row items-center gap-2 text-sm pt-6">
+                                <input type="checkbox" name="accept" id="accept-radio" class="focus:ring-0" required>
+                                <button type="button" class="text-sky-600 hover:text-sky-400 underline underline-offset-2" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">利用規約</button>
+                                <span>に同意して進む</span>
                             </div>
 
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
-                        <div class="flex flex-row justify-between md:px-4 text-sm w-full">
+                        <div class="flex flex-row justify-between text-sm w-full">
                             <div class="flex flex-row items-center gap-2">
-                                <input type="checkbox" name="accept" id="accept-radio" class="focus:ring-0">
-                                <button type="button" class="text-sky-600 hover:text-sky-400 underline underline-offset-2" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">利用規約</button>
-                                <span>に同意して進む</span>
+                                
                             </div>
 
                             <div class="flex flex-row">

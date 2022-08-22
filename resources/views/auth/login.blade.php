@@ -61,32 +61,32 @@
                     <div class="px-8 py-4 space-y-4">
                         <form action="{{route('login')}}" method="POST">
                             @csrf
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <input type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                 <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
                             </div>
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                 <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">パスワード</label>
                             </div>
-                            <div class="relative z-0 w-full mb-4 group">
+                            <div class="relative z-0 w-full pb-4 group">
                                 <x-jet-validation-errors class="mb-4" />
                             </div>
 
-                            <div class="flex flex-col items-center py-6 gap-2 w-full">
+                            <div class="flex flex-col items-center py-6 gap-4 w-full">
                                 <div class="flex flex-col items-end gap-2 w-full">
                                     <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">ログイン</button>
                                 </div>
 
                                 <div class="flex flex-col items-end gap-2 w-full">
-                                    <a href="forgot-password" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">パスワードをお忘れですか?</a>
+                                    <a href="forgot-password" class="text-sm text-sky-600 hover:text-sky-400 underline underline-offset-2">パスワードをお忘れですか?</a>
                                 </div>
                             </div>
 
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
-                        <div class="flex flex-row gap-2">
+                        <div class="flex flex-row gap-2 text-sm">
                             <span>アカウントを持っていません？</span>
                             <a href="{{route('registration')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">無料会員登録</a>
                         </div>
