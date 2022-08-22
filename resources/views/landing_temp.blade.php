@@ -19,7 +19,9 @@
     id="header_frame">
 
         <div class="justify-center items-center">
-            <a href="{{route('home')}}" class="font-semibold text-theme-white">OneLook</a>
+            <a href="{{route('home')}}">
+                <img src="{{asset('media/logos/1.png')}}" alt="onelook_logo" class="h-11">
+            </a>
         </div>
 
         <div class="flex justify-center items-center gap-5 py-6 text-sm">

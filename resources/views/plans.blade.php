@@ -26,15 +26,17 @@
     id="header_frame">
 
         <div class="justify-center items-center">
-            <div class="font-semibold text-theme-white">OneLook</div>
+            <a href="{{route('home')}}">
+                <img src="{{asset('media/logos/1.png')}}" alt="onelook_logo" class="h-11">
+            </a>
         </div>
 
         <div class="flex justify-center items-center gap-5 py-6 text-sm">
             <div class="font-semibold text-theme-white hover:text-yellow-300">
-                <a href="{{route('login')}}">Login</a>
+                <a href="{{route('login')}}">ログイン</a>
             </div>
             <div class="font-semibold px-2 py-1 rounded-sm bg-theme-yellow text-theme-black hover:bg-yellow-400 hover:text-theme-white">
-                <a href="{{route('register')}}">Sign Up</a>
+                <a href="{{route('registration')}}">無料会員登録</a>
             </div>
         </div>
 
@@ -115,7 +117,7 @@
     <div class="pt-40"></div>
     <!--content ends here-->
 
-    <!--footer-->
+    <!--footer
     <footer class="flex shadow bg-cyan-700 text-theme-white justify-center items-start py-5 px-5 text-base gap-32 tracking-widest w-full">
         <div class="flex flex-col gap-2">
             <div class="text-theme-yellow font-medium">活用例</div>
@@ -137,7 +139,7 @@
             <div class="text-sm">Privacy Policy</div>
         </div>
     </footer>
-    <!--footer ends here-->
+    footer ends here-->
 
     <!--script-->
     <script src="https://cdn.tailwindcss.com"></script>
