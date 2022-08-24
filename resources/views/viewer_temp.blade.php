@@ -319,9 +319,6 @@
                     <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4" controls>
                         <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}" id="source">
                     </video>
-                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" controls type="video/mp4">
-                        <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
-                    </video>
                 </div>
 
                 <div class="flex flex-col justify-center items-center gap-2 w-full">
@@ -405,6 +402,11 @@
                 advert.load()
                 advert.play()
                 flag = 1;
+            }
+            else {
+                advert.src('{{URL::asset("/media/videos/ichikawa-ad.mp4")}}')
+                advert.load();
+                flag = 0;
             }
         })
 
