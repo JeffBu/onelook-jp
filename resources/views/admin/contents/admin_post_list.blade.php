@@ -39,6 +39,7 @@
 
                 <tbody>
                     @forelse($records as $record)
+                        <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                         <tr>
                             <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id=""></td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->title}}</td>
@@ -53,7 +54,7 @@
 
                                     <div class="flex flex-col sm:flex-row gap-3 w-full">
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
-                                        data-modal-toggle="previewModal" onclick="addSource()">詳細</button>
+                                        data-modal-toggle="previewModal" onclick="addSource($record->id, $url)">詳細</button>
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
                                     </div>
                                 </div>
@@ -112,10 +113,12 @@
     $('#video-list').css('background-color', '#65a30d');
     $('#video-list').css('opacity', '1');
 
-    function previewVideo(path) {
+    function addSource(id, path) {
         var video = document.querySelector('#video')
         video.src = path
     }
+
+
 
 </script>
 <!--script ends here-->
