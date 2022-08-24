@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\Models\VideoRecord;
 use App\Models\News;
+use App\Models\PostHistory;
 
 use Illuminate\Support\Facades\Storage;
 
