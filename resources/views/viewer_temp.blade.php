@@ -401,14 +401,11 @@
         advert.on('ended', function() {
             if(flag == 0)
             {
-                advert = videojs('ad-video', {})
                 advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
+                advert.load()
                 advert.play()
                 flag = 1;
             }
-
-            // $('#ad-video').toggle()
-            // player.play()
         })
 
         function downloadVideo(id, button)
