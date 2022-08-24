@@ -403,11 +403,6 @@
                 advert.play()
                 flag = 1;
             }
-            else {
-                advert.src('{{URL::asset("/media/videos/ichikawa-ad.mp4")}}')
-                advert.load();
-                flag = 0;
-            }
         })
 
         function downloadVideo(id, button)
