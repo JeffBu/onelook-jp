@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\Models\VideoRecord;
 use App\Models\News;
+use App\Models\PostHistory;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -41,9 +43,11 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $news = News::where('target_user', null)->orWhere('target_user', $user->id)->latest()->get();
+        $history = PostHistory::where('user_id', $user->id)->latest()->get();
         $data = array(
             'user' => $user,
             'news' => $news,
+            'history' => $history,
         );
 
 

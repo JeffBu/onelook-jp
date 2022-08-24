@@ -42,7 +42,7 @@
         <!--upgrade plan-->
         <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-1/2">
             <div class="flex justify-center items-center mx-auto w-32">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
+                <a href="{{route('checkout')}}" class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">変更する</a>
             </div>
 
             <div class="flex flex-col justify-center items-center text-left mt-10">

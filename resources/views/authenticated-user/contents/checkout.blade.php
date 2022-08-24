@@ -57,8 +57,14 @@
                     </div>
                     <!--modal body-->
                     <div class="px-8 py-4">
-                        <form action="{{route('checkout')}}" method="POST">
+                        <form action="{{route('checkout')}}" method="POST" data-parsley-validate id="payment-form">
                             @csrf
+                            @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                            </div>
+                            @endif
                             <div class="relative flex flex-row justify-between z-0 w-full px-8 py-6 group">
                                 <span class="text-xs sm:text-sm text-neutral-500">小計</span>
                                 <span class="text-neutral-900">¥450</span>
@@ -80,7 +86,7 @@
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
                         <div class="flex flex-row gap-2">
-                            
+
                         </div>
                     </div>
                     </form>
@@ -102,14 +108,14 @@
                     </div>
                     <!--modal body-->
                     <div class="px-8 py-4">
-                        <form action="{{route('checkout')}}" method="POST">
+                        <form action="{{route('checkout')}}" method="POST" id="payment-form">
                             @csrf
                             <div class="relative z-0 w-full my-6 group">
-                                <input type="text" name="cc_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder=" " required />
+                                <input type="text" name="cc_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder=" " required value="{{auth()->user()->name}}" />
                                 <label for="cc_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">クレジットカード名義</label>
                             </div>
-                            <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="cc_number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="**** **** **** ****" required />
+                            <div class="relative z-0 w-full mb-6 group" id="cc-group">
+                                <input type="text" name="cc_number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="**** **** **** ****" required data-stripe="number" data-parsley-type="number" maxlength="16" data-parsley-triger="change focusout" data-parsley-class-handler="#cc-group" />
                                 <label for="cc_number" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">クレジットカード番号</label>
                             </div>
                             <div class="flex flex-row justify-center items-center gap-4">
@@ -117,13 +123,13 @@
                                     <input type="text" name="cc_expiry" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 text-opacity-0 focus:text-opacity-100" placeholder="MM/YY " required />
                                     <label for="cc_expiry" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">カードの有効期限</label>
                                 </div>
-                                <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="cc_ccv" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="***" required />
+                                <div class="relative z-0 w-full mb-6 group" id="ccv-group">
+                                    <input type="text" name="cc_ccv" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="***" required data-stripe="cvc" data-parsley-type="number" data-parsley-triger="change focusout" maxlength="4" data-parsley-class-handler="#ccv-group" />
                                     <label for="cc_ccv" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CVV</label>
                                 </div>
                             </div>
                             <div class="relative z-0 w-full mb-2 group">
-                                <input type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="user@example.com" required />
+                                <input type="email" name="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="user@example.com" required value="{{auth()->user()->email}}" />
                                 <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">メールアドレス</label>
                             </div>
 
@@ -139,7 +145,7 @@
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
                         <div class="flex flex-row gap-2">
-                            
+                            <span class="payment-errors" style="color: red;margin-top:10px;"></span>
                         </div>
                     </div>
                     </form>
@@ -153,6 +159,8 @@
     <!--content ends here-->
 
     <!--script-->
+    <script src="https://parsleyjs.org/dist/parsley.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{asset('js/app.js')}}"></script>
@@ -161,8 +169,17 @@
     <!-- SweetAlerts CDN -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+    <!-- -->
 
     <script>
+        window.ParsleyConfig = {
+            errorsWrapper: '<div></div>',
+            errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
+            errorClass: 'has-error',
+            successClass: 'has-success'
+        };
+
+
         tailwind.config = {
           theme: {
             extend: {
@@ -180,9 +197,7 @@
             }
           }
         }
-    </script>
 
-    <script>
         jQuery(window).on('scroll', function() {
             if(jQuery(window).scrollTop() > 0) {
                 jQuery('#header-frame').css('opacity', '0.8');
@@ -198,6 +213,33 @@
 
         $(document).scroll(function() {})
 
+        Stripe.setPublishableKey("<?php echo env('STRIPE_SECRET') ?>");
+        jQuery(function($) {
+            $('#payment-form').submit(function(event) {
+                var $form = $(this);
+                $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
+                    formInstance.submitEvent.preventDefault();
+                    alert();
+                    return false;
+                });
+                $form.find('#submitBtn').prop('disabled', true);
+                Stripe.card.createToken($form, stripeResponseHandler);
+                return false;
+            });
+        });
+        function stripeResponseHandler(status, response) {
+            var $form = $('#payment-form');
+            if (response.error) {
+                $form.find('.payment-errors').text(response.error.message);
+                $form.find('.payment-errors').addClass('alert alert-danger');
+                $form.find('#submitBtn').prop('disabled', false);
+                $('#submitBtn').button('reset');
+            } else {
+                var token = response.id;
+                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                $form.get(0).submit();
+            }
+        };
     </script>
     <!--script ends here-->
 </body>
