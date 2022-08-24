@@ -316,8 +316,8 @@
                 </div>
 
                 <div class="border border-white w-full">
-                    <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4">
-                        <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}">
+                    <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4" controls>
+                        <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}" id="source">
                     </video>
                     <video class="video-js w-full vjs-fluid hidden" id="playback-video" controls type="video/mp4">
                         <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
@@ -396,12 +396,19 @@
 
         const player = videojs('playback-video', {})
         const advert = videojs('ad-video', {})
+        var flag = 0
 
         advert.on('ended', function() {
-            $('#playback-video').src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
-            advert.play()
-            // $('#ad-video').toggle()
-            // player.play()
+            if(flag == 0)
+            {
+                advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
+                advert.load()
+                advert.play()
+                flag = 1;
+            }
+            else {
+
+            }
         })
 
         function downloadVideo(id, button)
