@@ -39,7 +39,7 @@
 
                 <tbody>
                     @forelse($records as $record)
-                    <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
+                        <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                         <tr>
                             <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id=""></td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->title}}</td>
