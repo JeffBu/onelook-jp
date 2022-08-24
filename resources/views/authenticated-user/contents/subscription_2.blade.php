@@ -12,12 +12,12 @@
     <div class="flex flex-col justify-center items-center gap-8 w-full">
         <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">会員プラン</h1>
 
-        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 md:w-1/3">
+        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
             <span>変更前：</span>
             <span>フリープラン</span>
         </div>
 
-        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 md:w-1/3">
+        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
             <span>変更後：</span>
             <div class="relative inline-block text-left">
                 <div>
@@ -40,7 +40,7 @@
         </div>
 
         <!--upgrade plan-->
-        <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-1/3">
+        <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-1/2">
             <div class="flex justify-center items-center mx-auto w-32">
                 <a href="{{route('checkout')}}" class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">変更する</a>
             </div>
@@ -52,7 +52,7 @@
                         パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。
                     </li>
                     <li class="px-4 py-4">
-                        なお、変更申込以後はパーソナルプランの機能のご利用が可能です。<br />
+                        変更申込以後はパーソナルプランの機能のご利用が可能です。<br>
                         パーソナルプランの解約は、申込日の翌月２日以後から可能です。
                     </li>
                 </ol>

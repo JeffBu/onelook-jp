@@ -94,7 +94,13 @@
                         </div>
                         <div class="flex flex-row items-start px-6 gap-4 w-full">
                             <img src="{{asset('media/yellow-a.png')}}" alt="" class="h-12 w-12">
-                            <span>フリープランで最大5分（月間5件まで）、パーソナルプランで最大15分（月間100件まで）の作成が可能です。</span>
+                            <div>
+                                <span>フリープランで最大</span>
+                                <span class="text-red-600 font-semibold">3</span>
+                                <span>分（月間5件まで）、パーソナルプランで最大</span>
+                                <span class="text-red-600 font-semibold">10</span>
+                                <span>分（月間100件まで）の作成が可能です。</span>
+                            </div>
                         </div>
                     </div>
 
@@ -142,7 +148,11 @@
                         </div>
                         <div class="flex flex-row items-start px-6 gap-4 w-full">
                             <img src="{{asset('media/yellow-a.png')}}" alt="" class="h-12 w-12">
-                            <span>パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。 なお、変更申込以後はパーソナルプランの機能のご利用が可能です。 パーソナルプランの解約は、申込日の翌月1日以後から可能です。</span>
+                            <div>
+                                <span>パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。 なお、変更申込以後はパーソナルプランの機能のご利用が可能です。 パーソナルプランの解約は、申込日の翌月</span>
+                                <span class="text-red-600 font-semibold">2</span>
+                                <span>日以後から可能です。</span>
+                            </div>
                         </div>
                     </div>
 

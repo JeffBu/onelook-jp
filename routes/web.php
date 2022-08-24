@@ -70,6 +70,7 @@ Route::post('access-video-record', [VideoRecordingEvents::class, 'watch_video'])
 
 
 Route::get('registration-complete', [MainController::class, 'registration_complete'])->name('registration-complete');
+Route::get('forgot-password-notification', [MainController::class, 'forgot_password_notification'])->name('forgot-password-notification');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 Route::post('checkout', [SubscriptionController::class, 'subscribe']);

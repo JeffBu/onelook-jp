@@ -53,7 +53,7 @@
                             <tbody>
                                 @forelse($news as $item)
                                     <tr>
-                                        <td id="news-date" class="text-xs">{{$item->created_at->format('Y年m月d日')}}</td>
+                                        <td id="news-date" class="text-xs pt-2">{{$item->created_at->format('Y年m月d日')}}</td>
                                     </tr>
                                     <tr>
                                         <td id="news-label" class="border-b border-sky-800 pb-2">{!!$item->content!!}</td>

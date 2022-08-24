@@ -18,7 +18,7 @@
     </div>
 
     <div class="flex justify-center items-center w-full">
-        <div class="flex flex-col justify-center items-center mt-8 w-3/4 z-10">
+        <div class="flex flex-col justify-center items-center mt-8 w-11/12 z-10">
             <div class="text-left w-full">
                 <h1 class="text-xl font-semibold text-lime-600">投稿一覧</h1>
             </div>
@@ -26,11 +26,11 @@
             <table class="text-center mt-6 border border-lime-600 w-full">
                 <thead>
                     <tr>
-                        <th class="px-4 py-1 border border-lime-700">選択</th>
+                        <th class="px-4 py-1 border border-lime-700 w-1/12">選択</th>
                         <th class="px-4 py-1 border border-lime-700">動画名</th>
                         <th class="px-4 py-1 border border-lime-700">投稿者ID</th>
                         <th class="px-4 py-1 border border-lime-700">招待メール</th>
-                        <th class="px-4 py-1 border border-lime-700">閲覧数</th>
+                        <th class="px-4 py-1 border border-lime-700 w-1/12">閲覧数</th>
                         <th class="px-4 py-1 border border-lime-700">投稿日</th>
                         <th class="px-4 py-1 border border-lime-700">閲覧期限</th>
                         <th class="px-4 py-1 border border-lime-700">閲覧URL</th>
