@@ -391,7 +391,6 @@
 
         $(document).scroll(function() {})
 
-        const player = videojs('playback-video', {})
         const advert = videojs('ad-video', {})
         var flag = 0
 
@@ -402,6 +401,11 @@
                 advert.load()
                 advert.play()
                 flag = 1;
+            }
+            else if(flag == 1){
+                advert.src('{{URL::asset("/media/videos/ichikawa-ad.mp4")}}')
+                advert.load();
+                flag = 0;
             }
         })
 
