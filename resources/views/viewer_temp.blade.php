@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
     <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
     <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
+    <link rel="icon" href="{{asset('media/icon-onelook.ico')}}">
 
     <style>
         .video-js .vjs-menu-button-inline.vjs-slider-active,.video-js .vjs-menu-button-inline:focus,.video-js .vjs-menu-button-inline:hover,.video-js.vjs-no-flex .vjs-menu-button-inline {
