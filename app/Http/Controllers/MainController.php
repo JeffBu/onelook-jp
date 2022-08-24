@@ -41,10 +41,11 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $news = News::where('target_user', null)->orWhere('target_user', $user->id)->latest()->get();
-        dd($news);
+        $history = PostHistory::where('user_id', $user->id)->latest()->get();
         $data = array(
             'user' => $user,
             'news' => $news,
+            'history' => $history,
         );
 
 

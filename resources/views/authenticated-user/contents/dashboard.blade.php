@@ -76,12 +76,21 @@
                     <div class="border-b border-x border-sky-800 px-2 py-2 h-64 overflow-auto">
                         <table class="min-w-max w-full text-base">
                             <tbody>
-                                <tr>
-                                    <td id="post-date" class="text-xs"></td>
-                                </tr>
-                                <tr>
-                                    <td id="post-label" class="border-b border-sky-800 pb-2">新しいお知らせはまだありません。</td>
-                                </tr>
+                                @forelse($history as $item)
+                                    <tr>
+                                        <td id="news-date" class="text-xs">{{$item->created_at->format('Y年m月d日')}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="news-label" class="border-b border-sky-800 pb-2">{!!$item->content!!}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td id="news-date" class="text-xs"></td>
+                                    </tr>
+                                    <tr>
+                                        <td id="news-label" class="border-b border-sky-800 pb-2">新しいお知らせはまだありません。</td>
+                                    </tr>
+                                @endforelse
 
                             </tbody>
                         </table>

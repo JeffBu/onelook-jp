@@ -73,7 +73,7 @@ class VideoRecordingEvents extends Controller
             ]);
 
             PostHistory::create([
-                'content' => '',
+                'content' => '動画がアップロードされました。',
                 'user_id' => Auth::user()->id,
             ]);
 
