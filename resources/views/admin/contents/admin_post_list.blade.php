@@ -54,7 +54,7 @@
 
                                     <div class="flex flex-col sm:flex-row gap-3 w-full">
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
-                                        data-modal-toggle="previewModal" onclick="addSource($record->id, $url)">詳細</button>
+                                        data-modal-toggle="previewModal" onclick="addSource({{$record->id}}, {{$url}})">詳細</button>
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
                                     </div>
                                 </div>
