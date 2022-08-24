@@ -41,7 +41,7 @@
                     <div class="flex flex-col justify-center items-start text-left gap-4">
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                             <span class="px-4 py-2 w-40">会社名等（任意）</span>
-                            <span class="px-4 py-2">{{$user->account->company}}</span>
+                            <span class="px-4 py-2">@if($user->account){{$user->account->company}} @else -- @endif</span>
                         </div>
 
                         <div class="flex flex-row justify-start items-center text-left divide-x divide-sky-700 gap-2">
@@ -162,7 +162,7 @@
                     <form id="change-registration-info-form">
                         @csrf
                         <div class="relative z-0 w-full px-4 mb-4 group">
-                            <input type="text" name="modal-input-company-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="{{$user->account->company}}" required />
+                            <input type="text" name="modal-input-company-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="@if($user->account){{$user->account->company}} @else -- @endif" required />
                             <label for="modal-input-company-name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">会社名</label>
                         </div>
                         <div class="relative z-0 w-full px-4 mb-4 group">

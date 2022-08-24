@@ -95,9 +95,10 @@
 
                 <div class="flex flex-col sm:flex-row items-center justify-between p-4 border-t border-gray-200 rounded-t-md gap-2">
                     <input type="text" id="comment" class="w-full border-2 px-4 py-2 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="コメント">
+                    <input type="hidden" name="record-id" id="record-id">
                     <div class="flex flex-row items-center gap-2 w-2/3">
-                        <button class="container px-4 py-2 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">承認</button>
-                        <button class="container px-4 py-2 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500">拒否</button>
+                        <button class="container px-4 py-2 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500" onclick="approveVideo()">承認</button>
+                        <button class="container px-4 py-2 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500" onclick="denyVideo()">拒否</button>
                     </div>
                 </div>
             </div>
@@ -115,7 +116,15 @@
 
     function addSource(id, path) {
         var video = document.querySelector('#video')
+        $('#record-id').val(id)
         video.src = path
+    }
+
+    function approveVideo()
+    {
+        var content = $('#comment').val()
+        var id = $('#comment').val()
+
     }
 
 
