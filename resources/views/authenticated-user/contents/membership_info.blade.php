@@ -86,9 +86,9 @@
                         <span class="px-4 py-2 w-40">閲覧期限の通知</span>
 
                         <div class="flex justify-center items-center px-4 py-2 gap-6">
-                            <input type="radio" name="available" id="avail-radio" disabled @if($user->account->notification_on == 1) checked @endif>
+                            <input type="radio" name="available" id="avail-radio" disabled @if($user->account) @if($user->account->notification_on == 1) checked @endif @endif>
                             <label for="avail-radio">あり</label>
-                            <input type="radio" name="not" id="not-radio" disabled @if($user->account->notification_on == 0) checked @endif>
+                            <input type="radio" name="not" id="not-radio" disabled @if($user->account) @if($user->account->notification_on == 0) checked @endif @endif>
                             <label for="not-radio">なし</label>
                         </div>
                     </div>
