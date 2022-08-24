@@ -396,10 +396,16 @@
 
         const player = videojs('playback-video', {})
         const advert = videojs('ad-video', {})
+        var flag = 0
 
         advert.on('ended', function() {
-            advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
-            advert.play()
+            if(flag == 0)
+            {
+                advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
+                advert.play()
+                flag = 1;
+            }
+
             // $('#ad-video').toggle()
             // player.play()
         })
