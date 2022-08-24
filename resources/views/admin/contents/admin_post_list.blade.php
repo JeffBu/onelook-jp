@@ -19,26 +19,27 @@
 
     <div class="flex justify-center items-center w-full">
         <div class="flex flex-col justify-center items-center mt-8 w-11/12 z-10">
-            <div class="text-left w-full">
+            <div class="flex items-center w-full">
                 <h1 class="text-xl font-semibold text-lime-600">投稿一覧</h1>
             </div>
 
             <table class="text-center mt-6 border border-lime-600 w-full">
                 <thead>
                     <tr>
-                        <th class="px-4 py-1 border border-lime-700 w-1/12">選択</th>
-                        <th class="px-4 py-1 border border-lime-700">動画名</th>
-                        <th class="px-4 py-1 border border-lime-700">投稿者ID</th>
+                        <th class="px-4 py-1 border border-lime-700 w-20">選択</th>
+                        <th class="px-4 py-1 border border-lime-700 w-48">動画名</th>
+                        <th class="px-4 py-1 border border-lime-700 w-24">投稿者ID</th>
                         <th class="px-4 py-1 border border-lime-700">招待メール</th>
-                        <th class="px-4 py-1 border border-lime-700 w-1/12">閲覧数</th>
-                        <th class="px-4 py-1 border border-lime-700">投稿日</th>
-                        <th class="px-4 py-1 border border-lime-700">閲覧期限</th>
-                        <th class="px-4 py-1 border border-lime-700">閲覧URL</th>
+                        <th class="px-4 py-1 border border-lime-700 w-24">閲覧数</th>
+                        <th class="px-4 py-1 border border-lime-700 w-32">投稿日</th>
+                        <th class="px-4 py-1 border border-lime-700 w-32">閲覧期限</th>
+                        <th class="px-4 py-1 border border-lime-700 w-80">閲覧URL</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @forelse($records as $record)
+                    <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                         <tr>
                             <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id=""></td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->title}}</td>
@@ -49,7 +50,7 @@
                             <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format('Y年m月d日')}}</td>
                             <td class="px-4 py-1 border border-lime-700">
                                 <div class="flex flex-col justify-center items-center gap-3">
-                                    <a href="{{route('admin-viewer')}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">https://oenlook.com/access-video-from-admin/{{$record->key}}</a>
+                                    <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
 
                                     <div class="flex flex-col sm:flex-row gap-3 w-full">
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
@@ -63,6 +64,10 @@
                     @endforelse
                 </tbody>
             </table>
+
+            <div class="flex justify-end items-center w-full mt-4">
+                <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500">消去</button>
+            </div>
 
             <div class="pt-32"></div>
         </div>

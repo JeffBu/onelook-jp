@@ -7,6 +7,7 @@
     <title>OneLook</title>
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+    <link rel="icon" href="{{asset('media/icon-onelook.ico')}}">
 </head>
 
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">

@@ -75,7 +75,7 @@
                     </div>
                     <div class="flex flex-row justify-end items-center gap-2 w-full pt-4">
                         <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">編集</button>
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">消去</button>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500">消去</button>
                     </div>
                 </div>
             </div>

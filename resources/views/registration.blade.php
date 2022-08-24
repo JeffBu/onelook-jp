@@ -118,10 +118,9 @@
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
-                        <div class="flex flex-row text-sm w-full">
-                            <div class="flex flex-row">
+                        <div class="flex flex-row justify-end text-sm w-full">
+                            <div class="flex flex-row ">
                                 <span>登録済？</span>
-                                
                                 <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">ログインする</a>
                             </div>
                         </div>

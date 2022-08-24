@@ -290,21 +290,13 @@
 
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
 
-    <!--header-->
-    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
-    id="header-frame">
-
-        <div class="justify-center items-center">
-            <div class="font-semibold text-theme-white text-xl">OneLook</div>
-        </div>
-
-    </header>
-    <!--header ends here-->
-
     <!--content-->
-    <div class="flex justify-center items-center text-center pt-11 w-full">
+    <div class="flex justify-center items-center text-center w-full">
         <div class="flex flex-col justify-center items-center text-center w-full">
-            <div class="flex flex-col justify-center items-center text-center text-white bg-sky-600 w-11/12 sm:w-3/5 px-8 py-8 mt-4 gap-2 border-b-4 border-r-4 border-sky-700 rounded-lg">
+            <div class="flex flex-col justify-center items-center text-center text-white bg-sky-600 w-11/12 sm:w-8/12 px-8 py-4 mt-4 gap-2 border-b-4 border-r-4 border-sky-700 rounded-lg">
+                <a href="{{route('dashboard')}}">
+                    <img src="{{asset('media/logos/1.png')}}" alt="onelook_logo" class="h-20">
+                </a>
                 <div>
                     <!--<h1 class="font-bold text-xl mb-4"><span class="font-bold">{{$record->uploader->username}}</span>さんの届出</h1>-->
                 </div>

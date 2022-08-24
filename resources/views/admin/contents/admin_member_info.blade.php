@@ -136,13 +136,14 @@
                             <tbody>
                                     <tr>
                                         <td rowspan="2"><input type="checkbox" name="" id=""></td>
-                                        <td id="news-date" class="text-xs pt-2">asdasd</td>
+                                        <td id="news-date" class="text-xs pt-2"></td>
                                     </tr>
                                     <tr class="border-b border-lime-600">
-                                        <td id="news-label" class="pb-2">asdasd</td>
+                                        <td id="news-label" class="pb-2"></td>
                                     </tr>
-                                
+
                                     <tr>
+                                        <td rowspan="2"></td>    
                                         <td id="news-date" class="text-xs"></td>
                                     </tr>
                                     <tr class="border-b border-lime-600">
@@ -154,7 +155,7 @@
                     </div>
                     <div class="flex flex-row justify-end items-center gap-2 w-full pt-4">
                         <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">編集</button>
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">消去</button>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500">消去</button>
                     </div>
                 </div>
             </div>
