@@ -204,6 +204,10 @@ class MainController extends Controller
         return view('registration_complete');
     }
 
+    public function forgot_password_notification() {
+        return view('forgot_password_notification');
+    }
+
     public function promotion_team()
     {
         return view('for-promoting-team.index');

@@ -118,13 +118,9 @@
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600 gap-6">
-                        <div class="flex flex-row justify-between text-sm w-full">
-                            <div class="flex flex-row items-center gap-2">
-                                
-                            </div>
-
+                        <div class="flex flex-row text-sm w-full">
                             <div class="flex flex-row">
-                                <span>すでに登録？</span>
+                                <span>登録済？</span>
                                 
                                 <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">ログインする</a>
                             </div>
@@ -489,7 +485,6 @@
                 </div>
 
                 <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                    <button type="button" class="inline-block px-6 py-2.5 bg-sky-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-sky-400 hover:shadow-lg focus:bg-sky-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-sky-400 active:shadow-lg transition duration-150 ease-in-out" data-bs-dismiss="modal">わかりました</button>
                 </div>
             </div>
         </div>

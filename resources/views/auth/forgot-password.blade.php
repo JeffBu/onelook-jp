@@ -40,7 +40,7 @@
                             <form method="POST" action="password-forget">
                                 @csrf
                                 <div class="relative z-0 w-full mb-4 group">
-                                    <span class="text-neutral-600">パスワードをお忘れですか？問題ない。メール アドレスをお知らせいただければ、新しいパスワードを選択できるパスワード リセット リンクをメールでお送りします。</span>
+                                    <span class="text-neutral-600">パスワードをお忘れの場合には、登録されたメールアドレスを入力してください。 新しいパスワードを設定するためのメールをお送りします。</span>
                                 </div>
 
                                 <div class="relative z-0 w-full mb-4 group">
