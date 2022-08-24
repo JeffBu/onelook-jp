@@ -330,7 +330,7 @@
                                 <span id="contributor-label">投稿者：</span>
                                 <span id="contributor"></span>
                             </div>
-                            
+
                             <div class="flex flex-row items-center text-left text-sm gap-2">
                                 <span id="email-label">メールアドレス：</span>
                                 <span id="email"></span>
@@ -397,9 +397,10 @@
         const advert = videojs('ad-video', {})
 
         advert.on('ended', function() {
-            $('#playback-video').toggle()           
-            $('#ad-video').toggle()
-            player.play()
+            $('#playback-video').src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
+            advert.play()
+            // $('#ad-video').toggle()
+            // player.play()
         })
 
         function downloadVideo(id, button)
