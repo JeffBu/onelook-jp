@@ -48,7 +48,9 @@
 
     <div class="flex flex-col justify-center text-center items-center text-lg pt-20 w-3/4 gap-20">
         <div class="font-medium text-theme-black text-base sm:text-lg w-full">
-            <span class="font-semibold text-theme-black bg-theme-yellow rounded-sm px-1">OneLook</span>
+            <span class="font-semibold text-theme-black rounded-sm px-1">
+                <mark>OneLook</mark>
+            </span>
             は資料と言葉を組み合わせた動画作成が簡単にできるサービスです。
             資料の説明やコメント、文章で書くとまどろっこしい、
             それを言葉で伝えたらすぐにわかるのに、をシンプルに解決します！
@@ -56,7 +58,7 @@
 
         <div class="flex flex-col lg:flex-row items-center text-center text-base sm:text-lg text-theme-black justify-between w-full sm:gap-4 md:gap-8 xl:gap-20 2xl:gap-40">
             <div class="flex flex-col justify-center items-center px-4 py-4 gap-6 w-9/12">
-                <span class="text-lg sm:text-2xl text-sky-600 font-bold">動画を使ってビジネスのDXに対応</span>
+                <span class="text-lg sm:text-2xl text-sky-600 font-semibold">動画を使ってビジネスのDXに対応</span>
                 <span class="px-4 py-4 border border-sky-600 rounded-lg h-80 2xl:h-72">資料チェックなどで資料を指さして「ここ、これ」を表現できたらもっと効率的だと思いませんか？ OneLookでは実際に資料をポイントしながら言葉でコメントした動画作成が簡単にできます。</span>
                 <a href="{{route('view-plans')}}" class="border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-theme-white w-full">
                     無料で始める
@@ -64,7 +66,7 @@
             </div>
 
             <div class="flex flex-col justify-center items-center px-4 py-4 gap-6 w-9/12">
-                <span class="text-lg sm:text-2xl text-sky-600 font-bold">教材のための<br>動画作成</span>
+                <span class="text-lg sm:text-2xl text-sky-600 font-semibold">教材のための<br>動画作成</span>
                 <span class="px-4 py-4 border border-sky-600 rounded-lg h-80 2xl:h-72">学校や塾などでの問題・解答のための録画ソフトをお探しですか？ ２次元の文章や資料に声を添えることで「ここ、これ」を伝えられるのがOneLookの特徴です。</span>
                 <a href="{{route('view-plans')}}" class="border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-theme-white w-full">
                     無料で始める
@@ -72,7 +74,7 @@
             </div>
 
             <div class="flex flex-col justify-center items-center px-4 py-4 gap-6 w-9/12">
-                <span class="text-lg sm:text-2xl text-sky-600 font-bold">動画管理も<br>ラクラク</span>
+                <span class="text-lg sm:text-2xl text-sky-600 font-semibold">動画管理も<br>ラクラク</span>
                 <span class="px-4 py-4 border border-sky-600 rounded-lg h-80 2xl:h-72">ダウンロードしなくてもURLの共有だけで動画の閲覧が可能。 一定期間で動画は自動的に削除されるので管理も楽です。 もちろんダウンロード機能もあります（有料）。</span>
                 <a href="{{route('view-plans')}}" class="border border-theme-blue bg-theme-yellow rounded-md px-4 py-4 text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-theme-white w-full">
                     無料で始める
