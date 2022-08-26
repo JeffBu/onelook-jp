@@ -10,11 +10,98 @@
 @section('content')
 
     <!--content-->
-    <div class="flex justify-center items-center pt-20 w-full">
-        <table class="text-center w-4/5 border border-sky-700">
+    <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
+        <div class="flex flex-col justify-center items-center scroll-mt-24 gap-6 w-11/12 md:w-4/5 h-1/2">
+            @forelse($video_records as $record)
+            <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
+            <div class="flex flex-col items-center text-left gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
+                <div class="flex flex-col md:flex-row items-center md:items-start px-4 gap-4">
+                    <!--video thumbnail-->
+                    <div class="flex flex-col justify-center items-start gap-4 w-9/12 pb-4">
+                        <div class="flex justify-center items-center">
+                            <div data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')" class="flex justify-center items-center cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 absolute opacity-50 text-neutral-800"
+                                viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
+                                <video src="{{$url}}" alt="thumbnail" class="object-cover border-2 hover:border-yellow-400"></video>
+                            </div>
+                            <button class="hidden container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">プレビュー</button>
+                        </div>
+
+                        <!-- code generator -->
+                        <div class="flex-1 justify-center items-center text-center gap-3 w-full">
+                            <p>
+                                パスコード:&nbsp
+                                @if($record->access)
+                                    {{$record->access->access_code}}
+                                @else
+                                    なし
+                                @endif
+                            </p>
+                            <button class="mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md w-20" onclick="changeAccessCode('{{$record->key}}', @if($record->access) '{{$record->access->access_code}}' @else '12345678'@endif)">編集</button>
+                        </div>
+                    </div>
+
+                    <!--video details-->
+                    <div class="flex flex-col justify-center items-start gap-4 w-full pb-4">
+                        <!--posted-->
+                        <span>
+                            <b>投稿日</b>:&nbsp
+
+                            {{date_format($record->created_at, 'Y年 m月 d日 H:i')}}
+                            {{-- 2021年 4月1日 10:00 --}}
+                        </span>
+
+                        <!--expiration-->
+                        <span>
+                            <b>閲覧期限</b>:&nbsp
+                            {{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}
+                        </span>
+
+                        <!--views-->
+                        <span>
+                            @if($record->views)
+                                {{$record->views->count()}}
+                                @else
+                                    0
+                                @endif
+
+                            <b>閲覧数</b>
+                        </span>
+
+                        <!--url-->
+                        <span id="video-link-{{$record->id}}">
+                            <b>閲覧URL</b>:&nbsp
+                            {{route('access-video-record', ['video_key' => $record->key])}}
+                        </span>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-3 w-full pb-4">
+                        <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
+                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
+                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
+                        </div>
+                        <div class="flex flex-col justify-center items-center gap-3 w-full">
+                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
+                            <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo()">削除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @empty
+                <div class="flex w-full">
+                    <span>表示するレコードがありません</span>
+                </div>
+            @endforelse
+        </div>
+
+        <!-- <table class="text-center w-4/5 border border-sky-700">
             <thead class="bg-sky-600 text-theme-white">
                 <tr>
-                    <th class="px-2 py-2 border-sky-700 font-medium">動画名</th>
+                    <th class="px-2 py-2 border-sky-700 font-medium">動画</th>
                     <th class="px-2 py-2 border-sky-700 w-2/12 font-medium">パスコード</th>
                     <th class="px-2 py-2 border-sky-700 font-medium">投稿日</th>
                     <th class="px-2 py-2 border-sky-700 font-medium">閲覧期限</th>
@@ -23,23 +110,21 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($video_records as $record)
-                <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                 <tr class="hover:bg-neutral-200">
                     <td class="px-4 py-2 border-y border-cyan-600">
-                        <div class="flex-1 justify-center items-center">
+                        <!-- <div class="flex-1 justify-center items-center">
                             <div data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')" class="flex justify-center items-center cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 absolute opacity-50 text-neutral-800"
                                 viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                                 </svg>
-                                <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
+                                <video src="{{$url}}" alt="thumbnail" class="object-cover border-2 hover:border-yellow-400"></video>
                             </div>
                             <button class="hidden container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">プレビュー</button>
-                        </div>
+                        </div> -->
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
-                        <div class="flex-1 justify-center items-center gap-3">
+                        <!-- <div class="flex-1 justify-center items-center gap-3">
                             <p>
                                 @if($record->access)
                                     {{$record->access->access_code}}
@@ -48,26 +133,26 @@
                                 @endif
                             </p>
                             <button class="container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md w-8/12" onclick="changeAccessCode('{{$record->key}}', @if($record->access) '{{$record->access->access_code}}' @else '12345678'@endif)">編集</button>
-                        </div>
+                        </div> -->
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
-                        {{date_format($record->created_at, 'Y年 m月 d日 H:i')}}
-                        {{-- 2021年 4月1日 10:00 --}}
+                        <!-- {{date_format($record->created_at, 'Y年 m月 d日 H:i')}}
+                        {{-- 2021年 4月1日 10:00 --}} -->
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
-                        {{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}
+                        <!-- {{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}} -->
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
-                        @if($record->views)
+                        <!-- @if($record->views)
                             {{$record->views->count()}}
                         @else
                             0
-                        @endif
+                        @endif -->
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
                         <div class="flex flex-col justify-center items-center gap-2">
-                            <span id="video-link-{{$record->id}}">{{route('access-video-record', ['video_key' => $record->key])}}</span>
-                            <div class="flex flex-col md:flex-row gap-3 w-full">
+                            <!-- <span id="video-link-{{$record->id}}">{{route('access-video-record', ['video_key' => $record->key])}}</span> -->
+                            <!-- <div class="flex flex-col md:flex-row gap-3 w-full">
                                 <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                                     <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
                                     <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
@@ -76,17 +161,17 @@
                                     <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
                                     <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo()">削除</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </td>
                 </tr>
-                @empty
+                <!-- 
                     <tr>
                         <td class="px-4 py-2 border-y border-cyan-600 text-cyan-400" colspan="7">
                             表示するレコードがありません
                         </td>
                     </tr>
-                @endforelse
+                 -->
 
                 {{-- <tr>
                     <td class="px-4 py-2 border-y border-cyan-600">1</td>
@@ -217,13 +302,13 @@
                     </td>
                 </tr> --}}
             </tbody>
-        </table>
+        </table> -->
     </div>
     <div class="pt-40"></div>
 
     <!-- Video Playback Modal -->
     <div class="hidden fixed top-0 justify-center items-center w-screen h-screen outline-none overflow-x-hidden overflow-y-auto z-50" id="previewModal">
-        <div class="w-3/5 h-3/4">
+        <div class="w-11/12 md:w-3/5 md:h-3/4">
         <div class="modal-dialog modal-lg relative w-auto pointer-events-none">
           <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
             <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">

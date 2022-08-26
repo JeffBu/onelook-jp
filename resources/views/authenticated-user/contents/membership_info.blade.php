@@ -21,12 +21,12 @@
 
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                        <span class="px-4 py-2 w-40">現在のプラン</span>
-                        <span class="px-4 py-2">パーソナルプラン</span>
+                        <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">現在のプラン</span>
+                        <span class="pr-2 sm:pr-4 pl-4 py-2">パーソナルプラン</span>
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <a  href="{{route('change-membership-plan')}}" class="px-4 py-2">
+                        <a  href="{{route('change-membership-plan')}}">
                             <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                         </a>
                     </div>
@@ -40,23 +40,23 @@
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-col justify-center items-start text-left gap-4">
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                            <span class="px-4 py-2 w-40">会社名等（任意）</span>
-                            <span class="px-4 py-2">@if($user->account){{$user->account->company}} @else -- @endif</span>
+                            <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">会社名等（任意）</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">@if($user->account){{$user->account->company}} @else -- @endif</span>
                         </div>
 
                         <div class="flex flex-row justify-start items-center text-left divide-x divide-sky-700 gap-2">
-                            <span class="px-4 py-2 w-40">氏名</span>
-                            <span class="px-4 py-2">{{$user->name}}</span>
+                            <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">氏名</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">{{$user->name}}</span>
                         </div>
 
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                            <span class="px-4 py-2 w-40">メールアドレス</span>
-                            <span class="px-4 py-2">{{$user->email}}</span>
+                            <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">メールアドレス</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">{{$user->email}}</span>
                         </div>
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <button data-modal-toggle="edit-member-info" class="container mx-4 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                        <button data-modal-toggle="edit-member-info" class="px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </div>
 
                 </div>
@@ -67,12 +67,12 @@
 
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                        <span class="px-4 py-2 w-40">パスワード</span>
-                        <span class="px-4 py-2">********</span>
+                        <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">パスワード</span>
+                        <span class="pr-2 sm:pr-4 pl-4 py-2">********</span>
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <button data-modal-toggle="change-password" class="container mx-4 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                        <button data-modal-toggle="change-password" class="px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </div>
 
                 </div>
@@ -83,7 +83,7 @@
 
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                        <span class="px-4 py-2 w-40">閲覧期限の通知</span>
+                        <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">閲覧期限の通知</span>
 
                         <div class="flex justify-center items-center px-4 py-2 gap-6">
                             <input type="radio" name="available" id="avail-radio" disabled @if($user->account) @if($user->account->notification_on == 1) checked @endif @endif>
@@ -99,7 +99,7 @@
 
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                        <span class="px-4 py-2 w-40">支払履歴</span>
+                        <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">支払履歴</span>
 
                         <div class="flex flex-row justify-center items-center text-left px-4 py-2 gap-2">
                             <span>支払履歴</span>
@@ -119,23 +119,23 @@
 
                     <div class="flex flex-col justify-center items-start text-left gap-4">
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                            <span class="px-4 py-2 w-40">カード番号</span>
-                            <span class="px-4 py-2">********5555</span>
+                            <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">カード番号</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">********5555</span>
                         </div>
 
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                            <span class="px-4 py-2 w-40">カード名義</span>
-                            <span class="px-4 py-2">KINICHICIHIKA</span>
+                            <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">カード名義</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">KINICHICIHIKA</span>
                         </div>
 
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
-                            <span class="px-4 py-2 w-40">有効期限</span>
-                            <span class="px-4 py-2">03/2022</span>
+                            <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">有効期限</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">03/2022</span>
                         </div>
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <button data-modal-toggle="edit-card" class="container mx-4 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                        <button data-modal-toggle="edit-card" class="px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                     </div>
 
                 </div>
