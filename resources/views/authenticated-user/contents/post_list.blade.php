@@ -364,7 +364,7 @@
         function sendInvitationMail(id)
         {
             Swal.fire({
-                title: '電子メールを介して招待リンクを送信します。',
+                html: '<b>電子メールを介して招待リンクを送信します。</b>',
                 input: 'email',
                 inputLabel: '電子メールアドレス',
                 confirmButtonText: '招待状を送る',
@@ -391,7 +391,7 @@
                 if(result.value == 1) {
                     Swal.fire({
                         icon: 'success',
-                        title: '招待状が正常に送信されました。',
+                        html: '<b>招待状が正常に送信されました。</b>',
                         timer: 2000,
                         showConfirmButton: false
                     })
@@ -399,7 +399,7 @@
                 else {
                     Swal.fire({
                         icon: 'error',
-                        title: '予期せぬエラーが発生した。',
+                        html: '<b>予期せぬエラーが発生した。</b>',
                         text: '後でもう一度やり直してください。',
                         timer: 3000,
                         showConfirmButton: false
@@ -412,7 +412,7 @@
         {
             Swal.fire({
                 icon: 'warning',
-                text: 'ダウンロード機能は、フリー会員様はご利用できません。プライベート会員への変更は会員情報をご覧ください。',
+                html: '<b>ダウンロード機能は、フリー会員様はご利用できません。プライベート会員への変更は会員情報をご覧ください。</b>',
             })
 
             /*button.preventDefault()
@@ -439,7 +439,7 @@
         function deleteVideo() {
             Swal.fire({
                 icon: 'warning',
-                text: 'この機能は個人プランでのみ利用できます。',
+                html: '<b>この機能は個人プランでのみ利用できます。</b>',
             })
         }
     </script>
