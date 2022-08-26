@@ -16,7 +16,7 @@
             <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
             <div class="flex flex-col items-center text-left gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
-                <div class="flex flex-col md:flex-row items-center md:items-start px-4 gap-4">
+                <div class="flex flex-col md:flex-row items-center px-4 gap-4">
                     <!--video thumbnail-->
                     <div class="flex flex-col justify-center items-start gap-4 w-9/12 pb-4">
                         <div class="flex justify-center items-center">
@@ -80,12 +80,12 @@
                     
                     <div class="flex flex-col md:flex-row gap-3 w-full pb-4">
                         <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
-                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
-                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
+                            <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
+                            <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
                         </div>
                         <div class="flex flex-col justify-center items-center gap-3 w-full">
-                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
-                            <button class="container px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo()">削除</button>
+                            <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
+                            <button class="w-36 px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo()">削除</button>
                         </div>
                     </div>
                 </div>

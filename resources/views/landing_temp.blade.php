@@ -61,29 +61,35 @@
 
     <div class="flex flex-col justify-center items-start gap-4 w-full">
         <span class="text-lg sm:text-2xl text-sky-700 text-center font-semibold w-full">動画を使ってビジネスのDXに対応</span>
-        <div class="flex flex-col justify-center items-center w-10/12 bg-sky-700 rounded-r-lg h-52">
+        <div class="flex flex-row justify-center items-center w-11/12 md:w-8/12 bg-sky-700 rounded-r-lg h-52">
+            <img src="{{asset('media/home-1.png')}}" alt="Video Creation Icon" class="h-32 w-32 mx-4">
             <span class="px-8 py-4 text-white">資料チェックなどで資料を指さして「ここ、これ」を表現できたらもっと効率的だと思いませんか？ OneLookでは実際に資料をポイントしながら言葉でコメントした動画作成が簡単にできます。</span>
         </div>
     </div>
 
-    <div class="flex flex-col justify-center items-end gap-4 w-full pt-16">
-        <span class="text-lg sm:text-2xl text-sky-700 text-center font-semibold w-full">教材のための動画作成</span>
-        <div class="flex flex-col justify-center items-center w-10/12 bg-sky-700 rounded-l-lg h-52">
-            <span class="px-8 py-4 text-white">学校や塾などでの問題・解答のための録画ソフトをお探しですか？ ２次元の文章や資料に声を添えることで「ここ、これ」を伝えられるのがOneLookの特徴です。</span>
+    <div class="flex flex-col justify-center items-end gap-4 w-full pt-32">
+        <span class="text-lg sm:text-2xl text-neutral-900 text-center font-semibold w-full">教材のための動画作成</span>
+        <div class="flex flex-row justify-center items-center w-11/12 md:w-8/12 bg-theme-yellow rounded-l-lg h-52">
+            <img src="{{asset('media/home-2.png')}}" alt="Video Creation Icon" class="h-32 w-32 mx-4">
+            <span class="px-8 py-4 text-neutral-900">学校や塾などでの問題・解答のための録画ソフトをお探しですか？ ２次元の文章や資料に声を添えることで「ここ、これ」を伝えられるのがOneLookの特徴です。</span>
         </div>
     </div>
 
-    <div class="flex flex-col justify-center items-start gap-4 w-full pt-16">
+    <div class="flex flex-col justify-center items-start gap-4 w-full pt-32">
         <span class="text-lg sm:text-2xl text-sky-700 text-center font-semibold w-full">動画管理もラクラク</span>
-        <div class="flex flex-col justify-center items-center w-10/12 bg-sky-700 rounded-r-lg h-52">
+        <div class="flex flex-row justify-center items-center w-11/12 md:w-8/12 bg-sky-700 rounded-r-lg h-52">
+            <img src="{{asset('media/home-3.png')}}" alt="Video Creation Icon" class="h-32 w-32 mx-4">
             <span class="px-8 py-4 text-white">ダウンロードしなくてもURLの共有だけで動画の閲覧が可能。 一定期間で動画は自動的に削除されるので管理も楽です。 もちろんダウンロード機能もあります（有料）。</span>
         </div>
     </div>
 
-    <div class="flex flex-col justify-center text-center items-center text-lg pt-20 w-3/4 gap-20">
+    <div class="flex flex-col justify-center text-center items-center text-lg pt-32">
         <a href="{{route('view-plans')}}" class="bg-theme-yellow rounded-md px-4 py-2 text-base sm:text-lg font-bold hover:bg-yellow-400 hover:text-theme-white">
-            無料で始める
+            無料で始める!
         </a>
+        <div class="flex justify-end items-center w-full">
+            <img src="{{asset('media/home-4.png')}}" alt="Video Creation Icon" class="h-12 w-12 mx-4">
+        </div>
     </div>
 
     <div class="h-32"></div>
