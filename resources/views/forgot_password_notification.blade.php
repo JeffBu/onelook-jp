@@ -23,11 +23,13 @@
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
 
     <!--header-->
-    <header class="flex shadow bg-sky-700 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
+    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
     id="header_frame">
 
         <div class="justify-center items-center">
-            <a href="{{route('home')}}" class="font-semibold text-theme-white">OneLook</a>
+            <a href="{{route('home')}}">
+                <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-11">
+            </a>
         </div>
 
         <!--<div class="flex justify-center items-center gap-5 py-6 text-sm">

@@ -20,10 +20,10 @@
     </style>
 </head>
 
-<body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
+<body class="justify-center items-center bg-theme-white font-['Calibri']">
 
     <!--header-->
-    <header class="flex shadow bg-sky-700 justify-between items-center py-5 px-5 h-14 text-base tracking-widest fixed w-full z-50"
+    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
     id="header_frame">
 
         <div class="justify-center items-center">
@@ -46,25 +46,25 @@
 
     <!--content-->
     <div>
-        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-8 pt-20">会員プラン</h1>
+        <h1 class="text-center text-3xl font-bold text-sky-600 pb-8 pt-20">会員プラン</h1>
     </div>
     <div class="flex justify-center items-center w-full">
 
-        <table class="text-center w-4/5 border border-sky-700">
-            <thead class="bg-cyan-600 text-theme-white">
+        <table class="text-center w-4/5 border border-sky-600">
+            <thead class="bg-sky-600 text-theme-white">
                 <tr>
-                    <th class="px-3 py-3 border-x border-sky-700"></th>
-                    <th class="px-3 py-3 border-x border-sky-700">フリープラン</th>
-                    <th class="px-3 py-3 border-x border-sky-700">パーソナルプラン</th>
-                    <th class="px-3 py-3 border-x border-sky-700">ビジネスプラン</th>
+                    <th class="px-3 py-3 border-x border-sky-600"></th>
+                    <th class="px-3 py-3 border-x border-sky-600">フリープラン</th>
+                    <th class="px-3 py-3 border-x border-sky-600">パーソナルプラン</th>
+                    <th class="px-3 py-3 border-x border-sky-600">ビジネスプラン</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">月額料金</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">無料</span></td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">300円</span></td>
-                    <td rowspan="6" class="px-3 py-3 border-x border-y border-cyan-600 w-1/4">
+                    <td class="px-3 py-3 border-x border-y border-sky-600">月額料金</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">無料</span></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">300円</span></td>
+                    <td rowspan="6" class="px-3 py-3 border-x border-y border-sky-600 w-1/4">
                         <div class="flex-1 justify-center items-center text-center">
                             <span>自社専用サイト 管理者画面の追加 セキュリティ強化 保管期限の延長 などのカスタムプランもご相談ください</span>
                         </div>
@@ -72,43 +72,43 @@
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">最大録画時間</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">5分</span></td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">15分</span></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">最大録画時間</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">5分</span></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">15分</span></td>
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">月間の作成件数</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">5件</span></td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><span class="hidden">100件</span></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">月間の作成件数</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">5件</span></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">100件</span></td>
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">ダウンロード<br>（mp4ファイル）</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                    <td class="px-3 py-3 border-x border-y border-sky-600">ダウンロード<br>（mp4ファイル）</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg></td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 01M12 01M16 01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg></td>
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">ストレージサービス<br>（クラウドでの保管・閲覧）</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">3日</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">7日</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">ストレージサービス<br>（クラウドでの保管・閲覧）</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">3日</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">7日</td>
                 </tr>
 
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">広告</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">あり</td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600">なし</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">広告</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">あり</td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600">なし</td>
                 </tr>
                 <tr>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"></td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Signup for Free</button></td>
-                    <td class="px-3 py-3 border-x border-y border-cyan-600"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Register</button></td>
-                    <td class="px-3 py-3"><button class="container px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" >Contact Us</button></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><a href="{{route('registration')}}" class="px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">無料でサインアップ</a></td>
+                    <td class="px-3 py-3 border-x border-y border-sky-600"><a href="#" class="px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">購読する</a></td>
+                    <td class="px-3 py-3"><a href="#" class="px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</a></td>
                 </tr>
             </tbody>
         </table>
@@ -191,7 +191,7 @@
         function planAlert(){
 
             Swal.fire({
-                title: 'ビジネスプランのご相談',
+                html: '<b>ビジネスプランのご相談</b>',
                 text: '申請検討ありがとうございます。こちらを送信いただけましたらご登録者様宛に当社担当よりご連絡を申し上げます。貴社のご希望の使用イメージなどございましたらご記入いただけますとスムーズです。よろしくお願いいたします。',
                 input: 'email',
                 inputPlaceholder: 'ご連絡先のメールアドレス',

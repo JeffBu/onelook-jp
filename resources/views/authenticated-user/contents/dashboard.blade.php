@@ -121,12 +121,12 @@
                 html:   '<b>登録されたメールアドレスにご連絡いたします。</b>' +
                         '<div class="text-justify mt-8">' +
                             '<div class="mb-6">'+
-                                '<label for="inquiry-email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">電子メールアドレス</label>'+
-                                '<input type="email" id="inquiry-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="'+user_email+'" readonly>'+
+                                '<label for="inquiry-email" class="block mb-2 text-sm font-medium text-gray-900">電子メールアドレス</label>'+
+                                '<input type="email" id="inquiry-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="'+user_email+'" readonly>'+
                             '</div>'+
                             '<div class="mb-6">'+
-                                '<label for="inquiry-content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">お問い合わせ内容</label>'+
-                                '<textarea rows="5" type="text" id="inquiry-content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required></textarea>'+
+                                '<label for="inquiry-content" class="block mb-2 text-sm font-medium text-gray-900">お問い合わせ内容</label>'+
+                                '<textarea rows="5" type="text" id="inquiry-content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>'+
                             '</div>'+
                         '</div>',
                 showCancelButton: true,

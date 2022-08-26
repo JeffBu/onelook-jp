@@ -50,7 +50,7 @@
                 <div class="relative bg-white rounded-lg shadow border border-sky-600">
                     <!--modal header-->
                     <div class="flex justify-between items-center p-5 rounded-t bg-sky-600">
-                        <h3 class="text-xl font-bold text-white">
+                        <h3 class="font-semibold text-white">
                             クレジットカードの詳細
                         </h3>
 
@@ -101,7 +101,7 @@
                 <div class="relative bg-white rounded-lg shadow  border border-sky-600">
                     <!--modal header-->
                     <div class="flex justify-between items-center p-5 rounded-t bg-sky-600">
-                        <h3 class="text-xl font-bold text-white">
+                        <h3 class="font-semibold text-white">
                             請求概要
                         </h3>
 

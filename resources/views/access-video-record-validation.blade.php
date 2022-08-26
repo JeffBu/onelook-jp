@@ -13,11 +13,13 @@
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
 
     <!--header-->
-    <header class="flex shadow bg-sky-700 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
+    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
     id="header_frame">
 
         <div class="justify-center items-center">
-            <h1 class="font-semibold text-theme-white">OneLook</h1>
+            <a href="{{route('home')}}">
+                <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-11">
+            </a>
         </div>
 
         <!--<div class="flex justify-center items-center gap-5 py-6 text-sm">
@@ -37,10 +39,10 @@
             <div class="flex justify-center items-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 xl:w-4/12 h-modal md:h-full">
                 <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                     <!--modal content-->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow">
                         <!--modal header-->
-                        <div class="flex justify-center items-center p-5 rounded-t border-b dark:border-gray-600">
-                            <h3 class="text-xl font-bold text-sky-600 dark:text-white text-center">
+                        <div class="flex justify-center items-center p-5 rounded-t border-b">
+                            <h3 class="text-xl font-bold text-sky-600">
                                 保管情報へのアクセス
                             </h3>
 
@@ -54,14 +56,14 @@
                                 </div>
 
                                 <div class="relative z-0 w-full mb-4 group">
-                                    <input type="text" name="access_code" id="access_code" :value="old('access_code')" class="block py-2.5 px-0 w-full text-sm text-center text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                                    <input type="text" name="access_code" id="access_code" :value="old('access_code')" class="block py-2.5 px-0 w-full text-sm text-center text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                     <input id="key" name="key" type="hidden" value="{{$record->key}}"/>
-                                    <label for="access_code" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">パスワードを入力してください</label>
+                                    <label for="access_code" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">パスワードを入力してください</label>
                                 </div>
 
                                 <div class="flex flex-col items-center py-6 gap-2 w-full">
                                     <div class="flex flex-col items-end gap-2 w-full">
-                                        <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-400 w-full">閲覧する</button>
+                                        <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">閲覧する</button>
                                     </div>
                                 </div>
                             </form>
