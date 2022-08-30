@@ -96,10 +96,14 @@
                             <img src="{{asset('media/yellow-a.png')}}" alt="" class="h-12 w-12">
                             <div>
                                 <span>フリープランで最大</span>
-                                <span class="text-red-600 font-semibold">3</span>
-                                <span>分（月間5件まで）、パーソナルプランで最大</span>
-                                <span class="text-red-600 font-semibold">10</span>
-                                <span>分（月間100件まで）の作成が可能です。</span>
+                                <span>3</span>
+                                <span>分、パーソナルプランで最大</span>
+                                <span>10</span>
+                                <span>分までの動画作成が可能です。 また、閲覧可能とできる動画本数は、フリープランで</span>
+                                <span>5</span>
+                                <span>本、パーソナルプランで</span>
+                                <span>100</span>
+                                <span>本となっています。</span>
                             </div>
                         </div>
                     </div>
@@ -150,7 +154,8 @@
                             <img src="{{asset('media/yellow-a.png')}}" alt="" class="h-12 w-12">
                             <div>
                                 <span>パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。 なお、変更申込以後はパーソナルプランの機能のご利用が可能です。 パーソナルプランの解約は、申込日の翌月</span>
-                                <span class="text-red-600 font-semibold">2</span>
+                                <!--<span class="text-red-600 font-semibold">2</span>-->
+                                <span>2</span>
                                 <span>日以後から可能です。</span>
                             </div>
                         </div>

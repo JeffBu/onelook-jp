@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" translate="no" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -302,8 +302,8 @@
                     <!--<h1 class="font-bold text-xl mb-4"><span class="font-bold">{{$record->uploader->username}}</span>さんの届出</h1>-->
                 </div>
 
-                <div class="flex flex-col justify-center items-center text-center gap-2 w-full">
-                    <div class="flex flex-row justify-between items-center text-center w-full">
+                <div class="flex flex-col justify-center items-center text-center gap-4 w-full">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center text-center w-full">
                         <div class="flex flex-row justify-center items-center text-center text-sm gap-2">
                             <span>投稿日:</span>
                             <span id="dl-deadline">{{$record->created_at->format('Y年m月d日H:i')}}</span>
