@@ -102,22 +102,21 @@ class UserAccountController extends Controller
                 ->withInput();
         }
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email',  $request->email)->first();
 
-        if(!$user)
+        if($user == null)
         {
-            $validator->after(function($validator)
-            {
-                $validator->errors()->add('email', 'あなたのメールアドレスは onelook.jp に登録されていません。');
-                return redirect()->route('forgot-password')
-                    ->withErrors($validator)
-                    ->withInput();
-            });
+            $validator->errors()->add('email', 'あなたのメールアドレスは onelook.jp に登録されていません。');
+            return redirect()->route('forgot-password')
+                ->withErrors($validator)
+                ->withInput();
         }
+        else {
+            Mail::to($request->email)->send(new ForgotPasswordMail($user));
 
-        Mail::to($request->email)->send(new ForgotPasswordMail($user));
-
-        return redirect()->route('success-screen');
+            return redirect()->route('success-screen');
+        }
+        //
     }
 
     public function register(Request $request)
@@ -157,7 +156,7 @@ class UserAccountController extends Controller
 
     public function success_screen()
     {
-        return view('registration_complete');
+        return view('auth.registration_complete');
     }
 
 }

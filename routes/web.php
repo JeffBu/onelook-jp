@@ -77,6 +77,7 @@ Route::get('forgot-password-notification', [MainController::class, 'forgot_passw
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 Route::post('checkout', [SubscriptionController::class, 'subscribe']);
+Route::post('forgot-password', [UserAccountController::class, 'forgot_password'])->name('forgot-password');
 
 Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 

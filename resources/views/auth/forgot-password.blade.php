@@ -51,6 +51,8 @@
                                     <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">ここにメールアドレスを入力してください</label>
                                 </div>
 
+                                <x-jet-validation-errors class="mb-4" />
+
                                 <div class="flex flex-col items-center py-6 gap-2 w-full">
                                     <div class="flex flex-col items-end gap-2 w-full">
                                         <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">メールパスワードリセットリンク</button>
