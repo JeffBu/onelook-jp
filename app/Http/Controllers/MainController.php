@@ -201,7 +201,7 @@ class MainController extends Controller
     }
 
     public function registration_page() {
-        return view('registration');
+        return view('auth.registration');
     }
 
     public function registration_complete() {
