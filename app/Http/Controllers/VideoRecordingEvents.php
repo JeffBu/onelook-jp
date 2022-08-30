@@ -110,6 +110,11 @@ class VideoRecordingEvents extends Controller
         $key = $request->key;
         $access_code = $request->access_code;
 
+        if($access_code == null)
+        {
+            abort(404);
+        }
+
         $validator = Validator::make($request->all(), [
             'access_code' => 'required|max:8',
         ]);
