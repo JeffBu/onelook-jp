@@ -148,7 +148,7 @@
                                             <td id="news-date" class="text-xs">{{$msg->created_at->format('Y年m月d日')}}</td>
                                         </tr>
                                         <tr class="border-b border-lime-600">
-                                            <td id="news-label" class="pb-2">{{$msg->content}}</td>
+                                            <td id="news-label" class="pb-2">{!!$msg->content!!}</td>
                                         </tr>
                                     @empty
                                         <tr>
