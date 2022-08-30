@@ -87,7 +87,7 @@ class AdminController extends Controller
     public function announcement()
     {
         $user = Auth::user();
-        $news = News::latest()->get();
+        $news = News::where('target_user', null)->latest()->get();
         $data = array(
             'user' => $user,
             'news' => $news,
