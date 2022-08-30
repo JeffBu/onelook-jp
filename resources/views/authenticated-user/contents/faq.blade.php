@@ -167,6 +167,18 @@
                             <span>パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。 なお、変更日以後は、新規の動画作成にあたっては、パーソナルプランの機能のご利用はできなくなります。</span>
                         </div>
                     </div>
+
+                    <div class="flex flex-col items-center text-left pb-6 gap-6 w-full border border-sky-700 rounded-lg">
+                        <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-700 rounded-t-md"></span>
+                        <div class="flex flex-row items-start px-6 gap-4 w-full">
+                            <img src="{{asset('media/letter-q.png')}}" alt="" class="h-12 w-12">
+                            <span>動画のアップロード機能はありますか？</span>
+                        </div>
+                        <div class="flex flex-row items-start px-6 gap-4 w-full">
+                            <img src="{{asset('media/yellow-a.png')}}" alt="" class="h-12 w-12">
+                            <span>現在はアップロード機能はありません。作成した動画のみを閲覧対象としています。</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

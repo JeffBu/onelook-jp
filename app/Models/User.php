@@ -69,6 +69,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(VideoRecord::class);
     }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
+
     public function generateToken()
     {
 

@@ -8,7 +8,7 @@ OneLook.jpをご利用いただきありがとうございます。<br>
 変更後の会員情報は以下です。<br>
 ・会社名：{{$user->name}} <br>
 ・氏名：{{$user->account->company}} <br>
-・メールアドレス：{{$user->email_address}} <br>
+・メールアドレス：{{$user->email}} <br>
 ・閲覧期限の通知：あり <br>
 {{-- orなし <br> --}}
 ・変更日時：{{$user->updated_at->format('Y/m/d H:i')}} <br>

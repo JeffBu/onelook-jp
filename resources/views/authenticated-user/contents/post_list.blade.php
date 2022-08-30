@@ -77,7 +77,7 @@
                             {{route('access-video-record', ['video_key' => $record->key])}}
                         </span>
                     </div>
-                    
+
                     <div class="flex flex-col md:flex-row gap-3 w-full pb-4">
                         <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                             <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
@@ -165,7 +165,7 @@
                         </div>
                     </td>
                 </tr>
-                <!-- 
+                <!--
                     <tr>
                         <td class="px-4 py-2 border-y border-cyan-600 text-cyan-400" colspan="7">
                             表示するレコードがありません
@@ -497,7 +497,7 @@
         {
             Swal.fire({
                 icon: 'warning',
-                html: '<b>ダウンロード機能は、フリー会員様はご利用できません。プライベート会員への変更は会員情報をご覧ください。</b>',
+                html: '<b>ダウンロード機能は、フリープランの会員様はご利用できません。パーソナルプランへの変更は会員情報をご覧ください。</b>',
             })
 
             /*button.preventDefault()

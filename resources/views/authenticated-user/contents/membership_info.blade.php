@@ -22,7 +22,7 @@
                 <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                         <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">現在のプラン</span>
-                        <span class="pr-2 sm:pr-4 pl-4 py-2">パーソナルプラン</span>
+                        <span class="pr-2 sm:pr-4 pl-4 py-2">@if($user->subscription) パーソナルプラン @else フリープラン @endif</span>
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
@@ -287,12 +287,9 @@
 
             var url = "{{route('modify-account')}}"
             var formData = new FormData()
-
+            Swal.showLoading()
             formData.append('company_name', $('input[name="modal-input-company-name"]').val())
             formData.append('full_name', $('input[name="modal-input-full-name"]').val())
-            formData.append('address', $('input[name="modal-input-address"]').val())
-            formData.append('phone_number', $('input[name="modal-input-phone-number"]').val())
-            formData.append('username', $('input[name="modal-input-username"]').val())
             formData.append('email', $('input[name="modal-input-email-address"]').val())
             formData.append('notification_status', $('input[name="modal-input-notification"]:checked').val())
             axios({
@@ -300,6 +297,7 @@
                 url: url,
                 data: formData,
             }).then((response) => {
+                Swal.hideLoading()
                 if(response.data != 1){
                     Swal.fire({
                         icon: 'error',
