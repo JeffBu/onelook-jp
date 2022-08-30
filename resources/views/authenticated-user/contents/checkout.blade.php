@@ -53,18 +53,14 @@
                         <h3 class="font-semibold text-white">
                             クレジットカードの詳細
                         </h3>
-
                     </div>
                     <!--modal body-->
                     <div class="px-8 py-4">
-                        <form action="{{route('checkout')}}" method="POST" data-parsley-validate id="payment-form">
-                            @csrf
-                            @if ($message = Session::get('success'))
-                            <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $message }}</strong>
+                        @if (Session::has('success'))
+                            <div class="border border-green-600 border-2 px-4 py-2 bg-green-400 text-green-800 font-bold rounded-lg text-center w-full ">
+                                <p>Payment Successful!</p>
                             </div>
-                            @endif
+                        @endif
                             <div class="relative flex flex-row justify-between z-0 w-full px-8 py-6 group">
                                 <span class="text-xs sm:text-sm text-neutral-500">小計</span>
                                 <span class="text-neutral-900">¥450</span>
@@ -77,19 +73,12 @@
                                 <span class="text-xs sm:text-sm text-neutral-500">合計</span>
                                 <span class="text-neutral-900">¥495</span>
                             </div>
-
-                            <div class="relative z-0 w-full mb-4 group">
-                                <x-jet-validation-errors class="mb-4" />
-                            </div>
-
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
                         <div class="flex flex-row gap-2">
-
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -108,24 +97,24 @@
                     </div>
                     <!--modal body-->
                     <div class="px-8 py-4">
-                        <form action="{{route('checkout')}}" method="POST" id="payment-form">
+                        <form action="{{route('checkout')}}" method="POST" id="payment-form" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{env('pk_test_51LWwqxBgtBo7IK4nJT2k95GgNkqIj18LA9Ejn9pqm1hq8uBplFDaYypA1MhsM1LfpxYi9WFgMc9ReeDadSsTZwIt00Ya7BZ6mw')}}">
                             @csrf
                             <div class="relative z-0 w-full my-6 group">
                                 <input type="text" name="cc_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder=" " required value="{{auth()->user()->name}}" />
                                 <label for="cc_name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">クレジットカード名義</label>
                             </div>
                             <div class="relative z-0 w-full mb-6 group" id="cc-group">
-                                <input type="text" name="cc_number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="**** **** **** ****" required data-stripe="number" data-parsley-type="number" maxlength="16" data-parsley-triger="change focusout" data-parsley-class-handler="#cc-group" />
-                                <label for="cc_number" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">クレジットカード番号</label>
+                                <input type="text" name="card-number" id="card-number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="**** **** **** ****" required data-stripe="number" data-parsley-type="number" maxlength="16" data-parsley-trigger="change focusout" data-parsley-class-handler="#cc-group" />
+                                <label for="card-number" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">クレジットカード番号</label>
                             </div>
                             <div class="flex flex-row justify-center items-center gap-4">
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" name="cc_expiry" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 text-opacity-0 focus:text-opacity-100" placeholder="MM/YY " required />
-                                    <label for="cc_expiry" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">カードの有効期限</label>
+                                    <input type="text" name="expiry" id="expiry" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 text-opacity-0 focus:text-opacity-100" placeholder="MM/YY" data-parsley-type="text" data-parsley-trigger="change focusout"  data-parsley-class-handler="#exp-group" required />
+                                    <label for="expiry" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">カードの有効期限</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group" id="ccv-group">
-                                    <input type="text" name="cc_ccv" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="***" required data-stripe="cvc" data-parsley-type="number" data-parsley-triger="change focusout" maxlength="4" data-parsley-class-handler="#ccv-group" />
-                                    <label for="cc_ccv" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CVV</label>
+                                    <input type="text" name="cvc" id="cvc" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600" placeholder="***" required data-stripe="cvc" data-parsley-type="number" data-parsley-trigger="change focusout" maxlength="4" data-parsley-class-handler="#ccv-group" />
+                                    <label for="cvc" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CVV</label>
                                 </div>
                             </div>
                             <div class="relative z-0 w-full mb-2 group">
@@ -140,7 +129,7 @@
                             <div class="flex flex-col items-center py-4 gap-2 w-full">
                                 <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">チェックアウト</button>
                             </div>
-
+                        </form>
                     </div>
                     <!--modal footer-->
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
@@ -148,7 +137,6 @@
                             <span class="payment-errors" style="color: red;margin-top:10px;"></span>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -198,48 +186,74 @@
           }
         }
 
-        jQuery(window).on('scroll', function() {
-            if(jQuery(window).scrollTop() > 0) {
-                jQuery('#header-frame').css('opacity', '0.8');
+        $(window).on('scroll', function() {
+            if($(window).scrollTop() > 0) {
+                $('#header-frame').css('opacity', '0.8');
             }
             else {
-                jQuery('#header-frame').css('opacity', '1');
+                $('#header-frame').css('opacity', '1');
             }
         });
 
-        jQuery(document).ready(function() {
+        $(document).ready(function() {
             $('#member-tab').addClass('active');
         });
 
         $(document).scroll(function() {})
 
-        Stripe.setPublishableKey("<?php echo env('STRIPE_SECRET') ?>");
-        jQuery(function($) {
-            $('#payment-form').submit(function(event) {
-                var $form = $(this);
-                $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
-                    formInstance.submitEvent.preventDefault();
-                    alert();
-                    return false;
-                });
-                $form.find('#submitBtn').prop('disabled', true);
-                Stripe.card.createToken($form, stripeResponseHandler);
-                return false;
-            });
-        });
-        function stripeResponseHandler(status, response) {
-            var $form = $('#payment-form');
-            if (response.error) {
-                $form.find('.payment-errors').text(response.error.message);
-                $form.find('.payment-errors').addClass('alert alert-danger');
-                $form.find('#submitBtn').prop('disabled', false);
-                $('#submitBtn').button('reset');
-            } else {
-                var token = response.id;
-                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-                $form.get(0).submit();
+        $(function() {
+            var form = $('.require-validation')
+
+            $('form.required-validation').bind('submit', funcion(e) {
+                var form = ('.require-validation'),
+                inputSelector = ['input[type=email]', 'input[type=password]',
+                         'input[type=text]', 'input[type=file]',
+                         'textarea'].join(', '),
+                inputs = form.find('.required').find(inputSelector),
+                errorMessage = form.find('div.error'),
+                valid = true
+
+                errorMessage.addClass('hidden')
+
+                $('.has-error').removeClass('has-error')
+                inputs.each(function(i, el) {
+                    var input = $(el)
+                    if(input.val() == '')
+                    {
+                        input.parent().addClass('has-error')
+                        errorMessage.removeClass('has-error')
+                        e.preventDefault()
+                    }
+                })
+
+                if(!form.data('cc-on-file')) {
+                    e.preventDefault()
+                    Stripe.setPublishableKey(form.data('stripe-publishable-key'))
+                    Stripe.createToken({
+                        number: $('#card-number').val(),
+                        cvc: $('#cvc').val(),
+                        exp_month: $('#exp-month').val(),
+                        exp_year: $('#exp-year').val(),
+                    }, stripeResponseHandler)
+                }
+            })
+
+            function stripeResponseHandler(status, response)
+            {
+                if(response.error) {
+                    $('.error')
+                    .removeClass('hidden')
+                    .find('.alert')
+                    .text('response.error.message')
+                } else {
+                    var token = response['id']
+
+                    form.find('input[type=text]').empty()
+                    form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>")
+                    form.get(0).submit()
+                }
             }
-        };
+        })
     </script>
     <!--script ends here-->
 </body>
