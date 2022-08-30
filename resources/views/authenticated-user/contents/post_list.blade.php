@@ -327,9 +327,7 @@
                         title: '動画削除完了しました',
                         timer: 3000
                     }).then((result) => {
-                        if (result.dismiss === Swal.DismissReason.timer) {
-                            window.location.reload()
-                        }
+                        location.reload()
                     })
                 }
             })
