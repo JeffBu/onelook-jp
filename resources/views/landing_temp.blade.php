@@ -11,9 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
     <link rel="icon" href="{{asset('media/icon-onelook.ico')}}">
 
+    <style>
+        .bg-home {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.40' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+        }
+    </style>
+
 </head>
 
-<body class="flex flex-col justify-center items-center bg-theme-white w-full">
+<body class="flex flex-col justify-center items-center bg-home w-full">
 
     <!--header-->
     <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed top-0 w-full z-50"
