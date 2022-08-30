@@ -10,7 +10,7 @@
 @section('content')
     <!--content-->
     <div class="flex flex-col justify-center items-center gap-8 w-full">
-        <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">会員プラン</h1>
+        <h1 class="text-center text-2xl font-bold text-cyan-600 pb-10 pt-20">会員プラン</h1>
 
         <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
             <span>変更前：</span>
@@ -40,27 +40,26 @@
         </div>
 
         <!--upgrade plan-->
-        <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-1/2">
+        <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-3/5">
             <div class="flex justify-center items-center mx-auto w-32">
-                <a href="{{route('checkout')}}" class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">変更する</a>
+                <a href="{{route('checkout')}}" class="container mt-10 px-4 py-2 bg-theme-yellow text-center text-theme-white hover:bg-yellow-300 rounded-md">変更する</a>
             </div>
 
-            <div class="flex flex-col justify-center items-center text-left mt-10">
+            <div class="flex flex-col justify-center items-center text-left mt-10 w-full">
                 <p class="px-4 py-4 text-center">留意点</p>
                 <ol class="list-decimal text-left px-4 py-4">
                     <li class="px-4 py-4">
                         パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。
                     </li>
                     <li class="px-4 py-4">
-                        変更申込以後はパーソナルプランの機能のご利用が可能です。<br>
-                        パーソナルプランの解約は、申込日の翌月２日以後から可能です。
+                        変更申込以後はパーソナルプランの機能のご利用が可能です。 パーソナルプランの解約は、申込日の翌月２日以後から可能です。
                     </li>
                 </ol>
             </div>
         </div>
 
         <!--cancel plan-->
-        <div id="cancel_plan" class="hidden flex-col justify-center w-11/12 md:w-1/3">
+        <div id="cancel_plan" class="hidden flex-col justify-center w-11/12 md:w-3/5">
             <div class="flex justify-center items-center mx-auto w-32">
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
@@ -72,15 +71,14 @@
                         パーソナルプランの解約は、パーソナルプランの申込日の翌月２日以降から可能です。
                     </li>
                     <li class="px-4 py-4">
-                        パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。<br />
-                        なお、変更日以後は、新規の動画作成についてのパーソナルプランの機能のご利用はできなくなります。
+                        パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。 なお、変更日以後は、新規の動画作成についてのパーソナルプランの機能のご利用はできなくなります。
                     </li>
                 </ol>
             </div>
         </div>
 
         <!--cancel service-->
-        <div id="cancel_service" class="hidden flex-col justify-center w-11/12 md:w-1/3">
+        <div id="cancel_service" class="hidden flex-col justify-center w-11/12 md:w-3/5">
             <div class="flex justify-center items-center mx-auto w-32">
                 <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
             </div>
@@ -89,8 +87,7 @@
                 <p class="px-4 py-4 text-center">留意点</p>
                 <ol class="list-decimal text-left px-4 py-4">
                     <li class="px-4 py-4">
-                        本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。<br />
-                        なお、解約日以後は本サービスの機能のご利用はできなくなります。
+                        本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。 なお、解約日以後は本サービスの機能のご利用はできなくなります。
                     </li>
                     <li class="px-4 py-4">
                         パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約できません。
