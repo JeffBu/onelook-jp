@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\VideoAccess;
 use App\Models\VideoRecord;
+use App\Models\PostHistory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -77,6 +78,11 @@ class VideoAccessController extends Controller
         $record = VideoRecord::find($request->id);
 
         $record->delete();
+
+        PostHistory::create([
+            'user_id' => auth()->user()->id,
+            'content' => nl2br('動画削除完了しました'),
+        ]);
 
         return 1;
     }
