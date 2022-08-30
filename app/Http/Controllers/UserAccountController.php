@@ -8,11 +8,14 @@ use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 
 use App\Mail\ForgotPasswordMail;
 use App\Mail\AccountModificationMail;
+use App\Mail\NewRegistration;
 
 class UserAccountController extends Controller
 {
@@ -115,6 +118,41 @@ class UserAccountController extends Controller
         Mail::to($request->email)->send(new ForgotPasswordMail($user));
 
         return redirect()->route('success-screen');
+    }
+
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email:rfc,dns|unique:users',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->route('registration')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        DB::transaction(function () use ($request){
+            $password = Str::random(8);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($password),
+                'email_verification_token' => Str::random(60),
+                'is_admin' => 0
+            ]);
+
+            if($user)
+            {
+                Mail::to($request->email)->send(new NewRegistration($user->email_verification_token, $user->email, $user->name));
+
+
+            }
+        });
+
+        return view('auth.registration_complete');
     }
 
     public function success_screen()

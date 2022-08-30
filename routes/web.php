@@ -24,6 +24,7 @@ use App\Http\Controllers\SubscriptionController;
 Route::get('home', [MainController::class, 'unauthorized'])->name('home');
 Route::get('view-plans', [MainController::class, 'view_plans'])->name('view-plans');
 Route::get('registration', [MainController::class, 'registration_page'])->name('registration');
+Route::post('register', [UserAccountController::class, 'register'])->name('register');
 
 Route::middleware([
     'auth:sanctum',
