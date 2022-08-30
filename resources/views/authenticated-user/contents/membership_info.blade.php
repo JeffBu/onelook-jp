@@ -15,11 +15,11 @@
             <span class="font-semibold text-sky-600">投稿動画：{{$user->records->count()}} 件（うち閲覧期限内の動画：●件）投稿可能件数：●件/5件（月末まで）</span>
         </div>
 
-        <div class="grid lg:grid-cols-1 justify-center items-center scroll-mt-24 gap-6 w-11/12 md:w-3/5 h-1/2" id="home">
+        <div class="flex flex-col justify-center items-center scroll-mt-24 gap-6 w-full md:w-3/5 h-1/2 px-4" id="home">
             <div class="flex flex-col items-center text-left gap-2 w-full h-full border border-sky-600 rounded-lg shadow">
                 <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-base sm:text-lg text-white bg-sky-600 rounded-t-md"></span>
 
-                <div class="flex flex-row justify-between items-center px-4 pb-2 gap-2 w-full">
+                <div class="flex flex-col sm:flex-row justify-between items-center px-4 pb-2 gap-6 sm:gap-2 w-full">
                     <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                         <span class="px-2 sm:px-4 py-2 w-[8.5rem] sm:w-40 font-semibold">現在のプラン</span>
                         <span class="pr-2 sm:pr-4 pl-4 py-2">@if($user->subscription) パーソナルプラン @else フリープラン @endif</span>
@@ -27,7 +27,7 @@
 
                     <div class="flex flex-row justify-center items-center gap-2">
                         <a  href="{{route('change-membership-plan')}}">
-                            <button class="container px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                            <button class="w-32 sm:w-full px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
                         </a>
                     </div>
 
