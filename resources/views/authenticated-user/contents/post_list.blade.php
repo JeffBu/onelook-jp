@@ -85,7 +85,7 @@
                         </div>
                         <div class="flex flex-col justify-center items-center gap-3 w-full">
                             <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="sendInvitationMail({{$record->id}})">招待メール</button>
-                            <button class="w-36 px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo()">削除</button>
+                            <button class="w-36 px-4 py-2 bg-red-600 hover:bg-red-500 text-theme-white rounded-md"  onclick="deleteVideo({{$record->id}})">削除</button>
                         </div>
                     </div>
                 </div>
@@ -299,11 +299,41 @@
 
         }
 
-        function deleteVideo() {
+        function deleteVideo(record_id) {
+            var url = "{{route('delete-video')}}";
             Swal.fire({
                 icon: 'warning',
-                html: '<b>この機能は個人プランでのみ利用できます。</b>',
+                title: '本当に動画を削除しますか？',
+                confirmButtonText: 'はい',
+                cancelButtonText: 'いいえ',
+                showCancelButton: true,
+                showLoaderOnConfirm: true,
+                preConfirm: (deleteVid) => {
+                    return axios.post(url, {
+                        id : record_id
+                    }).then((response) => {
+                        return response.data
+                    }).catch((error) => {
+                        Swal.showValidationMessage(
+                            'ERROR: '+error.response.data
+                        )
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '動画削除完了しました',
+                        timer: 3000
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            window.location.reload()
+                        }
+                    })
+                }
             })
+
         }
     </script>
     <!--script ends here-->

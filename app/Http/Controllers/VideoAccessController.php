@@ -71,4 +71,13 @@ class VideoAccessController extends Controller
 
         return 1;
     }
+
+    public function delete_video(Request $request)
+    {
+        $record = VideoRecord::find($request->id);
+
+        $record->delete();
+
+        return 1;
+    }
 }
