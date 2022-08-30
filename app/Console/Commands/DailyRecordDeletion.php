@@ -39,8 +39,6 @@ class DailyRecordDeletion extends Command
      */
     public function handle()
     {
-        $now = Carbon::now()->format('Y-m-d');
-        $todelete = $now->date_modify('-7 days');
-        VideoRecord::where('created_at', 'LIKE', $todelete.'%')->delete();
+        VideoRecord::whereDate('created_at', '<=', now()->subDays(7))->delete();
     }
 }
