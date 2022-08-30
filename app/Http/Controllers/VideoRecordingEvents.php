@@ -110,7 +110,7 @@ class VideoRecordingEvents extends Controller
         $key = $request->key;
         $access_code = $request->access_code;
 
-        if($access_code == null)
+        if($key == null)
         {
             abort(404);
         }
