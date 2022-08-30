@@ -70,7 +70,7 @@
         <span class="text-lg sm:text-2xl text-sky-700 text-center font-semibold w-full">動画を使ってビジネスのDXに対応</span>
         <div class="flex flex-row justify-center items-center w-11/12 md:w-8/12 bg-sky-700 rounded-r-lg h-52">
             <img src="{{asset('media/home-1.png')}}" alt="Video Creation Icon" class="h-32 w-32 mx-4">
-            <span class="px-8 py-4 text-white">資料チェックなどで資料を指さして「ここ、これ」を表現できたらもっと効率的だと思いませんか？ OneLookでは実際に資料をポイントしながら言葉でコメントした動画作成が簡単にできます。</span>
+            <span class="px-8 py-4 text-white overflow-auto h-52">資料チェックなどで資料を指さして「ここ、これ」を表現できたらもっと効率的だと思いませんか？ OneLookでは実際に資料をポイントしながら言葉でコメントした動画作成が簡単にできます。</span>
         </div>
     </div>
 
@@ -78,7 +78,7 @@
         <span class="text-lg sm:text-2xl text-neutral-900 text-center font-semibold w-full">教材のための動画作成</span>
         <div class="flex flex-row justify-center items-center w-11/12 md:w-8/12 bg-theme-yellow rounded-l-lg h-52">
             <img src="{{asset('media/home-2.png')}}" alt="Video Creation Icon" class="h-32 w-32 mx-4">
-            <span class="px-8 py-4 text-neutral-900">学校や塾などでの問題・解答のための録画ソフトをお探しですか？ ２次元の文章や資料に声を添えることで「ここ、これ」を伝えられるのがOneLookの特徴です。</span>
+            <span class="px-8 py-4 text-neutral-900 overflow-auto h-52">学校や塾などでの問題・解答のための録画ソフトをお探しですか？ ２次元の文章や資料に声を添えることで「ここ、これ」を伝えられるのがOneLookの特徴です。</span>
         </div>
     </div>
 
@@ -86,7 +86,7 @@
         <span class="text-lg sm:text-2xl text-sky-700 text-center font-semibold w-full">動画管理もラクラク</span>
         <div class="flex flex-row justify-center items-center w-11/12 md:w-8/12 bg-sky-700 rounded-r-lg h-52">
             <img src="{{asset('media/home-3.png')}}" alt="Video Creation Icon" class="h-32 w-32 mx-4">
-            <span class="px-8 py-4 text-white">ダウンロードしなくてもURLの共有だけで動画の閲覧が可能。 一定期間で動画は自動的に削除されるので管理も楽です。 もちろんダウンロード機能もあります（有料）。</span>
+            <span class="px-8 py-4 text-white overflow-auto h-52">ダウンロードしなくてもURLの共有だけで動画の閲覧が可能。 一定期間で動画は自動的に削除されるので管理も楽です。 もちろんダウンロード機能もあります（有料）。</span>
         </div>
     </div>
 
