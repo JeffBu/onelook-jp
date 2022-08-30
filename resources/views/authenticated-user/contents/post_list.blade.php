@@ -112,15 +112,15 @@
             <tbody>
                 <tr class="hover:bg-neutral-200">
                     <td class="px-4 py-2 border-y border-cyan-600">
-                        <!-- <div class="flex-1 justify-center items-center">
+                         <div class="flex-1 justify-center items-center">
                             <div data-modal-toggle="previewModal" onclick="previewVideo('')" class="flex justify-center items-center cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 absolute opacity-50 text-neutral-800"
                                 viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                                 </svg>
-                                <video src="{{$url}}" alt="thumbnail" class="object-cover border-2 hover:border-yellow-400"></video>
+                                <video src="" alt="thumbnail" class="object-cover border-2 hover:border-yellow-400"></video>
                             </div>
-                            <button class="hidden container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('{{$url}}')">プレビュー</button>
+                            <button class="hidden container mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md"  data-modal-toggle="previewModal" onclick="previewVideo('')">プレビュー</button>
                         </div> -->
                     </td>
                     <td class="px-4 py-2 border-y border-cyan-600">
