@@ -208,6 +208,10 @@ class MainController extends Controller
         return view('registration_complete');
     }
 
+    public function page_unavailable() {
+        return view('authenticated-user.contents.page_unavailable');
+    }
+
     public function forgot_password_notification() {
         return view('forgot_password_notification');
     }

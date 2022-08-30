@@ -78,7 +78,7 @@
                         </span>
                     </div>
 
-                    <div class="flex flex-col md:flex-row gap-3 w-full pb-4">
+                    <div class="flex flex-col md:flex-row gap-3 pb-4">
                         <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                             <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
                             <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>

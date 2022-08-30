@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" translate="no" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,73 +46,102 @@
 
     <!--content-->
     <div>
-        <h1 class="text-center text-3xl font-bold text-sky-600 pb-8 pt-20">会員プラン</h1>
+        <h1 class="text-center text-2xl font-bold text-sky-600 pb-8 pt-20">会員プラン</h1>
     </div>
-    <div class="flex justify-center items-center w-full">
 
-        <table class="text-center w-4/5 border border-sky-600">
-            <thead class="bg-sky-600 text-theme-white">
-                <tr>
-                    <th class="px-3 py-3 border-x border-sky-600"></th>
-                    <th class="px-3 py-3 border-x border-sky-600">フリープラン</th>
-                    <th class="px-3 py-3 border-x border-sky-600">パーソナルプラン</th>
-                    <th class="px-3 py-3 border-x border-sky-600">ビジネスプラン</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">月額料金</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">無料</span></td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">300円</span></td>
-                    <td rowspan="6" class="px-3 py-3 border-x border-y border-sky-600 w-1/4">
-                        <div class="flex-1 justify-center items-center text-center">
-                            <span>自社専用サイト 管理者画面の追加 セキュリティ強化 保管期限の延長 などのカスタムプランもご相談ください</span>
-                        </div>
-                    </td>
-                </tr>
+    <div class="flex flex-col justify-center items-center w-full gap-8">
+        <div class="grid lg:grid-cols-3 justify-center items-center scroll-mt-24 gap-6 w-3/4 h-1/2" id="home">
+            <!-- free plan -->
+            <div class="flex flex-col items-center text-left text-sm gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">フリープラン</span>
+                
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>月額料金</span>
+                    <span>-</span>
+                </div>
 
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">最大録画時間</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">5分</span></td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">15分</span></td>
-                </tr>
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>最大録画時間</span>
+                    <span>-</span>
+                </div>
 
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">月間の作成件数</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">5件</span></td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><span class="hidden">100件</span></td>
-                </tr>
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>月間の作成件数</span>
+                    <span>-</span>
+                </div>
 
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">ダウンロード<br>（mp4ファイル）</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg></td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 01M12 01M16 01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg></td>
-                </tr>
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>ダウンロード<br>（mp4ファイル）</span>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
 
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">ストレージサービス<br>（クラウドでの保管・閲覧）</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">3日</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">7日</td>
-                </tr>
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>ストレージサービス<br>（クラウドでの保管・閲覧）</span>
+                    <span>3日</span>
+                </div>
 
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">広告</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">あり</td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600">なし</td>
-                </tr>
-                <tr>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"></td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><a href="{{route('registration')}}" class="px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">無料でサインアップ</a></td>
-                    <td class="px-3 py-3 border-x border-y border-sky-600"><a href="#" class="px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">購読する</a></td>
-                    <td class="px-3 py-3"><a href="#" class="px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</a></td>
-                </tr>
-            </tbody>
-        </table>
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>広告</span>
+                    <span>あり</span>
+                </div>
 
+                <a href="{{route('registration')}}" class="my-4 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">無料でサインアップ</a>
+            </div>
+
+            <!-- personal plan -->
+            <div class="flex flex-col items-center text-left text-sm gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">パーソナルプラン</span>
+                
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>月額料金</span>
+                    <span>-</span>
+                </div>
+
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>最大録画時間</span>
+                    <span>-</span>
+                </div>
+
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>月間の作成件数</span>
+                    <span>-</span>
+                </div>
+
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>ダウンロード<br>（mp4ファイル）</span>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 01M12 01M16 01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>ストレージサービス<br>（クラウドでの保管・閲覧）</span>
+                    <span>7日</span>
+                </div>
+
+                <div class="flex flex-row w-full justify-between items-center px-4">
+                    <span>広告</span>
+                    <span>なし</span>
+                </div>
+
+                <a href="#" class="my-4 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">購読する</a>
+            </div>
+
+            <!-- custom plan -->
+            <div class="flex flex-col justify-between items-center text-left gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
+                <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">ビジネスプラン</span>
+                <div class="flex flex-col w-full items-center px-4">
+                    <span>自社専用サイト 管理者画面の追加 セキュリティ強化 保管期限の延長 などのカスタムプランもご相談ください</span>
+                </div>
+                <a href="#" class="my-4 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">ビジネスプラン ご相談</a>
+            </div>
+        </div>
     </div>
 
     <div class="pt-40"></div>
