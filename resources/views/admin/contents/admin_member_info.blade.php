@@ -33,7 +33,7 @@
                 <tbody>
                     <tr>
                         <th class="px-4 py-1 border border-lime-700">事業者名</th>
-                        <td class="px-4 py-1 border border-lime-700">{{$target->account->company}}</td>
+                        <td class="px-4 py-1 border border-lime-700">@if($target->account){{$target->account->company}}@endif</td>
                     </tr>
                     <tr>
                         <th class="px-4 py-1 border border-lime-700">代表者</th>
@@ -108,7 +108,7 @@
                 @csrf
                 <input type="hidden" name="user_id" id="user_id" value="{{$target->id}}">
                 <div class="justify-center items-center w-full">
-                    <input type="text" id="comment" class="w-full border-2 font-semibold rounded-md border-lime-600 text-center focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment">
+                    <textarea rows="10" type="text" id="comment" class="w-full border-2 font-semibold rounded-md border-lime-600 text-justify focus:ring-0 focus:outline-0 focus:border-lime-500" placeholder="コメント欄" id="comment"></textarea>
                 </div>
 
                 <div class="flex justify-between pt-3 text-left w-full">
@@ -142,14 +142,24 @@
                                         <td id="news-label" class="pb-2"></td>
                                     </tr>
 
-                                    <tr>
-                                        <td rowspan="2"></td>    
-                                        <td id="news-date" class="text-xs"></td>
-                                    </tr>
-                                    <tr class="border-b border-lime-600">
-                                        <td id="news-label" class="pb-2">新しいお知らせはまだありません。</td>
-                                    </tr>
-                                
+                                    @forelse($messages as $msg)
+                                        <tr>
+                                            <td rowspan="2"></td>
+                                            <td id="news-date" class="text-xs">{{$msg->created_at->format('Y年m月d日')}}</td>
+                                        </tr>
+                                        <tr class="border-b border-lime-600">
+                                            <td id="news-label" class="pb-2">{{$msg->content}}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td rowspan="2"></td>
+                                            <td id="news-date" class="text-xs"></td>
+                                        </tr>
+                                        <tr class="border-b border-lime-600">
+                                            <td id="news-label" class="pb-2">新しいお知らせはまだありません。</td>
+                                        </tr>
+                                    @endforelse
+
                             </tbody>
                         </table>
                     </div>
@@ -180,7 +190,7 @@
         var user_id = $('#user_id').val()
         var news = $('#comment').val()
         var url = "{{route('send-notif')}}"
-
+        console.log(user_id);
         axios.post(url, {
             target : user_id,
             comment : news,
