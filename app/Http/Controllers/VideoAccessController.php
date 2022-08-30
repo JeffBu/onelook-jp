@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\VideoAccess;
 use App\Models\VideoRecord;
+use App\Models\PostHistory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -68,6 +69,20 @@ class VideoAccessController extends Controller
         }
 
         Mail::to($request->target)->send(new InvitationToWatchVideoMail(Auth::user(), $record->key, $record->access->access_code, $record));
+
+        return 1;
+    }
+
+    public function delete_video(Request $request)
+    {
+        $record = VideoRecord::find($request->id);
+
+        $record->delete();
+
+        PostHistory::create([
+            'user_id' => auth()->user()->id,
+            'content' => nl2br('動画削除完了しました'),
+        ]);
 
         return 1;
     }

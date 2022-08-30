@@ -55,6 +55,7 @@ Route::middleware([
     Route::get('admin-posting', [AdminController::class, 'announcement'])->name('admin-posting');
     Route::post('add-announcement', [AdminController::class, 'add_news'])->name('add-announcement');
     Route::post('send-notif', [AdminController::class, 'send_notif'])->name('send-notif');
+    Route::post('delete-video', [VideoAccessController::class, 'delete_video'])->name('delete-video');
 });
 
 Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');

@@ -53,7 +53,7 @@
                             <tbody>
                                 @forelse($news as $item)
                                     <tr>
-                                        <td id="news-date" class="text-xs pt-2">{{$item->created_at->format('Y年m月d日')}}</td>
+                                        <td id="news-date" class="text-xs pt-2">{{$item->created_at->format('Y年m月d日')}} @if($item->target_user) <span class="px-2 py-1 rounded-full border border-emerald-600">管理者からのお知らせ</span> @endif</td>
                                     </tr>
                                     <tr>
                                         <td id="news-label" class="border-b border-sky-800 pb-2">{!!$item->content!!}</td>
@@ -78,7 +78,7 @@
                             <tbody>
                                 @forelse($history as $item)
                                     <tr>
-                                        <td id="news-date" class="text-xs">{{$item->created_at->format('Y年m月d日 H:i')}}</td>
+                                        <td id="news-date" class="text-xs">{{$item->created_at->format('Y年m月d日 H:i')}} </td>
                                     </tr>
                                     <tr>
                                         <td id="news-label" class="border-b border-sky-800 pb-2">{!!$item->content!!}</td>

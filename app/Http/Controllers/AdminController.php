@@ -61,10 +61,12 @@ class AdminController extends Controller
         $target = User::find($user_id);
         $video_records = VideoRecord::where('user_id', $user_id)->get();
         $user = Auth::user();
+        $news = News::where('target_user', $target->id)->latest()->get();
         $data = array(
             'user' => $user,
             'target' => $target,
             'video_records' => $video_records,
+            'messages' => $news,
         );
 
         return view('admin.contents.admin_member_info', $data);
@@ -85,7 +87,7 @@ class AdminController extends Controller
     public function announcement()
     {
         $user = Auth::user();
-        $news = News::latest()->get();
+        $news = News::where('target_user', null)->latest()->get();
         $data = array(
             'user' => $user,
             'news' => $news,
@@ -135,7 +137,7 @@ class AdminController extends Controller
 
         News::create([
             'content' => nl2br($request->comment),
-            'target_user' => $request->user_id
+            'target_user' => $request->target
         ]);
 
         return 1;

@@ -115,6 +115,10 @@ class VideoRecordingEvents extends Controller
         ]);
 
         $record = VideoRecord::where('key', $key)->first();
+        if($record == null)
+        {
+            abort(403);
+        }
         if($record->access->access_code == $access_code)
         {
             VideoView::create([
