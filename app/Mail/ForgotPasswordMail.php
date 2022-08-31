@@ -18,9 +18,9 @@ class ForgotPasswordMail extends Mailable
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($target)
     {
-        $this->user = $user;
+        $this->user = $target;
     }
 
     /**
