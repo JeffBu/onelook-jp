@@ -136,7 +136,7 @@
                             <tbody>
                                 @forelse($messages as $msg)
                                     <tr>
-                                        <td rowspan="2"><input type="checkbox" name="" id="" class="mr-2"></td>
+                                        <td rowspan="2"><input type="checkbox" name="" id="" class="mr-2 focus:ring-0 text-lime-600"></td>
                                         <td id="news-date" class="text-xs pt-2">{{$msg->created_at->format('Y年m月d日')}}</td>
                                     </tr>
                                     <tr class="border-b border-lime-600">

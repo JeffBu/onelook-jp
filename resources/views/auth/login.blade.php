@@ -75,11 +75,11 @@
 
                             <div class="flex flex-col items-center py-6 gap-4 w-full">
                                 <div class="flex flex-col items-end gap-2 w-full">
-                                    <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">ログイン</button>
+                                    <button type="submit" class="text-white bg-sky-600 hover:bg-sky-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">ログイン</button>
                                 </div>
 
                                 <div class="flex flex-col items-end gap-2 w-full">
-                                    <a href="forgot-password" class="text-sm text-sky-600 hover:text-sky-400 underline underline-offset-2">パスワードをお忘れですか?</a>
+                                    <a href="forgot-password" class="text-sm text-sky-600 hover:text-sky-500 underline underline-offset-2">パスワードをお忘れですか?</a>
                                 </div>
                             </div>
 
@@ -88,7 +88,7 @@
                     <div class="flex flex-row justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200 gap-6">
                         <div class="flex flex-row gap-2 text-sm">
                             <span>アカウントを持っていません？</span>
-                            <a href="{{route('registration')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">無料会員登録</a>
+                            <a href="{{route('registration')}}" class="text-sky-600 hover:text-sky-500 underline underline-offset-2">無料会員登録</a>
                         </div>
                     </div>
                     </form>

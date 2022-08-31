@@ -106,12 +106,12 @@
                             </div>
 
                             <div class="flex flex-col items-center pt-6 pb-4 gap-2 w-full">
-                                <button type="submit" class="text-white bg-sky-600 hover:bg-sky-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">登録</button>
+                                <button type="submit" class="text-white bg-sky-600 hover:bg-sky-500 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">登録</button>
                             </div>
 
                             <div class="flex flex-row items-center gap-2 text-sm pt-6">
-                                <input type="checkbox" name="accept" id="accept-radio" class="focus:ring-0" required>
-                                <button type="button" class="text-sky-600 hover:text-sky-400 underline underline-offset-2" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">利用規約</button>
+                                <input type="checkbox" name="accept" id="accept-radio" class="focus:ring-0 text-sky-600" required>
+                                <button type="button" class="text-sky-600 hover:text-sky-500 underline underline-offset-2" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">利用規約</button>
                                 <span>に同意して進む</span>
                             </div>
 
@@ -121,7 +121,7 @@
                         <div class="flex flex-row justify-end text-sm w-full">
                             <div class="flex flex-row ">
                                 <span>登録済？</span>
-                                <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-400 underline underline-offset-2">ログインする</a>
+                                <a href="{{route('login')}}" class="text-sky-600 hover:text-sky-500 underline underline-offset-2">ログインする</a>
                             </div>
                         </div>
                     </div>

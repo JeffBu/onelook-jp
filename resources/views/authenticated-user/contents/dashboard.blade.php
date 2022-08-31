@@ -59,7 +59,7 @@
                                             @if($item->target_user)
                                                 <div class="flex flex-row gap-2">
                                                     <div class="h-1 w-1 rounded-full bg-emerald-700"></div>
-                                                    <span class="px-1 py-1">管理者からのお知らせ</span>
+                                                    <span class="px-1 py-1 text-emerald-700">管理者からのお知らせ</span>
                                                 </div>
                                             @endif
                                         </td>

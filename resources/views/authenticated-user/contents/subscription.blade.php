@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <table class="text-center w-11/12 md:w-3/5 border border-sky-700" id="membership-info-table">
+        <!-- <table class="text-center w-11/12 md:w-3/5 border border-sky-700" id="membership-info-table">
             <thead class="bg-cyan-600 text-theme-white">
                 <tr>
                     <th class="px-3 py-3 border-x border-sky-700"></th>
@@ -208,7 +208,7 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
 
     </div>
 

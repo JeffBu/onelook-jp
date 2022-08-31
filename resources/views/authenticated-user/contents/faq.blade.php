@@ -173,8 +173,8 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col items-center text-left pb-6 gap-6 w-full border border-sky-700 rounded-lg">
-                        <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-700 rounded-t-md"></span>
+                    <div class="flex flex-col items-center text-left pb-6 gap-6 w-full border border-sky-600 rounded-lg">
+                        <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md"></span>
                         <div class="flex flex-row items-start px-6 gap-4 w-full">
                             <img src="{{asset('media/letter-q.png')}}" alt="" class="h-12 w-12">
                             <span>動画のアップロード機能はありますか？</span>

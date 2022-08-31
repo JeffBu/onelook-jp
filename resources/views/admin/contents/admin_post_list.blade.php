@@ -29,7 +29,7 @@
                         <th class="px-4 py-1 border border-lime-700 w-[4.5rem]">選択</th>
                         <th class="px-4 py-1 border border-lime-700 w-[6rem]">動画名</th>
                         <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿者ID</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">招待メール</th>
+                        <!-- <th class="px-4 py-1 border border-lime-700 w-[6rem]">招待メール</th> -->
                         <th class="px-4 py-1 border border-lime-700 w-[5rem]">閲覧数</th>
                         <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿日</th>
                         <th class="px-4 py-1 border border-lime-700 w-[6rem]">閲覧期限</th>
@@ -41,10 +41,10 @@
                     @forelse($records as $record)
                         <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
                         <tr>
-                            <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id=""></td>
+                            <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id="" class=" focus:ring-0 text-lime-600"></td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->title}}</td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->uploader->name}}</td>
-                            <td class="px-4 py-1 border border-lime-700">{{$record->key}}</td>
+                            <!-- <td class="px-4 py-1 border border-lime-700">{{$record->key}}</td> -->
                             <td class="px-4 py-1 border border-lime-700">{{$record->views->count()}}</td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->created_at->format('Y年m月d日H:i')}}</td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format('Y年m月d日')}}</td>
@@ -52,10 +52,15 @@
                                 <div class="flex flex-col justify-center items-center gap-3">
                                     <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
 
-                                    <div class="flex flex-col 2xl:flex-row gap-3 w-full">
-                                        <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
-                                        data-modal-toggle="previewModal" onclick="addSource('{{$record->id}}', '{{$url}}')">詳細</button>
-                                        <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
+                                    <div class="flex flex-col gap-3 w-full">
+                                        <div class="flex flex-col 2xl:flex-row gap-3 w-full">
+                                            <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
+                                            data-modal-toggle="previewModal" onclick="addSource('{{$record->id}}', '{{$url}}')">詳細</button>
+                                            <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
+                                        </div>
+
+                                        <div class="flex flex-col 2xl:flex-row gap-3 w-full">
+                                            <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">コピーリンク</button>
                                     </div>
                                 </div>
                             </td>

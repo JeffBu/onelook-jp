@@ -27,7 +27,7 @@
 
                     <div class="flex flex-row justify-center items-center gap-2">
                         <a  href="{{route('change-membership-plan')}}">
-                            <button class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                            <button class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white text-xs rounded-md">変更</button>
                         </a>
                     </div>
 
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <button data-modal-toggle="edit-member-info" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                        <button data-modal-toggle="edit-member-info" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-xs text-theme-white rounded-md">変更</button>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <button data-modal-toggle="change-password" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                        <button data-modal-toggle="change-password" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-xs text-theme-white rounded-md">変更</button>
                     </div>
 
                 </div>
@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">
-                        <button data-modal-toggle="edit-card" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
+                        <button data-modal-toggle="edit-card" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-xs text-theme-white rounded-md">変更</button>
                     </div>
 
                 </div>

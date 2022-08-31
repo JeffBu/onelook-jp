@@ -1,4 +1,4 @@
-<nav id="sidebar" class="hidden lg:flex flex-col px-2 justify-left items-center text-center w-72 nav-bg shadow divide-y divide-theme-white min-h-screen fixed md:sticky top-0 left-0 z-50">
+<aside id="sidebar" class="hidden lg:flex flex-col px-2 justify-left items-center text-center w-72 nav-bg shadow divide-y divide-theme-white min-h-screen fixed md:sticky top-0 left-0 z-50">
     <div class="flex justify-between px-4 py-4 items-center text-xl font-semibold text-theme-white gap-3 w-full"
     id="sb-app-name">
         <a href="{{route('dashboard')}}">
@@ -48,4 +48,4 @@
             @csrf
         </form>
     </div>
-</nav>
+</aside>
