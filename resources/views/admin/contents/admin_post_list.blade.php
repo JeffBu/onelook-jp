@@ -26,14 +26,14 @@
             <table class="text-center mt-6 border border-lime-600 w-full">
                 <thead>
                     <tr>
-                        <th class="px-4 py-1 border border-lime-700 w-20">選択</th>
-                        <th class="px-4 py-1 border border-lime-700 w-48">動画名</th>
-                        <th class="px-4 py-1 border border-lime-700 w-24">投稿者ID</th>
-                        <th class="px-4 py-1 border border-lime-700">招待メール</th>
-                        <th class="px-4 py-1 border border-lime-700 w-24">閲覧数</th>
-                        <th class="px-4 py-1 border border-lime-700 w-32">投稿日</th>
-                        <th class="px-4 py-1 border border-lime-700 w-32">閲覧期限</th>
-                        <th class="px-4 py-1 border border-lime-700 w-80">閲覧URL</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[4.5rem]">選択</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">動画名</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿者ID</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">招待メール</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[5rem]">閲覧数</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿日</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">閲覧期限</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[10rem]">閲覧URL</th>
                     </tr>
                 </thead>
 
@@ -52,7 +52,7 @@
                                 <div class="flex flex-col justify-center items-center gap-3">
                                     <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
 
-                                    <div class="flex flex-col sm:flex-row gap-3 w-full">
+                                    <div class="flex flex-col 2xl:flex-row gap-3 w-full">
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
                                         data-modal-toggle="previewModal" onclick="addSource('{{$record->id}}', '{{$url}}')">詳細</button>
                                         <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>

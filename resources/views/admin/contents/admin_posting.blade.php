@@ -18,7 +18,7 @@
     </div>
 
     <div class="flex justify-center items-center w-full">
-        <div class="flex flex-col justify-center items-center mt-8 w-3/4 z-10 gap-14">
+        <div class="flex flex-col justify-center items-center mt-8 w-11/12 z-10 gap-14">
             <div class="flex flex-col justify-center items-center w-full z-10 gap-4">
                 <div class="text-left w-full">
                     <h1 class="text-xl font-semibold text-lime-600">お知らせ</h1>

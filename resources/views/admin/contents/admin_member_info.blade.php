@@ -18,7 +18,7 @@
     </div>
 
     <div class="flex justify-center items-center w-full">
-        <div class="flex flex-col justify-center items-center mt-8 w-11/12 md:w-3/4 z-10">
+        <div class="flex flex-col justify-center items-center mt-8 w-11/12 z-10">
             <div class="flex justify-between items-center text-left w-full">
                 <div>
                     <h1 class="text-xl font-semibold text-lime-600">会員詳細</h1>
@@ -132,33 +132,25 @@
                 <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">お知らせ</h2>
                     <div class="border-b border-x border-lime-600 px-2 py-2 h-64 overflow-auto">
-                        <table class="min-w-max w-full text-base">
+                        <table class="w-full text-base">
                             <tbody>
+                                @forelse($messages as $msg)
                                     <tr>
-                                        <td rowspan="2"><input type="checkbox" name="" id=""></td>
-                                        <td id="news-date" class="text-xs pt-2"></td>
+                                        <td rowspan="2"><input type="checkbox" name="" id="" class="mr-2"></td>
+                                        <td id="news-date" class="text-xs pt-2">{{$msg->created_at->format('Y年m月d日')}}</td>
                                     </tr>
                                     <tr class="border-b border-lime-600">
-                                        <td id="news-label" class="pb-2"></td>
+                                        <td id="news-label" class="pb-2 break-all">{!!$msg->content!!}</td>
                                     </tr>
-
-                                    @forelse($messages as $msg)
-                                        <tr>
-                                            <td rowspan="2"></td>
-                                            <td id="news-date" class="text-xs">{{$msg->created_at->format('Y年m月d日')}}</td>
-                                        </tr>
-                                        <tr class="border-b border-lime-600">
-                                            <td id="news-label" class="pb-2">{!!$msg->content!!}</td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td rowspan="2"></td>
-                                            <td id="news-date" class="text-xs"></td>
-                                        </tr>
-                                        <tr class="border-b border-lime-600">
-                                            <td id="news-label" class="pb-2">新しいお知らせはまだありません。</td>
-                                        </tr>
-                                    @endforelse
+                                @empty
+                                    <tr>
+                                        <td rowspan="2"></td>
+                                        <td id="news-date" class="text-xs"></td>
+                                    </tr>
+                                    <tr class="border-b border-lime-600">
+                                        <td id="news-label" class="pb-2">新しいお知らせはまだありません。</td>
+                                    </tr>
+                                @endforelse
 
                             </tbody>
                         </table>

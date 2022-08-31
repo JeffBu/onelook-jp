@@ -1,9 +1,15 @@
 <nav id="sidebar" class="hidden lg:flex flex-col px-2 justify-left items-center text-center w-72 nav-bg shadow divide-y divide-theme-white min-h-screen fixed md:sticky top-0 left-0 z-50">
-    <div class="flex justify-left px-4 py-6 pt-16 md:pt-6 items-center text-xl font-semibold text-theme-white gap-3 w-full"
+    <div class="flex justify-between px-4 py-4 items-center text-xl font-semibold text-theme-white gap-3 w-full"
     id="sb-app-name">
         <a href="{{route('dashboard')}}">
             <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-11 mt-1">
         </a>
+
+        <button onclick="toggleSidebar()" class="md:invisible">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
     </div>
 
     <div class="py-4 w-full">

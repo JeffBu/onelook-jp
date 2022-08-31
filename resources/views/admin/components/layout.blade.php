@@ -36,6 +36,8 @@
         @yield('content')
     </div>
 
+    <div class="hidden fixed top-0 bottom-0 min-h-screen min-w-full bg-neutral-900 bg-opacity-20 z-40" id="nav-bg" onclick="toggleSidebar()"></div>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{asset('js/app.js')}}"></script>
@@ -81,15 +83,14 @@
             jQuery('#sidebar').animate({
                 width: 'toggle'
             });
-
-            jQuery('#sb-app-name').fadeToggle(200)
-            jQuery('#user').fadeToggle(200)
-            jQuery('#home').fadeToggle(200)
-            jQuery('#member-list').fadeToggle(200)
-            jQuery('#video-list').fadeToggle(200)
-            jQuery('#posting').fadeToggle(200)
-            jQuery('#settings').fadeToggle(200)
-            jQuery('#logout').fadeToggle(200)
+            // jQuery('#sb-app-name').fadeToggle(200)
+            // jQuery('#user').fadeToggle(200)
+            // jQuery('#home').fadeToggle(200)
+            // jQuery('#member-list').fadeToggle(200)
+            // jQuery('#video-list').fadeToggle(200)
+            // jQuery('#posting').fadeToggle(200)
+            // jQuery('#settings').fadeToggle(200)
+            // jQuery('#logout').fadeToggle(200)
         }
     </script>
     
