@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<body class="justify-center items-center bg-theme-white font-['Calibri']">
+<body class="justify-center items-center bg-neutral-300 font-['Calibri']">
 
     <!--header-->
     <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"

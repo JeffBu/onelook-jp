@@ -10,7 +10,7 @@
     <link rel="icon" href="{{asset('media/icon-onelook.ico')}}">
 </head>
 
-<body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
+<body class="justify-center items-center bg-neutral-300 text-theme-black font-['Calibri']">
 
     <!--header-->
     <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 text-base tracking-widest fixed w-full z-50"
