@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\VideoRecord;
+use App\Models\News;
+use App\Models\PostHistory;
 use Carbon\Carbon;
 
 class DailyRecordDeletion extends Command
@@ -40,5 +42,7 @@ class DailyRecordDeletion extends Command
     public function handle()
     {
         VideoRecord::whereDate('created_at', '<=', now()->subDays(7))->delete();
+        News::whereDate('created_at', '<=', now()->subDays(7))->delete();
+        PostHistory::whereDate('created_at', '<=', now()->subDays(7))->delete();
     }
 }

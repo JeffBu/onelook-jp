@@ -42,7 +42,13 @@ class MainController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $news = News::where('target_user', null)->orWhere('target_user', $user->id)->latest()->get();
+
+        if($user->is_admin == 1)
+        {
+            return redirect()->route('admin-home');
+        }
+
+        $news = News::where('target_user', null)->latest()->get();
         $history = PostHistory::where('user_id', $user->id)->latest()->get();
         $data = array(
             'user' => $user,
@@ -50,11 +56,6 @@ class MainController extends Controller
             'history' => $history,
         );
 
-
-        if($user->is_admin == 1)
-        {
-            return redirect()->route('admin-home');
-        }
         return view('authenticated-user.contents.dashboard', $data);
     }
 

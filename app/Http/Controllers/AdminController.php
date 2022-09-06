@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\News;
 use App\Models\VideoRecord;
+use App\Models\PostHistory;
 
 //Helpers
 use Auth;
@@ -135,9 +136,9 @@ class AdminController extends Controller
             return 0;
         }
 
-        News::create([
+        PostHistory::create([
             'content' => nl2br($request->comment),
-            'target_user' => $request->target
+            'user_id' => $request->target
         ]);
 
         return 1;

@@ -56,12 +56,6 @@
                                         <!-- <td id="news-date" class="text-xs pt-2">{{$item->created_at->format('Y年m月d日')}} @if($item->target_user) <span class="px-1 py-1 rounded-full border-2 bg-emerald-100 border-emerald-600 text-emerald-600 text-xs">管理者からのお知らせ</span> @endif</td> -->
                                         <td id="news-date" class="text-xs pt-2 flex flex-row items-center gap-1">
                                             {{$item->created_at->format('Y年m月d日')}}
-                                            @if($item->target_user)
-                                                <div class="flex flex-row gap-2">
-                                                    <div class="h-1 w-1 rounded-full bg-emerald-700"></div>
-                                                    <span class="px-1 py-1 text-emerald-700">管理者からのお知らせ</span>
-                                                </div>
-                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
@@ -81,13 +75,15 @@
                 </div>
 
                 <div class="w-full h-full">
-                    <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-sky-800 font-bold bg-sky-600 text-white text-xl pb-2">投稿履歴</h2>
+                    <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-sky-800 font-bold bg-sky-600 text-white text-xl pb-2">個別連絡</h2>
                     <div class="border-b border-x border-sky-800 px-2 py-2 h-64 overflow-auto w-full">
                         <table class="w-full text-base">
                             <tbody>
                                 @forelse($history as $item)
                                     <tr>
-                                        <td id="news-date" class="text-xs">{{$item->created_at->format('Y年m月d日 H:i')}} </td>
+                                        <td id="news-date" class="text-xs">
+                                            {{$item->created_at->format('Y年m月d日 H:i')}}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td id="news-label" class="border-b border-sky-800 pb-2 break-all">{!!$item->content!!}</td>
