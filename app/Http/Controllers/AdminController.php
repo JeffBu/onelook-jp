@@ -8,6 +8,9 @@ use App\Models\News;
 use App\Models\VideoRecord;
 use App\Models\PostHistory;
 
+//Mails
+use App\Mail\NotificationSentMail;
+
 //Helpers
 use Auth;
 use Illuminate\Http\Request;
@@ -140,6 +143,10 @@ class AdminController extends Controller
             'content' => nl2br($request->comment),
             'user_id' => $request->target
         ]);
+
+        $user = User::find($request->target);
+
+        Mail::to($user->email)->send(new NotificationSentMail());
 
         return 1;
     }
