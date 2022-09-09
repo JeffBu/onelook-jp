@@ -11,14 +11,17 @@ class NotificationSentMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user, $content;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $content)
     {
-        //
+        $this->user = $user;
+        $this->content = $content;
     }
 
     /**
@@ -28,6 +31,6 @@ class NotificationSentMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New Notification')->markdown('emails.private-notification-email');
+        return $this->subject('【OneLook】会員様への個別連絡')->markdown('emails.private-notification-email');
     }
 }

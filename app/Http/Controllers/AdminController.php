@@ -67,7 +67,7 @@ class AdminController extends Controller
         $target = User::find($user_id);
         $video_records = VideoRecord::where('user_id', $user_id)->get();
         $user = Auth::user();
-        $news = News::where('target_user', $target->id)->latest()->get();
+        $news = PostHistory::where('user_id', $target->id)->latest()->get();
         $data = array(
             'user' => $user,
             'target' => $target,
@@ -154,7 +154,7 @@ class AdminController extends Controller
 
         $user = User::find($request->target);
 
-        Mail::to($user->email)->send(new NotificationSentMail());
+        Mail::to($user->email)->send(new NotificationSentMail($user, nl2br($request->comment)));
 
         return 1;
     }

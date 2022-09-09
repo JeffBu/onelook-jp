@@ -120,14 +120,8 @@
                 </div>
             </form>
 
-            <div class="grid grid-rows-2 lg:grid-cols-2 justify-center items-start gap-8 pt-8 w-full text-left">
-                <div class="invisible w-full h-full">
-                    <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">対象顧客への連絡</h2>
-                    <div class="border-b border-x border-lime-600 px-2 py-2">
-                        <table class="min-w-max w-full h-64 text-base">
-                        </table>
-                    </div>
-                </div>
+            <div class="grid grid-rows-1 lg:grid-cols-1 justify-center items-start gap-8 pt-8 w-full text-left">
+
 
                 <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">お知らせ</h2>
@@ -182,7 +176,6 @@
         var user_id = $('#user_id').val()
         var news = $('#comment').val()
         var url = "{{route('send-notif')}}"
-        console.log(user_id);
         axios.post(url, {
             target : user_id,
             comment : news,
