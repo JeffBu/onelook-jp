@@ -40,15 +40,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-rows-2 lg:grid-cols-2 justify-center items-start gap-8 w-full text-left">
-                <div class="invisible w-full h-full">
-                    <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">投稿履歴</h2>
-                    <div class="border-b border-x border-lime-600 px-2 py-2">
-                        <table class="min-w-max w-full h-64 text-base">
-                        </table>
-                    </div>
-                </div>
-
+            <div class="grid grid-rows-1 lg:grid-cols-1 justify-center items-start gap-8 w-full text-left">
                 <div class="w-full">
                     <h2 class="flex justify-center items-center px-4 py-2 border-t border-x border-lime-600 font-bold bg-lime-600 text-white text-xl pb-2">お知らせ</h2>
                     <div class="border-b border-x border-lime-600 px-2 py-2 h-64 overflow-auto">
@@ -56,7 +48,7 @@
                             <tbody>
                                 @forelse($news as $item)
                                     <tr>
-                                        <td rowspan="2"><input type="checkbox" name="" id="" class="mr-2 focus:ring-0 text-lime-600"></td>
+                                        <td rowspan="2"><input type="checkbox" name="notif_id" class="notif mr-2 focus:ring-0 text-lime-600" value="{{$item->id}}"></td>
                                         <td id="news-date" class="text-xs pt-2">{{$item->created_at->format('Y年m月d日')}}</td>
                                     </tr>
                                     <tr class="border-b border-lime-600">
@@ -74,8 +66,6 @@
                         </table>
                     </div>
                     <div class="flex flex-row justify-end items-center gap-2 w-full pt-4">
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">編集</button>
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500">消去</button>
                     </div>
                 </div>
             </div>
@@ -93,6 +83,15 @@
     $('#posting').css('background-color', '#65a30d');
     $('#posting').css('opacity', '1');
 
+    function deleteNotifs()
+    {
+        var ids = []
+        $.each($("input[name=notif_id]:checked"), function () {
+            ids.push($(this).val())
+        })
+
+        console.log(ids)
+    }
 </script>
 <!--script ends here-->
 @endsection

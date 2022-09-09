@@ -10,6 +10,7 @@ use App\Models\PostHistory;
 
 //Mails
 use App\Mail\NotificationSentMail;
+use App\Mail\NewsPostedForAllMail;
 
 //Helpers
 use Auth;
@@ -125,6 +126,12 @@ class AdminController extends Controller
                 'content' => nl2br($request->news),
                 'target_user' => $target
             ]);
+
+            $everyone = User::where('is_admin', 0)->get();
+            foreach($everyone as $e)
+            {
+                Mail::to($e->email)->send(new NewsPostedForAllMail($e, $request->news));
+            }
         });
 
         return redirect()->route('admin-posting');
