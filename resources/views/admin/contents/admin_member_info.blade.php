@@ -24,7 +24,7 @@
                     <h1 class="text-xl font-semibold text-lime-600">会員詳細</h1>
                 </div>
                 <div>
-                    <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">強制退会</button>
+                    <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500" onclick="deleteUser({{$target->id}})">強制退会</button>
                 </div>
 
             </div>
@@ -254,6 +254,46 @@
             })
         }
 
+    }
+
+    function deleteUser(id)
+    {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Danger!',
+            text: 'You are about to delete this user and all related data. Are you sure you want to continue?',
+            showCancelButton: true,
+            confirmButtonText: 'yes',
+            cancleButtonText: 'no',
+            preConfirm: function () {
+                var url = "{{route('delete-user')}}"
+
+                return axios.post(url, {
+                    user: id,
+                }).catch(function (error) {
+                    console.log(error.response.data)
+                })
+            },
+            showLoaderOnConfirm: true,
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+                if(result.isConfirmed)
+                {
+                    if(result.value === "error") {
+                        Swal.fire({
+                            icon: 'error',
+                            text: 'Failed to remove user data.'
+                        })
+                    }else{
+                        Swal.fire({
+                            icon: 'success',
+                            text: 'Successfully removed user data. Redirecting back to home.'
+                        }).then(function (result) {
+                            window.location.replace("{{route('admin-home')}}");
+                        })
+                    }
+                }
+            })
     }
 </script>
 <!--script ends here-->

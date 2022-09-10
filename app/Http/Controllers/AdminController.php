@@ -176,4 +176,25 @@ class AdminController extends Controller
 
         return 'success';
     }
+
+    public function delete_user(Request $request)
+    {
+        $id = $request->user;
+
+        $user = User::find($id);
+
+        //delete all video records
+        VideoRecord::where('user_id', $id)->delete();
+
+        //Delete all PostHistory
+        PostHistory::where('user_id', $id)->delete();
+
+        //Delete all news
+        News::where('target_user', $id)->delete();
+
+        //Delete User
+        $user->delete();
+
+        return 'success';
+    }
 }

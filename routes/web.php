@@ -58,6 +58,7 @@ Route::middleware([
     Route::post('delete-video', [VideoAccessController::class, 'delete_video'])->name('delete-video');
     Route::post('delete-news', [AdminController::class, 'delete_news'])->name('delete-news');
     Route::post('delete-notifs', [AdminController::class, 'delete_notis'])->name('delete-notifs');
+    Route::post('delete-user', [AdminController::class, 'delete_user'])->name('delete-user');
 });
 
 Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');
