@@ -158,4 +158,22 @@ class AdminController extends Controller
 
         return 1;
     }
+
+    public function delete_news(Request $request)
+    {
+        $ids = $request->ids;
+
+        PostHistory::whereIn('id', $ids)->delete();
+
+        return 'success';
+    }
+
+    public function delete_notifs(Request $request)
+    {
+        $ids = $request->ids;
+
+        News::whereIn('id', $ids)->delete();
+
+        return 'success';
+    }
 }

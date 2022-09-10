@@ -130,7 +130,7 @@
                             <tbody>
                                 @forelse($messages as $msg)
                                     <tr>
-                                        <td rowspan="2"><input type="checkbox" name="" id="" class="mr-2 focus:ring-0 text-lime-600"></td>
+                                        <td rowspan="2"><input type="checkbox" name="msg_id" id="" class="mr-2 focus:ring-0 text-lime-600" value="{{$msg->id}}"></td>
                                         <td id="news-date" class="text-xs pt-2">{{$msg->created_at->format('Y年m月d日')}}</td>
                                     </tr>
                                     <tr class="border-b border-lime-600">
@@ -150,8 +150,7 @@
                         </table>
                     </div>
                     <div class="flex flex-row justify-end items-center gap-2 w-full pt-4">
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">編集</button>
-                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500">消去</button>
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500" onclick="deleteMessage()">消去</button>
                     </div>
                 </div>
             </div>
@@ -212,6 +211,50 @@
         })
 
     })
+
+    function deleteMessage() {
+        var msg_ids = []
+        $.each($("input[name=msg_id]:checked"), function () {
+            msg_ids.push($(this).val());
+        })
+
+        if(msg_ids.length > 0)
+        {
+            var url = "{{route('delete-news')}}"
+            Swal.fire({
+                icon: 'warning',
+                title: 'Notice',
+                text: 'Are you sure you want to delete these notifications?',
+                showCancelButton: true,
+                confirmButtonText: 'confirm',
+                cancleButtonText: 'cancel',
+            }).then(function(response) {
+                if(response.isConfirmed)
+                {
+                    axios.post(url, {
+                        ids: msg_ids,
+                    }).then(function(result) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Notification Deleted',
+                            showConfirmButton: false,
+                            showCancelButton: false,
+                        })
+                    }).catch(function(error) {
+                        console.log(error.response.data)
+                    })
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Notice',
+                text: 'Please select a notification and try again.',
+            })
+        }
+
+    }
 </script>
 <!--script ends here-->
 @endsection

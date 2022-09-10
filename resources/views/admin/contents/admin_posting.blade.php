@@ -66,6 +66,7 @@
                         </table>
                     </div>
                     <div class="flex flex-row justify-end items-center gap-2 w-full pt-4">
+                        <button class="px-4 py-1 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500" onclick="deleteNotifs()">消去</button>
                     </div>
                 </div>
             </div>
@@ -85,12 +86,47 @@
 
     function deleteNotifs()
     {
-        var ids = []
+        var msg_ids = []
         $.each($("input[name=notif_id]:checked"), function () {
-            ids.push($(this).val())
+            msg_ids.push($(this).val());
         })
 
-        console.log(ids)
+        if(msg_ids.length > 0)
+        {
+            var url = "{{route('delete-notifs')}}"
+            Swal.fire({
+                icon: 'warning',
+                title: 'Notice',
+                text: 'Are you sure you want to delete these notifications?',
+                showCancelButton: true,
+                confirmButtonText: 'confirm',
+                cancleButtonText: 'cancel',
+            }).then(function(response) {
+                if(response.isConfirmed)
+                {
+                    axios.post(url, {
+                        ids: msg_ids,
+                    }).then(function(result) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Notification Deleted',
+                            showConfirmButton: false,
+                            showCancelButton: false,
+                        })
+                    }).catch(function(error) {
+                        console.log(error.response.data)
+                    })
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Notice',
+                text: 'Please select a notification and try again.',
+            })
+        }
+
     }
 </script>
 <!--script ends here-->
