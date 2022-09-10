@@ -193,7 +193,7 @@ class AdminController extends Controller
         News::where('target_user', $id)->delete();
 
         //Delete User
-        $user->delete();
+        User::where('id', $id)->delete();
 
         return 'success';
     }
