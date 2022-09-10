@@ -17,14 +17,14 @@
     <div>
         <h1 class="text-center text-2xl font-bold text-sky-600 pb-8 pt-20">会員プラン</h1>
     </div>
-    
+
     <div class="flex flex-col justify-center items-center w-full gap-8">
         <div class="flex flex-col justify-center items-center w-full gap-8">
             <div class="grid lg:grid-cols-3 justify-center items-center scroll-mt-24 gap-6 w-3/4 h-1/2">
                 <!-- free plan -->
                 <div class="flex flex-col items-center text-left text-sm gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                     <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">フリープラン</span>
-                    
+
                     <div class="flex flex-row w-full justify-between items-center px-4">
                         <span>現在のプラン</span>
                         <div class="text-sky-600">
@@ -83,7 +83,7 @@
                             </svg>
                         </div>
                     </div>
-                    
+
                     <div class="flex flex-row w-full justify-between items-center px-4">
                         <span>月額料金</span>
                         <span class="text-sky-600">-</span>
@@ -225,15 +225,43 @@
         });
 
         function planAlert(){
-
+            var user_email = "{{auth()->user()->email}}"
             Swal.fire({
-                title: 'ビジネスプランのご相談',
-                text: '申請検討ありがとうございます。こちらを送信いただけましたらご登録者様宛に当社担当よりご連絡を申し上げます。貴社のご希望の使用イメージなどございましたらご記入いただけますとスムーズです。よろしくお願いいたします。',
-                input: 'email',
-                inputPlaceholder: 'ご連絡先のメールアドレス',
+                width: '70%',
+                title: 'ご希望の製品仕様をご入力ください。',
+                html:   '<div class="text-justify mt-8">' +
+                            '<div class="mb-6">'+
+                                '<label for="inquiry-email" class="block mb-2 text-sm font-medium text-gray-900">電子メールアドレス</label>'+
+                                '<input type="email" id="inquiry-email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="'+user_email+'" readonly>'+
+                            '</div>'+
+                            '<div class="mb-6">'+
+                                '<label for="inquiry-content" class="block mb-2 text-sm font-medium text-gray-900">お問い合わせ内容</label>'+
+                                '<textarea rows="5" type="text" id="inquiry-content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>'+
+                            '</div>'+
+                        '</div>',
                 showCancelButton: true,
                 confirmButtonText: '送信',
                 cancelButtonText: 'キャンセル',
+                showLoaderOnConfirm: true,
+                preConfirm: function() {
+                    var reply_to = $('#inquiry-email').val()
+                    var inquiry = $('#inquiry-content').val()
+                    var url = "{{route('send-inquiry')}}"
+
+                    if(inquiry === null || inquiry === '')
+                    {
+                        return "error"
+                    } else {
+                        return axios.post(url, {
+                            sender: reply_to,
+                            content: inquiry,
+                        }).catch((error) => {
+                            console.log(error.response.data)
+                        })
+                    }
+
+                },
+                allowOutsideClick: () => !Swal.isLoading()
             })
         }
 
