@@ -198,6 +198,8 @@
                         timer: 3000,
                         showCancelButton: false,
                         showConfirmButton: false,
+                    }).then(function(response) {
+                        window.location.reload()
                     })
                     break;
                 default:
@@ -240,6 +242,8 @@
                             text: 'Notification Deleted',
                             showConfirmButton: false,
                             showCancelButton: false,
+                        }).then(function(response) {
+                            window.location.reload()
                         })
                     }).catch(function(error) {
                         console.log(error.response.data)
