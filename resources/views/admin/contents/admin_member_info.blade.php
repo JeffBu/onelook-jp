@@ -251,6 +251,8 @@
                 icon: 'info',
                 title: 'Notice',
                 text: 'Please select a notification and try again.',
+            }).then(function (response) {
+                window.location.reload()
             })
         }
 

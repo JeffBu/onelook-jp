@@ -113,6 +113,8 @@
                             text: 'Notification Deleted',
                             showConfirmButton: false,
                             showCancelButton: false,
+                        }).then(function(result) {
+                            window.location.reload()
                         })
                     }).catch(function(error) {
                         console.log(error.response.data)
