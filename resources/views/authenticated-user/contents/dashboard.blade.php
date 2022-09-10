@@ -55,7 +55,7 @@
                                     <tr>
                                         <!-- <td id="news-date" class="text-xs pt-2">{{$item->created_at->format('Y年m月d日 H:i')}} @if($item->target_user) <span class="px-1 py-1 rounded-full border-2 bg-emerald-100 border-emerald-600 text-emerald-600 text-xs">管理者からのお知らせ</span> @endif</td> -->
                                         <td id="news-date" class="text-xs pt-2 flex flex-row items-center gap-1">
-                                            {{$item->created_at->format('Y年m月d日')}}
+                                            {{$item->created_at->format('Y年m月d日 H:i')}}
                                         </td>
                                     </tr>
                                     <tr>
