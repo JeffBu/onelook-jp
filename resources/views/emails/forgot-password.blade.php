@@ -5,9 +5,8 @@
 以下のURLからアクセスして新しいパスワードを設定してください。<br>
 <br>
 <hr>
-https://onelook.jp/first-time-login?token={{$user->email_verification_token}} <br>
+{{$url}}<br>
 <br>
-仮パスワード： uW1AVzzh <br>
 <hr>
 <br>
 このメールは送信専用です。<br>

@@ -81,6 +81,7 @@ Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
 Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 Route::post('checkout', [SubscriptionController::class, 'subscribe']);
 Route::post('forgot-password', [UserAccountController::class, 'forgot_password'])->name('forgot-password');
+Route::get('update-new-password', [UserAccountController::class, 'forgot_password_2'])->name('update-new-password');
 
 Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 

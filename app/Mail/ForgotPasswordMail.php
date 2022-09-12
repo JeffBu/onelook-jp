@@ -11,7 +11,7 @@ class ForgotPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $user, $url;
 
     /**
      * Create a new message instance.
@@ -21,6 +21,7 @@ class ForgotPasswordMail extends Mailable
     public function __construct($target)
     {
         $this->user = $target;
+        $this->url = route('update-new-password', ['token' => $target->email_verification_token]);
     }
 
     /**

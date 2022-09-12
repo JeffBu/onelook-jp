@@ -116,7 +116,17 @@ class UserAccountController extends Controller
 
             return redirect()->route('success-screen');
         }
-        //
+    }
+
+    public function forgot_password_2(Request $request)
+    {
+        $token = $request->token;
+
+        $user = User::where('email_verification_token', $token)->first();
+        $data = array(
+            'user' => $user
+        );
+        return view('auth.forgot-password-2', $data);
     }
 
     public function register(Request $request)
@@ -146,8 +156,6 @@ class UserAccountController extends Controller
             if($user)
             {
                 Mail::to($request->email)->send(new NewRegistration($user->email_verification_token, $user->email, $user->name));
-
-
             }
         });
 
@@ -158,5 +166,4 @@ class UserAccountController extends Controller
     {
         return view('auth.registration_complete');
     }
-
 }
