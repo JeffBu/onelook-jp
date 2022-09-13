@@ -70,13 +70,21 @@ class UserAccountController extends Controller
                'confirmed']
         ]);
 
+        $user = User::where('email_verification_token', $request->token)->first();
+
         if($validator->fails()){
+            if($user->email_verified_at != null)
+            {
+                return redirect()->route('update-new-password', ['token' => $request->token])
+                    ->withErrors($validator)
+                    ->withInput();
+            }
             return redirect()->route('update-password', ['token' => $request->token])
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $user = User::where('email_verification_token', $request->token)->first();
+
 
         $user->update([
             'password' => Hash::make($request->password),
