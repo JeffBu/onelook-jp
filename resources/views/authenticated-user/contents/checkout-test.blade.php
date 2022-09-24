@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group" id="cc-group">
                     {!! Form::label(null, 'Credit card number:') !!}
-                    {!! Form::text(null, null, [
+                    {!! Form::password(null, null, [
                         'class'                         => 'form-control',
                         'required'                      => 'required',
                         'data-stripe'                   => 'number',
