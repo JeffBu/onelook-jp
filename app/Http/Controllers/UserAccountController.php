@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Mail\ForgotPasswordMail;
 use App\Mail\AccountModificationMail;
 use App\Mail\NewRegistration;
+use Session;
 
 class UserAccountController extends Controller
 {
@@ -93,6 +94,7 @@ class UserAccountController extends Controller
 
         if($user->save())
         {
+            Session::flash('message', 'パスワードの変更を行いました。確認のため再ログインしてください。');
             return redirect()->route('login');
         }
     }

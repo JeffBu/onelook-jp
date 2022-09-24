@@ -13,7 +13,7 @@ class SubscriptionController extends Controller
 {
     public function index()
     {
-        return view('authenticated-user.contents.checkout');
+        return view('authenticated-user.contents.checkout-test');
     }
 
     public function subscribe(Request $request)
@@ -40,7 +40,7 @@ class SubscriptionController extends Controller
 
             return back()->with('success','Subscription is completed.');
         } catch (Exception $e) {
-            return back()->with('success',$e->getMessage());
+            return back()->with('error',$e->getMessage());
         }
 
     }

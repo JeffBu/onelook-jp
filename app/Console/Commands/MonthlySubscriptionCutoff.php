@@ -3,26 +3,22 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\VideoRecord;
-use App\Models\News;
-use App\Models\PostHistory;
-use Carbon\Carbon;
 
-class DailyRecordDeletion extends Command
+class MonthlySubscriptionCutoff extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'records:delete-video';
+    protected $signature = 'subscription:reset';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Artisan command to delete videos on a daily basis.';
+    protected $description = 'Resets subscription for all users.';
 
     /**
      * Create a new command instance.
@@ -41,9 +37,6 @@ class DailyRecordDeletion extends Command
      */
     public function handle()
     {
-        VideoRecord::whereDate('created_at', '<=', now()->subDays(7))->delete();
-        News::whereDate('created_at', '<=', now()->subDays(7))->delete();
-        PostHistory::whereDate('created_at', '<=', now()->subDays(7))->delete();
-
+        return 0;
     }
 }

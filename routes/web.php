@@ -45,6 +45,7 @@ Route::middleware([
     Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');
     Route::post('send-invitation', [VideoAccessController::class, 'send_invitation'])->name('send-invitation');
     Route::post('send-inquiry', [MainController::class, 'send_inquiry'])->name('send-inquiry');
+    Route::post('pay-for-subscription', [SubscriptionController::class, 'subscribe'])->name('pay-for-subscription');
 
     Route::get('admin-home', [AdminController::class, 'index'])->name('admin-home');
     Route::get('admin-member-list', [AdminController::class, 'member_list'])->name('admin-member-list');

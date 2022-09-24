@@ -59,6 +59,13 @@
                     </div>
                     <!--modal body-->
                     <div class="px-8 py-4 space-y-4">
+
+                        @if(Session::has('message'))
+                        <div class="px-1 py-1 rounded-full border-2 bg-emerald-100 border-emerald-600 text-emerald-600 text-xs" role="alert">
+                            <p class="font-bold">重要！</p>
+                            <p>{{Session::get('message')}}</p>
+                          </div>
+                        @endif
                         <form action="{{route('login')}}" method="POST">
                             @csrf
                             <div class="relative z-0 w-full pb-4 group">

@@ -477,6 +477,7 @@
             }, 1000)
         }
         completion.addEventListener('click', () => {
+            //TODO : convert 1 sec ad from mp4 to blob
             const blob = new Blob(recordedBlobs, {
                 type: 'video/mp4'
             });
@@ -767,7 +768,7 @@
             restore_array = [];
             start_index = -1;
         }
-        
+
         $(document).ready(function() {
             $('#video-maker-tab').addClass('active');
             $('#m-video-maker-tab').addClass('active');
