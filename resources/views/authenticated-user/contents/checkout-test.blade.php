@@ -59,7 +59,7 @@
                 @endif
                 <div class="form-group" id="product-group">
                     {!! Form::label('plane', 'Select Plan:') !!}
-                    {!! Form::select('plane', ['price_1JsWzhFlTdBn7jsd1X0B4stR' => 'Monthly Subscription', 'vue' => 'Annual Subscription', ], 'Book', [
+                    {!! Form::select('plane', ['price_1LhnVEEAW5VnMBmZUlFh03I6' => 'Monthly Subscription', 'price_1LhnVEEAW5VnMBmZVr28ziEO' => 'Annual Subscription', ], 'Book', [
                         'class'                       => 'form-control',
                         'required'                    => 'required',
                         'data-parsley-class-handler'  => '#product-group'
