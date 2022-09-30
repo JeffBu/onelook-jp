@@ -82,7 +82,7 @@
                         <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                             <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
                             @if($user->subscription)
-                                <a class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" download="{{$url}}" target="_blank">ダウンロード</a>
+                                <a class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" href="{{$url}}" download="onelook-video.mp4" target="_blank">ダウンロード</a>
                             @else
                                 <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
                             @endif
