@@ -39,7 +39,7 @@
     <div class="panel panel-default credit-card-box mt-20 ">
         <div class="panel-heading display-table" >
             <div class="row display-tr" >
-                <strong class="h3">Upgrade to Personal Plan and unlock all features.</strong>
+                <strong class="h3">パーソナルプランへのお申し込み</strong>
             </div>
         </div>
         <div class="panel-body h5">
@@ -58,16 +58,16 @@
                 </div>
                 @endif
                 <div class="form-group" id="product-group">
-                    {!! Form::label('plane', 'Select Plan:') !!}
-                    {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvReHngtc7s' => 'Monthly Subscription', 'price_1LlRpUBPZ9RrUCvRtkOIRCwT' => 'Annual Subscription', ], 'Book', [
+                    {!! Form::label('plane', 'プラン選択:') !!}
+                    {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvReHngtc7s' => 'プラン選択', 'price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '年間お申し込み', ], 'Book', [
                         'class'                       => 'form-control',
                         'required'                    => 'required',
                         'data-parsley-class-handler'  => '#product-group'
                         ]) !!}
                 </div>
                 <div class="form-group" id="cc-group">
-                    {!! Form::label(null, 'Credit card number:') !!}
-                    {!! Form::password(null, null, [
+                    {!! Form::label(null, 'カード番号を入力してください:') !!}
+                    {!! Form::text(null, null, [
                         'class'                         => 'form-control',
                         'required'                      => 'required',
                         'data-stripe'                   => 'number',
@@ -78,7 +78,7 @@
                         ]) !!}
                 </div>
                 <div class="form-group" id="ccv-group">
-                    {!! Form::label(null, 'CVC (3 or 4 digit number):') !!}
+                    {!! Form::label(null, 'C V C番号を入力してください:') !!}
                     {!! Form::text(null, null, [
                         'class'                         => 'form-control',
                         'required'                      => 'required',
@@ -92,7 +92,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group" id="exp-m-group">
-                        {!! Form::label(null, 'Ex. Month') !!}
+                        {!! Form::label(null, 'カード有効月') !!}
                         {!! Form::selectMonth(null, null, [
                             'class'                 => 'form-control',
                             'required'              => 'required',
@@ -102,7 +102,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group" id="exp-y-group">
-                        {!! Form::label(null, 'Ex. Year') !!}
+                        {!! Form::label(null, 'カード有効年') !!}
                         {!! Form::selectYear(null, date('Y'), date('Y') + 10, null, [
                             'class'             => 'form-control',
                             'required'          => 'required',
@@ -112,7 +112,7 @@
                   </div>
                 </div>
                   <div class="form-group">
-                      {!! Form::submit('Start Subscription', ['class' => 'btn btn-lg btn-block btn-primary btn-order', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                      {!! Form::submit('お申し込み開始', ['class' => 'btn btn-lg btn-block btn-primary btn-order', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
                   </div>
                   <div class="row">
                     <div class="col-md-12">

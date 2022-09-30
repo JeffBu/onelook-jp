@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 use App\Models\User;
+use App\Models\Subscribers;
 
 use App\Mail\ForgotPasswordMail;
 use App\Mail\AccountModificationMail;
@@ -39,9 +40,25 @@ class UserAccountController extends Controller
             'email' => $request->email
         ]);
 
-        $account->update([
-            'company' => $request->company_name,
-        ]);
+        if($request->company_name) {
+
+
+            if($account)
+            {
+                $account->update([
+                    'company' => $request->company_name,
+                ]);
+            }
+            else {
+                Subscribers::create([
+                    'user_id' => $user->id,
+                    'company' => $request->company_name,
+                    'notification_on' => 0,
+                ]);
+            }
+        }
+
+
 
         Mail::to($user->email)->send(new AccountModificationMail($user));
         return 1;

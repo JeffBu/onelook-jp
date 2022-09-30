@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\CustomerCard;
 use Stripe;
 use Session;
 use Exception;
@@ -37,10 +38,21 @@ class SubscriptionController extends Controller
             else {
                 $old_plan = 'パーソナルプラン';
             }
-            \Stripe\Customer::createSource(
+            $source = \Stripe\Customer::createSource(
                 $user->stripe_id,
                 ['source' => $token]
             );
+
+            CustomerCard::create([
+                'user_id' => $user->id,
+                'customer_id' => $user->stripe_id,
+                'card_id' => $source->id,
+                'last_4' => $source->last4,
+                'brand' => $source->brand,
+                'fingerprint' => $source->fingerprint,
+                'exp_month' => $source->exp_month,
+                'exp_year' => $source->exp_year,
+            ]);
 
             $user->newSubscription('test',$input['plane'])
                 ->create($paymentMethod, [
@@ -48,7 +60,8 @@ class SubscriptionController extends Controller
             ]);
 
             Mail::to($user->email)->send(new SubscriptionUpdateMail($user, $old_plan, 'パーソナルプラン', $date));
-            return back()->with('success','Subscription is completed.');
+
+            return redirect()->route('membership-info');
         } catch (Exception $e) {
 
             return back()->with('error',$e->getMessage());

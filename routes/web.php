@@ -41,6 +41,7 @@ Route::middleware([
     Route::get('edit-personal-info', [MainController::class, 'edit_personal_info'])->name('edit-personal-info');
     Route::get('payment-history', [MainController::class, 'payment_history'])->name('payment-history');
     Route::get('payment-history-2', [MainController::class, 'payment_history_2'])->name('payment-history-2');
+    Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 
     Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');
     Route::post('send-invitation', [VideoAccessController::class, 'send_invitation'])->name('send-invitation');
@@ -60,6 +61,7 @@ Route::middleware([
     Route::post('delete-news', [AdminController::class, 'delete_news'])->name('delete-news');
     Route::post('delete-notifs', [AdminController::class, 'delete_notifs'])->name('delete-notifs');
     Route::post('delete-user', [AdminController::class, 'delete_user'])->name('delete-user');
+    Route::post('checkout', [SubscriptionController::class, 'subscribe']);
 });
 
 Route::get('update-password', [UserAccountController::class, 'update_password'])->name('update-password');
@@ -79,8 +81,6 @@ Route::get('registration-complete', [MainController::class, 'registration_comple
 Route::get('page-unavailable', [MainController::class, 'page_unavailable'])->name('page-unavailable');
 Route::get('forgot-password-notification', [MainController::class, 'forgot_password_notification'])->name('forgot-password-notification');
 Route::get('faq', [MainController::class, 'faq_page'])->name('faq');
-Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
-Route::post('checkout', [SubscriptionController::class, 'subscribe']);
 Route::post('forgot-password', [UserAccountController::class, 'forgot_password'])->name('forgot-password');
 Route::get('update-new-password', [UserAccountController::class, 'forgot_password_2'])->name('update-new-password');
 

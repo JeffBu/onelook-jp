@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" translate="no" class="scroll-smooth">
+{{-- translate="no" --}}
+<html lang="en"  class="scroll-smooth">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,5 +71,5 @@
                 }
             }
         </script>
-        
+
         @yield('js')

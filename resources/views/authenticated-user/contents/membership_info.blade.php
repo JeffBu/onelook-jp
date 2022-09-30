@@ -12,7 +12,7 @@
     <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
         <div class="flex flex-row justify-center items-center w-11/12 md:w-3/5 gap-4">
             <span class="font-semibold text-sky-600 text-right">使用状況</span>
-            <span class="font-semibold text-sky-600">投稿動画：{{$user->records->count()}} 件（うち閲覧期限内の動画：●件）投稿可能件数：●件/5件（月末まで）</span>
+            <span class="font-semibold text-sky-600">投稿動画：{{$user->records->count()}} 件（うち閲覧期限内の動画：{{$user->records->count()}}件）投稿可能件数：{{$user->records->count()}}件/@if($user->subscription) 100 @else 5 @endif 件（月末まで）</span>
         </div>
 
         <div class="flex flex-col justify-center items-center scroll-mt-24 gap-6 w-full md:w-3/5 h-1/2 px-4" id="home">
@@ -120,17 +120,17 @@
                     <div class="flex flex-col justify-center items-start text-left gap-2 w-full">
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                             <span class="px-2 sm:px-4 py-2 w-[7.5rem] sm:w-40 font-semibold">カード番号</span>
-                            <span class="pr-2 sm:pr-4 pl-4 py-2">********5555</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">@if($card) ********{{$card->last_4}}@else -- @endif</span>
                         </div>
 
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                             <span class="px-2 sm:px-4 py-2 w-[7.5rem] sm:w-40 font-semibold">カード名義</span>
-                            <span class="pr-2 sm:pr-4 pl-4 py-2">KINICHICIHIKA</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">@if($card) {{strtoupper($user->name)}}@else -- @endif</span>
                         </div>
 
                         <div class="flex flex-row justify-center items-center text-left divide-x divide-sky-700 gap-2">
                             <span class="px-2 sm:px-4 py-2 w-[7.5rem] sm:w-40 font-semibold">有効期限</span>
-                            <span class="pr-2 sm:pr-4 pl-4 py-2">03/2022</span>
+                            <span class="pr-2 sm:pr-4 pl-4 py-2">@if($card) {{$card->exp_month.'/'.$card->exp_year}}  @else -- @endif</span>
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@
                     <form id="change-registration-info-form">
                         @csrf
                         <div class="relative z-0 w-full px-4 mb-4 group">
-                            <input type="text" name="modal-input-company-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="@if($user->account){{$user->account->company}} @else -- @endif" required />
+                            <input type="text" name="modal-input-company-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" value="@if($user->account){{$user->account->company}} @else -- @endif" />
                             <label for="modal-input-company-name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">会社名</label>
                         </div>
                         <div class="relative z-0 w-full px-4 mb-4 group">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\VideoRecord;
 use App\Models\News;
 use App\Models\PostHistory;
+use App\Models\CustomerCard;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -91,8 +92,10 @@ class MainController extends Controller
     public function membership_info()
     {
         $user = Auth::user();
+        $card_info = CustomerCard::where('user_id', $user->id)->latest()->first();
         $data = array(
             'user' => $user,
+            'card' => $card_info
         );
 
         return view('authenticated-user.contents.membership_info', $data);
