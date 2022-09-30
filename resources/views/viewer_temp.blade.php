@@ -343,7 +343,10 @@
                                 <span id="file-size">{{round($record->size/1024/1024, 2, PHP_ROUND_HALF_UP)}}</span>
                                 <span id="file-size">MB</span>
                             </div>
-                            {{-- <a onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a> --}}
+
+                            @if($record->uploader->subscription)
+                                <a onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -394,22 +397,36 @@
 
         $(document).scroll(function() {})
 
-        const player = videojs('playback-video', {})
-        const advert = videojs('ad-video', {})
-        var flag = 0
+    </script>
+    @if($record->uploader->subscription)
+        <script>
+            const player = videojs('playback-video', {})
+            const advert = videojs('ad-video', {})
+            advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
+            advert.load()
+            advert.play()
+        </script>
+    @else
+        <script>
+            const player = videojs('playback-video', {})
+            const advert = videojs('ad-video', {})
+            var flag = 0
 
-        advert.on('ended', function() {
-            if(flag == 0)
-            {
-                advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
-                advert.load()
-                advert.play()
-                flag = 1;
-            }
-            else {
+            advert.on('ended', function() {
+                if(flag == 0)
+                {
+                    advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
+                    advert.load()
+                    advert.play()
+                    flag = 1;
+                }
+                else {
 
-            }
-        })
+                }
+            })
+        </script>
+    @endif
+    <script>
 
         function downloadVideo(id, button)
         {
