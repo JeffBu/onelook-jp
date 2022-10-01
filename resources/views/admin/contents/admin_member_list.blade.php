@@ -57,7 +57,7 @@
                                 <a href="{{route('admin-member-info', ['user_id' => $user->id])}}" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">{{$user->name}}</a>
                             </td>
                             <td class="px-4 py-1 border border-lime-700">{{$user->created_at->format('Y年m月d日')}}</td>
-                            <td class="px-4 py-1 border border-lime-700">パーソナル</td>
+                            <td class="px-4 py-1 border border-lime-700">@if($user->subscription) パーソナル <br> {{$user->subscription->created_at->modify('+1 month')->format('Y年m月d日')}} @else 無料ユーザー @endif</td>
                             <td class="px-4 py-1 border border-lime-700"></td>
                             <td class="px-4 py-1 border border-lime-700"></td>
                             <td class="px-4 py-1 border border-lime-700">{{$user->email}}</td>

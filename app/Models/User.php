@@ -75,6 +75,9 @@ class User extends Authenticatable
         return $this->hasOne(Subscription::class);
     }
 
+    public function card() {
+        $this->hasMany(CustomerCard::class);
+    }
     public function generateToken()
     {
 
