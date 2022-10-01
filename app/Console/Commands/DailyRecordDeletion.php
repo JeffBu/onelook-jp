@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\VideoRecord;
 use App\Models\News;
 use App\Models\PostHistory;
-use App\Models\
+use App\Models\Subscription;
 use Carbon\Carbon;
 
 class DailyRecordDeletion extends Command
@@ -45,6 +45,6 @@ class DailyRecordDeletion extends Command
         VideoRecord::whereDate('created_at', '<=', now()->subDays(7))->delete();
         News::whereDate('created_at', '<=', now()->subDays(7))->delete();
         PostHistory::whereDate('created_at', '<=', now()->subDays(7))->delete();
-        Subscription::->where('created_at', '<=', now()->subMonth())->delete();
+        Subscription::where('created_at', '<=', now()->subMonth())->delete();
     }
 }
