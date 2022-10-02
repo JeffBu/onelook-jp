@@ -432,6 +432,16 @@
     @endif
     <script>
 
+        function triggerBrowserDownload(url)
+        {
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', fileName);
+            link.setAttribute('target', 'new');
+            document.body.appendChild(link);
+            link.click();
+        }
+
         function downloadVideo(id, button)
         {
             var url = "{{route('download')}}"
