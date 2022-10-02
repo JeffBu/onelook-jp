@@ -82,9 +82,9 @@
                         <div class="flex flex-col justify-center items-center py-2 gap-3 w-full">
                             <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" @if($record->access) onclick="copyLink('{{$record->key}}', '{{$record->access->access_code}}', '{{$user->name}}', '{{date_format($record->created_at->modify('+7 days'), 'Y年 m月 d日 H:i')}}')" @endif>リンクコピー</button>
                             @if($user->subscription)
-                                <a class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" href="{{$url}}" download="onelook-video.mp4" target="_blank">ダウンロード</a>
+                                <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo({{$record->id}}, this)">ダウンロード</a>
                             @else
-                                <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadVideo()">ダウンロード</button>
+                                <button class="w-36 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md" onclick="downloadMessage({{$record->id}}, this)">ダウンロード</button>
                             @endif
                         </div>
                         <div class="flex flex-col justify-center items-center gap-3 w-full">
@@ -293,7 +293,7 @@
             })
         }
 
-        function downloadVideo(id, button)
+        function downloadMessage(id, button)
         {
             Swal.fire({
                 icon: 'warning',
@@ -301,6 +301,28 @@
             })
 
 
+        }
+
+        function downloadVideo(id, button)
+        {
+            var url = "{{route('download')}}"
+
+            axios.post(url, {
+                id: id
+            }).then((response) => {
+                const link = document.createElement('a')
+                link.href = response.data[0]
+                link.setAttribute('download', response.data[1]);
+                link.click();
+                button.disabled = 'disabled'
+            }).catch((error) => {
+                Swal.fire({
+                    title: "ERROR",
+                    text: error.response.data['message'],
+                    icon: 'danger',
+                    showCancelButton: false
+                })
+            })
         }
 
         function deleteVideo(record_id) {
