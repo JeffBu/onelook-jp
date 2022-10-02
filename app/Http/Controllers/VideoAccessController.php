@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Mail;
 
 class VideoAccessController extends Controller
 {
-    public const DOWNLOAD_CLOUD = "https://storage.googleapis.com/download/storage/v1/b/onelook-storage/o/";
+    public const DOWNLOAD_CLOUD = "https://storage.googleapis.com/download/storage/v1/b/onelook-bucket/o/";
     public function save_access_code(Request $request)
     {
         $code = $request->code;
