@@ -345,7 +345,7 @@
                             </div>
 
                             @if($record->uploader->subscription)
-                            <a href="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}" download="onelook-video.mp4" target="_blank" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a>
+                            <button onclick="downloadVideo({{$record->id}}, this)" class="px-2 py-1 bg-yellow-300 hover:bg-yellow-200 font-semibold text-sky-600 hover:text-blue-400 rounded-md border-b-2 border-r-2 border-neutral-400">ダウンロード</a>
                             @endif
                         </div>
                     </div>
