@@ -438,7 +438,7 @@
             var fileName = 'hey.mp4';
             link.href = url;
             link.setAttribute('download', fileName);
-            link.setAttribute('target', 'new');
+            link.setAttribute('target', '_blank');
             document.body.appendChild(link);
             link.click();
         }
