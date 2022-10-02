@@ -59,7 +59,7 @@
                 @endif
                 <div class="form-group" id="product-group">
                     {!! Form::label('plane', 'プラン選択:') !!}
-                    {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvReHngtc7s' => 'プラン選択', 'price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '年間お申し込み', ], 'Book', [
+                    {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvReHngtc7s' => '月額お申し込み', 'price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '年間お申し込み', ], 'Book', [
                         'class'                       => 'form-control',
                         'required'                    => 'required',
                         'data-parsley-class-handler'  => '#product-group'
