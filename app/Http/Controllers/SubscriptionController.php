@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\CustomerCard;
+use App\Models\Subscription;
 use Stripe;
 use Session;
 use Exception;
@@ -67,5 +68,15 @@ class SubscriptionController extends Controller
             return back()->with('error',$e->getMessage());
         }
 
+    }
+
+    public function cancel_subscription(Request $request)
+    {
+        $user = User::find($request->user_id);
+
+        if($user)
+        {
+            Subscription::where('user_id', $user->id)->delete();
+        }
     }
 }

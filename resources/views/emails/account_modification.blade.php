@@ -6,8 +6,8 @@ OneLook.jpをご利用いただきありがとうございます。<br>
 <br>
 <hr>
 変更後の会員情報は以下です。<br>
-・会社名：{{$user->name}} <br>
-・氏名：{{$user->account->company ?? ''}} <br>
+・会社名： {{$user->account->company ?? ''}}<br>
+・氏名： {{$user->name}}<br>
 ・メールアドレス：{{$user->email}} <br>
 ・閲覧期限の通知：あり <br>
 {{-- orなし <br> --}}

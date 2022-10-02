@@ -14,7 +14,7 @@
 
         <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
             <span>変更前：</span>
-            <span>フリープラン</span>
+            <span>@if(auth()->user()->subscription) パーソナルプラン @else フリープラン @endif</span>
         </div>
 
         <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
@@ -61,7 +61,7 @@
         <!--cancel plan-->
         <div id="cancel_plan" class="hidden flex-col justify-center w-11/12 md:w-3/5">
             <div class="flex justify-center items-center mx-auto w-32">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
+                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="cancelSubscription({{$user->id}})">変更する</button>
             </div>
 
             <div class="flex flex-col justify-center items-center text-left mt-10">
@@ -155,6 +155,28 @@
             $('#upgrade_plan').css('display', 'none')
             $('#cancel_service').css('display', 'block')
             $('#menu-dropdown').css('display', 'none')
+        }
+
+        function cancelSubscription(id)
+        {
+            var url = "{{route('cancel-subscription')}}"
+            axios.post(url, {
+                user_id: id
+            }).then(function (response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '成功',
+                    text: 'パーソナルプランの解約を致しました'
+                }).then((result) => {
+                    window.location.reload()
+                })
+            }).catch(function (error) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'エラー',
+                    text: 'パーソナルプラン解約処理が規定時間に完了しませんでした。お時間をおいて、もう一度解約お手続をOKお願い致します。',
+                })
+            })
         }
     </script>
     <!--script ends here-->
