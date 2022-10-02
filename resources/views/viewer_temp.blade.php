@@ -435,6 +435,7 @@
         function triggerBrowserDownload(url)
         {
             const link = document.createElement('a');
+            var fileName = 'hey.mp4';
             link.href = url;
             link.setAttribute('download', fileName);
             link.setAttribute('target', 'new');
