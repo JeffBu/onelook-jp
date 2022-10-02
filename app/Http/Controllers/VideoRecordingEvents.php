@@ -137,4 +137,9 @@ class VideoRecordingEvents extends Controller
             return redirect()->route('access-video-record', ['video_key' => $key])->withErrors($validator)->withInput();
         }
     }
+
+    public function downloadFromPath(Request $request)
+    {
+        return Storage::download($request->path, 'onelook-video.mp4');
+    }
 }
