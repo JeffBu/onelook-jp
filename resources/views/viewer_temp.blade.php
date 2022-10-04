@@ -316,11 +316,8 @@
                 </div>
 
                 <div class="border border-white w-full">
-                    <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4" controls>
+                    <video class="video-js w-full vjs-fluid" id="ad-video" type="video/mp4; codec=H264" controls>
                         <source src="{{URL::asset("/media/videos/ichikawa-ad.mp4")}}" id="source">
-                    </video>
-                    <video class="video-js w-full vjs-fluid hidden" id="playback-video" controls type="video/mp4">
-                        <source src="https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}">
                     </video>
                 </div>
 
@@ -400,7 +397,6 @@
     </script>
     @if($record->uploader->subscription)
         <script>
-            const player = videojs('playback-video', {})
             const advert = videojs('ad-video', {})
             advert.src("https://storage.googleapis.com/onelook-bucket/{{str_replace(' ', '%20', $record->video_path)}}")
             advert.load()
@@ -408,7 +404,6 @@
         </script>
     @else
         <script>
-            const player = videojs('playback-video', {})
             const advert = videojs('ad-video', {})
             var flag = 0
 
