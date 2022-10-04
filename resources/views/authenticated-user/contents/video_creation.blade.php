@@ -433,7 +433,7 @@
         function startRecording() {
             recordedBlobs = [];
             let options = {
-                mimeType: 'video/webm;codecs=vp9,opus'
+                mimeType: 'video/mp4;codecs=H264,opus'
             };
             try {
                 mediaRecorder = new MediaRecorder(window.stream, options);
@@ -479,7 +479,7 @@
         completion.addEventListener('click', () => {
             //TODO : convert 1 sec ad from mp4 to blob
             const blob = new Blob(recordedBlobs, {
-                type: 'video/mp4; codecs=H264',
+                type: 'video/mp4',
             });
             const blobUrl = window.URL.createObjectURL(blob);
             fetch(blobUrl).then(response => response.blob())
