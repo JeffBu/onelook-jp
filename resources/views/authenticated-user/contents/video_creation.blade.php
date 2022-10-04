@@ -433,7 +433,7 @@
         function startRecording() {
             recordedBlobs = [];
             let options = {
-                mimeType: 'video/mp4;codecs=H264,opus'
+                mimeType: 'video/webm;codecs=vp9,opus'
             };
             try {
                 mediaRecorder = new MediaRecorder(window.stream, options);
