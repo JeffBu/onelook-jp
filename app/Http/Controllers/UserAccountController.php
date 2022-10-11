@@ -45,8 +45,14 @@ class UserAccountController extends Controller
 
             if($account)
             {
+                $request_com_name = "";
+                    if(empty($request->company_name)){
+                        $request_com_name = "---";
+                    }else{
+                        $request_com_name = $request->company_name;
+                    }
                 $account->update([
-                    'company' => $request->company_name,
+                    'company' => $request_com_name,
                 ]);
             }
             else {

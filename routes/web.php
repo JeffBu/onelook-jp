@@ -34,6 +34,8 @@ Route::middleware([
     Route::get('/', [MainController::class, 'index'])->name('dashboard');
     Route::get('video-creation', [MainController::class, 'video_creation'])->name('video-creation');
     Route::get('post-list', [MainController::class, 'post_list'])->name('post-list');
+    
+
     Route::get('membership-info', [MainController::class, 'membership_info'])->name('membership-info');
     Route::get('change-membership-plan', [MainController::class, 'change_membership_plan'])->name('change-membership-plan');
     Route::get('update-cancel-plan', [MainController::class, 'update_cancel_plan'])->name('update-cancel-plan');
@@ -62,6 +64,8 @@ Route::middleware([
     Route::post('delete-news', [AdminController::class, 'delete_news'])->name('delete-news');
     Route::post('delete-notifs', [AdminController::class, 'delete_notifs'])->name('delete-notifs');
     Route::post('delete-user', [AdminController::class, 'delete_user'])->name('delete-user');
+
+
     Route::post('checkout', [SubscriptionController::class, 'subscribe']);
 });
 

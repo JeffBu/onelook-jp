@@ -329,12 +329,12 @@
                         <div class="flex flex-col justify-start items-start text-sm gap-2">
                             <div class="flex flex-row items-center text-left text-sm gap-2">
                                 <span id="contributor-label">投稿者：</span>
-                                <span id="contributor"></span>
+                                <span id="contributor">{{$record->uploader->name}}</span>
                             </div>
 
                             <div class="flex flex-row items-center text-left text-sm gap-2">
                                 <span id="email-label">メールアドレス：</span>
-                                <span id="email"></span>
+                                <span id="email">{{$record->uploader->email}}</span>
                             </div>
                         </div>
                         <div class="flex flex-row justify-center items-center text-center text-sm gap-2">

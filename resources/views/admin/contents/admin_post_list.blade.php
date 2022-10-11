@@ -1,3 +1,4 @@
+
 @extends('admin.components.layout')
 @section('page-title')
     <title>{{config('app.name')}} - Post List</title>
@@ -5,6 +6,7 @@
 @section('extra-styles')
 @endsection
 @section('content')
+
 <!--content-->
 <div class="flex flex-col justify-center items-center w-full">
     <div class="flex justify-between items-center px-4 header-bg h-11 w-full sticky top-0 z-30">
@@ -18,11 +20,42 @@
     </div>
 
     <div class="flex justify-center items-center w-full">
+      
         <div class="flex flex-col justify-center items-center mt-8 w-11/12 z-10">
             <div class="flex items-center w-full">
                 <h1 class="text-xl font-semibold text-lime-600">投稿一覧</h1>
+            </div><br>
+            
+            <div class="flex items-right w-full">
+                <div class="flex justify-center">
+                    <div class="mb-3 xl:w-96">
+                        <form>
+                        <select class="form-select appearance-none
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding bg-no-repeat
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                            <option selected>Sort selection</option>
+                            <option value="1">Video Name</option>
+                            <option value="2">Author Name</option>
+                            <option value="3">Number of Views</option>
+                            <option value="3">Posted Data</option>
+                        </select>
+                        </form>
+                    </div>
+                  </div>
             </div>
-
+         
             <table class="text-center mt-6 border border-lime-600 w-full">
                 <thead>
                     <tr>
@@ -33,6 +66,7 @@
                         <th class="px-4 py-1 border border-lime-700 w-[5rem]">閲覧数</th>
                         <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿日</th>
                         <th class="px-4 py-1 border border-lime-700 w-[6rem]">閲覧期限</th>
+                        <th class="px-4 py-1 border border-lime-700 w-[10rem]">動画の URL</th>
                         <th class="px-4 py-1 border border-lime-700 w-[10rem]">閲覧URL</th>
                     </tr>
                 </thead>
@@ -47,7 +81,10 @@
                             <!-- <td class="px-4 py-1 border border-lime-700">{{$record->key}}</td> -->
                             <td class="px-4 py-1 border border-lime-700">{{$record->views->count()}}</td>
                             <td class="px-4 py-1 border border-lime-700">{{$record->created_at->format('Y年m月d日H:i')}}</td>
+                            
                             <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format('Y年m月d日')}}</td>
+                            <td class="px-4 py-1 border border-lime-700" ><div id="bar">{{$url}} </div><button id="btnCopyLink" data-clipboard-action="copy" data-clipboard-target="#bar" class="btnCopyLink container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">コピーリンク</button></td>
+                            
                             <td class="px-4 py-1 border border-lime-700">
                                 <div class="flex flex-col justify-center items-center gap-3">
                                     <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
@@ -56,11 +93,9 @@
                                         <div class="flex flex-col 2xl:flex-row gap-3 w-full">
                                             <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
                                             data-modal-toggle="previewModal" onclick="addSource('{{$record->id}}', '{{$url}}')">詳細</button>
-                                            <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
+                                            <button onclick="downloadVideo({{$record->id}})" class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
                                         </div>
-
-                                        <div class="flex flex-col 2xl:flex-row gap-3 w-full">
-                                            <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">コピーリンク</button>
+                                        
                                     </div>
                                 </div>
                             </td>
@@ -103,7 +138,12 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row items-center justify-between p-4 border-t border-gray-200 rounded-t-md gap-2">
-
+                    <input type="text" id="comment" class="w-full border-2 px-4 py-2 font-semibold rounded-md border-lime-600 text-left focus:ring-0 focus:outline-0 focus:border-lime-500" cols="30" rows="10" placeholder="コメント">
+                    <input type="hidden" name="record-id" id="record-id">
+                    <div class="flex flex-row items-center gap-2 w-2/3">
+                        <button class="container px-4 py-2 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500" onclick="approveVideo()">承認</button>
+                        <button class="container px-4 py-2 text-theme-white font-medium rounded-md bg-neutral-600 hover:bg-neutral-500" onclick="denyVideo()">拒否</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +153,8 @@
 @endsection
 
 @section('extra-scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!--script-->
 <script>
     $('#video-list').css('background-color', '#65a30d');
@@ -131,6 +173,39 @@
 
     }
 
+    var clipboard = new Clipboard('#btnCopyLink');
+        clipboard.on('success', function(e) {
+            e.clearSelection();
+            $.notify("ビデオリンクのコピーが完了しました!","success");
+        });
+        clipboard.on('error', function(e) {
+            $.notify("おっと！何かが間違っていた!","error");
+        });
+
+
+        function downloadVideo(id, button)
+        {
+            var url = "{{route('download')}}"
+
+            axios.post(url, {
+                id: id
+            }).then((response) => {
+                const link = document.createElement('a')
+                link.href = response.data[0]
+                link.setAttribute('download', response.data[1]);
+                link.click();
+                button.disabled = 'disabled'
+            }).catch((error) => {
+                Swal.fire({
+                    title: "ERROR",
+                    text: error.response.data['message'],
+                    icon: 'danger',
+                    showCancelButton: false
+                })
+            })
+        }
+
+    
 
 
 </script>

@@ -37,6 +37,9 @@ class AdminController extends Controller
 
         $recentRecords = VideoRecord::where('created_at', 'LIKE', $currentYear.'-'.$currentMonth.'%')->get();
         $lastMonthRecords = VideoRecord::where('created_at', 'LIKE', $currentYear.'-'.$lastMonth.'%')->get();
+
+        
+
         $data = array(
             'currentMonth' => $currentMonth,
             'lastMonth' => $lastMonth,

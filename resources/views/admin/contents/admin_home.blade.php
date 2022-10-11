@@ -137,7 +137,6 @@
 <script>
     $('#home').css('background-color', '#65a30d');
     $('#home').css('opacity', '1');
-
 </script>
 <!--script ends here-->
 @endsection

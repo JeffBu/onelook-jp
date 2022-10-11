@@ -52,7 +52,7 @@
                             <form method="POST" action="{{ route('access-video-record') }}">
                                 @csrf
                                 <div class="relative z-0 w-full mb-4 group">
-                                    <span class="text-neutral-600">メールに記載されたワンタイムパスワードを入力してください。有効期限は24時間です。</span>
+                                    <span class="text-neutral-600">動画閲覧へのアクセス <br>メールに記載されたパスワードを入力してください。</span>
                                 </div>
 
                                 <div class="relative z-0 w-full mb-4 group">
