@@ -40,9 +40,7 @@ class UserAccountController extends Controller
             'email' => $request->email
         ]);
 
-        if($request->company_name) {
-
-
+        // if($request->company_name) {
             if($account)
             {
                 $request_com_name = "";
@@ -62,7 +60,7 @@ class UserAccountController extends Controller
                     'notification_on' => 0,
                 ]);
             }
-        }
+       // }
 
 
 
