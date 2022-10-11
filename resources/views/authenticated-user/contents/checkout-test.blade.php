@@ -25,6 +25,10 @@
     .credit-card-box .display-tr {
         display: table-row;
     }
+
+    [type=button], [type=reset], [type=submit], button {
+        background-color: #007bff !important;
+    }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -112,7 +116,7 @@
                   </div>
                 </div>
                   <div class="form-group">
-                      {!! Form::submit('お申し込み開始', ['class' => 'btn btn-lg btn-block btn-primary btn-order', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                      {!! Form::submit('お申し込み開始', ['class' => 'btn btn-primary btn-lg btn-block', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
                   </div>
                   <div class="row">
                     <div class="col-md-12">
@@ -120,6 +124,13 @@
                     </div>
                   </div>
               {!! Form::close() !!}
+
+              <div class="row">
+                <div class="col-md-12" style="display: flex; justify-content: center;">
+                    <h4><b><a class="link-secondary" onclick="history.back()">戻る</a></b></h4>
+                    
+                </div>
+              </div>
             </div>
         </div>
     </div>
