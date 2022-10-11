@@ -479,7 +479,7 @@
         completion.addEventListener('click', () => {
             //TODO : convert 1 sec ad from mp4 to blob
             const blob = new Blob(recordedBlobs, {
-                type: 'video/mp4'
+                type: 'video/mp4',
             });
             const blobUrl = window.URL.createObjectURL(blob);
             fetch(blobUrl).then(response => response.blob())
