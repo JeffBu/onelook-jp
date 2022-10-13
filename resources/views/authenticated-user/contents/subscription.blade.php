@@ -228,7 +228,7 @@
             var user_email = "{{auth()->user()->email}}"
             Swal.fire({
                 width: '70%',
-                title: '<div style="display: flex; justify-content: center;" class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert"><span style="display: block; text-align: left; width: fit-content;" class="font-medium">ご希望される使い方などをお送りください。<br>担当者からご連絡いたします。</span></div>',
+                title: '<div style="display: flex; justify-content: center;" class="p-4 mb-4 text-base rounded-lg " role="alert"><span style="display: block; text-align: left; width: fit-content;" class="font-medium"><b>ご希望される使い方などをお送りください。<br>担当者からご連絡いたします。<b></span></div>',
                 html:   '<div class="text-justify mt-8">' +
                             '<div class="mb-6">'+
                                 '<label for="inquiry-email" class="block mb-2 text-sm font-medium text-gray-900">電子メールアドレス</label>'+

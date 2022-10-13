@@ -84,13 +84,100 @@ class AdminController extends Controller
     public function post_list()
     {
         $user = Auth::user();
-        $records = VideoRecord::latest()->get();
+        // $records = VideoRecord::latest()->get();
         $data = array(
             'user' => $user,
-            'records' => $records,
+            // 'records' => $records,
+        );
+       return view('admin.contents.admin_post_list', $data);
+    }
+
+
+    public function findAll(Request $request)
+    {
+        $columns = array( 
+            0 =>'title', 
+            1 =>'name',
+            2=> 'views',
+            3=> 'format',
+            4=> 'modify',
         );
 
-        return view('admin.contents.admin_post_list', $data);
+        $totalData = VideoRecord::with('views','uploader', 'access')->count();
+        //$query = Driver::where('status','1');
+        $totalFiltered = $totalData; 
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        if(empty($request->input('search.value')))
+        {            
+            $videoRecords = VideoRecord::with('views','uploader', 'access')
+                         ->offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+        }
+        else {
+            $search = $request->input('search.value'); 
+            $videoRecords = VideoRecord::with('uploader')
+                        ->whereHas('uploader',function($query) use ($search){
+                            $query->where('name','LIKE','%'.$search.'%');
+                        })
+                        ->orWhere('title', 'LIKE',"%{$search}%")
+                        ->orWhere('created_at', 'LIKE',"%{$search}%")
+                        ->offset($start)
+                        ->limit($limit)
+                        ->orderBy($order,$dir)
+                        ->get();
+            $totalFiltered = VideoRecord::with('uploader')
+                        ->whereHas('uploader',function($query) use ($search){
+                            $query->where('name','LIKE','%'.$search.'%');
+                        })
+                        ->orWhere('title', 'LIKE',"%{$search}%")
+                        ->orWhere('created_at', 'LIKE',"%{$search}%")
+                        ->count();
+
+        }
+
+        $data = array();
+        if(!empty($videoRecords))
+        {
+            foreach ($videoRecords as $videoRecord)
+            {  
+                $url = "https://storage.googleapis.com/onelook-bucket/".$videoRecord->video_path;
+                $btnUrl = '<span id="bar">'.$url.'</span><button id="btnCopyLink" data-clipboard-action="copy" data-clipboard-target="#bar" class="btnCopyLink container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">コピーリンク</button>';
+                $videoPlay = '<div class="flex flex-col justify-center items-center gap-3">'.
+                        '<video src="'.$url.'" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>'.
+                        '<div class="flex flex-col gap-3 w-full">'.
+                            '<div class="flex flex-col 2xl:flex-row gap-3 w-full">'.
+                                '<button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500" onclick="addSource(\''.$videoRecord->id.'\''.','.'\''.$url.'\')">再生</button>'.
+                                '<button onclick="downloadVideo('.$videoRecord->id.')" class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>'.
+                            '</div>'.
+                        '</div>'.
+                    '</div>';
+
+                $nestedData['title'] = $videoRecord->title;
+                $nestedData['name'] = $videoRecord->uploader->name;
+                $nestedData['views'] = $videoRecord->views->count();
+                $nestedData['format'] = $videoRecord->created_at->format('Y年m月d日H:i');
+                $nestedData['modify'] = $videoRecord->created_at->modify('+3 days')->format('Y年m月d日');
+                $nestedData['btnUrl'] = $btnUrl;
+                $nestedData['btnDownloadPlay'] = $videoPlay;
+                $data[] = $nestedData;
+            }
+        }
+          
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+            
+        return json_encode($json_data); 
     }
 
     public function announcement()

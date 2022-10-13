@@ -37,5 +37,7 @@ class VideoRecord extends Model
     {
         return $this->hasOne(VideoAccess::class, 'video_record_key', 'key');
     }
+    
+
 
 }

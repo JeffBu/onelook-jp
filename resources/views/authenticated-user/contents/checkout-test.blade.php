@@ -33,6 +33,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
 @section('head')
     @include('authenticated-user.components.head')
@@ -137,11 +138,15 @@
 
   </div>
 </div>
+
+
 @endsection
 @section('foot')
     @include('authenticated-user.components.foot')
 @endsection
 @section('js')
+
+
     <script>
         window.ParsleyConfig = {
             errorsWrapper: '<div></div>',
@@ -178,9 +183,26 @@
             } else {
                 var token = response.id;
                 $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-                $form.get(0).submit();
+                // - old
+                // $form.get(0).submit();
+                $form.get(0).submit(function( event ){
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Successfully subscribed!",
+                        type: "success",
+                        icon: "success"
+                    }).then(function() {
+                        window.location = "http://onelook-jp.test/membership-info";
+                    }); 
+                    event.preventDefault();
+                });
+
             }
         };
+
+      
+
     </script>
+
 @endsection
 

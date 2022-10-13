@@ -4,6 +4,20 @@
     <title>{{config('app.name')}} - Post List</title>
 @endsection
 @section('extra-styles')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<style>
+    #table_id th, #table_id td {
+  word-break: break-all; /* IE supports this */
+  word-break: break-word; /* IE doesn't support, and will ignore */
+  /* http://caniuse.com/#feat=word-break */
+  border: 1px solid rgb(167, 167, 167);
+
+}
+
+#t_body td{
+    border: 1px solid rgb(167, 167, 167);
+}
+</style>
 @endsection
 @section('content')
 
@@ -26,87 +40,24 @@
                 <h1 class="text-xl font-semibold text-lime-600">投稿一覧</h1>
             </div><br>
             
-            <div class="flex items-right w-full">
-                <div class="flex justify-center">
-                    <div class="mb-3 xl:w-96">
-                        <form>
-                        <select class="form-select appearance-none
-                            block
-                            w-full
-                            px-3
-                            py-1.5
-                            text-base
-                            font-normal
-                            text-gray-700
-                            bg-white bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                            {{-- Sort selection --}}
-                            <option selected>選択</option>
-                            {{-- Video Name --}}
-                            <option value="1">投稿者名</option>
-                            {{-- Author Name --}}
-                            <option value="2">閲覧数</option>
-                            {{-- Number of Views --}}
-                            <option value="3">投稿日</option>
-                            {{-- Posted Data --}}
-                            <option value="3">期限</option>
-                        </select>
-                        </form>
-                    </div>
-                  </div>
-            </div>
+        
          
-            <table class="text-center mt-6 border border-lime-600 w-full">
+            <table class="md:table-fixed text-center border border-green w-full" id="table_id">
                 <thead>
-                    <tr>
-                        <th class="px-4 py-1 border border-lime-700 w-[4.5rem]">選択</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">動画名</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿者ID</th>
-                        <!-- <th class="px-4 py-1 border border-lime-700 w-[6rem]">招待メール</th> -->
-                        <th class="px-4 py-1 border border-lime-700 w-[5rem]">閲覧数</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">投稿日</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[6rem]">閲覧期限</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[10rem]">動画の URL</th>
-                        <th class="px-4 py-1 border border-lime-700 w-[10rem]">閲覧URL</th>
+                    <tr class="border border-slate-700">
+                        <th>動画名</th>
+                        <th>投稿者ID</th>
+                        <!-- <th >招待メール</th> -->
+                        <th>閲覧数</th>
+                        <th>投稿日</th>
+                        <th>閲覧期限</th>
+                        <th>動画の URL</th>
+                        <th>閲覧URL</th>
                     </tr>
                 </thead>
 
-                <tbody>
-                    @forelse($records as $record)
-                        <?php $url = "https://storage.googleapis.com/onelook-bucket/".$record->video_path; ?>
-                        <tr>
-                            <td class="px-4 py-1 border border-lime-700"><input type="checkbox" name="" id="" class=" focus:ring-0 text-lime-600"></td>
-                            <td class="px-4 py-1 border border-lime-700">{{$record->title}}</td>
-                            <td class="px-4 py-1 border border-lime-700">{{$record->uploader->name}}</td>
-                            <!-- <td class="px-4 py-1 border border-lime-700">{{$record->key}}</td> -->
-                            <td class="px-4 py-1 border border-lime-700">{{$record->views->count()}}</td>
-                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->format('Y年m月d日H:i')}}</td>
-                            
-                            <td class="px-4 py-1 border border-lime-700">{{$record->created_at->modify('+3 days')->format('Y年m月d日')}}</td>
-                            <td class="px-4 py-1 border border-lime-700" ><div id="bar">{{$url}} </div><button id="btnCopyLink" data-clipboard-action="copy" data-clipboard-target="#bar" class="btnCopyLink container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">コピーリンク</button></td>
-                            
-                            <td class="px-4 py-1 border border-lime-700">
-                                <div class="flex flex-col justify-center items-center gap-3">
-                                    <video src="{{$url}}" alt="thumbnail" class="h-24 w-48 object-cover border-2 hover:border-yellow-400"></video>
-
-                                    <div class="flex flex-col gap-3 w-full">
-                                        <div class="flex flex-col 2xl:flex-row gap-3 w-full">
-                                            <button class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500"
-                                            data-modal-toggle="previewModal" onclick="addSource('{{$record->id}}', '{{$url}}')">再生</button>
-                                            <button onclick="downloadVideo({{$record->id}})" class="container px-4 py-1 text-theme-white font-medium rounded-md bg-lime-600 hover:bg-lime-500">ダウンロード</button>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                    @endforelse
+                <tbody class="border border-slate-700" id="t_body">
+      
                 </tbody>
             </table>
 
@@ -129,9 +80,8 @@
                     <h5 class="text-xl font-medium leading-normal text-neutral-800" id="exampleModalLgLabel">
                     プレビュー
                     </h5>
-                    <button type="button"
-                    class="flex items-center btn-close box-content rounded-full opacity-60 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-neutral-900 hover:opacity-75 hover:no-underline"
-                    data-modal-toggle="previewModal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                    <button type="button" class="flex items-center btn-close box-content rounded-full opacity-60 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-neutral-900 hover:opacity-75 hover:no-underline"
+                    onclick="closeModal();"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                     </svg></button>
                 </div>
@@ -160,22 +110,93 @@
 @section('extra-scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <!--script-->
 <script>
     $('#video-list').css('background-color', '#65a30d');
     $('#video-list').css('opacity', '1');
+    const targetEl = document.getElementById('previewModal');
+    const modal = new Modal(targetEl);
+
+    let table = new DataTable('#table_id', {
+            "processing": true,
+            "serverSide": true,
+            "language": {
+                "paginate": {
+                    "previous": "前のページ",
+                    "next": "次"
+                },      
+                "sSearch": "探す:",
+                "lengthMenu": "画面 _MENU_ ページあたりのレコード数",
+                "zeroRecords": "何も見つかりませんでした - 申し訳ありません",
+                "info": "表示中のページ _PAGE_ of _PAGES_",
+                "infoEmpty": "利用可能なレコードがありません",
+                "infoFiltered": "(からフィルタリング _MAX_ 総記録)",
+            },
+            "ajax": {
+                "url": '{{ route('admin-post-list-datatable') }}',
+                "dataType": "json",
+                "type": "GET",
+                "data": {
+                    _token: "{{ csrf_token() }}"
+                }
+            },
+            "columns": [{
+                    "data": "title"
+                },
+                {
+                    "data": "name"
+                },
+                {
+                    "data": "views"
+                },
+                {
+                    "data": "format"
+                },
+                {
+                    "data": "modify"
+                },
+                {
+                    "data": "btnUrl"
+                },
+                {
+                    "data": "btnDownloadPlay"
+                },
+            ],
+            "columnDefs": [{
+                "orderable": false,
+                "targets": [1, 2, 3, 4, 5, 6  ]
+            }, ],
+            initComplete: function() {
+                $('.dataTables_filter input').unbind();
+                $('.dataTables_filter input').bind('keyup', function(e) {
+                    var code = e.keyCode || e.which;
+                    if (code == 13) {
+                        table.search(this.value).draw();
+                    }
+                });
+            },
+        });
+
+
+
+    function closeModal(){
+        modal.hide();
+    }
 
     function addSource(id, path) {
-        var video = document.querySelector('#video')
-        $('#record-id').val(id)
-        video.src = path
+       // set the modal menu element
+        modal.show();
+        var video = document.querySelector('#video');
+        $('#record-id').val(id);
+        video.src = path;
+        
     }
 
     function approveVideo()
     {
         var content = $('#comment').val()
         var id = $('#comment').val()
-
     }
 
     var clipboard = new Clipboard('#btnCopyLink');
