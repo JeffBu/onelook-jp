@@ -118,7 +118,7 @@ class AdminController extends Controller
                          ->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
-                         ->get();
+                         ->get();                            
         }
         else {
             $search = $request->input('search.value'); 

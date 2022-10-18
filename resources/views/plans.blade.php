@@ -154,7 +154,7 @@
             <div class="text-sm">料金体系はこちら</div>
         </div>
         <div class="flex flex-col gap-2">
-            <a href="{{route('view-plans')}}" class="text-theme-yellow font-medium">Plan</a>
+            {{-- <a href="{{route('view-plans')}}" class="text-theme-yellow font-medium">Plan</a> --}}
             <div class="text-sm">Free Plan</div>
             <div class="text-sm">Personal Plan</div>
         </div>

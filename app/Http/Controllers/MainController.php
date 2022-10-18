@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InquiryMail;
-
+use DB;
+use Carbon\carbon;
 class MainController extends Controller
 {
     public function login_test()
@@ -79,13 +80,21 @@ class MainController extends Controller
 
     public function post_list()
     {
+        if(auth()->user()->subscription){
+            $noOfDaysToBeExpire = '7';
+        }else{
+            $noOfDaysToBeExpire = '3';
+        }
+        
         $user = Auth::user();
-        $video_records = VideoRecord::where('user_id', $user->id)->latest()->get();
+        $video_records = VideoRecord::where('user_id', $user->id)
+                        ->where('created_at','>',Carbon::today()->subDay($noOfDaysToBeExpire))
+                        // ->whereRaw('created_at between created_at AND DATE_ADD(created_at, INTERVAL 3 DAYS)')
+                        ->latest()->get();
         $data = array(
             'user' => $user,
             'video_records' => $video_records,
         );
-
         return view('authenticated-user.contents.post_list', $data);
     }
 

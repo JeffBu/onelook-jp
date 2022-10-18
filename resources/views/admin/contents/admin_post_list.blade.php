@@ -121,6 +121,7 @@
     let table = new DataTable('#table_id', {
             "processing": true,
             "serverSide": true,
+            "bFilter": false,
             "language": {
                 "paginate": {
                     "previous": "前のページ",
@@ -165,7 +166,7 @@
             ],
             "columnDefs": [{
                 "orderable": false,
-                "targets": [1, 2, 3, 4, 5, 6  ]
+                "targets": [ 2, 3, 4, 5, 6  ]
             }, ],
             initComplete: function() {
                 $('.dataTables_filter input').unbind();
