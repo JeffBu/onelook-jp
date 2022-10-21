@@ -9,6 +9,8 @@ use App\Models\VideoRecord;
 use App\Models\News;
 use App\Models\PostHistory;
 use App\Models\CustomerCard;
+use App\Models\Subscription;
+use App\Models\Subscribers;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -153,21 +155,23 @@ class MainController extends Controller
     public function payment_history()
     {
         $user = Auth::user();
+        $subscriptionList = Subscription::where('user_id', $user->id)->get();
+
         $data = array(
             'user' => $user,
+            'billingStatementList' => $subscriptionList,
         );
-
         return view('payment_history', $data);
     }
 
-    public function payment_history_2()
+    public function payment_history_2($id)
     {
-        $user = Auth::user();
-        $data = array(
-            'user' => $user,
-        );
 
-        return view('payment_history_2', $data);
+        $user = Auth::user();
+        $subscriber = Subscribers::where('user_id', $user->id)->first();
+        $subscriptionList = Subscription::where('user_id', $user->id)->findOrFail($id);
+        // dd($subscriber);
+       return view('payment_history_2',  compact('user','subscriber','subscriptionList'));
     }
 
     public function faq_page()
@@ -237,6 +241,15 @@ class MainController extends Controller
     public function checkout_page()
     {
         return view('authenticated-user.contents.checkout');
+    }
+
+    public function billingStatementlist(){
+
+        $user = Auth::user()->id;
+        $subscriptionList = Subscription::where('user_id', $user)->get();
+            
+        return json_encode($subscriptionList);
+
     }
 
 }

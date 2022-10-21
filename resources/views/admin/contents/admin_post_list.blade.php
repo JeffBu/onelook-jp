@@ -166,7 +166,7 @@
             ],
             "columnDefs": [{
                 "orderable": false,
-                "targets": [ 2, 3, 4, 5, 6  ]
+                "targets": [ 2, 5, 6  ]
             }, ],
             initComplete: function() {
                 $('.dataTables_filter input').unbind();

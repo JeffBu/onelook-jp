@@ -48,7 +48,7 @@
     <div>
         <h1 class="text-center text-3xl font-bold text-cyan-600 pb-10 pt-20">領収リスト</h1>
     </div>
-
+    
     <div class="flex justify-center items-center">
         <table class="text-center w-1/2 border border-sky-700">
             <thead>
@@ -60,16 +60,22 @@
                 </tr>
             </thead>
             <tbody>
+                @inject('carbon', 'Carbon\Carbon')
+                @forelse($billingStatementList as $billingStatement)
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.04.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->created_at->format('Y-m-d')}}</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->created_at->format('Y-m-d')}}</td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">
-                        <a href="{{route('payment-history-2')}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">有料サービス（2020/04/28-2020/05/27)</a>
+                        <a href="/payment-history-2/{{$billingStatement->id}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">有料サービス ( {{$billingStatement->created_at->format('Y年m月d日H:i')}} - {{$carbon::parse($billingStatement->ends_at)->format('Y年m月d日H:i')}} )</a>
                     </td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">\800</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->stripe_price}}</td>
                 </tr>
-
-                <tr>
+                @empty
+                    <div class="flex w-full">
+                        <span>表示するレコードがありません</span>
+                    </div>
+                @endforelse
+                {{-- <tr>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">2020.05.28</td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">
@@ -111,7 +117,7 @@
                     <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
     </div>

@@ -24,7 +24,7 @@
 </head>
 
 <body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
-
+    @inject('carbon', 'Carbon\Carbon')
     <!--header-->
     <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
     id="header-frame">
@@ -49,9 +49,9 @@
     <!--header ends here-->
 
     <!--content-->
-    <div  id="divPrintPDF" style="background-color: white" >
-        <div class="flex justify-center items-center pt-20" id="divPrint" >
-            <table class="text-center border border-sky-700">
+    <div  id="divPrintPDF" style="background-color: white;" class="flex justify-center items-center pt-20" >
+        <div class="flex justify-center items-center" id="divPrint" style="width: fit-content; background-color:white;"  >
+            <table class="text-center border border-sky-700 border-2">
                 <thead>
                     <tr>
                         <th colspan="2" class="px-1 py-1 border-x border-y border-cyan-600" style="">
@@ -70,33 +70,26 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr>
                         <td class="px-1 py-1 border-x border-y border-cyan-600">宛先</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">購入日</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">支払日</td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                     </tr>
 
                     <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">〒530-0044</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">2020.10.2</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriber->address}}</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriptionList->created_at->format('Y-m-d')}}</td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                     </tr>
-
                     <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">大阪府大阪市北区東天満2－6－7<br>南森町東一号館9階</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">市川欽一税理士事務所</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriber->company}}</td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                     </tr>
 
                     <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">市川　欽一　様</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$user->name}}</td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
                     </tr>
@@ -108,15 +101,15 @@
                     </tr>
 
                     <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">有料サービス（2014/01/28-2014/02/27)</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">有料サービス ( {{$subscriptionList->created_at->format('Y年m月d日H:i')}} - {{$carbon::parse($subscriptionList->ends_at)->format('Y年m月d日H:i')}} )</td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600">ダウンロード会員</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">\800</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriptionList->stripe_price}}</td>
                     </tr>
 
                     <tr>
                         <td class="px-1 py-1 border-x border-y border-cyan-600">合計</td>
                         <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">\800</td>
+                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriptionList->stripe_price}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -195,39 +188,29 @@
             document.location.reload();
         });
 
-
         document.getElementById("btnDownloadPDF").addEventListener("click", function() {
 
+            var HTML_Width = 520;
+            var HTML_Height = 300;
+            var top_left_margin = 50;
+            var PDF_Width = HTML_Width;
+            var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
 
-            var pdf = new jsPDF('p', 'pt', 'letter');
-            pdf.canvas.height = 72 * 11;
-            pdf.canvas.width = 72 * 8.5;
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
 
-            pdf.fromHTML(document.html);
+            html2canvas($("#divPrint")[0]).then(function (canvas) {
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF('p', 'pt', 'letter');
+                pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+                for (var i = 1; i <= totalPDFPages; i++) { 
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'JPG', canvas_image_width, canvas_image_height);
+                }
+                pdf.save("Invoice-onelook.pdf");
+            });
 
-            pdf.save('invoice.pdf');
-            
-            // var HTML_Width = $("#divPrintPDF").width();
-            // var HTML_Height = $("#divPrintPDF").height();
-            // var top_left_margin = 15;
-            // var PDF_Width = HTML_Width + (top_left_margin * 2);
-            // var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-            // var canvas_image_width = HTML_Width;
-            // var canvas_image_height = HTML_Height;
-
-            // var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-            // html2canvas($("#divPrintPDF")[0]).then(function (canvas) {
-            //     var imgData = canvas.toDataURL("image/jpeg", 1.0);
-            //     var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-            //     pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-            //     for (var i = 1; i <= totalPDFPages; i++) { 
-            //         pdf.addPage(PDF_Width, PDF_Height);
-            //         pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
-            //     }
-            //     pdf.save("Your_PDF_Name.pdf");
-            //     // $("#divPrintPDF").hide();
-            // });
         });
     </script>
     <!--script ends here-->

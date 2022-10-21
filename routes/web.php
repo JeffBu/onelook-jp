@@ -42,7 +42,11 @@ Route::middleware([
     Route::get('edit-member-info', [MainController::class, 'edit_member_info'])->name('edit-member-info');
     Route::get('edit-personal-info', [MainController::class, 'edit_personal_info'])->name('edit-personal-info');
     Route::get('payment-history', [MainController::class, 'payment_history'])->name('payment-history');
-    Route::get('payment-history-2', [MainController::class, 'payment_history_2'])->name('payment-history-2');
+    //reymart
+    Route::get('billing-statement-list', [MainController::class, 'billingStatementlist'])->name('billing-statement-list');
+
+    Route::get('payment-history-2/{id}', [MainController::class, 'payment_history_2'])->name('payment-history-2');
+
     Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 
     Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');
@@ -67,7 +71,6 @@ Route::middleware([
     Route::post('delete-news', [AdminController::class, 'delete_news'])->name('delete-news');
     Route::post('delete-notifs', [AdminController::class, 'delete_notifs'])->name('delete-notifs');
     Route::post('delete-user', [AdminController::class, 'delete_user'])->name('delete-user');
-
 
     Route::post('checkout', [SubscriptionController::class, 'subscribe']);
 });

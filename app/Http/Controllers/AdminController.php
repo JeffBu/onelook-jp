@@ -99,8 +99,8 @@ class AdminController extends Controller
             0 =>'title', 
             1 =>'name',
             2=> 'views',
-            3=> 'format',
-            4=> 'modify',
+            3=> 'created_at',
+            4=> 'updated_at',
         );
 
         $totalData = VideoRecord::with('views','uploader', 'access')->count();
@@ -114,7 +114,15 @@ class AdminController extends Controller
 
         if(empty($request->input('search.value')))
         {            
-            $videoRecords = VideoRecord::with('views','uploader', 'access')
+            $videoRecords = VideoRecord::with('views','access')
+                         ->join('users', 'users.id', 'video_records.user_id')
+                         ->select(
+                            'video_records.id AS id',
+                            'video_records.video_path AS video_path',
+                            'video_records.title AS title',
+                            'users.name AS name',
+                            'video_records.created_at AS created_at',
+                            'video_records.updated_at AS updated_at')
                          ->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
@@ -141,7 +149,7 @@ class AdminController extends Controller
                         ->count();
 
         }
-
+        
         $data = array();
         if(!empty($videoRecords))
         {
@@ -160,10 +168,10 @@ class AdminController extends Controller
                     '</div>';
 
                 $nestedData['title'] = $videoRecord->title;
-                $nestedData['name'] = $videoRecord->uploader->name;
+                $nestedData['name'] = $videoRecord->name;
                 $nestedData['views'] = $videoRecord->views->count();
                 $nestedData['format'] = $videoRecord->created_at->format('Y年m月d日H:i');
-                $nestedData['modify'] = $videoRecord->created_at->modify('+3 days')->format('Y年m月d日');
+                $nestedData['modify'] = $videoRecord->updated_at->modify('+3 days')->format('Y年m月d日');
                 $nestedData['btnUrl'] = $btnUrl;
                 $nestedData['btnDownloadPlay'] = $videoPlay;
                 $data[] = $nestedData;
@@ -176,7 +184,7 @@ class AdminController extends Controller
             "recordsFiltered" => intval($totalFiltered), 
             "data"            => $data   
             );
-            
+       
         return json_encode($json_data); 
     }
 
