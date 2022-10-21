@@ -71,53 +71,15 @@
                     <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->stripe_price}}</td>
                 </tr>
                 @empty
-                    <div class="flex w-full">
-                        <span>表示するレコードがありません</span>
-                    </div>
-                @endforelse
-                {{-- <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">2020.05.28</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">基本同日</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">
-                        <a href="{{route('payment-history-2')}}"  class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">有料サービス（2020/04/28-2020/05/27)</a>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        
+                            表示するレコードがありません
+                       
                     </td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">\800</td>
+                   
                 </tr>
-
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                </tr>
-
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                </tr>
-
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                </tr>
-
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                </tr>
-
-                <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">-</td>
-                </tr> --}}
+                @endforelse
             </tbody>
         </table>
     </div>
