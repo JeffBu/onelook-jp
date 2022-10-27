@@ -1,8 +1,39 @@
 @extends('authenticated-user.components.layout')
 @section('page-title')
-    <title>{{config('app.name')}} - Subcriptions</title>
+<title>{{config('app.name')}} - Checkout</title>
 @endsection
 @section('css')
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    .alert.parsley {
+        margin-top: 5px;
+        margin-bottom: 0px;
+        padding: 10px 15px 10px 15px;
+    }
+    .check .alert {
+        margin-top: 20px;
+    }
+    .credit-card-box .panel-title {
+        display: inline;
+        font-weight: bold;
+    }
+    .credit-card-box .display-td {
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+    }
+    .credit-card-box .display-tr {
+        display: table-row;
+    }
+
+    [type=button], [type=reset], [type=submit], button {
+        background-color: #007bff !important;
+    }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
 @section('head')
     @include('authenticated-user.components.head')
@@ -110,7 +141,9 @@
 
 
 @endsection
-
+@section('foot')
+    @include('authenticated-user.components.foot')
+@endsection
 @section('js')
 
 
