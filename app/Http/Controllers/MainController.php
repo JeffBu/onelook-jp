@@ -174,6 +174,19 @@ class MainController extends Controller
        return view('payment_history_2',  compact('user','subscriber','subscriptionList'));
     }
 
+    public function stripe_display_data()
+    {
+        $user = Auth::user();
+        $subscriberList = Subscribers::all();
+        $subscriptionList = Subscription::all();
+        $data = array(
+            'subscriberList' => $subscriberList,
+            'subscriptionList' => $subscriptionList
+        );
+        return json_encode($data); 
+       //return view('payment_history_2',  compact('user','subscriber','subscriptionList'));
+    }
+
     public function faq_page()
     {
         $user = Auth::user();

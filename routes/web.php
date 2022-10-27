@@ -47,6 +47,9 @@ Route::middleware([
 
     Route::get('payment-history-2/{id}', [MainController::class, 'payment_history_2'])->name('payment-history-2');
 
+    //Route::get('stripe-display-data', [MainController::class, 'stripe_display_data'])->name('stripe-display-data');
+
+
     Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 
     Route::post('modify-account', [UserAccountController::class, 'modify_account'])->name('modify-account');

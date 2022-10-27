@@ -1,124 +1,127 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneLook</title>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
-    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css" />
-
-
+    @inject('carbon', 'Carbon\Carbon')
+    @extends('authenticated-user.components.layout')
+    @section('page-title')
+        <title>{{config('app.name')}} - Records</title>
+    @endsection
+    @section('css')
     <style>
         .active {
             text-decoration: underline;
             text-decoration-color: #ff9011;
             text-underline-offset: 4px;
-            text-decoration-thickness: 2px;
+            text-decoration-thickness: 1px;
         }
-
-        
-
+        #tbl_id tbody tr td{
+            border: solid 1px;
+        }
     </style>
-</head>
-
-<body class="justify-center items-center bg-theme-white text-theme-black font-['Calibri']">
-    @inject('carbon', 'Carbon\Carbon')
-    <!--header-->
-    <header class="flex shadow bg-sky-600 justify-between items-center py-5 px-5 h-11 tracking-widest fixed w-full z-50"
-    id="header-frame">
-
-        <div class="items-center w-32">
-            <div class="font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-        <div class="flex justify-center items-start gap-7 py-6 font-small text-sm font-bold text-theme-white w-full">
-            <a href="{{route('dashboard')}}" id="home-tab">ホーム</a>
-            <a href="{{route('video-creation')}}" id="video-maker-tab">ムービー作成</a>
-            <a href="{{route('post-list')}}" id="post-list-tab">投稿リスト</a>
-            <a href="{{route('membership-info')}}" id="member-tab">会員情報</a>
-            <a href="#" id="faq-tab">FAQ</a>
-        </div>
-
-        <div class="items-center w-32">
-            <div class="hidden font-semibold text-theme-white text-xl">{{config('app.name')}}</div>
-        </div>
-
-    </header>
-    <!--header ends here-->
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0; border: 1px solid; border-color: #0080ff;}
+        .tg td{border-color:#0080ff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 20px;word-break:normal;}
+        .tg th{border-color:#0080ff;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 20px;word-break:normal; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-exfh{border-color:inherit;color:#2A221B;font-weight:bold;text-align:center;vertical-align:middle; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-7hcj{border-color:inherit;color:#2A221B;text-align:right;vertical-align:middle; border: 1px solid; border-color: #0080ff; }
+        .tg .tg-dcdw{border-color:inherit;color:#2A221B;text-align:center;vertical-align:middle; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-yz93{border-color:inherit;text-align:right;vertical-align:middle; border: 1px solid; border-color: #0080ff;}
+        .tg .tg-eyrm{border-color:inherit;color:#2A221B;text-align:left;vertical-align:middle; border: 1px solid; border-color: #0080ff;}
+    </style>
+    @endsection
+    @section('head')
+        @include('authenticated-user.components.head')
+    @endsection
+    @section('content')
 
     <!--content-->
-    <div  id="divPrintPDF" style="background-color: white;" class="flex justify-center items-center pt-20" >
+    <div  id="divPrintPDF" class="flex justify-center items-center pt-20" >
         <div class="flex justify-center items-center" id="divPrint" style="width: fit-content; background-color:white;"  >
-            <table class="text-center border border-sky-700 border-2">
+            
+           
+                <table class="tg" style="undefined;table-layout: fixed; width: 1007px">
+                <colgroup>
+                <col style="width: 366px">
+                <col style="width: 219px">
+                <col style="width: 165px">
+                <col style="width: 257px">
+                </colgroup>
                 <thead>
-                    <tr>
-                        <th colspan="2" class="px-1 py-1 border-x border-y border-cyan-600" style="">
-                            <div class="" style="display: flex; align-items: center; justify-content: center;">
-                                <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-11 mt-1" id="onelook_logo">
-                            </div>
-                            <h2>請求書　兼　領収書</h2>
-                        </th>
-                        <th rowspan="4" class="px-1 py-1 border-x border-y border-cyan-600 w-2/5">
-                            <div class="font-medium">
-                                <p>株式会社モアジョブ<br></p>
-                                <p>〒530-0044　<br></p>
-                                <p>大阪府大阪市北区東天満2－6－7<br></p>
-                                <p>南森町東一号館8階<br></p>
-                            </div>
-                        </th>
-                    </tr>
+                  <tr>
+                    <th class="tg-0pky" rowspan="4">
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <img src="{{asset('media/logos/2.png')}}" alt="onelook_logo" class="h-30 w-60 mt-8" id="onelook_logo">
+                        </div>
+                        <div class="text-center">
+                            <h3><b>請求書　兼　領収書</b></h3>
+                        </div>
+                        
+                    </th>
+                    <th class="tg-dvpl" colspan="2">発行日：</th>
+                    <th class="tg-dvpl">{{$carbon::now()->format('Y年m月d日')}}</th>
+                  </tr>
+                  <tr>
+                    <th class="tg-dvpl" colspan="3">株式会社モアジョブ</th>
+                  </tr>
+                  <tr>
+                    <th class="tg-dvpl" colspan="3">---</th>
+                  </tr>
+                  <tr>
+                    <th class="tg-7hcj" colspan="3">〒530-0044<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大阪府大阪市北区東天満2－6－7<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;南森町東一号館8階</th>
+                  </tr>
                 </thead>
-                <tbody >
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">宛先</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">支払日</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriber->address}}</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriptionList->created_at->format('Y-m-d')}}</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    </tr>
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriber->company}}</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$user->name}}</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">製品</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">種別</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">金額（税込）</td>
-                    </tr>
-
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">有料サービス ( {{$subscriptionList->created_at->format('Y年m月d日H:i')}} - {{$carbon::parse($subscriptionList->ends_at)->format('Y年m月d日H:i')}} )</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">ダウンロード会員</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriptionList->stripe_price}}</td>
-                    </tr>
-
-                    <tr>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">合計</td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600"></td>
-                        <td class="px-1 py-1 border-x border-y border-cyan-600">{{$subscriptionList->stripe_price}}</td>
-                    </tr>
+                <tbody>
+                  <tr>
+                    <td class="tg-7hcj">支払日</td>
+                    <td class="tg-dcdw" colspan="3">{{$subscriptionList->created_at->format('Y年m月d日')}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-yz93">会社名</td>
+                    <td class="tg-dcdw" colspan="3">{{$subscriber->company}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-yz93">氏名</td>
+                    <td class="tg-dcdw" colspan="3">{{$user->name}}</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-7hcj">サービス種別</td>
+                    <td class="tg-dcdw" colspan="3">パーソナルプラン（月額）or（年額）</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-yz93">サービス内容</td>
+                    <td class="tg-dcdw" colspan="3">支払日から１ヶ月または１年</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-eyrm" rowspan="4" style="text-align: center">領収金額の内訳</td>
+                    <td class="tg-exfh">税率</td>
+                    <td class="tg-exfh">税込価格</td>
+                    <td class="tg-exfh">消費税額</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-dcdw">8％部分</td>
+                    <td class="tg-eyrm"> ---</td>
+                    <td class="tg-lboi">---</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-dcdw">10％部分</td>
+                    <td class="tg-eyrm"> ---</td>
+                    <td class="tg-lboi"> ---</td>
+                  </tr>
+                  <tr>
+                    <td class="tg-dcdw">合計</td>
+                    <td class="tg-eyrm"> ---</td>
+                    <td class="tg-lboi"> ---</td>
+                  </tr>
                 </tbody>
-            </table>
+                </table>
+            
         </div><br>
     </div>
     <div class="flex space-x-2 justify-center pt-2" >
         <div>
           <button id="btnprint" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-                印刷する
+            印刷する
           </button>
           <button id="btnDownloadPDF" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
               ダウンロード
@@ -128,7 +131,11 @@
       </div>
     <div class="pt-40"></div>
     <!--content ends here-->
-
+    @endsection
+    @section('foot')
+        @include('authenticated-user.components.foot')
+    @endsection
+    @section('js')
     <!--script-->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -214,5 +221,4 @@
         });
     </script>
     <!--script ends here-->
-</body>
-</html>
+    @endsection

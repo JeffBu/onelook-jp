@@ -28,6 +28,17 @@ class UserTableSeeder extends Seeder
             'is_admin' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+        ],
+        [
+            'username' => 'client side',
+            'name' => 'Onelook Sample',
+            'email' => 'retmart.a@onelook.jp',
+            'email_verification_token' => Str::random(100),
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('onelook1234'),
+            'is_admin' => 0,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }
