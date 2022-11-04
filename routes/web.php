@@ -60,11 +60,13 @@ Route::middleware([
 
     Route::get('admin-home', [AdminController::class, 'index'])->name('admin-home');
     Route::get('admin-member-list', [AdminController::class, 'member_list'])->name('admin-member-list');
+    
     Route::get('admin-member-info', [AdminController::class, 'user_info'])->name('admin-member-info');
     Route::get('admin-post-list', [AdminController::class, 'post_list'])->name('admin-post-list');
 
     Route::get('admin-post-list-datatable', [AdminController::class, 'findAll'])->name('admin-post-list-datatable');
-
+    Route::get('admin-member-list-datatable', [AdminController::class, 'memberFindAll'])->name('admin-member-list-datatable');
+    
     Route::get('admin-viewer', [MainController::class, 'admin_viewer'])->name('admin-viewer');
     Route::get('admin-settings', [MainController::class, 'admin_settings'])->name('admin-settings');
     Route::get('admin-posting', [AdminController::class, 'announcement'])->name('admin-posting');

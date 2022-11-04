@@ -1,10 +1,10 @@
 @extends('authenticated-user.components.layout')
 @section('page-title')
-<title>{{config('app.name')}} - Checkout</title>
+    <title>{{config('app.name')}} - Subcriptions</title>
 @endsection
 @section('css')
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+
+<style>
     .alert.parsley {
         margin-top: 5px;
         margin-bottom: 0px;
@@ -29,179 +29,172 @@
     [type=button], [type=reset], [type=submit], button {
         background-color: #007bff !important;
     }
+    a:hover {
+ cursor:pointer;
+}
     </style>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection
 @section('head')
     @include('authenticated-user.components.head')
 @endsection
-@section('content')
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default credit-card-box mt-20 ">
-        <div class="panel-heading display-table" >
-            <div class="row display-tr" >
-                <strong class="h3">パーソナルプランへのお申し込み</strong>
-            </div>
-        </div>
-        <div class="panel-body h5">
-            <div class="col-md-12">
-              {!! Form::open(['url' => route('pay-for-subscription'), 'data-parsley-validate', 'id' => 'payment-form']) !!}
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block">
-                  <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                </div>
-                @endif
-                @if ($message = Session::get('error'))
-                <div class="alert alert-danger alert-block">
-                  <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                </div>
-                @endif
-                <div class="form-group" id="product-group">
-                    {!! Form::label('plane', 'プラン選択:') !!}
-                    {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '月額お申し込み', 'price_1LlRpUBPZ9RrUCvReHngtc7s' => '年間お申し込み', ], 'Book', [
-                        'class'                       => 'form-control',
-                        'required'                    => 'required',
-                        'data-parsley-class-handler'  => '#product-group'
-                        ]) !!}
-                </div>
-                <div class="form-group" id="cc-group">
-                    {!! Form::label(null, 'カード番号を入力してください:') !!}
-                    {!! Form::text(null, null, [
-                        'class'                         => 'form-control',
-                        'required'                      => 'required',
-                        'data-stripe'                   => 'number',
-                        'data-parsley-type'             => 'number',
-                        'maxlength'                     => '16',
-                        'data-parsley-trigger'          => 'change focusout',
-                        'data-parsley-class-handler'    => '#cc-group'
-                        ]) !!}
-                </div>
-                <div class="form-group" id="ccv-group">
-                    {!! Form::label(null, 'C V C番号を入力してください:') !!}
-                    {!! Form::text(null, null, [
-                        'class'                         => 'form-control',
-                        'required'                      => 'required',
-                        'data-stripe'                   => 'cvc',
-                        'data-parsley-type'             => 'number',
-                        'data-parsley-trigger'          => 'change focusout',
-                        'maxlength'                     => '4',
-                        'data-parsley-class-handler'    => '#ccv-group'
-                        ]) !!}
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group" id="exp-m-group">
-                        {!! Form::label(null, 'カード有効月') !!}
-                        {!! Form::selectMonth(null, null, [
-                            'class'                 => 'form-control',
-                            'required'              => 'required',
-                            'data-stripe'           => 'exp-month'
-                        ], '%m') !!}
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group" id="exp-y-group">
-                        {!! Form::label(null, 'カード有効年') !!}
-                        {!! Form::selectYear(null, date('Y'), date('Y') + 10, null, [
-                            'class'             => 'form-control',
-                            'required'          => 'required',
-                            'data-stripe'       => 'exp-year'
-                            ]) !!}
-                    </div>
-                  </div>
-                </div>
-                  <div class="form-group">
-                      {!! Form::submit('お申し込み開始', ['class' => 'btn btn-primary btn-lg btn-block', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                        <span class="payment-errors justify-between" style="color: red;margin-top:10px;"></span>
-                    </div>
-                  </div>
-              {!! Form::close() !!}
 
-              <div class="row">
-                <div class="col-md-12" style="display: flex; justify-content: center;">
-                    <h4><b><a class="link-secondary" onclick="history.back()">戻る</a></b></h4>
-                    
+@section('content')
+    <!--content-->
+    <div class="flex flex-col justify-center items-center gap-8 w-full">
+    
+    <div class="container mx-auto px-10">
+        <div class="grid grid-cols-1 bg-slate-100 pt-20" >
+            <div class="flex justify-center">
+                <div class="block rounded-lg shadow-lg bg-white w-1/2 text-center">
+                <div class="py-3 px-6 border-b border-gray-300">パーソナルプランへのお申し込み</div>
+                
+                    <div class="grid grid-cols-1 p-4 bg-slate-100" >
+                        
+                        {!! Form::open(['url' => route('pay-for-subscription'), 'data-parsley-validate', 'id' => 'payment-form']) !!}
+                            @if ($message = Session::get('success'))
+                            <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3">
+
+                                <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-green-900 border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-green-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+                            {{-- <button type="button" class="close" data-dismiss="alert">×</button> --}}
+                                    <strong>{{ $message }}</strong>
+                            </div>
+                            @endif
+                            @if ($message = Session::get('error'))
+                            <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3">
+                                <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-red-900 border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-red-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <strong>{{ $message }}</strong>
+                            </div>
+                            @endif
+                            <div class="frelative mt-1 rounded-md text-left pb-3" id="product-group">
+                                {!! Form::label('plane', 'プラン選択:') !!}
+                                {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '月額お申し込み', 'price_1LlRpUBPZ9RrUCvReHngtc7s' => '年間お申し込み', ], 'Book', [
+                                    'class'                       => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
+                                    'required'                    => 'required',
+                                    'data-parsley-class-handler'  => '#product-group'
+                                    ]) !!}
+                            </div>
+                            <div class="frelative mt-1 rounded-md text-left pb-3" id="cc-group">
+                                {!! Form::label(null, 'カード番号を入力してください:') !!}
+                                {!! Form::text(null, null, [
+                                    'class'                         => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
+                                    'required'                      => 'required',
+                                    'data-stripe'                   => 'number',
+                                    'data-parsley-type'             => 'number',
+                                    'maxlength'                     => '16',
+                                    'data-parsley-trigger'          => 'change focusout',
+                                    'data-parsley-class-handler'    => '#cc-group'
+                                    ]) !!}
+                            </div>
+                            <div class="frelative mt-1 rounded-md text-left pb-3" id="ccv-group">
+                                {!! Form::label(null, 'C V C番号を入力してください:') !!}
+                                {!! Form::text(null, null, [
+                                    'class'                         => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
+                                    'required'                      => 'required',
+                                    'data-stripe'                   => 'cvc',
+                                    'data-parsley-type'             => 'number',
+                                    'data-parsley-trigger'          => 'change focusout',
+                                    'maxlength'                     => '4',
+                                    'data-parsley-class-handler'    => '#ccv-group'
+                                    ]) !!}
+                            </div>
+                            <div class="grid grid-cols-2 bg-slate-100">
+                                <div class="frelative mt-1 rounded-md text-left pb-3" id="exp-m-group">
+                                    {!! Form::label(null, 'カード有効月') !!}
+                                    {!! Form::selectMonth(null, null, [
+                                        'class'                 => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
+                                        'required'              => 'required',
+                                        'data-stripe'           => 'exp-month'
+                                    ], '%m') !!}
+                                </div>
+                                <div class="frelative mt-1 rounded-md text-left pb-3" id="exp-y-group">
+                                    {!! Form::label(null, 'カード有効年') !!}
+                                    {!! Form::selectYear(null, date('Y'), date('Y') + 10, null, [
+                                        'class'             => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
+                                        'required'          => 'required',
+                                        'data-stripe'       => 'exp-year'
+                                        ]) !!}
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 bg-slate-100">
+                                {!! Form::submit('お申し込み開始', ['class' => 'inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                            </div>
+                            <div class="grid grid-cols-1 bg-slate-100">
+                                <span class="payment-errors justify-between" style="color: red;margin-top:10px;"></span>
+                            </div>
+                        {!! Form::close() !!}
+
+                      
+                <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
+                    <div class="grid grid-cols-1 bg-slate-100" style="display: flex; justify-content: center;">
+                        <h4><b><a class="text-purple-600 hover:text-purple-700 transition duration-300 ease-in-out mb-4" onclick="history.back()">戻る</a></b></h4>
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
+
         </div>
     </div>
 
-  </div>
-</div>
-
-
+    <div class="pt-40"></div>
+    <!--content ends here-->
 @endsection
-@section('foot')
-    @include('authenticated-user.components.foot')
-@endsection
+
 @section('js')
+<script>
 
+jQuery(document).ready(function() {
+            $('#membership-info-tab').addClass('active');
+            $('#m-membership-info-tab').addClass('active');
+        });
+    window.ParsleyConfig = {
+        errorsWrapper: '<div></div>',
+        errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
+        errorClass: 'has-error',
+        successClass: 'has-success'
+    };
+</script>
 
-    <script>
-        window.ParsleyConfig = {
-            errorsWrapper: '<div></div>',
-            errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>',
-            errorClass: 'has-error',
-            successClass: 'has-success'
-        };
-    </script>
-
-    <script src="https://parsleyjs.org/dist/parsley.js"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script>
-        Stripe.setPublishableKey("<?php echo env('STRIPE_KEY') ?>");
-        jQuery(function($) {
-            $('#payment-form').submit(function(event) {
-                var $form = $(this);
-                $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
-                    formInstance.submitEvent.preventDefault();
-                    alert();
-                    return false;
-                });
-                $form.find('#submitBtn').prop('disabled', true);
-                Stripe.card.createToken($form, stripeResponseHandler);
+<script src="https://parsleyjs.org/dist/parsley.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script>
+    Stripe.setPublishableKey("<?php echo env('STRIPE_KEY') ?>");
+    jQuery(function($) {
+        $('#payment-form').submit(function(event) {
+            var $form = $(this);
+            $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
+                formInstance.submitEvent.preventDefault();
+                alert();
                 return false;
             });
+            $form.find('#submitBtn').prop('disabled', true);
+            Stripe.card.createToken($form, stripeResponseHandler);
+            return false;
         });
-        function stripeResponseHandler(status, response) {
-            var $form = $('#payment-form');
-            if (response.error) {
-                $form.find('.payment-errors').text(response.error.message);
-                $form.find('.payment-errors').addClass('alert alert-danger');
-                $form.find('#submitBtn').prop('disabled', false);
-                $('#submitBtn').button('reset');
-            } else {
-                var token = response.id;
-                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-                // - old
-                // $form.get(0).submit();
-                $form.get(0).submit(function( event ){
-                    Swal.fire({
-                        title: "Success!",
-                        text: "Successfully subscribed!",
-                        type: "success",
-                        icon: "success"
-                    }).then(function() {
-                        window.location = "http://onelook-jp.test/membership-info";
-                    }); 
-                    event.preventDefault();
-                });
-            }
-        };
-
-      
-
-    </script>
-
+    });
+    function stripeResponseHandler(status, response) {
+        var $form = $('#payment-form');
+        if (response.error) {
+            $form.find('.payment-errors').text(response.error.message);
+            $form.find('.payment-errors').addClass('alert alert-danger');
+            $form.find('#submitBtn').prop('disabled', false);
+            $('#submitBtn').button('reset');
+        } else {
+            var token = response.id;
+            $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+            // - old
+            // $form.get(0).submit();
+            $form.get(0).submit(function( event ){
+                Swal.fire({
+                    title: "Success!",
+                    text: "Successfully subscribed!",
+                    type: "success",
+                    icon: "success"
+                }).then(function() {
+                    window.location = "http://onelook-jp.test/membership-info";
+                }); 
+                event.preventDefault();
+            });
+        }
+    };
+    <!--script ends here-->
 @endsection
-

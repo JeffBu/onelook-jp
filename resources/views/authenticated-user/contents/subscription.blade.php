@@ -24,7 +24,7 @@
                 <!-- free plan -->
                 <div class="flex flex-col items-center text-left text-sm gap-4 w-full h-full border border-sky-600 rounded-lg shadow hover:opacity-80 duration-300">
                     <span class="flex justify-center items-center px-4 py-2 w-full font-semibold text-lg text-white bg-sky-600 rounded-t-md">フリープラン</span>
-
+                    
                     <div class="flex flex-row w-full justify-between items-center px-4">
                         <span>現在のプラン</span>
                         <div class="text-sky-600 @if(auth()->user()->subscription) hidden @endif">

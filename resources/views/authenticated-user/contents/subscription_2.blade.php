@@ -3,100 +3,53 @@
     <title>{{config('app.name')}} - Subcriptions</title>
 @endsection
 @section('css')
+<style>
+    select option:disabled {
+    background-color: rgb(233, 233, 233);
+}
+</style>
 @endsection
 @section('head')
     @include('authenticated-user.components.head')
 @endsection
 @section('content')
+
     <!--content-->
     <div class="flex flex-col justify-center items-center gap-8 w-full">
         <h1 class="text-center text-2xl font-bold text-cyan-600 pb-10 pt-20">会員プラン</h1>
 
-        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
-            <span>変更前：</span>
-            <span>@if(auth()->user()->subscription) パーソナルプラン @else フリープラン @endif</span>
-        </div>
-
-        <div class="flex justify-left items-center gap-8 mx-auto w-11/12 sm:w-1/3 lg:w-1/4">
-            <span>変更後：</span>
-            <div class="relative inline-block text-left">
+        <div class="grid grid-cols-1 gap-4">
+            <div class="grid grid-cols-2 gap-4">
+                <div>変更前：</div>
+             
+                <div>@if(auth()->user()->subscription) パーソナルプラン @else フリープラン @endif</div>
+            </div>
+            <div class="grid grid-cols-2 gap-1">
+                <div>変更後：</div>
                 <div>
-                  <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 " id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    <span id="select_button_text">選択してください</span>
-                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  </button>
+                    <select id="select_plan" class="form-select appearance-none
+                        block
+                        w-full
+                        px-3
+                        py-1.5
+                        text-base
+                        font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding bg-no-repeat
+                        border border-solid border-gray-300
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                            <option value="_defaul" selected>選択する...</option>
+                            <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプランの申込</option>
+                            <option value="cancel_personal_plan" @if(!auth()->user()->subscription) disabled @endif>パーソナルプランの解約</option>
+                            <option value="cancel_service">本サービスの解約</option>
+                    </select>
                 </div>
-
-                <div class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none" style="display:none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="menu-dropdown">
-                  <div class="py-1" role="none">
-                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:bg-opacity-30" role="menuitem" tabindex="-1" id="menu-item-0" onclick="changePlan()">パーソナルプランの申込</a>
-                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:bg-opacity-30" role="menuitem" tabindex="-1" id="menu-item-1" onclick="cancelPlan()">パーソナルプランの解約</a>
-                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-600 hover:bg-opacity-30" role="menuitem" tabindex="-1" id="menu-item-2" onclick="cancelService()">本サービスの解約</a>
-                  </div>
-                </div>
             </div>
         </div>
-
-        <!--upgrade plan-->
-        <div id="upgrade_plan" class="hidden flex-col justify-center w-11/12 md:w-3/5">
-            <div class="flex justify-center items-center mx-auto w-32">
-                <a href="{{route('checkout')}}" class="container mt-10 px-4 py-2 bg-theme-yellow text-center text-theme-white hover:bg-yellow-300 rounded-md">変更する</a>
-            </div>
-
-            <div class="flex flex-col justify-center items-center text-left mt-10 w-full">
-                <p class="px-4 py-4 text-center">留意点</p>
-                <ol class="list-decimal text-left px-4 py-4">
-                    <li class="px-4 py-4">
-                        パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。
-                    </li>
-                    <li class="px-4 py-4">
-                        変更申込以後はパーソナルプランの機能のご利用が可能です。 パーソナルプランの解約は、申込日の翌月２日以後から可能です。
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-        <!--cancel plan-->
-        <div id="cancel_plan" class="hidden flex-col justify-center w-11/12 md:w-3/5">
-            <div class="flex justify-center items-center mx-auto w-32">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="cancelSubscription({{$user->id}})">変更する</button>
-            </div>
-
-            <div class="flex flex-col justify-center items-center text-left mt-10">
-                <p class="px-4 py-4 text-center">留意点</p>
-                <ol class="list-decimal text-left px-4 py-4">
-                    <li class="px-4 py-4">
-                        パーソナルプランの解約は、パーソナルプランの申込日の翌月２日以降から可能です。
-                    </li>
-                    <li class="px-4 py-4">
-                        パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。 なお、変更日以後は、新規の動画作成についてのパーソナルプランの機能のご利用はできなくなります。
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-        <!--cancel service-->
-        <div id="cancel_service" class="hidden flex-col justify-center w-11/12 md:w-3/5">
-            <div class="flex justify-center items-center mx-auto w-32">
-                <button class="container mt-10 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md" onclick="planAlert()">変更する</button>
-            </div>
-
-            <div class="flex flex-col justify-center items-center text-left mt-10">
-                <p class="px-4 py-4 text-center">留意点</p>
-                <ol class="list-decimal text-left px-4 py-4">
-                    <li class="px-4 py-4">
-                        本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。 なお、解約日以後は本サービスの機能のご利用はできなくなります。
-                    </li>
-                    <li class="px-4 py-4">
-                        パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約できません。
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-    </div>
 
     <div class="pt-40"></div>
     <!--content ends here-->
@@ -133,45 +86,92 @@
             }
         })
 
+
         function changePlan() {
-            // Swal.fire({
-            //     title: 'Are you sure?',
-            //     text: "You won't be able to revert this!",
-            //     icon: 'warning',
-            //     showCancelButton: true,
-            //     confirmButtonColor: '#3085d6',
-            //     cancelButtonColor: '#d33',
-            //     confirmButtonText: 'Yes, delete it!'
-            //     }).then((result) => {
-            //     if (result.isConfirmed) {
-            //         Swal.fire(
-            //         'Deleted!',
-            //         'Your file has been deleted.',
-            //         'success'
-            //         )
-            //     }
-            // })
-            $('#upgrade_plan').css('display', 'block')
-            $('#select_button_text').html('パーソナルプランの申込')
-            $('#cancel_service').css('display', 'none')
-            $('#cancel_plan').css('display', 'none');
-            $('#menu-dropdown').css('display', 'none')
+            Swal.fire({
+                html: `<div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700" role="alert">
+                        <h4 class="text-2xl font-medium leading-tight mb-2">留意点</h4>
+                            <p class="mb-4 text-left">
+                                1. パーソナルプランの申込の場合、変更申込日の翌月から料金が課金されます。
+                            </p>
+                            <p class="mb-4 text-left">
+                                2. 変更申込以後はパーソナルプランの機能のご利用が可能です。 パーソナルプランの解約は、申込日の翌月２日以後から可能です。
+                            </p>
+                        </div>`,  
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirmation'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "checkout";
+                }else{
+                    changeSelected();
+                }
+            });
         }
 
         function cancelPlan() {
-            $('#cancel_plan').css('display', 'block')
-            $('#select_button_text').html('パーソナルプランの解約')
-            $('#cancel_service').css('display', 'none')
-            $('#upgrade_plan').css('display', 'none')
-            $('#menu-dropdown').css('display', 'none')
+
+            Swal.fire({
+                html: `<div class="bg-red-100 rounded-lg py-5 px-3 text-base text-red-700" role="alert">
+                        <h4 class="text-2xl font-medium leading-tight text-center">留意点 </h4>
+                            <ol class="list-decimal text-left px-4 py-4">
+                                <li>
+                                    現在のサブスクリプションは <b>(パーソナルプラン)</b>. <br>
+                                    あなたが持っている `+ {{$noOfDaysLeft}} + ` 現在の有料プランの有効期限が切れるまであと 1 日です。
+                                </li>
+                                <li>
+                                    パーソナルプランの解約は、パーソナルプランの申込日の翌月２日以降から可能です。
+                                </li>
+                                <li>
+                                    パーソナルプランの解約時の料金変更は、パーソナルプランの解約の申込日の翌月以後の請求から反映されます。 なお、変更日以後は、新規の動画作成についてのパーソナルプランの機能のご利用はできなくなります。
+                                </li>
+                            </ol>
+                        </div>`,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes! Confirm'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    cancelSubscription({{$user->id}});
+                }else{
+                    changeSelected();
+                }
+            });
         }
 
+        const changeSelected = (e) => {
+            const $select = document.querySelector('#select_plan');
+            $select.value = '_defaul';
+        };
+
         function cancelService() {
-            $('#cancel_plan').css('display', 'none')
-            $('#select_button_text').html('本サービスの解約')
-            $('#upgrade_plan').css('display', 'none')
-            $('#cancel_service').css('display', 'block')
-            $('#menu-dropdown').css('display', 'none')
+
+            Swal.fire({
+                html: `<div class="bg-red-100 rounded-lg py-5 px-3 text-base text-red-700" role="alert">
+                        <h4 class="text-2xl font-medium leading-tight text-center">留意点 </h4>
+                            <ol class="list-decimal text-left px-4 py-4">
+                                <li>
+                                    本サービスを解約した場合、すべてのデータおよび情報は、申込時に本サーバーから削除されます。 なお、解約日以後は本サービスの機能のご利用はできなくなります。
+                                </li>
+                                <li>
+                                    パーソナルプランのご利用者の方は、パーソナルプランの解約後でなければ本サービスの解約できません。
+                                </li>
+                            </ol>
+                        </div>`,  
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirmation'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    planAlert();
+                }else{
+                    changeSelected();
+                }
+            });
         }
 
         function cancelSubscription(id)
@@ -185,7 +185,7 @@
                     title: '成功',
                     text: 'パーソナルプランの解約を致しました'
                 }).then((result) => {
-                    window.location.reload()
+                    window.location.reload();
                 })
             }).catch(function (error) {
                 Swal.fire({
@@ -195,6 +195,15 @@
                 })
             })
         }
+        $('#select_plan').on('change', function() {
+            if($(this).find(":selected").val() == 'personal_application'){
+                changePlan();
+            }else if($(this).find(":selected").val() == 'cancel_personal_plan'){
+                cancelPlan();
+            }else if($(this).find(":selected").val() == 'cancel_service'){
+                cancelService();
+            }
+        });
     </script>
     <!--script ends here-->
 @endsection

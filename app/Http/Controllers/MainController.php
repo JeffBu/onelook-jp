@@ -125,8 +125,16 @@ class MainController extends Controller
     public function update_cancel_plan()
     {
         $user = Auth::user();
+        $subscription = Subscription::where('user_id', $user->id)->first();
+        $diff = 0;
+        if($subscription){
+            $date = Carbon::parse($subscription->ends_at);
+            $now = Carbon::now();
+            $diff = $date->diffInDays($now);
+        }
         $data = array(
             'user' => $user,
+            'noOfDaysLeft' =>  $diff
         );
 
         return view('authenticated-user.contents.subscription_2', $data);

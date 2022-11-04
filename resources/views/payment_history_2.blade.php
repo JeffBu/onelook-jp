@@ -38,9 +38,7 @@
     <!--content-->
     <div  id="divPrintPDF" class="flex justify-center items-center pt-20" >
         <div class="flex justify-center items-center" id="divPrint" style="width: fit-content; background-color:white;"  >
-            
-           
-                <table class="tg" style="undefined;table-layout: fixed; width: 1007px">
+              <table class="tg" style="undefined;table-layout: fixed; width: 1007px">
                 <colgroup>
                 <col style="width: 366px">
                 <col style="width: 219px">
@@ -114,8 +112,7 @@
                     <td class="tg-lboi"> ---</td>
                   </tr>
                 </tbody>
-                </table>
-            
+              </table>
         </div><br>
     </div>
     <div class="flex space-x-2 justify-center pt-2" >
@@ -217,7 +214,6 @@
                 }
                 pdf.save("Invoice-onelook.pdf");
             });
-
         });
     </script>
     <!--script ends here-->

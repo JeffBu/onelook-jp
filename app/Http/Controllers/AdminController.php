@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\News;
 use App\Models\VideoRecord;
 use App\Models\PostHistory;
+use App\Models\Subscription;
 
 //Mails
 use App\Mail\NotificationSentMail;
@@ -60,9 +61,80 @@ class AdminController extends Controller
         $data = array(
             'users' => $users
         );
-
         return view('admin.contents.admin_member_list', $data);
     }
+
+
+    public function memberFindAll(Request $request)
+    {
+        $columns = array( 
+            0 =>'name',
+            1 => 'created_at',
+            5 => 'email'
+        );
+
+        $totalData = User::where('is_admin', 0)->latest()->count();
+        //$query = Driver::where('status','1');
+        $totalFiltered = $totalData; 
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        if(empty($request->input('search.value')))
+        {            
+            $users = User::where('is_admin', 0)
+                         ->offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();                            
+        }
+        else {
+            $search = $request->input('search.value'); 
+            $users = User::where('is_admin', 0)
+                        ->orWhere('name', 'LIKE',"%{$search}%")
+                        ->orWhere('created_at', 'LIKE',"%{$search}%")
+                        ->orWhere('email', 'LIKE',"%{$search}%")
+                        ->offset($start)
+                        ->limit($limit)
+                        ->orderBy($order,$dir)
+                        ->get();
+            $totalFiltered = User::where('is_admin', 0)
+                        ->orWhere('name', 'LIKE',"%{$search}%")
+                        ->orWhere('created_at', 'LIKE',"%{$search}%")
+                        ->orWhere('email', 'LIKE',"%{$search}%")
+                        ->count();
+
+        }
+        $data = array();
+        if(!empty($users))
+        {
+            foreach ($users as $user)
+            {   
+                $subs = Subscription::where('user_id',$user->id)->get();
+                $url = url('/admin-member-info')."?user_id=".$user->id;
+                $nestedData['name'] = '<a href="'.$url.'" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">'.$user->name.'</a>';
+                $nestedData['created_at'] = $user->created_at->format('Y年m月d日');
+                $nestedData['membership_type'] =  ($subs->isEmpty()) ? '無料プラン' : 'パーソナルプラン';
+                $nestedData['create_video'] = "";
+                $nestedData['in_time_video'] = "";
+                $nestedData['email'] = $user->email;
+                $nestedData['number_of_views'] = VideoRecord::with('views')->count();
+                $data[] = $nestedData;
+            }
+        }
+          
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data   
+            );
+        return json_encode($json_data); 
+
+    }
+
 
     public function user_info(Request $request)
     {
