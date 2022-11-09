@@ -101,7 +101,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Confirmation'
+                confirmButtonText: '確認'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     window.location = "checkout";
@@ -132,7 +132,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes! Confirm'
+                confirmButtonText: 'はい！確認'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     cancelSubscription({{$user->id}});
@@ -164,7 +164,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Confirmation'
+                confirmButtonText: '確認'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     planAlert();
