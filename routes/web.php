@@ -44,7 +44,7 @@ Route::middleware([
     Route::get('payment-history', [MainController::class, 'payment_history'])->name('payment-history');
     //reymart
     Route::get('billing-statement-list', [MainController::class, 'billingStatementlist'])->name('billing-statement-list');
-
+    //Route::get('displa', [MainController::class, 'billingStatementlist'])->name('billing-statement-list');
     Route::get('payment-history-2/{id}', [MainController::class, 'payment_history_2'])->name('payment-history-2');
 
     //Route::get('stripe-display-data', [MainController::class, 'stripe_display_data'])->name('stripe-display-data');

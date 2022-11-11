@@ -267,9 +267,13 @@ class MainController extends Controller
     public function billingStatementlist(){
 
         $user = Auth::user()->id;
-        $subscriptionList = Subscription::where('user_id', $user)->get();
-            
-        return json_encode($subscriptionList);
+        $subscriptionList = Subscription::all();
+        $subscriberList = Subscribers::all();
+        $data = array(
+            "subscriptionList" => $subscriptionList,
+            "subscriberList" => $subscriberList
+        );
+        return json_encode($data);
 
     }
 

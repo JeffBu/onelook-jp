@@ -73,7 +73,6 @@ class SubscriptionController extends Controller
     public function cancel_subscription(Request $request)
     {
         $user = User::find($request->user_id);
-
         if($user)
         {
             Subscription::where('user_id', $user->id)->delete();

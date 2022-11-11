@@ -67,7 +67,7 @@
                             @endif
                             <div class="frelative mt-1 rounded-md text-left pb-3" id="product-group">
                                 {!! Form::label('plane', 'プラン選択:') !!}
-                                {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '月額お申し込み', 'price_1LlRpUBPZ9RrUCvReHngtc7s' => '年間お申し込み', ], 'Book', [
+                                {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '月額お申し込み', 'price_1LlRpUBPZ9RrUCvReHngtc7s' => '年間お申し込み' ], null, [
                                     'class'                       => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
                                     'required'                    => 'required',
                                     'data-parsley-class-handler'  => '#product-group'
@@ -135,7 +135,8 @@
         </div>
     </div>
 
-    <div class="pt-40"></div>
+    <div class="pt-40">
+    </div>
     <!--content ends here-->
 @endsection
 
@@ -196,5 +197,23 @@ jQuery(document).ready(function() {
             });
         }
     };
-    <!--script ends here-->
+ 
+    // var url_string = window.location;
+    // var url = new URL(url_string);
+    // var subscription_type = url.searchParams.get("subs");
+    // var anual = 'price_1LlRpUBPZ9RrUCvReHngtc7s';
+    // var monthly = 'price_1LlRpUBPZ9RrUCvRtkOIRCwT';
+    
+    // $( document ).ready(function() {
+       
+    //     if(subscription_type == 'anual'){
+    //         $("#plane option[value='" + anual + "']").attr("selected","selected");
+    //         $("#plane option[value='" + monthly + "']").attr("disabled", true); 
+    //     }else if(subscription_type == 'monthly'){
+    //         $("#plane option[value='" + monthly + "']").attr("selected","selected");
+    //         $("#plane option[value='" + anual + "']").attr("disabled", true); 
+    //     }
+    // });
+</script>
+   <!--script ends here-->
 @endsection
