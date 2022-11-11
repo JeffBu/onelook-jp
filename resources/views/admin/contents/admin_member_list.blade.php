@@ -47,7 +47,7 @@
                     <tr>
                         <th rowspan="2" class="px-4 py-1 border border-lime-700">会員名</th>
                         <th rowspan="2" class="px-4 py-1 border border-lime-700">登録日</th>
-                        <th rowspan="2" class="px-4 py-1 border border-lime-700">購読日</th>
+                        <th rowspan="2" class="px-4 py-1 border border-lime-700">決済日</th>
                         <th rowspan="2" class="px-4 py-1 border border-lime-700">会員タイプ</th>
                         <th colspan="4" class="px-4 py-1 border border-lime-700">
                             <div class="flex flex-row justify-between items-center text-left">
