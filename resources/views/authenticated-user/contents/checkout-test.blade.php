@@ -198,22 +198,22 @@ jQuery(document).ready(function() {
         }
     };
  
-    // var url_string = window.location;
-    // var url = new URL(url_string);
-    // var subscription_type = url.searchParams.get("subs");
-    // var anual = 'price_1LlRpUBPZ9RrUCvReHngtc7s';
-    // var monthly = 'price_1LlRpUBPZ9RrUCvRtkOIRCwT';
+    var url_string = window.location;
+    var url = new URL(url_string);
+    var subscription_type = url.searchParams.get("subs");
+    var anual = 'price_1LlRpUBPZ9RrUCvReHngtc7s';
+    var monthly = 'price_1LlRpUBPZ9RrUCvRtkOIRCwT';
     
-    // $( document ).ready(function() {
+    $( document ).ready(function() {
        
-    //     if(subscription_type == 'anual'){
-    //         $("#plane option[value='" + anual + "']").attr("selected","selected");
-    //         $("#plane option[value='" + monthly + "']").attr("disabled", true); 
-    //     }else if(subscription_type == 'monthly'){
-    //         $("#plane option[value='" + monthly + "']").attr("selected","selected");
-    //         $("#plane option[value='" + anual + "']").attr("disabled", true); 
-    //     }
-    // });
+        if(subscription_type == 'annual'){
+            $("#plane option[value='" + anual + "']").attr("selected","selected");
+            $("#plane option[value='" + monthly + "']").attr("disabled", true); 
+        }else if(subscription_type == 'monthly'){
+            $("#plane option[value='" + monthly + "']").attr("selected","selected");
+            $("#plane option[value='" + anual + "']").attr("disabled", true); 
+        }
+    });
 </script>
    <!--script ends here-->
 @endsection

@@ -116,11 +116,12 @@ class AdminController extends Controller
                 $url = url('/admin-member-info')."?user_id=".$user->id;
                 $nestedData['name'] = '<a href="'.$url.'" class="text-blue-600 hover:text-blue-400 underline underline-offset-2">'.$user->name.'</a>';
                 $nestedData['created_at'] = $user->created_at->format('Y年m月d日');
+                $nestedData['subscription_date'] = ($subs->isEmpty()) ? '---' : $subs->created_at->format('Y年m月d日');
                 $nestedData['membership_type'] =  ($subs->isEmpty()) ? '無料プラン' : 'パーソナルプラン';
                 $nestedData['create_video'] = "";
                 $nestedData['in_time_video'] = "";
                 $nestedData['email'] = $user->email;
-                $nestedData['number_of_views'] = VideoRecord::with('views')->count();
+                $nestedData['number_of_views'] = VideoRecord::where('user_id',$user->id)->count();
                 $data[] = $nestedData;
             }
         }

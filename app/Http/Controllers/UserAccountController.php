@@ -115,7 +115,7 @@ class UserAccountController extends Controller
 
         if($user->save())
         {
-            Session::flash('message', 'パスワードの変更を行いました。確認のため再ログインしてください。');
+            Session::flash('message', '確認のため再ログインしてください。');
             return redirect()->route('login');
         }
     }

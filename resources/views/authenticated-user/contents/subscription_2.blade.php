@@ -43,9 +43,9 @@
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option value="_defaul" selected>選択する...</option>
-                            <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプランの申込</option>
-                            {{-- <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプラン申し込み（月額）</option>
-                            <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプランのお申し込み（年間）</option>  --}}
+                            {{-- <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプランの申込</option> --}}
+                            <option value="personal_application_monthly" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price == 'price_1LlRpUBPZ9RrUCvReHngtc7s') disabled @endif>パーソナルプラン申し込み（月額）</option>
+                            <option value="personal_application_annual" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price == 'price_1LlRpUBPZ9RrUCvRtkOIRCwT') disabled @endif>パーソナルプランのお申し込み（年間）</option> 
                             <option value="cancel_personal_plan" @if(!auth()->user()->subscription) disabled @endif>パーソナルプランの解約</option>
                             <option value="cancel_service">本サービスの解約</option>
                     </select>
@@ -89,7 +89,7 @@
         })
 
 
-        function changePlan() {
+        function changePlan(subs_type) {
             Swal.fire({
                 html: `<div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700" role="alert">
                         <h4 class="text-2xl font-medium leading-tight mb-2">留意点</h4>
@@ -106,8 +106,8 @@
                 confirmButtonText: '確認'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    // window.location = "checkout?subs=monthly";
-                    window.location = "checkout";
+                    window.location = "checkout?subs=" + subs_type;
+                    //window.location = "checkout";
                 }else{
                     changeSelected();
                 }
@@ -199,8 +199,10 @@
             })
         }
         $('#select_plan').on('change', function() {
-            if($(this).find(":selected").val() == 'personal_application'){
-                changePlan();
+            if($(this).find(":selected").val() == 'personal_application_monthly'){
+                changePlan('monthly');
+            }else if($(this).find(":selected").val() == 'personal_application_annual'){
+                changePlan('annual');
             }else if($(this).find(":selected").val() == 'cancel_personal_plan'){
                 cancelPlan();
             }else if($(this).find(":selected").val() == 'cancel_service'){

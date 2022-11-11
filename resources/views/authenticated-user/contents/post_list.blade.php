@@ -40,7 +40,7 @@
                                     なし
                                 @endif
                             </p>
-                            <button class="mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md w-20" onclick="changeAccessCode('{{$record->key}}', @if($record->access) '{{$record->access->access_code}}' @else '12345678'@endif)">パスコード変更</button>
+                            <button class="mt-3 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md w-40" onclick="changeAccessCode('{{$record->key}}', @if($record->access) '{{$record->access->access_code}}' @else '12345678'@endif)">パスコード変更</button>
                         </div>
                     </div>
 
