@@ -43,7 +43,7 @@
     <!--header ends here-->
 
     <!--content-->
-    <div class="flex justify-center items-center text-center text-white text-lg font-medium pt-11 w-full">
+    <div class="flex justify-center items-center text-center bg-neutral-200 text-lg font-medium pt-11 w-full">
         <!--<span class="px-4 py-2 bg-emerald-500 h-11 w-full">Account successfully created! Please check your email for verification process.</span>-->
         <span class="px-4 py-2 bg-emerald-500 h-11 w-full">登録されたメールアドレスに設定用のメールをお送りしました。 メールからパスワードの設定を行ってログインして下さい。</span>
     </div>
