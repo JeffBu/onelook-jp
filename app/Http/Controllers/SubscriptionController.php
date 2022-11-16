@@ -81,6 +81,6 @@ class SubscriptionController extends Controller
     }
 
     public function update_card(Request $request){
-       dd($request);
+    //    dd($request);
     }
 }
