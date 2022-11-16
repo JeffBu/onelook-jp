@@ -56,6 +56,7 @@ Route::middleware([
     Route::post('send-inquiry', [MainController::class, 'send_inquiry'])->name('send-inquiry');
     Route::post('pay-for-subscription', [SubscriptionController::class, 'subscribe'])->name('pay-for-subscription');
     Route::post('cancel-subscription', [SubscriptionController::class, 'cancel_subscription'])->name('cancel-subscription');
+    Route::post('update-card', [SubscriptionController::class, 'update_card'])->name('update-card');
 
     Route::get('admin-home', [AdminController::class, 'index'])->name('admin-home');
     Route::get('admin-member-list', [AdminController::class, 'member_list'])->name('admin-member-list');

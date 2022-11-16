@@ -13,6 +13,7 @@ use Form;
 use Mail;
 use Illuminate\Support\Carbon;
 use App\Mail\SubscriptionUpdateMail;
+use Illuminate\Support\Facades\Input; 
 
 class SubscriptionController extends Controller
 {
@@ -77,5 +78,9 @@ class SubscriptionController extends Controller
         {
             Subscription::where('user_id', $user->id)->delete();
         }
+    }
+
+    public function update_card(Request $request){
+       dd($request);
     }
 }
