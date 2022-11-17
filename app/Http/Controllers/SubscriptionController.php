@@ -81,6 +81,32 @@ class SubscriptionController extends Controller
     }
 
     public function update_card(Request $request){
-    //    dd($request);
+       
+        $user = auth()->user();
+        $input = $request->all();
+        $token = $request->stripeToken;
+        
+        try{
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            $source = \Stripe\Customer::updateSource(
+                $user->stripe_id,
+                ['source' => $token]
+            );
+
+            CustomerCard::where('user_id', $user->id)
+            ->update([
+                'customer_id' => $user->stripe_id,
+                'card_id' => $source->id,
+                'last_4' => $source->last4,
+                'brand' => $source->brand,
+                'fingerprint' => $source->fingerprint,
+                'exp_month' => $source->exp_month,
+                'exp_year' => $source->exp_year,
+            ]);
+            return redirect()->route('membership-info');
+        } catch (Exception $e) {
+            return back()->with('error',$e->getMessage());
+        }
     }
 }

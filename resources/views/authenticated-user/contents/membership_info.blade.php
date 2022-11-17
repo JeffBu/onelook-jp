@@ -268,7 +268,8 @@
                             'data-parsley-type'             => 'number',
                             'maxlength'                     => '16',
                             'data-parsley-trigger'          => 'change focusout',
-                            'data-parsley-class-handler'    => '#cc-group'
+                            'data-parsley-class-handler'    => '#cc-group',
+                            'name'                          => 'cardNo'
                             ]) !!}
                     </div>
                     <div class="frelative mt-1 rounded-md text-left pb-3" id="ccv-group">
@@ -301,9 +302,9 @@
                                 ]) !!}
                         </div>
                     </div>
-                    {{-- <div class="grid grid-cols-1 bg-slate-100">
-                        {!! Form::submit('お申し込み開始', ['class' => 'inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
-                    </div> --}}
+                    <div class="grid grid-cols-1 bg-slate-100">
+                        {!! Form::submit('カードを更新する', ['class' => 'inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                    </div>
                     <div class="grid grid-cols-1 bg-slate-100">
                         <span class="payment-errors justify-between" style="color: red;margin-top:10px;"></span>
                     </div>
@@ -311,7 +312,7 @@
                 </div>
                 <!--modal footer-->
                 <div class="flex justify-end items-center p-6 space-x-2 rounded-b border-t border-gray-200">
-                    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">参加する</button>
+                    {{-- <button type="submit" class="text-white bg-blue-600 hover:bg-blue-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">参加する</button> --}}
                 </div>
             </div>
         </div>
@@ -326,13 +327,15 @@
 @endsection
 @section('js')
     <!--script-->
+    <script src="https://parsleyjs.org/dist/parsley.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script>
         jQuery(document).ready(function() {
             $('#membership-info-tab').addClass('active');
             $('#m-membership-info-tab').addClass('active');
         });
-
-        Stripe.setPublishableKey("<?php echo env('STRIPE_KEY') ?>");
+       
+    Stripe.setPublishableKey("<?php echo env('STRIPE_KEY') ?>");
     jQuery(function($) {
         $('#payment-form').submit(function(event) {
             var $form = $(this);
@@ -358,17 +361,17 @@
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
             // - old
             // $form.get(0).submit();
-            $form.get(0).submit(function( event ){
+            // $form.get(0).submit(function( event ){
                 Swal.fire({
                     title: "Success!",
-                    text: "Successfully subscribed!",
+                    text: "Successfully updated!",
                     type: "success",
                     icon: "success"
                 }).then(function() {
-                    window.location = "http://onelook-jp.test/membership-info";
+                    window.location = "/membership-info";
                 }); 
                 event.preventDefault();
-            });
+            // });
         }
     };
 

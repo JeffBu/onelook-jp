@@ -67,7 +67,7 @@
                             @endif
                             <div class="frelative mt-1 rounded-md text-left pb-3" id="product-group">
                                 {!! Form::label('plane', 'プラン選択:') !!}
-                                {!! Form::select('plane', ['price_1LlRpUBPZ9RrUCvRtkOIRCwT' => '月額お申し込み', 'price_1LlRpUBPZ9RrUCvReHngtc7s' => '年間お申し込み' ], null, [
+                                {!! Form::select('plane', [ env('STRIPE_PRICE_MONTHLY_KEY') => '月額お申し込み', env('STRIPE_PRICE_ANNUAL_KEY') => '年間お申し込み' ], null, [
                                     'class'                       => 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
                                     'required'                    => 'required',
                                     'data-parsley-class-handler'  => '#product-group'
@@ -184,26 +184,25 @@ jQuery(document).ready(function() {
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
             // - old
             // $form.get(0).submit();
-            $form.get(0).submit(function( event ){
+            // $form.get(0).submit(function( event ){
                 Swal.fire({
                     title: "Success!",
                     text: "Successfully subscribed!",
                     type: "success",
                     icon: "success"
                 }).then(function() {
-                    window.location = "http://onelook-jp.test/membership-info";
+                    window.location = "/membership-info";
                 }); 
                 event.preventDefault();
-            });
+            // });
         }
     };
  
     var url_string = window.location;
     var url = new URL(url_string);
     var subscription_type = url.searchParams.get("subs");
-    var anual = 'price_1LlRpUBPZ9RrUCvReHngtc7s';
-    var monthly = 'price_1LlRpUBPZ9RrUCvRtkOIRCwT';
-    
+    var anual = "<?php echo env('STRIPE_PRICE_MONTHLY_KEY') ?>"
+    var monthly = "<?php echo env('STRIPE_PRICE_ANNUAL_KEY') ?>"
     $( document ).ready(function() {
        
         if(subscription_type == 'annual'){
