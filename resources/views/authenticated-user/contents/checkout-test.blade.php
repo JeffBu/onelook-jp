@@ -154,7 +154,7 @@ jQuery(document).ready(function() {
         successClass: 'has-success'
     };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> --}}
 <script src="https://parsleyjs.org/dist/parsley.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
@@ -184,7 +184,7 @@ jQuery(document).ready(function() {
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
             // - old
             // $form.get(0).submit();
-            // $form.get(0).submit(function( event ){
+            $form.get(0).submit(function( event ){
                 Swal.fire({
                     title: "Success!",
                     text: "Successfully subscribed!",
@@ -194,15 +194,15 @@ jQuery(document).ready(function() {
                     window.location = "/membership-info";
                 }); 
                 event.preventDefault();
-            // });
+            });
         }
     };
  
     var url_string = window.location;
     var url = new URL(url_string);
     var subscription_type = url.searchParams.get("subs");
-    var anual = "<?php echo env('STRIPE_PRICE_ANNUAL_KEY') ?>";
-    var monthly = "<?php echo env('STRIPE_PRICE_MONTHLY_KEY') ?>";
+    var anual = "<?php echo env('STRIPE_PRICE_MONTHLY_KEY') ?>";
+    var monthly = "<?php echo env('STRIPE_PRICE_ANNUAL_KEY') ?>";
     $( document ).ready(function() {
        
        // alert(subscription_type);

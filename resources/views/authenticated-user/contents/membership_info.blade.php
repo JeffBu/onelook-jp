@@ -136,8 +136,9 @@
 
                     <div class="flex flex-row justify-center items-center gap-2">
                         @if (auth()->user()->subscription)
-                            <button data-modal-toggle="edit-card" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-xs text-theme-white rounded-md">変更</button>
+                             <button data-modal-toggle="edit-card" class="w-32 sm:w-16 px-4 py-2 bg-theme-yellow hover:bg-yellow-300 text-xs text-theme-white rounded-md">変更</button>
                         @endif
+                       
                     </div>
 
                 </div>
