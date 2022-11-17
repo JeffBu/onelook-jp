@@ -154,7 +154,7 @@ jQuery(document).ready(function() {
         successClass: 'has-success'
     };
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://parsleyjs.org/dist/parsley.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
@@ -205,6 +205,8 @@ jQuery(document).ready(function() {
     var monthly = "<?php echo env('STRIPE_PRICE_MONTHLY_KEY') ?>";
     $( document ).ready(function() {
        
+       // alert(subscription_type);
+
         if(subscription_type == 'annual'){
             $("#plane option[value='" + anual + "']").attr("selected","selected");
             $("#plane option[value='" + monthly + "']").attr("disabled", true); 
