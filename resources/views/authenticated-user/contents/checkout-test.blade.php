@@ -201,8 +201,8 @@ jQuery(document).ready(function() {
     var url_string = window.location;
     var url = new URL(url_string);
     var subscription_type = url.searchParams.get("subs");
-    var anual = "<?php echo env('STRIPE_PRICE_MONTHLY_KEY') ?>"
-    var monthly = "<?php echo env('STRIPE_PRICE_ANNUAL_KEY') ?>"
+    var anual = "<?php echo env('STRIPE_PRICE_ANNUAL_KEY') ?>";
+    var monthly = "<?php echo env('STRIPE_PRICE_MONTHLY_KEY') ?>";
     $( document ).ready(function() {
        
         if(subscription_type == 'annual'){
