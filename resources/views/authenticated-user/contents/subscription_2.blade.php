@@ -44,8 +44,8 @@
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option value="_defaul" selected>選択する...</option>
                             {{-- <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプランの申込</option> --}}
-                            <option value="personal_application_monthly" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price == 'price_1LlRpUBPZ9RrUCvReHngtc7s') disabled @endif>パーソナルプラン申し込み（月額）</option>
-                            <option value="personal_application_annual" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price == 'price_1LlRpUBPZ9RrUCvRtkOIRCwT') disabled @endif>パーソナルプランのお申し込み（年間）</option> 
+                            <option value="personal_application_monthly" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price ==  env('STRIPE_PRICE_ANNUAL_KEY')) disabled @endif>パーソナルプラン申し込み（月額）</option>
+                            <option value="personal_application_annual" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')) disabled @endif>パーソナルプランのお申し込み（年間）</option> 
                             <option value="cancel_personal_plan" @if(!auth()->user()->subscription) disabled @endif>パーソナルプランの解約</option>
                             <option value="cancel_service">本サービスの解約</option>
                     </select>

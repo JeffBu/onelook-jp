@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 bg-slate-100">
-                                {!! Form::submit('お申し込み開始', ['class' => 'inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
+                                {!! Form::button('お申し込み開始', ['class' => 'inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;', 'type' => 'submit']) !!}
                             </div>
                             <div class="grid grid-cols-1 bg-slate-100">
                                 <span class="payment-errors justify-between" style="color: red;margin-top:10px;"></span>
@@ -160,15 +160,34 @@ jQuery(document).ready(function() {
 <script>
     Stripe.setPublishableKey("<?php echo env('STRIPE_KEY') ?>");
     jQuery(function($) {
-        $('#payment-form').submit(function(event) {
-            var $form = $(this);
-            $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
-                formInstance.submitEvent.preventDefault();
-                alert();
-                return false;
+        // $('#payment-form').submit(function(event) {
+        //     var $form = $(this);
+        //     $form.parsley().subscribe('parsley:form:validate', function(formInstance) {
+        //         formInstance.submitEvent.preventDefault();
+        //         alert();
+        //         return false;
+        //     });
+        //     $form.find('#submitBtn').prop('disabled', true);
+        //     Stripe.card.createToken($form, stripeResponseHandler);
+        //     return false;
+        // });
+
+        $('#payment-form button').on('click',function(event) {
+            var $form =  $('#payment-form');
+            var submit = $form.find('button');
+            var submitInitialText = submit.text();
+            submit.attr('disabled','disabled').text('作成中ですのでお待ちください......');
+            Stripe.card.createToken($form, function(status,response){
+                if(response.error){
+                    $form.find('.payment-errors').text(response.error.message).show();
+                    submit.removeAttr('disabled');
+                    submit.text(submitInitialText);
+                }else{
+                    var token = response.id;
+                    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                    $form.submit();
+                }
             });
-            $form.find('#submitBtn').prop('disabled', true);
-            Stripe.card.createToken($form, stripeResponseHandler);
             return false;
         });
     });

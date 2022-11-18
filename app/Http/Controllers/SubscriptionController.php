@@ -14,7 +14,7 @@ use Mail;
 use Illuminate\Support\Carbon;
 use App\Mail\SubscriptionUpdateMail;
 use Illuminate\Support\Facades\Input; 
-
+use DB;
 class SubscriptionController extends Controller
 {
     public function index()
@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
 
             Mail::to($user->email)->send(new SubscriptionUpdateMail($user, $old_plan, 'パーソナルプラン', $date));
 
-            return redirect()->route('membership-info');
+             return redirect()->route('membership-info')->with('message','お支払いが完了いたしました。');
         } catch (Exception $e) {
 
             return back()->with('error',$e->getMessage());
@@ -85,27 +85,31 @@ class SubscriptionController extends Controller
         $user = auth()->user();
         $input = $request->all();
         $token = $request->stripeToken;
-        
+        $customerInfoLocalData =  CustomerCard::where('user_id', $user->id)->first();
         try{
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-            $source = \Stripe\Customer::updateSource(
+            $customer = \Stripe\Customer::retrieve($user->stripe_id);
+            $card = $customer->createSource(
                 $user->stripe_id,
                 ['source' => $token]
             );
+            $customer->default_source = $card->id;
+           
+           DB::beginTransaction();
+           $customerInfoLocalData->customer_id = $user->stripe_id;
+           $customerInfoLocalData->card_id = $card->id;
+           $customerInfoLocalData->last_4 = $card->last4;
+           $customerInfoLocalData->brand = $card->brand;
+           $customerInfoLocalData->fingerprint = $card->fingerprint;
+           $customerInfoLocalData->exp_month = $card->exp_month;
+           $customerInfoLocalData->exp_year = $card->exp_year;
+           $customer->save();
+           $customerInfoLocalData->save();
+           DB::commit();
 
-            CustomerCard::where('user_id', $user->id)
-            ->update([
-                'customer_id' => $user->stripe_id,
-                'card_id' => $source->id,
-                'last_4' => $source->last4,
-                'brand' => $source->brand,
-                'fingerprint' => $source->fingerprint,
-                'exp_month' => $source->exp_month,
-                'exp_year' => $source->exp_year,
-            ]);
-            return redirect()->route('membership-info');
+           return redirect()->route('membership-info')->with('message','お支払い情報が更新されました。');
         } catch (Exception $e) {
+
             return back()->with('error',$e->getMessage());
         }
     }
