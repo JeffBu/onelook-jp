@@ -364,7 +364,7 @@
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
             // - old
             // $form.get(0).submit();
-            // $form.get(0).submit(function( event ){
+            $form.get(0).submit(function( event ){
                 Swal.fire({
                     title: "Success!",
                     text: "Successfully updated!",
@@ -374,7 +374,7 @@
                     window.location = "/membership-info";
                 }); 
                 event.preventDefault();
-            // });
+            });
         }
     };
 
