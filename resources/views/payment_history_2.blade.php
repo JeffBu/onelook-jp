@@ -76,7 +76,7 @@
                   </tr>
                   <tr>
                     <td class="tg-yz93">会社名</td>
-                    <td class="tg-dcdw" colspan="3">{{$subscriber->company}}</td>
+                    <td class="tg-dcdw" colspan="3">@if(!empty($subscriber->company)) {{$subscriber->company}} @else -- @endif</td>
                   </tr>
                   <tr>
                     <td class="tg-yz93">氏名</td>

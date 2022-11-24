@@ -45,7 +45,7 @@ Route::middleware([
     //reymart
     Route::get('billing-statement-list', [MainController::class, 'billingStatementlist'])->name('billing-statement-list');
     Route::get('payment-history-2/{id}', [MainController::class, 'payment_history_2'])->name('payment-history-2');
-
+    Route::post('cancel-service', [MainController::class, 'cancelService'])->name('cancel-service');
     //Route::get('stripe-display-data', [MainController::class, 'stripe_display_data'])->name('stripe-display-data');
 
 

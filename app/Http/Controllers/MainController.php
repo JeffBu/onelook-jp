@@ -11,7 +11,7 @@ use App\Models\PostHistory;
 use App\Models\CustomerCard;
 use App\Models\Subscription;
 use App\Models\Subscribers;
-
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Mail;
@@ -127,14 +127,44 @@ class MainController extends Controller
         $user = Auth::user();
         $subscription = Subscription::where('user_id', $user->id)->first();
         $diff = 0;
+        // $dateSubs = '';
+        // $y = '';
+        $Y = "";
+        $M = "";
+        $D = "";
+        $exd_Y = "";
+        $exd_M = "";
+        $exd_D = "";
+        $subscription_type = "";
         if($subscription){
-            $date = Carbon::parse($subscription->ends_at);
+            $date = Carbon::parse($subscription->created_at);
+            $newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)) . " + 1 year"));
+            $dateSubs = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)))));
             $now = Carbon::now();
-            $diff = $date->diffInDays($now);
+            $diff = Carbon::parse($newEndingDate)->diffInDays(Carbon::parse($subscription->created_at));
+            $Y = $date->format('Y');
+            $M = $date->format('m');
+            $D = $date->format('d');
+            $exd_Y = Carbon::parse($newEndingDate)->format('Y');
+            $exd_M = Carbon::parse($newEndingDate)->format('m');
+            $exd_D = Carbon::parse($newEndingDate)->format('d');
+            if($subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
+                $subscription_type = 'Monthly';
+            }else{
+                $subscription_type = 'Annual';
+            }
+
         }
         $data = array(
             'user' => $user,
-            'noOfDaysLeft' =>  $diff
+            'noOfDaysLeft' =>  $diff,
+            'year' => $Y,
+            'month' => $M,
+            'day' => $D,
+            'exd_year' => $exd_Y,
+            'exd_month' => $exd_M,
+            'exd_day' => $exd_D,
+            'subscription_type' => $subscription_type,
         );
 
         return view('authenticated-user.contents.subscription_2', $data);
@@ -178,7 +208,6 @@ class MainController extends Controller
         $user = Auth::user();
         $subscriber = Subscribers::where('user_id', $user->id)->first();
         $subscriptionList = Subscription::where('user_id', $user->id)->findOrFail($id);
-        // dd($subscriber);
        return view('payment_history_2',  compact('user','subscriber','subscriptionList'));
     }
 
@@ -275,6 +304,19 @@ class MainController extends Controller
         );
         return json_encode($data);
 
+    }
+
+    public function cancelService(Request $request){
+
+        // dd($request->user_id);
+        $user = User::find($request->user_id);
+        if($user)
+        {
+            Subscription::where('user_id', $user->id)->delete();
+            CustomerCard::where('user_id', $user->id)->delete();
+            User::where('id', $user->id)->delete();
+        }
+        
     }
 
 }

@@ -31,6 +31,16 @@ class SubscriptionController extends Controller
         $date = Carbon::now()->format('Y/m/d H:i');
         $old_plan = '';
 
+        if($user->subscription){
+
+            $subscription_data = Subscription::where('user_id', $user->id)
+                        ->where('stripe_status', 'active')->first();
+            if($subscription_data){
+                $subscription_data->stripe_status = 'inactive';
+                $subscription_data->save();
+            }
+        }
+
         try{
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
             if (is_null($user->stripe_id)) {
@@ -56,11 +66,11 @@ class SubscriptionController extends Controller
                 'exp_year' => $source->exp_year,
             ]);
 
-            $user->newSubscription('test',$input['plane'])
+            $user->newSubscription($user->name,$input['plane'])
                 ->create($paymentMethod, [
                 'email' => $user->email,
             ]);
-
+           
             Mail::to($user->email)->send(new SubscriptionUpdateMail($user, $old_plan, 'パーソナルプラン', $date));
 
              return redirect()->route('membership-info')->with('message','お支払いが完了いたしました。');
@@ -77,6 +87,7 @@ class SubscriptionController extends Controller
         if($user)
         {
             Subscription::where('user_id', $user->id)->delete();
+            CustomerCard::where('user_id', $user->id)->delete();
         }
     }
 
