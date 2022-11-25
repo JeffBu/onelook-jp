@@ -13,11 +13,9 @@
     <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
         <div class="flex flex-row justify-center items-center w-11/12 md:w-3/5 gap-4">
             <span class="font-semibold text-sky-600 text-right">使用状況</span>
-            <span class="font-semibold text-sky-600">投稿動画：{{$user->records->count()}} 件（うち閲覧期限内の動画：{{$user->records->count()}}件）投稿可能件数：{{$user->records->count()}}件/@if($user->subscription) 100 @else 5 @endif 件（月末まで）</span>
+            <span class="font-semibold text-sky-600 text-center">投稿動画：{{$recordLimit}} 件（うち閲覧期限内の動画：{{{$recordLimit}}}件）投稿可能件数：{{$recordLimit}}件/@if($user->subscription) 100 @else 5 @endif 件（月末まで）</span>
         </div>
 
-
-        
         @if(Session::has('message'))
         <div class="bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-green-700 inline-flex items-center md:w-3/5 h-1/2 px-4" role="alert">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

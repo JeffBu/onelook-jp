@@ -4,234 +4,256 @@
 @endsection
 @section('css')
 @section('content')
-    <!--content-->
-    <div class="flex justify-center items-start text-lg pt-5 w-full">
-        <div class="flex flex-col justify-center items-center pt-20 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
-            <div class="flex justify-center items-center gap-8">
-                <!--<button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg> 前</button>
 
-                <div class="text-lg text-cyan-800 font-semibold">
-                    ページ: <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
-                </div>
+@if(!$video_creation_status)
+ <!--content-->
+ <div class="flex justify-center items-start text-lg pt-5 w-full">
+    <div class="flex flex-col justify-center items-center pt-20 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
+        <div class="flex justify-center items-center gap-8">
+            <!--<button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg> 前</button>
 
-                <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">次 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg></button>-->
+            <div class="text-lg text-cyan-800 font-semibold">
+                ページ: <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
             </div>
 
-            <div class="flex justify-center items-center mt-5 text-white w-full">
-                <canvas id="pdf-canvas"></canvas>
-            </div>
+            <button class="flex items-center text-lg text-cyan-600 font-semibold hover:text-theme-yellow gap-2" id="next">次 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg></button>-->
         </div>
-        <input type="hidden" id="file_url" name="file_url" class="form-control" placeholder="動画のURLを表示" readonly>
 
-        {{-- <div class="flex flex-col justify-center items-center gap-8 w-80 pt-14 px-2 ml-2 text-left" data-name="toolbox">
-            <div class="mb-3 xl:w-96">
+        <div class="flex justify-center items-center mt-5 text-white w-full">
+            <canvas id="pdf-canvas"></canvas>
+        </div>
+    </div>
+    <input type="hidden" id="file_url" name="file_url" class="form-control" placeholder="動画のURLを表示" readonly>
+
+    {{-- <div class="flex flex-col justify-center items-center gap-8 w-80 pt-14 px-2 ml-2 text-left" data-name="toolbox">
+        <div class="mb-3 xl:w-96">
+            </div>
+
+
+        </div>
+    </div> --}}
+</div>
+
+<div class="flex justify-center items-start w-full">
+    <!--toolbar-->
+    <div class="flex flex-col justify-center items-center fixed left-1/2 -translate-x-1/2 top-0 w-full">
+        <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-b-md tracking-widest w-full z-10"
+        id="nav-toolbar-1">
+            <div class="flex justify-center items-center gap-4 sm:gap-8">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <label for="pdfSource" data-tooltip-target="pdf-source" data-tooltip-placement="bottom" class="hover:text-theme-yellow">
+                        <div class="flex justify-center items-center h-8 w-8">
+                            <img src="{{asset('media/button-upload.png')}}"alt="upload-button">
+                        </div>
+                    </label>
+                    <input type="file" id="pdfSource" name="pdfSource" accept=".pdf" hidden/>
+                </form>
+                <div id="pdf-source" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    録画画面にPDFファイルを表示
+                    <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
 
+                <button id="start" data-tooltip-target="start-recording" data-tooltip-placement="bottom" class="h-8 w-8 hover:text-theme-yellow">
+                    <img src="{{asset('media/button-record.png')}}" alt="record-button">
+                </button>
+                <div id="start-recording" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    録画する画面をえらんでスタート
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
 
+                <button id="stop" data-tooltip-target="stop-toolbar" data-tooltip-placement="bottom" class="hidden h-8 w-8 hover:text-theme-yellow">
+                    <img src="{{asset('media/button-sto.png')}}" alt="record-button">
+                </button>
+                <div id="stop-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    収録終了
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
+                <button id="preview" data-tooltip-target="preview-toolbar" data-tooltip-placement="bottom" data-modal-toggle="previewModal" class="hidden h-8 w-8 hover:text-theme-yellow">
+                    <img src="{{asset('media/button-preview.png')}}" alt="preview-button">
+                </button>
+                <div id="preview-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    プレビュー
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
+                <button id="completion" data-tooltip-target="save-toolbar" data-tooltip-placement="bottom" class="hidden h-7 w-7 hover:text-theme-yellow">
+                    <img src="{{asset('media/button-sav.png')}}" alt="save-button">
+                </button>
+                <div id="save-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    完了
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
+                <button id="cancel" data-tooltip-target="cancel-toolbar" data-tooltip-placement="bottom" class="hidden h-8 w-8 hover:text-theme-yellow">
+                    <img src="{{asset('media/button-cancel.png')}}" alt="cancel-button">
+                </button>
+                <div id="cancel-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    キャンセル
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
+                <button data-tooltip-target="previous-toolbar" class="flex items-center text-base text-sky-800 font-semibold hover:text-theme-yellow gap-2" id="prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span class="hidden sm:flex">前</span>
+                </button>
+                <div id="previous-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    前
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+
+                <div class="flex flex-row text-base text-sky-800 font-semibold">
+                    <span class="hidden sm:flex">ページ:</span>
+                    <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
+                </div>
+
+                <button data-tooltip-target="next-toolbar" class="flex items-center text-base text-sky-800 font-semibold hover:text-theme-yellow gap-2" id="next">
+                    <span class="hidden sm:flex">次</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <div id="next-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                    次
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
             </div>
-        </div> --}}
+        </nav>
+
+        <button onclick="toggleNav1()" class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-b-md">
+            <svg id="nav-up" xmlns="http://www.w3.org/2000/svg" class="flex h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+            <svg id="nav-down" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
     </div>
 
-    <div class="flex justify-center items-start w-full">
-        <!--toolbar-->
-        <div class="flex flex-col justify-center items-center fixed left-1/2 -translate-x-1/2 top-0 w-full">
-            <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-b-md tracking-widest w-full z-10"
-            id="nav-toolbar-1">
-                <div class="flex justify-center items-center gap-4 sm:gap-8">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <label for="pdfSource" data-tooltip-target="pdf-source" data-tooltip-placement="bottom" class="hover:text-theme-yellow">
-                            <div class="flex justify-center items-center h-8 w-8">
-                                <img src="{{asset('media/button-upload.png')}}"alt="upload-button">
-                            </div>
-                        </label>
-                        <input type="file" id="pdfSource" name="pdfSource" accept=".pdf" hidden/>
-                    </form>
-                    <div id="pdf-source" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        録画画面にPDFファイルを表示
+    <div class="flex flex-col justify-center items-center fixed left-1/2 -translate-x-1/2 bottom-0 w-full">
+        <button onclick="toggleNav2()" class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-t-md">
+            <svg id="nav2-up" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+            <svg id="nav2-down" xmlns="http://www.w3.org/2000/svg" class="flex h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+
+        <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-t-md tracking-widest w-full z-10"
+        id="nav-toolbar-2">
+        <!--sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3-->
+            <div class="flex justify-center items-center font-medium text-lg w-full">
+                <div class="flex px-8 justify-center items-center gap-4 sm:gap-6">
+                    <button id="pointerBtn" onclick="setPointer()" data-tooltip-target="pointer-toolbar" class="h-5 w-5 hover:text-theme-yellow">
+                        <img src="{{asset('media/button-pointer.png')}}" alt="pointer-button">
+                    </button>
+                    <div id="pointer-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        ポインタ
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="start" data-tooltip-target="start-recording" data-tooltip-placement="bottom" class="h-8 w-8 hover:text-theme-yellow">
-                        <img src="{{asset('media/button-record.png')}}" alt="record-button">
+                    <button id="pencilBtn" onclick="setPencil()" data-tooltip-target="pencil-toolbar" class="h-7 w-7 hover:text-theme-yellow">
+                        <img src="{{asset('media/button-pencil.png')}}" alt="pencil-button">
                     </button>
-                    <div id="start-recording" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        録画する画面をえらんでスタート
+                    <div id="pencil-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        ポインタ
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="stop" data-tooltip-target="stop-toolbar" data-tooltip-placement="bottom" class="hidden h-8 w-8 hover:text-theme-yellow">
-                        <img src="{{asset('media/button-sto.png')}}" alt="record-button">
+                    <button id="markerBtn" onclick="setMarker()" data-tooltip-target="marker-toolbar" class="h-7 w-7 hover:text-theme-yellow">
+                        <img src="{{asset('media/button-marker.png')}}" alt="marker-button">
                     </button>
-                    <div id="stop-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        収録終了
+                    <div id="marker-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        マーカー
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="preview" data-tooltip-target="preview-toolbar" data-tooltip-placement="bottom" data-modal-toggle="previewModal" class="hidden h-8 w-8 hover:text-theme-yellow">
-                        <img src="{{asset('media/button-preview.png')}}" alt="preview-button">
-                    </button>
-                    <div id="preview-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        プレビュー
+                    <input type="color" class="h-8 w-14 bg-sky-400 bg-opacity-0 hover:text-theme-yellow" data-tooltip-target="palette-toolbar" oninput="stroke_color = this.value" list="presetColors" />
+                    <datalist id="presetColors">
+                        <option>#FFFFFF</option>
+                        <option>#FF0000</option>
+                        <option>#00FF00</option>
+                        <option>#0000FF</option>
+                        <option>#FFFF00</option>
+                        <option>#FF00FF</option>
+                        <option>#00FFFF</option>
+                        <option>#800000</option>
+                        <option>#FFFFCC</option>
+                        <option>#00FFFF</option>
+                        <option>#FF9900</option>
+                    </datalist>
+                    <div id="palette-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        カラーパレット
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="completion" data-tooltip-target="save-toolbar" data-tooltip-placement="bottom" class="hidden h-7 w-7 hover:text-theme-yellow">
-                        <img src="{{asset('media/button-sav.png')}}" alt="save-button">
+                    <button onclick="undoLast()" data-tooltip-target="undo-toolbar" class="h-8 w-8 hover:text-theme-yellow">
+                        <img src="{{asset('media/button-undo.png')}}" alt="undo-button">
                     </button>
-                    <div id="save-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        完了
+                    <div id="undo-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        元に戻す
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button id="cancel" data-tooltip-target="cancel-toolbar" data-tooltip-placement="bottom" class="hidden h-8 w-8 hover:text-theme-yellow">
-                        <img src="{{asset('media/button-cancel.png')}}" alt="cancel-button">
+                    <button id="mute" data-tooltip-target="mute-toolbar" data-tooltip-placement="bottom" class="h-7 w-7 hover:text-theme-yellow">
+                        <img id="mute-icon" src="{{asset('media/button-mute.png')}}" alt="mute-button" class="flex">
+                        <img id="unmute-icon" src="{{asset('media/button-unmute.png')}}" alt="unmute-button" class="hidden">
                     </button>
-                    <div id="cancel-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        キャンセル
+                    <div id="mute-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        <span id="mute-label" class="block">ミュート</span>
+                        <span id="unmute-label" class="hidden">ミュートを解除する</span>
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <button data-tooltip-target="previous-toolbar" class="flex items-center text-base text-sky-800 font-semibold hover:text-theme-yellow gap-2" id="prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                        <span class="hidden sm:flex">前</span>
+                    <button onclick="zoominBtn()" data-tooltip-target="zoomin-toolbar" class="h-8 w-8 hover:text-theme-yellow">
+                        <img src="{{asset('media/button-zoom-in.png')}}" alt="undo-button">
                     </button>
-                    <div id="previous-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        前
+                    <div id="zoomin-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        ズームイン
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
-                    <div class="flex flex-row text-base text-sky-800 font-semibold">
-                        <span class="hidden sm:flex">ページ:</span>
-                        <span id="page-num" class="px-2">0</span> of <span id="page-count" class="px-2">0</span>
-                    </div>
-
-                    <button data-tooltip-target="next-toolbar" class="flex items-center text-base text-sky-800 font-semibold hover:text-theme-yellow gap-2" id="next">
-                        <span class="hidden sm:flex">次</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
+                    <button onclick="zoomOutBtn()" data-tooltip-target="zoomout-toolbar" class="h-8 w-8 hover:text-theme-yellow">
+                        <img src="{{asset('media/button-zoom-out.png')}}" alt="undo-button">
                     </button>
-                    <div id="next-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        次
+                    <div id="zoomout-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        ズームアウトする
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
                 </div>
-            </nav>
-
-            <button onclick="toggleNav1()" class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-b-md">
-                <svg id="nav-up" xmlns="http://www.w3.org/2000/svg" class="flex h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-                </svg>
-                <svg id="nav-down" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
-        </div>
-
-        <div class="flex flex-col justify-center items-center fixed left-1/2 -translate-x-1/2 bottom-0 w-full">
-            <button onclick="toggleNav2()" class="flex justify-center items-center w-14 bg-theme-orange bg-opacity-80 rounded-t-md">
-                <svg id="nav2-up" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-                </svg>
-                <svg id="nav2-down" xmlns="http://www.w3.org/2000/svg" class="flex h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
-
-            <nav class="flex shadow text-white bg-sky-400 bg-opacity-80 justify-center items-center px-4 py-2 h-2/5 sm:rounded-t-md tracking-widest w-full z-10"
-            id="nav-toolbar-2">
-            <!--sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3-->
-                <div class="flex justify-center items-center font-medium text-lg w-full">
-                    <div class="flex px-8 justify-center items-center gap-4 sm:gap-6">
-                        <button id="pointerBtn" onclick="setPointer()" data-tooltip-target="pointer-toolbar" class="h-5 w-5 hover:text-theme-yellow">
-                            <img src="{{asset('media/button-pointer.png')}}" alt="pointer-button">
-                        </button>
-                        <div id="pointer-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            ポインタ
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <button id="pencilBtn" onclick="setPencil()" data-tooltip-target="pencil-toolbar" class="h-7 w-7 hover:text-theme-yellow">
-                            <img src="{{asset('media/button-pencil.png')}}" alt="pencil-button">
-                        </button>
-                        <div id="pencil-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            ポインタ
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <button id="markerBtn" onclick="setMarker()" data-tooltip-target="marker-toolbar" class="h-7 w-7 hover:text-theme-yellow">
-                            <img src="{{asset('media/button-marker.png')}}" alt="marker-button">
-                        </button>
-                        <div id="marker-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            マーカー
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <input type="color" class="h-8 w-14 bg-sky-400 bg-opacity-0 hover:text-theme-yellow" data-tooltip-target="palette-toolbar" oninput="stroke_color = this.value" list="presetColors" />
-                        <datalist id="presetColors">
-                            <option>#FFFFFF</option>
-                            <option>#FF0000</option>
-                            <option>#00FF00</option>
-                            <option>#0000FF</option>
-                            <option>#FFFF00</option>
-                            <option>#FF00FF</option>
-                            <option>#00FFFF</option>
-                            <option>#800000</option>
-                            <option>#FFFFCC</option>
-                            <option>#00FFFF</option>
-                            <option>#FF9900</option>
-                        </datalist>
-                        <div id="palette-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            カラーパレット
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <button onclick="undoLast()" data-tooltip-target="undo-toolbar" class="h-8 w-8 hover:text-theme-yellow">
-                            <img src="{{asset('media/button-undo.png')}}" alt="undo-button">
-                        </button>
-                        <div id="undo-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            元に戻す
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <button id="mute" data-tooltip-target="mute-toolbar" data-tooltip-placement="bottom" class="h-7 w-7 hover:text-theme-yellow">
-                            <img id="mute-icon" src="{{asset('media/button-mute.png')}}" alt="mute-button" class="flex">
-                            <img id="unmute-icon" src="{{asset('media/button-unmute.png')}}" alt="unmute-button" class="hidden">
-                        </button>
-                        <div id="mute-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            <span id="mute-label" class="block">ミュート</span>
-                            <span id="unmute-label" class="hidden">ミュートを解除する</span>
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <button onclick="zoominBtn()" data-tooltip-target="zoomin-toolbar" class="h-8 w-8 hover:text-theme-yellow">
-                            <img src="{{asset('media/button-zoom-in.png')}}" alt="undo-button">
-                        </button>
-                        <div id="zoomin-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            ズームイン
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-
-                        <button onclick="zoomOutBtn()" data-tooltip-target="zoomout-toolbar" class="h-8 w-8 hover:text-theme-yellow">
-                            <img src="{{asset('media/button-zoom-out.png')}}" alt="undo-button">
-                        </button>
-                        <div id="zoomout-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                            ズームアウトする
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!--toolbar ends here-->
+            </div>
+        </nav>
     </div>
+    <!--toolbar ends here-->
+</div>
+
+@else
+<div class="flex justify-center items-start text-lg pt-5 w-full">
+    <div class="flex flex-col justify-center items-center pt-20 w-full sm:w-3/5 h-full" data-name="pdf-canvas">
+        <div class="flex justify-center items-center gap-8">
+
+            <div role="alert">
+                <div class="bg-yellow-500 text-white font-bold rounded-t px-4 py-2">
+                    おっとっと！何かがうまくいかなかった
+                </div>
+                <div class="border border-t-0 border-yellow-400 rounded-b bg-yellow-100 px-4 py-3 text-yellow-700">
+                <p>動画作成の上限に達したようです。</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+@endif
+   
 
     <!-- Video Playback Modal -->
     <div class="hidden fixed top-0 justify-center items-center w-screen h-screen outline-none overflow-x-hidden overflow-y-auto z-50" id="previewModal">

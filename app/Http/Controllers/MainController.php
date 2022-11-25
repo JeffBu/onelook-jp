@@ -75,6 +75,7 @@ class MainController extends Controller
         $user = Auth::user();
         $data = array(
             'user' => $user,
+            'video_creation_status' => $this->videoLimitStatus()
         );
 
         return view('authenticated-user.contents.video_creation', $data);
@@ -104,12 +105,34 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $card_info = CustomerCard::where('user_id', $user->id)->latest()->first();
+        // Carbon::parse($subscription->created_at);
+  
+        $recordLimit = VideoRecord::where('user_id',$user->id)
+                    ->whereMonth('created_at', Carbon::now()->month)->count();
+
         $data = array(
             'user' => $user,
-            'card' => $card_info
+            'card' => $card_info,
+            'recordLimit' => $recordLimit
         );
 
         return view('authenticated-user.contents.membership_info', $data);
+    }
+
+    public function videoLimitStatus(){
+        $user = Auth::user();
+        $recordCounter = VideoRecord::where('user_id',$user->id)->whereMonth('created_at', Carbon::now()->month)->count();
+        $_status = false;     
+        if($user->subscription){
+            if($recordCounter >= 100){
+                $_status = true;
+            }
+        }else{
+            if($recordCounter >= 5){
+                $_status = true;
+            }
+        }
+       return $_status;
     }
 
     public function change_membership_plan()

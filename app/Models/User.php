@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function records()
     {
-        return $this->hasMany(VideoRecord::class);
+        return $this->hasMany(VideoRecord::class,'id','user_id');
     }
 
     public function subscription()
