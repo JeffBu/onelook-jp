@@ -241,11 +241,11 @@
         <div class="flex justify-center items-center gap-8">
 
             <div role="alert">
-                <div class="bg-yellow-500 text-white font-bold rounded-t px-4 py-2">
+                {{-- <div class="bg-yellow-500 text-white font-bold rounded-t px-4 py-2">
                     おっとっと！何かがうまくいかなかった
-                </div>
+                </div> --}}
                 <div class="border border-t-0 border-yellow-400 rounded-b bg-yellow-100 px-4 py-3 text-yellow-700">
-                <p>動画作成の上限に達したようです。</p>
+                <p>動画作成の上限に達しています。現在ご利用のプランの確認をお願いします。</p>
                 </div>
             </div>
             

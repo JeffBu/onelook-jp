@@ -46,9 +46,9 @@
                             <option value="_defaul" selected>選択する...</option>
                             {{-- <option value="personal_application" @if(auth()->user()->subscription) disabled @endif>パーソナルプランの申込</option> --}}
                             <option value="personal_application_monthly" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price ==  env('STRIPE_PRICE_MONTHLY_KEY')) disabled @endif>パーソナルプラン申し込み（月額）</option>
-                            <option value="personal_application_annual" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')) disabled @endif>パーソナルプランのお申し込み（年間）</option> 
-                            <option value="cancel_personal_plan" @if(!auth()->user()->subscription) disabled @endif>パーソナルプランの解約</option>
-                            <option value="cancel_service" @if(auth()->user()->subscription) disabled @endif>本サービスの解約</option>
+                            <option value="personal_application_annual" @if((auth()->user()->subscription && auth()->user()->subscription->stripe_status == "active") && auth()->user()->subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')) disabled @endif>パーソナルプランのお申し込み（年間）</option> 
+                            <option value="cancel_personal_plan" @if(!auth()->user()->subscription || auth()->user()->subscription->stripe_status == "inactive") disabled @endif>パーソナルプランの解約</option>
+                            <option value="cancel_service" @if(auth()->user()->subscription && auth()->user()->subscription->stripe_status == "active") disabled @endif>本サービスの解約</option>
                     </select>
                 </div>
             </div>
@@ -106,7 +106,9 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '確認'
+                confirmButtonText: '確認',
+                cancelButtonText: 'キャンセル'
+                
                 }).then((result) => {
                 if (result.isConfirmed) {
                     window.location = "checkout?subs=" + subs_type;
@@ -120,13 +122,20 @@
 
         function cancelPlan(subs_type) {
 
+            var subscription_type = {{$subscription_type}};
+            var _subscription_type = "";
+            if(subscription_type == 1){
+                _subscription_type = "月次";
+            }else{
+                _subscription_type = "年次";
+            }
 
             Swal.fire({
                 html: `<div class="bg-red-100 rounded-lg py-5 px-3 text-base text-red-700" role="alert">
                         <h4 class="text-2xl font-medium leading-tight text-center">留意点 </h4>
                             <ol class="list-decimal text-left px-4 py-4">
                                 <li>
-                                    現在のプランはパーソナルプラ `+ subs_type +` `+ {{$exd_year}}+`-`+ {{$exd_month}} +`-`+{{$exd_day}} + `、 あなたが持っている  `+ {{$noOfDaysLeft}} + `残存日数 。
+                                    現在のプランはパーソナルプラン(`+ _subscription_type + `) (有効期限 `+ {{$noOfDaysLeft}} +` 日）です。
                                     パーソナルプランの解約した場合は、以後の請求は発生しません。
                                     なお、変更以後はパーソナルプランの機能のご利用はできなくなります。
                                 </li>
@@ -136,7 +145,8 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'はい！確認'
+                confirmButtonText: 'はいー',
+                cancelButtonText: 'いいえ'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     cancelSubscription({{$user->id}});
@@ -166,8 +176,8 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                cancelButtonText: 'キャンセル',
-                confirmButtonText: '確認'
+                confirmButtonText: 'はいー',
+                cancelButtonText: 'いいえ'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     cancelServiceEvent({{$user->id}});
@@ -202,15 +212,15 @@
             var subscripstion = '';
             if($(this).find(":selected").val() == 'personal_application_monthly'){
                 changePlan('monthly');
-                subscripstion = 'monthly';
+                subscripstion = '月次';
             }else if($(this).find(":selected").val() == 'personal_application_annual'){
                 changePlan('annual');
-                subscripstion = 'annual';
+                subscripstion = '通年';
             }else if($(this).find(":selected").val() == 'cancel_personal_plan'){
                 if($(this).find(":selected").val() == 'personal_application_monthly'){
-                    subscripstion = 'Monthly'
+                    subscripstion = '月次'
                 }else{
-                    subscripstion = 'Annual'
+                    subscripstion = '通年'
                 }
                 cancelPlan(subscripstion);
             }else if($(this).find(":selected").val() == 'cancel_service'){
@@ -221,12 +231,18 @@
         const checkSubscription = (subsType) => {
             var txtSubscribed = $('#txtSubscribed').val().replace(/\s/g, "");
             var msgs = "";
-
+            var subscription_type = {{$subscription_type}};
+            var _subscription_type = "";
+            if(subscription_type == 1){
+                _subscription_type = "月次";
+            }else{
+                _subscription_type = "年次";
+            }
             if(txtSubscribed == 'personal_plan'){
                 msgs =  `<div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700" role="alert">
                             <h4 class="text-2xl font-medium leading-tight mb-2">留意点</h4>
                             <p class="mb-4 text-left">
-                                現在のプランはパーソナルプラ (`+subsType+`)（`+ {{$exd_year}}+`-`+ {{$exd_month}} +`-`+{{$exd_day}} +` : `+ {{$noOfDaysLeft}} + `）
+                                現在のプランはパーソナルプラン（`+ _subscription_type + `）（有効期限 `+ {{$noOfDaysLeft}} +` 日）です。
                                 新しいパーソナルプランへの変更申込時には、変更申込日に料金が発生し、以後は新プランが適用になります。
                             </p>
                         </div>`;

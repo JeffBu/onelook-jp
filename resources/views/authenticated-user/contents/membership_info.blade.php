@@ -13,7 +13,7 @@
     <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
         <div class="flex flex-row justify-center items-center w-11/12 md:w-3/5 gap-4">
             <span class="font-semibold text-sky-600 text-right">使用状況</span>
-            <span class="font-semibold text-sky-600 text-center">投稿動画：{{$recordLimit}} 件（うち閲覧期限内の動画：{{{$recordLimit}}}件）投稿可能件数：{{$recordLimit}}件/@if($user->subscription) 100 @else 5 @endif 件（月末まで）</span>
+            <span class="font-semibold text-sky-600 text-center">投稿動画：{{$recordLimit}} 件（うち閲覧期限内の動画：{{{$recordLimit}}}件）投稿可能件数：{{$recordLimit}}件/@if($user->subscription && $user->subscription->stripe_status == "active") 100 @else 5 @endif 件（月末まで）</span>
         </div>
 
         @if(Session::has('message'))
@@ -32,7 +32,7 @@
                 <div class="flex flex-col sm:flex-row justify-between items-center px-4 pb-2 gap-6 sm:gap-2 w-full">
                     <div class="flex flex-row justify-start items-center text-left divide-x divide-sky-700 gap-2 w-full">
                         <span class="px-2 sm:px-4 py-2 w-[7.5rem] sm:w-40 font-semibold">現在のプラン</span>
-                        <span class="pr-2 sm:pr-4 pl-4 py-2">@if($user->subscription) パーソナルプラン @else フリープラン @endif</span>
+                        <span class="pr-2 sm:pr-4 pl-4 py-2">@if($user->subscription && $user->subscription->stripe_status == "active") パーソナルプラン @else フリープラン @endif</span>
                     </div>
 
                     <div class="flex flex-row justify-center items-center gap-2">

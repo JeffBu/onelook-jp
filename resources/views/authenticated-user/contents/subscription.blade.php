@@ -27,7 +27,7 @@
                     
                     <div class="flex flex-row w-full justify-between items-center px-4">
                         <span>現在のプラン</span>
-                        <div class="text-sky-600 @if(auth()->user()->subscription) hidden @endif">
+                        <div class="text-sky-600 @if(auth()->user()->subscription && auth()->user()->subscription->stripe_status == "active") hidden @endif">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
@@ -77,7 +77,7 @@
 
                     <div class="flex flex-row w-full justify-between items-center px-4">
                         <span>現在のプラン</span>
-                        <div class="@if(auth()->user()->subscription) @else hidden @endif text-sky-600">
+                        <div class="@if((auth()->user()->subscription) && (auth()->user()->subscription->stripe_status == "active")) @else hidden @endif text-sky-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                             </svg>

@@ -120,18 +120,28 @@ class MainController extends Controller
     }
 
     public function videoLimitStatus(){
+
         $user = Auth::user();
-        $recordCounter = VideoRecord::where('user_id',$user->id)->whereMonth('created_at', Carbon::now()->month)->count();
-        $_status = false;     
-        if($user->subscription){
-            if($recordCounter >= 100){
-                $_status = true;
-            }
+        $_status = false;
+        $count_limit = 0;
+        $subscription = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
+        if($subscription){
+            $_date = Carbon::parse($subscription->created_at);
+            $_to = date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . " + 1 month"));
+            $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+            $count_limit = 100;
         }else{
-            if($recordCounter >= 5){
-                $_status = true;
-            }
+            $count_limit = 5;
         }
+
+        if($recordCounter >= $count_limit){
+            $_status = true;
+        }else{
+            $_status = false;
+        }
+            
+
        return $_status;
     }
 
@@ -150,18 +160,22 @@ class MainController extends Controller
         $user = Auth::user();
         $subscription = Subscription::where('user_id', $user->id)->first();
         $diff = 0;
-        // $dateSubs = '';
-        // $y = '';
         $Y = "";
         $M = "";
         $D = "";
         $exd_Y = "";
         $exd_M = "";
         $exd_D = "";
-        $subscription_type = "";
-        if($subscription){
+        
+        if($subscription && $subscription->stripe_status == "active"){
+            if($subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
+                $_subs_type = " + 1 month";
+            }elseif($subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
+                $_subs_type = " + 1 year";
+            }
+
             $date = Carbon::parse($subscription->created_at);
-            $newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)) . " + 1 year"));
+            $newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)) . $_subs_type));
             $dateSubs = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)))));
             $now = Carbon::now();
             $diff = Carbon::parse($newEndingDate)->diffInDays(Carbon::parse($subscription->created_at));
@@ -172,9 +186,11 @@ class MainController extends Controller
             $exd_M = Carbon::parse($newEndingDate)->format('m');
             $exd_D = Carbon::parse($newEndingDate)->format('d');
             if($subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
-                $subscription_type = 'Monthly';
+                $subscription_type = 1;
+            }elseif($subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
+                $subscription_type = 2;
             }else{
-                $subscription_type = 'Annual';
+                $subscription_type = 0;
             }
 
         }
@@ -187,7 +203,7 @@ class MainController extends Controller
             'exd_year' => $exd_Y,
             'exd_month' => $exd_M,
             'exd_day' => $exd_D,
-            'subscription_type' => $subscription_type,
+            'subscription_type' => $subscription_type
         );
 
         return view('authenticated-user.contents.subscription_2', $data);
@@ -217,12 +233,38 @@ class MainController extends Controller
     {
         $user = Auth::user();
         $subscriptionList = Subscription::where('user_id', $user->id)->get();
+        $arrData = array();
+        foreach($subscriptionList AS $subscriptionItem){
+            if($subscriptionItem->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
+                $_subs_type = " + 1 month";
+            }elseif($subscriptionItem->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
+                $_subs_type = " + 1 year";
+            }
+            $nestedData['id'] = $subscriptionItem->id;
+            $nestedData['created_at'] = $subscriptionItem->created_at;
+            $nestedData['stripe_price'] = $this->getStripePrice($subscriptionItem->stripe_price);
+            $nestedData['ends_at'] = date("Y-m-d", strtotime(date("Y-m-d", strtotime($subscriptionItem->created_at)) .$_subs_type));
+            $arrData[] =  $nestedData;
+        }
+       
 
         $data = array(
             'user' => $user,
-            'billingStatementList' => $subscriptionList,
+            'billingStatementList' => $arrData,
         );
+
         return view('payment_history', $data);
+    }
+
+    public function getStripePrice($stripeId){
+        $stripe = new \Stripe\StripeClient(
+            env('STRIPE_SECRET')
+          );
+         $price =  $stripe->prices->retrieve(
+            $stripeId,
+            []
+          );
+          return $price->unit_amount;
     }
 
     public function payment_history_2($id)
@@ -231,7 +273,16 @@ class MainController extends Controller
         $user = Auth::user();
         $subscriber = Subscribers::where('user_id', $user->id)->first();
         $subscriptionList = Subscription::where('user_id', $user->id)->findOrFail($id);
-       return view('payment_history_2',  compact('user','subscriber','subscriptionList'));
+        $subscription_price = $this->getStripePrice($subscriptionList->stripe_price);
+
+        if($subscriptionList->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
+            $_subs_type = "毎月";
+        }elseif($subscriptionList->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
+            $_subs_type = "通年";
+        }
+
+
+       return view('payment_history_2',  compact('user','subscriber','subscriptionList', 'subscription_price','_subs_type' ));
     }
 
     public function stripe_display_data()

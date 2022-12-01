@@ -176,7 +176,7 @@ jQuery(document).ready(function() {
             var $form =  $('#payment-form');
             var submit = $form.find('button');
             var submitInitialText = submit.text();
-            submit.attr('disabled','disabled').text('作成中ですのでお待ちください......');
+            submit.attr('disabled','disabled').text('処理中です。お待ちください。......');
             Stripe.card.createToken($form, function(status,response){
                 if(response.error){
                     $form.find('.payment-errors').text(response.error.message).show();

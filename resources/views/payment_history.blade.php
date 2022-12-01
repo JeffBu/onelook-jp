@@ -29,12 +29,12 @@
                 @inject('carbon', 'Carbon\Carbon')
                 @forelse($billingStatementList as $billingStatement)
                 <tr>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->created_at->format('Y-m-d')}}</td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->created_at->format('Y-m-d')}}</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement['created_at']->format('Y-m-d')}}</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement['created_at']->format('Y-m-d')}}</td>
                     <td class="px-1 py-1 border-x border-y border-cyan-600">
-                        <a href="/payment-history-2/{{$billingStatement->id}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">有料サービス ( {{$billingStatement->created_at->format('Y年m月d日H:i')}} - {{$carbon::parse($billingStatement->ends_at)->format('Y年m月d日H:i')}} )</a>
+                        <a href="/payment-history-2/{{$billingStatement['id']}}" class="text-cyan-600 underline underline-offset-1 hover:text-theme-yellow">有料サービス ( {{$billingStatement['created_at']->format('Y年m月d日H:i')}} - {{$carbon::parse($billingStatement['ends_at'])->format('Y年m月d日H:i')}} )</a>
                     </td>
-                    <td class="px-1 py-1 border-x border-y border-cyan-600">{{$billingStatement->stripe_price}}</td>
+                    <td class="px-1 py-1 border-x border-y border-cyan-600">¥{{$billingStatement['stripe_price']}}</td>
                 </tr>
                 @empty
                 <tr>
@@ -48,13 +48,6 @@
         </table>
     </div>
 
-    <div class="flex justify-center items-center w-screen">
-        <div class="justify-end items-center w-1/2">
-            <div class="float-right w-1/5 mr-3 mb-4">
-                <button class="container px-4 py-2 mt-4 bg-theme-yellow hover:bg-yellow-300 text-theme-white rounded-md">変更</button>
-            </div>
-        </div>
-    </div>
 
     <div class="pt-40"></div>
 @endsection
@@ -93,6 +86,9 @@
       }
     }
 </script>
+
+<script src="https://parsleyjs.org/dist/parsley.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script>
     jQuery(window).on('scroll', function() {

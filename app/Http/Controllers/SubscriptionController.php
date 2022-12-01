@@ -86,8 +86,11 @@ class SubscriptionController extends Controller
         $user = User::find($request->user_id);
         if($user)
         {
-            Subscription::where('user_id', $user->id)->delete();
+            $subscription = Subscription::where('user_id', $user->id)->first();
+            $subscription->stripe_status = 'inactive';
+            $subscription->save();
             CustomerCard::where('user_id', $user->id)->delete();
+
         }
     }
 

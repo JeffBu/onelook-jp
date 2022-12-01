@@ -84,7 +84,7 @@
                   </tr>
                   <tr>
                     <td class="tg-7hcj">サービス種別</td>
-                    <td class="tg-dcdw" colspan="3">パーソナルプラン（月額）or（年額）</td>
+                    <td class="tg-dcdw" colspan="3">パーソナルプラン（{{$_subs_type}}）</td>
                   </tr>
                   <tr>
                     <td class="tg-yz93">サービス内容</td>
@@ -108,7 +108,7 @@
                   </tr>
                   <tr>
                     <td class="tg-dcdw">合計</td>
-                    <td class="tg-eyrm"> ---</td>
+                    <td class="tg-eyrm">¥{{$subscription_price}}</td>
                     <td class="tg-lboi"> ---</td>
                   </tr>
                 </tbody>
