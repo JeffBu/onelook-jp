@@ -124,6 +124,7 @@ class MainController extends Controller
         $user = Auth::user();
         $_status = false;
         $count_limit = 0;
+        $recordCounter = 0;
         $subscription = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
         if($subscription){
             $_date = Carbon::parse($subscription->created_at);
