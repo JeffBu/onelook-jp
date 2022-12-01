@@ -21,8 +21,8 @@
         <div class="grid grid-cols-1 gap-4">
             <div class="grid grid-cols-2 gap-4">
                 <div>変更前：</div>
-                <input hidden id="txtSubscribed" type="text" value="@if(auth()->user()->subscription) personal_plan @else free_plan @endif">
-                <div>@if(auth()->user()->subscription && auth()->user()->subscription->stripe_price ==  env('STRIPE_PRICE_MONTHLY_KEY')) パーソナルプラン (毎月) @elseif(auth()->user()->subscription && auth()->user()->subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')) パーソナルプラン (通年) @else フリープラン @endif</div>
+                <input hidden id="txtSubscribed" type="text" value="@if(auth()->user()->subscription && auth()->user()->subscription->stripe_status == "active") personal_plan @else free_plan @endif">
+                <div>@if((auth()->user()->subscription && auth()->user()->subscription->stripe_status == "active") && auth()->user()->subscription->stripe_price ==  env('STRIPE_PRICE_MONTHLY_KEY')) パーソナルプラン (毎月) @elseif(auth()->user()->subscription && auth()->user()->subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')) パーソナルプラン (通年) @else フリープラン @endif</div>
             </div>
             <div class="grid grid-cols-2 gap-1">
 

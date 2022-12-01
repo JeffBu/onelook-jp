@@ -136,14 +136,12 @@ class MainController extends Controller
             $count_limit = 5;
         }
 
-        if($recordCounter >= $count_limit){
+        if($count_limit > $recordCounter){
             $_status = true;
-        }else{
-            $_status = false;
         }
             
 
-       dd($_status);
+       return $_status;
     }
 
     public function change_membership_plan()
@@ -275,9 +273,9 @@ class MainController extends Controller
         $subscription_price = $this->getStripePrice($subscriptionList->stripe_price);
 
         if($subscriptionList->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
-            $_subs_type = "毎月";
+            $_subs_type = "月次";
         }elseif($subscriptionList->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
-            $_subs_type = "通年";
+            $_subs_type = "年次";
         }
 
 

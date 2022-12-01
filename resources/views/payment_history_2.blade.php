@@ -54,17 +54,14 @@
                         <div class="text-center">
                             <h3><b>請求書　兼　領収書</b></h3>
                         </div>
-                        
                     </th>
-                    <th class="tg-dvpl" colspan="2">発行日：</th>
-                    <th class="tg-dvpl">{{$carbon::now()->format('Y年m月d日')}}</th>
+                    <th class="tg-dvpl" colspan="3">発行日： {{$carbon::now()->format('Y年m月d日')}}</th>
+                    
                   </tr>
                   <tr>
                     <th class="tg-dvpl" colspan="3">株式会社モアジョブ</th>
                   </tr>
-                  <tr>
-                    <th class="tg-dvpl" colspan="3">---</th>
-                  </tr>
+            
                   <tr>
                     <th class="tg-7hcj" colspan="3">〒530-0044<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大阪府大阪市北区東天満2－6－7<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;南森町東一号館8階</th>
                   </tr>
@@ -97,12 +94,12 @@
                     <td class="tg-exfh">消費税額</td>
                   </tr>
                   <tr>
-                    <td class="tg-dcdw">8％部分</td>
+                    <td class="tg-dcdw">8％</td>
                     <td class="tg-eyrm"> ---</td>
                     <td class="tg-lboi">---</td>
                   </tr>
                   <tr>
-                    <td class="tg-dcdw">10％部分</td>
+                    <td class="tg-dcdw">10％</td>
                     <td class="tg-eyrm"> ---</td>
                     <td class="tg-lboi"> ---</td>
                   </tr>
