@@ -166,7 +166,7 @@ class MainController extends Controller
         $exd_Y = "";
         $exd_M = "";
         $exd_D = "";
-        
+        $subscription_type = 0;
         if($subscription && $subscription->stripe_status == "active"){
             if($subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
                 $_subs_type = " + 1 month";
@@ -189,8 +189,6 @@ class MainController extends Controller
                 $subscription_type = 1;
             }elseif($subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
                 $subscription_type = 2;
-            }else{
-                $subscription_type = 0;
             }
 
         }
