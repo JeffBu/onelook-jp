@@ -143,7 +143,7 @@ class MainController extends Controller
         }
             
 
-       return $_status;
+       dd($_status);
     }
 
     public function change_membership_plan()
