@@ -83,7 +83,7 @@ class MainController extends Controller
 
     public function post_list()
     {
-        if(auth()->user()->subscription ){
+        if(auth()->user()->subscription && (auth()->user()->subscription->stripe_status == "active")){
             $noOfDaysToBeExpire = '7';
         }else{
             $noOfDaysToBeExpire = '3';
