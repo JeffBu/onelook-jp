@@ -83,7 +83,7 @@ class MainController extends Controller
 
     public function post_list()
     {
-        if(auth()->user()->subscription){
+        if(auth()->user()->subscription ){
             $noOfDaysToBeExpire = '7';
         }else{
             $noOfDaysToBeExpire = '3';
@@ -115,12 +115,12 @@ class MainController extends Controller
             $_date = Carbon::parse($subscription->created_at);
             $_to = date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . "+ 1 month"));
             $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
         }else{
             $_date = Carbon::parse($user->created_at);
             $_to = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . "+ 1 month")));
             $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
         }
 
         $data = array(
@@ -144,13 +144,13 @@ class MainController extends Controller
             $_date = Carbon::parse($subscription->created_at);
             $_to = date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month"));
             $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
             $count_limit = 100;
         }else{
             $_date = Carbon::parse($user->created_at);
             $_to = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month")));
             $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
             $count_limit = 5;
         }
 
