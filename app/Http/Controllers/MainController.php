@@ -110,10 +110,23 @@ class MainController extends Controller
         $recordLimit = VideoRecord::where('user_id',$user->id)
                     ->whereMonth('created_at', Carbon::now()->month)->count();
 
+        $subscription = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
+        if($subscription){
+            $_date = Carbon::parse($subscription->created_at);
+            $_to = date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . "+ 1 month"));
+            $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+        }else{
+            $_date = Carbon::parse($user->created_at);
+            $_to = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . "+ 1 month")));
+            $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
+        }
+
         $data = array(
             'user' => $user,
             'card' => $card_info,
-            'recordLimit' => $recordLimit
+            'recordLimit' =>  $recordCounter
         );
 
         return view('authenticated-user.contents.membership_info', $data);
@@ -126,21 +139,24 @@ class MainController extends Controller
         $count_limit = 0;
         $recordCounter = 0;
         $subscription = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
+
         if($subscription){
             $_date = Carbon::parse($subscription->created_at);
-            $_to = date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . " + 1 month"));
-            $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
+            $_to = date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month"));
+            $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
             $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
             $count_limit = 100;
         }else{
+            $_date = Carbon::parse($user->created_at);
+            $_to = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month")));
+            $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->count();
             $count_limit = 5;
         }
 
-        if($count_limit > $recordCounter){
+        if($count_limit <= $recordCounter){
             $_status = true;
         }
-            
-
        return $_status;
     }
 
@@ -168,22 +184,23 @@ class MainController extends Controller
         $subscription_type = 0;
         if($subscription && $subscription->stripe_status == "active"){
             if($subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
-                $_subs_type = " + 1 month";
+                $_subs_type = "+ 1 month";
             }elseif($subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
-                $_subs_type = " + 1 year";
+                $_subs_type = "+ 1 year";
             }
-
             $date = Carbon::parse($subscription->created_at);
-            $newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)) . $_subs_type));
-            $dateSubs = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($date)))));
+            $newEndingDate = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($date)) . $_subs_type)));
+
+            $dateSubs = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($date)))));
             $now = Carbon::now();
-            $diff = Carbon::parse($newEndingDate)->diffInDays(Carbon::parse($subscription->created_at));
+            $diff = Carbon::parse($newEndingDate)->diffInDays(Carbon::parse($now));
             $Y = $date->format('Y');
             $M = $date->format('m');
             $D = $date->format('d');
             $exd_Y = Carbon::parse($newEndingDate)->format('Y');
             $exd_M = Carbon::parse($newEndingDate)->format('m');
             $exd_D = Carbon::parse($newEndingDate)->format('d');
+
             if($subscription->stripe_price == env('STRIPE_PRICE_MONTHLY_KEY')){
                 $subscription_type = 1;
             }elseif($subscription->stripe_price == env('STRIPE_PRICE_ANNUAL_KEY')){
@@ -191,6 +208,7 @@ class MainController extends Controller
             }
 
         }
+
         $data = array(
             'user' => $user,
             'noOfDaysLeft' =>  $diff,
@@ -203,6 +221,7 @@ class MainController extends Controller
             'subscription_type' => $subscription_type
         );
 
+        
         return view('authenticated-user.contents.subscription_2', $data);
     }
 
