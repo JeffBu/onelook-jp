@@ -75,8 +75,8 @@
                     title: '成功',
                     text: 'このサービスをキャンセルしました。'
                 }).then((result) => {
-                    Inertia.post(route('logout'));
-                    window.location = "/";
+                    // Inertia.post(route('logout'));
+                    location.reload();
                 })
             }).catch(function (error) {
                 Swal.fire({

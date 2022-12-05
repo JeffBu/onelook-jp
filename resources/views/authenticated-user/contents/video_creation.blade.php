@@ -3,8 +3,34 @@
     <title>{{config('app.name')}} - 録画画面はこちらを選択</title>
 @endsection
 @section('css')
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #0d6efd;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+      
+    @keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+      
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>
+@endsection
 @section('content')
-
+<div id="loader" class="center"></div>
 @if(!$video_creation_status)
  <!--content-->
  <div class="flex justify-center items-start text-lg pt-5 w-full">
@@ -285,6 +311,23 @@
     @include('authenticated-user.components.foot')
 @endsection
 @section('js')
+
+    <script>
+        document.onreadystatechange = function() {
+            if (document.readyState !== "complete") {
+                document.querySelector(
+                "body").style.visibility = "hidden";
+                document.querySelector(
+                "#loader").style.visibility = "visible";
+            } else {
+                document.querySelector(
+                "#loader").style.display = "none";
+                document.querySelector(
+                "body").style.visibility = "visible";
+            }
+        };
+    </script>
+
     <script>
         var curr_time = 0;
         var pdf_file = '';
@@ -526,7 +569,7 @@
                     showCancelButton: false,
                     allowOutsideClick: false,
                 }).then((result) => {
-                    window.location = "{{route('post-list')}}"
+                    quitBox('quit');
                 })
            })
             .catch((error) => {
@@ -842,6 +885,17 @@
         $('#pointerBtn').on('click', function() {
             //$('#pdf-canvas').css('cursor', 'wait');
         });
+
+
+    function quitBox(cmd) 
+    {      
+        if (cmd=='quit')    
+        {   
+            window.opener.location.href="{{route('post-list')}}";
+            window.open(location, '_self').close();    
+        }     
+        return false;   
+    }
     </script>
     <!--scripts ends here-->
 @endsection
