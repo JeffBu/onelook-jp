@@ -114,11 +114,7 @@
 @endsection
 @section('js')
     <script>
-        $(document).ready(function(){
-            $('#home-tab').addClass('active');
-            $('#m-home-tab').addClass('active');
-        });
-
+      
         function inquiryAlert() {
             var user_email = "{{auth()->user()->email}}"
             Swal.fire({

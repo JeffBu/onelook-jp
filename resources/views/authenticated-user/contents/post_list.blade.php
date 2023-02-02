@@ -96,8 +96,8 @@
             </div>
 
             @empty
-                <div class="flex w-full">
-                    <span>表示するレコードがありません</span>
+                <div>
+                    <span class="text-center">表示するレコードがありません</span>
                 </div>
             @endforelse
         </div>

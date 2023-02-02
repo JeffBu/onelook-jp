@@ -11,6 +11,7 @@ use App\Models\PostHistory;
 use App\Models\CustomerCard;
 use App\Models\Subscription;
 use App\Models\Subscribers;
+use App\Models\SubscriptionItems;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\InquiryMail;
 use DB;
 use Carbon\carbon;
+use Log;
+
+use App\Mail\SubscriptionUpdateMail;
+
 class MainController extends Controller
 {
     public function login_test()
@@ -281,6 +286,71 @@ class MainController extends Controller
             []
           );
           return $price->unit_amount;
+    }
+    //subscription webhooks (dev-emat)
+    public function subscriptionWebhook(Request $request){
+
+        $date = Carbon::now()->format('Y/m/d H:i');
+        //--> Start: get stripe weebhook event request
+        $request_data = $request->data;
+        $stripe_subscription_id = $request_data['object']['id'];
+        $stripe_subscription_customer = $request_data['object']['customer'];
+        $stripe_subscription_created_at = $request_data['object']['created'];
+        $stripe_subscription_price = $request_data['object']['items']['data'][0]['price']['id'];
+        $stripe_subscription_product = $request_data['object']['items']['data'][0]['plan']['product'];
+        $stripe_subscription_quantity = $request_data['object']['items']['data'][0]['quantity'];
+        $stripe_subscription_data_id = $request_data['object']['items']['data'][0]['id'];
+        //--< : End
+        
+        //--> Start: check subscriber if exist
+        $stripe_customer_user = DB::table('users')->where('stripe_id', $stripe_subscription_customer)->first();
+        //--< : End
+        try{
+            if(!empty($stripe_customer_user)){
+                $subscription_old = Subscription::where('user_id', $stripe_customer_user->id)
+                                    ->where('stripe_status','active')
+                                    ->where('stripe_id','!=', $stripe_subscription_id)->first();
+
+                if(!empty($subscription_old)){
+                    //remove or change status of old subscription
+                    $subscription_old->stripe_status = 'inactive';
+                    $subscription_old->save();
+
+                    DB::beginTransaction();
+                    //save new subscription
+                    $new_subscription = new Subscription;
+                    $new_subscription->user_id = $stripe_customer_user->id;
+                    $new_subscription->name = $stripe_customer_user->name;
+                    $new_subscription->stripe_id = $stripe_subscription_id;
+                    $new_subscription->stripe_status = 'active';
+                    $new_subscription->stripe_price = $stripe_subscription_price;
+                    $new_subscription->quantity = $stripe_subscription_quantity;
+                    $new_subscription->trial_ends_at = null;
+                    $new_subscription->ends_at = null;
+                    $new_subscription->save();
+
+                    //save new subscriptionItem
+                    $new_subscription_item = new SubscriptionItems;
+                    $new_subscription_item->subscription_id = $new_subscription->id;
+                    $new_subscription_item->stripe_id = $stripe_subscription_data_id;
+                    $new_subscription_item->stripe_product = $stripe_subscription_product;
+                    $new_subscription_item->stripe_price = $stripe_subscription_price;
+                    $new_subscription_item->quantity = $stripe_subscription_quantity;
+                    $new_subscription_item->save();
+
+                    DB::commit();
+                    $message = "subscription save in onelook database.";
+                    $old_plan = 'パーソナルプラン';
+                    Mail::to($stripe_customer_user->email)->send(new SubscriptionUpdateMail($stripe_customer_user, $old_plan, 'パーソナルプラン', $date));
+                }else{
+                    $message = "existing record. data already save!";
+                }
+            }
+           return response()->json(array('success'=> true, 'messages'=> $message));
+        } catch (Exception $e) {
+            return back()->with('error',$e->getMessage());
+        }
+        
     }
 
     public function payment_history_2($id)

@@ -130,7 +130,7 @@
                     <span>なし</span>
                 </div>
 
-                <a href="#" class="my-4 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">購読する</a>
+                <a href="{{route('registration')}}" class="my-4 px-4 py-2 bg-theme-yellow text-theme-white hover:bg-yellow-300 rounded-md">購読する</a>
             </div>
 
             <!-- custom plan -->

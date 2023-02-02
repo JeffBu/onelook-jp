@@ -48,8 +48,10 @@ Route::middleware([
     Route::post('cancel-service', [MainController::class, 'cancelService'])->name('cancel-service');
 
     Route::get('video-limit-status', [MainController::class, 'videoLimitStatus'])->name('video-limit-status');
-    //Route::get('stripe-display-data', [MainController::class, 'stripe_display_data'])->name('stripe-display-data');
 
+   
+
+    //Route::get('stripe-display-data', [MainController::class, 'stripe_display_data'])->name('stripe-display-data');
 
     Route::get('checkout', [SubscriptionController::class, 'index'])->name('checkout');
 
@@ -106,3 +108,5 @@ Route::get('promotion', [AdminController::class, 'index'])->name('promotion');
 
 Route::get('test', [SubscriptionController::class, 'index'])->name('test');
 
+ //stripe subscription webhook
+ Route::any('subscription-webhook', [MainController::class, 'subscriptionWebhook'])->name('subscription-webhook');

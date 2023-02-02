@@ -12,13 +12,11 @@
         height: 70px;
         animation: spin 1s linear infinite;
     }
-      
     @keyframes spin {
         100% {
             transform: rotate(360deg);
         }
     }
-      
     .center {
         position: absolute;
         top: 0;
@@ -190,7 +188,7 @@
                         <img src="{{asset('media/button-pencil.png')}}" alt="pencil-button">
                     </button>
                     <div id="pencil-toolbar" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-xs text-theme-white bg-neutral-700 rounded-md shadow-sm opacity-0 transition-opacity duration-300 tooltip">
-                        ポインタ
+                        鉛筆
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
 
