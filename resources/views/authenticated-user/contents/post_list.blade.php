@@ -8,7 +8,6 @@
     @include('authenticated-user.components.head')
 @endsection
 @section('content')
-
     <!--content-->
     <div class="flex flex-col justify-center items-center pt-20 w-full gap-8">
         <div class="flex flex-col justify-center items-center scroll-mt-24 gap-6 w-11/12 md:w-4/5 h-1/2">

@@ -93,14 +93,13 @@ class MainController extends Controller
         }else{
             $noOfDaysToBeExpire = '3';
         }
-        
         $user = Auth::user();
         $video_records = VideoRecord::where('user_id', $user->id)
-                        ->where('created_at','>',Carbon::today()->subDay($noOfDaysToBeExpire))
-                        // ->whereRaw('created_at between created_at AND DATE_ADD(created_at, INTERVAL 3 DAYS)')
-                        ->latest()->get();
+                        ->whereBetween('created_at', [Carbon::now()->subDays($noOfDaysToBeExpire), Carbon::now()])
+                        ->get();
         $data = array(
             'user' => $user,
+            'no' => $noOfDaysToBeExpire,
             'video_records' => $video_records,
         );
         return view('authenticated-user.contents.post_list', $data);
