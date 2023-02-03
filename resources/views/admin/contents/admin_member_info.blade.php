@@ -92,7 +92,7 @@
                     <tr>
                         <td class="px-4 py-1 border border-lime-700">>{{$target->name}}</td>
                         <td class="px-4 py-1 border border-lime-700">{{$target->created_at->format('Y/m/d')}}</td>
-                        <td class="px-4 py-1 border border-lime-700">パーソナル</td>
+                        <td class="px-4 py-1 border border-lime-700">{{$subscription_type}}</td>
                         <td class="px-4 py-1 border border-lime-700">{{$video_records->count()}}</td>
                         <td class="px-4 py-1 border border-lime-700"></td>
                         <td class="px-4 py-1 border border-lime-700"></td>

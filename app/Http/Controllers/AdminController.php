@@ -145,9 +145,11 @@ class AdminController extends Controller
         $video_records = VideoRecord::where('user_id', $user_id)->get();
         $user = Auth::user();
         $news = PostHistory::where('user_id', $target->id)->latest()->get();
+        $subs_type = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
         $data = array(
             'user' => $user,
             'target' => $target,
+            'subscription_type' => (!$subs_type) ? '無料プラン' : 'パーソナルプラン',
             'video_records' => $video_records,
             'messages' => $news,
         );
