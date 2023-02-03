@@ -82,7 +82,7 @@ class MainController extends Controller
             'user' => $user,
             'video_creation_status' => $this->videoLimitStatus()
         );
-
+        // dd($data);
         return view('authenticated-user.contents.video_creation', $data);
     }
 
@@ -117,15 +117,29 @@ class MainController extends Controller
 
         $subscription = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
         if($subscription){
-            $_date = Carbon::parse($subscription->created_at);
-            $_to = date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . "+ 1 month"));
-            $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
+            $year = date_format(Carbon::now(),"Y");;
+            $month = date_format(Carbon::now(),"m");
+            $day = date_format(Carbon::parse($subscription->created_at),"d");
+
+            $hour = date_format(Carbon::parse($subscription->created_at),"H");
+            $minute = date_format(Carbon::parse($subscription->created_at),"i");
+            $second = date_format(Carbon::parse($subscription->created_at),"s");
+
+            $creation_date_plus_date_now_checking = Carbon::create($year, $month, $day, $hour, $minute, $second);
+            $date_day_plus_one_month = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($creation_date_plus_date_now_checking)) . "+ 1 month")));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$creation_date_plus_date_now_checking, $date_day_plus_one_month])->withTrashed()->count();
         }else{
-            $_date = Carbon::parse($user->created_at);
-            $_to = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)) . "+ 1 month")));
-            $_from = Carbon::parse(date("Y-m-d", strtotime(date("Y-m-d", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
+            $year = date_format(Carbon::now(),"Y");;
+            $month = date_format(Carbon::now(),"m");
+            $day = date_format(Carbon::parse($user->created_at),"d");
+
+            $hour = date_format(Carbon::parse($user->created_at),"H");
+            $minute = date_format(Carbon::parse($user->created_at),"i");
+            $second = date_format(Carbon::parse($user->created_at),"s");
+
+            $creation_date_plus_date_now_checking = Carbon::create($year, $month, $day, $hour, $minute, $second);
+            $date_day_plus_one_month = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($creation_date_plus_date_now_checking)) . "+ 1 month")));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$creation_date_plus_date_now_checking, $date_day_plus_one_month])->withTrashed()->count();
         }
 
         $data = array(
@@ -146,16 +160,40 @@ class MainController extends Controller
         $subscription = Subscription::where('user_id', $user->id)->where('stripe_status','active')->first();
 
         if($subscription){
-            $_date = Carbon::parse($subscription->created_at);
-            $_to = date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month"));
-            $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
+            // $_date = Carbon::parse($subscription->created_at);
+            // $_to = date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month"));
+            // $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
+            // $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
+            // $count_limit = 100;
+
+            $year = date_format(Carbon::now(),"Y");;
+            $month = date_format(Carbon::now(),"m");
+            $day = date_format(Carbon::parse($subscription->created_at),"d");
+
+            $hour = date_format(Carbon::parse($subscription->created_at),"H");
+            $minute = date_format(Carbon::parse($subscription->created_at),"i");
+            $second = date_format(Carbon::parse($subscription->created_at),"s");
+
+            $creation_date_plus_date_now_checking = Carbon::create($year, $month, $day, $hour, $minute, $second);
+            $date_day_plus_one_month = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($creation_date_plus_date_now_checking)) . "+ 1 month")));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$creation_date_plus_date_now_checking, $date_day_plus_one_month])->withTrashed()->count();
             $count_limit = 100;
+
         }else{
-            $_date = Carbon::parse($user->created_at);
-            $_to = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)) . "+ 1 month")));
-            $_from = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($_date)))));
-            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$_from, $_to])->withTrashed()->count();
+            //double check the date
+      
+            // Initialising year, month and day
+            $year = date_format(Carbon::now(),"Y");;
+            $month = date_format(Carbon::now(),"m");
+            $day = date_format(Carbon::parse($user->created_at),"d");
+
+            $hour = date_format(Carbon::parse($user->created_at),"H");
+            $minute = date_format(Carbon::parse($user->created_at),"i");
+            $second = date_format(Carbon::parse($user->created_at),"s");
+
+            $creation_date_plus_date_now_checking = Carbon::create($year, $month, $day, $hour, $minute, $second);
+            $date_day_plus_one_month = Carbon::parse(date("Y-M-d h:i:s", strtotime(date("Y-M-d h:i:s", strtotime($creation_date_plus_date_now_checking)) . "+ 1 month")));
+            $recordCounter = VideoRecord::where('user_id',$user->id)->whereBetween('created_at', [$creation_date_plus_date_now_checking, $date_day_plus_one_month])->withTrashed()->count();
             $count_limit = 5;
         }
 
